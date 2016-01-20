@@ -1,0 +1,64 @@
+/*
+Error: File to import not found or unreadable: base/module.
+       Load paths:
+         Compass::SpriteImporter
+         /home/ray/projects/webcomics/webcomics/static/sass
+         /var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets
+        on line 12 of /home/ray/projects/webcomics/webcomics/static/sass/main.scss
+
+7: $blue: #008CBA;
+8: $black: #3d454b;
+9: $cream: #f6f3ea;
+10: 
+11: 
+12: @import 'base/module';
+13: 
+14: * {
+15:     font-family: "Titillium Web";
+16:     font-family: 'Open Sans', sans-serif;
+17:     color: $black;
+
+Backtrace:
+/home/ray/projects/webcomics/webcomics/static/sass/main.scss:12
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/import_node.rb:67:in `rescue in import'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/import_node.rb:45:in `import'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/import_node.rb:28:in `imported_file'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/import_node.rb:37:in `css_import?'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:311:in `visit_import'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/stack.rb:115:in `with_frame'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:52:in `map'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/root_node.rb:36:in `css_tree'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/tree/root_node.rb:20:in `render'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/engine.rb:268:in `render'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/plugin/compiler.rb:209:in `each'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/plugin/compiler.rb:470:in `on_file_changed'
+/var/lib/gems/2.1.0/gems/sass-3.4.14/lib/sass/plugin/compiler.rb:328:in `block in watch'
+/var/lib/gems/2.1.0/gems/listen-2.8.3/lib/listen/listener.rb:282:in `call'
+/var/lib/gems/2.1.0/gems/listen-2.8.3/lib/listen/listener.rb:282:in `_process_changes'
+/var/lib/gems/2.1.0/gems/listen-2.8.3/lib/listen/listener.rb:246:in `block in _wait_for_changes'
+/var/lib/gems/2.1.0/gems/listen-2.8.3/lib/listen/listener.rb:229:in `loop'
+/var/lib/gems/2.1.0/gems/listen-2.8.3/lib/listen/listener.rb:229:in `_wait_for_changes'
+/var/lib/gems/2.1.0/gems/listen-2.8.3/lib/listen/listener.rb:318:in `block in _start_wait_thread'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: base/module.\A        Load paths:\A          Compass::SpriteImporter\A          /home/ray/projects/webcomics/webcomics/static/sass\A          /var/lib/gems/2.1.0/gems/compass-core-1.0.3/stylesheets\A         on line 12 of /home/ray/projects/webcomics/webcomics/static/sass/main.scss\A \A 7: $blue: #008CBA;\A 8: $black: #3d454b;\A 9: $cream: #f6f3ea;\A 10: \A 11: \A 12: @import 'base/module';\A 13: \A 14: * {\A 15:     font-family: \"Titillium Web\";\A 16:     font-family: 'Open Sans', sans-serif;\A 17:     color: $black;"; }

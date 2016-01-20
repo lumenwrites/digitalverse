@@ -37,6 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'sorl.thumbnail',
+    
+    'categories',
+    # 'series',
+    'posts',
+    'profiles',
+    # 'comments'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -55,7 +63,9 @@ ROOT_URLCONF = 'webcomics.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR + '/templates/',                        
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,3 +129,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
+STATIC_ROOT = os.path.join(BASE_DIR, "static_serve/")
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
+
+
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'redis_cache.RedisCache',
+#         'LOCATION': '/var/run/redis/redis.sock',
+#     },
+# }
+
+# solr-thumbnail related settings
+# THUMBNAIL_DEBUG = True
+# THUMBNAIL_FORMAT = 'PNG'
+# THUMBNAIL_KVSTORE = 'sorl.thumbnail.kvstores.redis_kvstore.KVStore'
+# THUMBNAIL_REDIS_HOST = 'localhost'
+# THUMBNAIL_REDIS_PORT = 6379

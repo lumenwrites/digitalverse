@@ -1,0 +1,5 @@
+Django
+sorl-thumbnail
+
+psycopg2
+markdown
