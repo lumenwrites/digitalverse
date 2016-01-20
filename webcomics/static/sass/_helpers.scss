@@ -1,0 +1,72 @@
+/* Helpers */
+
+.hidden {
+    display:none;
+}
+
+.bold {
+    font-weight:bold;
+}
+
+.italic {
+    font-style: italic;
+}
+.right{
+    float:right;
+}
+
+.left{
+    float:left;
+}
+
+.black {
+    color: $black;
+}
+.gray {
+    background: gray!important;
+}
+
+.margins-10 {
+    margin: 10px;
+}
+
+.margins-20 {
+    margin: 20px;
+}
+
+.margins-side-20 {
+    margin: 0 20px;
+}
+
+.padding-10 {
+    padding: 10px;    
+}
+
+.padding-20 {
+    padding: 20px;    
+}
+
+.grey {
+    color: #bbbbbb;
+}
+
+.center-vertically {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    /*
+    *  Where the magic happens
+    *  Centering method from CSS Tricks
+    *  http://css-tricks.com/centering-percentage-widthheight-elements/
+    */
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+
+.thin {
+    font-weight: 100;
+}

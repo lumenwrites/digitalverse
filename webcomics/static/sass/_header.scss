@@ -1,0 +1,58 @@
+header {
+	height: 130;
+	padding: 40px;
+	padding-bottom: 20px;	
+}
+
+/* Logo */
+.logo {
+    font-family: "Titillium Web";
+    color: $black;
+    font-size: 36px;
+}
+
+.logo img {
+  width: 50px;
+  margin-top: -4px;
+  margin-left: -4px;
+  margin-right: -4px;  
+}
+
+.logo:hover,
+.logo:focus,
+.logo:visited{
+    color: #a2a8ab;
+}
+
+/* Main menu */
+#mainMenu {
+	margin-top: 10px;
+	text-transform: uppercase;
+	float:right;
+}
+
+
+
+#mainMenu ul {
+	margin: 0;
+	padding: 0;
+	float: left;
+	margin-right: 10px;
+}
+
+
+/* Subnav */
+.subnav {
+  padding: 10px;
+  background-color: rgba(0,0,0,0.02);
+}
+
+.subnav a, .subnav span {
+    color: #bbbbbb;
+    margin-bottom: -1px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+    margin-right: 10px;
+}

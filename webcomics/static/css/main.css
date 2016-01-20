@@ -1,0 +1,197 @@
+@import url("http://fonts.googleapis.com/css?family=Titillium+Web:400");
+@import url("http://fonts.googleapis.com/css?family=Titillium+Web:200");
+@import url("http://fonts.googleapis.com/css?family=Lato");
+@import url("http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic");
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700");
+/* line 1, ../sass/_base.scss */
+body {
+  background: #232626;
+}
+
+/* line 5, ../sass/_base.scss */
+header {
+  background: #2f3333;
+  padding: 20px 0;
+  box-shadow: 4px 1px 4px rgba(0, 0, 0, 0.1);
+  /* z-index: 10; */
+  position: relative;
+}
+
+/* Helpers */
+/* line 3, ../sass/_helpers.scss */
+.hidden {
+  display: none;
+}
+
+/* line 7, ../sass/_helpers.scss */
+.bold {
+  font-weight: bold;
+}
+
+/* line 11, ../sass/_helpers.scss */
+.italic {
+  font-style: italic;
+}
+
+/* line 14, ../sass/_helpers.scss */
+.right {
+  float: right;
+}
+
+/* line 18, ../sass/_helpers.scss */
+.left {
+  float: left;
+}
+
+/* line 22, ../sass/_helpers.scss */
+.black {
+  color: #3d454b;
+}
+
+/* line 25, ../sass/_helpers.scss */
+.gray {
+  background: gray !important;
+}
+
+/* line 29, ../sass/_helpers.scss */
+.margins-10 {
+  margin: 10px;
+}
+
+/* line 33, ../sass/_helpers.scss */
+.margins-20 {
+  margin: 20px;
+}
+
+/* line 37, ../sass/_helpers.scss */
+.margins-side-20 {
+  margin: 0 20px;
+}
+
+/* line 41, ../sass/_helpers.scss */
+.padding-10 {
+  padding: 10px;
+}
+
+/* line 45, ../sass/_helpers.scss */
+.padding-20 {
+  padding: 20px;
+}
+
+/* line 49, ../sass/_helpers.scss */
+.grey {
+  color: #bbbbbb;
+}
+
+/* line 53, ../sass/_helpers.scss */
+.center-vertically {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /*
+  *  Where the magic happens
+  *  Centering method from CSS Tricks
+  *  http://css-tricks.com/centering-percentage-widthheight-elements/
+  */
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+/* line 70, ../sass/_helpers.scss */
+.thin {
+  font-weight: 100;
+}
+
+/* line 21, ../sass/main.scss */
+* {
+  color: #a2a8ab;
+  font-family: 'Lato';
+}
+
+/* line 26, ../sass/main.scss */
+h1, h2, h3, h4, h5, h6 {
+  color: #a2a8ab;
+  font-family: 'Lato';
+  font-weight: 200;
+}
+
+/* line 33, ../sass/main.scss */
+a {
+  color: #a2a8ab;
+}
+
+/* line 37, ../sass/main.scss */
+.row {
+  /* max-width: 90%; */
+}
+
+/* line 1, ../sass/_header.scss */
+header {
+  height: 130;
+  padding: 40px;
+  padding-bottom: 20px;
+}
+
+/* Logo */
+/* line 8, ../sass/_header.scss */
+.logo {
+  font-family: "Titillium Web";
+  color: #3d454b;
+  font-size: 36px;
+}
+
+/* line 14, ../sass/_header.scss */
+.logo img {
+  width: 50px;
+  margin-top: -4px;
+  margin-left: -4px;
+  margin-right: -4px;
+}
+
+/* line 21, ../sass/_header.scss */
+.logo:hover,
+.logo:focus,
+.logo:visited {
+  color: #a2a8ab;
+}
+
+/* Main menu */
+/* line 28, ../sass/_header.scss */
+#mainMenu {
+  margin-top: 10px;
+  text-transform: uppercase;
+  float: right;
+}
+
+/* line 36, ../sass/_header.scss */
+#mainMenu ul {
+  margin: 0;
+  padding: 0;
+  float: left;
+  margin-right: 10px;
+}
+
+/* Subnav */
+/* line 45, ../sass/_header.scss */
+.subnav {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* line 50, ../sass/_header.scss */
+.subnav a, .subnav span {
+  color: #bbbbbb;
+  margin-bottom: -1px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 400;
+  margin-right: 10px;
+}
+
+/* line 44, ../sass/main.scss */
+#page {
+  min-height: 82vh;
+}
