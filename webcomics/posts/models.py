@@ -28,6 +28,7 @@ class Post(models.Model):
     categories = models.ManyToManyField('Category', related_name="posts", blank=True)
     
     score = models.IntegerField(default=0)
+    views = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title

@@ -56,6 +56,10 @@ class ProfileView(ListView):
     def get_queryset(self):
         qs = super(ProfileView, self).get_queryset()
 
+        userprofile = User.objects.get(username=self.kwargs['username'])
+        qs = qs.filter(author=userprofile)
+
+
         # Filter published
         qs = qs.filter(published=True)
 
@@ -85,6 +89,13 @@ class ProfileView(ListView):
 
         userprofile = User.objects.get(username=self.kwargs['username'])
         context['userprofile'] = userprofile
+
+        view_count = 0
+        for post in userprofile.posts.all():
+            view_count += post.views
+
+        context['view_count'] = view_count
+            
         return context
     
 
@@ -96,6 +107,12 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(PostDetailView, self).get_context_data(**kwargs)
         context['now'] = timezone.now()
+
+        post = self.get_object()
+        if not self.request.user.is_staff and self.request.user != post.author:
+            post.views +=1
+            post.save()
+        
         return context    
     
 class PostCreate(View):
