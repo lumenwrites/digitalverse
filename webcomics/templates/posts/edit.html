@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row page" id="edit-template">
+  <div class="large-12 small-12 columns">
+    <br/>	
+    <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+      {{ form.title }}
+      <div id="image-filechoice-container">
+	{{ form.image }}
+      </div>
+      <a id="upload" class="small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
+
+      {{ form.description }}
+
+      <!-- <input type="text" placeholder="category"> -->
+      <!-- <input id="id_series" maxlength="256" name="series" type="text" -->
+      <!-- 	     style="float:right;width:36%;" -->
+      <!-- 	     placeholder="series"> -->
+      
+      <!-- <input type="submit" value="Delete" />       -->
+      <div class="right">
+	<!-- <input type="submit" value="Preview" /> -->
+	<!-- <input type="submit" value="Publish" /> -->
+	<input type="submit" value="Save" />
+      </div>
+      
+    </form>
+
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){    
+  $('#upload').click(function(){
+  $('#id_image').click();
+  });
+  })
+</script>
+
+{% endblock content %}

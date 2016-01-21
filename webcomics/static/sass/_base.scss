@@ -1,9 +1,14 @@
 body {
-    background: #232626;
+    background: $body-bg;
 }
 
-header {
-    background: #2f3333;
+#page {
+    min-height:82vh;
+}
+
+
+.main-header {
+    background: $header-bg;
     padding: 20px 0;
     box-shadow: 4px 1px 4px rgba(0,0,0,0.1);
     /* z-index: 10; */

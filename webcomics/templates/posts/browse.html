@@ -5,6 +5,24 @@
 
 {% include "elements/subnav.html" %}
 
-<p>Posts</p>
+<div id="browse-template" class="page">
+  
+{% for post in object_list %}
+  <a href="{{post.get_absolute_url}}">  
+    <article>
+    <img src="/media/{{post.thumbnail}}" />
 
+    <div class="dark-overlay">
+	<b style="float:left;">{{post.title}} </b><br/>
+    </div>
+    </article>
+  </a>
+{% endfor %}
+</div>
+
+<style>
+  .row {
+  max-width: 95%!important;
+  }
+</style>
 {% endblock content %}

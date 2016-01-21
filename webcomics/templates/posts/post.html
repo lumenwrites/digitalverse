@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row" id="posts">
+  <div class="large-12 small-12 columns posts">
+    <article>
+      <!-- Header -->
+      <header class="post-header">
+    	  <h1> {{object.title}} </h1>
+    	  <hr />
+      </header>
+      <!-- Post Body -->
+      <img src="/media/{{object.image}}" style="margin:auto;width:100%;"/>
+
+      <br/>
+    </article>
+  </div>
+</div>
+
+{% endblock content %}

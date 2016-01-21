@@ -1,7 +1,4 @@
-header {
-	height: 130;
-	padding: 40px;
-	padding-bottom: 20px;	
+.main-header {
 }
 
 /* Logo */
@@ -26,9 +23,10 @@ header {
 
 /* Main menu */
 #mainMenu {
-	margin-top: 10px;
+	margin-top: 16px;
 	text-transform: uppercase;
 	float:right;
+	font-size: 18px;
 }
 
 

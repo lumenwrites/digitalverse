@@ -9,7 +9,12 @@ body {
 }
 
 /* line 5, ../sass/_base.scss */
-header {
+#page {
+  min-height: 82vh;
+}
+
+/* line 10, ../sass/_base.scss */
+.main-header {
   background: #2f3333;
   padding: 20px 0;
   box-shadow: 4px 1px 4px rgba(0, 0, 0, 0.1);
@@ -104,45 +109,111 @@ header {
   font-weight: 100;
 }
 
-/* line 21, ../sass/main.scss */
+/* line 2, ../sass/_elements.scss */
 * {
   color: #a2a8ab;
   font-family: 'Lato';
 }
 
-/* line 26, ../sass/main.scss */
+/* line 7, ../sass/_elements.scss */
 h1, h2, h3, h4, h5, h6 {
   color: #a2a8ab;
   font-family: 'Lato';
   font-weight: 200;
 }
 
-/* line 33, ../sass/main.scss */
+/* line 14, ../sass/_elements.scss */
+h1 {
+  font-size: 36px;
+  margin-bottom: 0;
+}
+
+/* line 20, ../sass/_elements.scss */
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+/* line 26, ../sass/_elements.scss */
+h3 {
+  font-size: 26px;
+  margin: 10px 0 2px 0;
+}
+
+/* line 31, ../sass/_elements.scss */
+h4 {
+  font-size: 21px;
+  margin-top: 10px;
+  /* color: black; */
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+/* line 40, ../sass/_elements.scss */
 a {
   color: #a2a8ab;
 }
 
-/* line 37, ../sass/main.scss */
+/* line 44, ../sass/_elements.scss */
 .row {
-  /* max-width: 90%; */
+  max-width: 55em;
 }
 
-/* line 1, ../sass/_header.scss */
-header {
-  height: 130;
-  padding: 40px;
-  padding-bottom: 20px;
+/* line 49, ../sass/_elements.scss */
+input {
+  background: #1a1c1c !important;
+  border: none !important;
+  padding: 10px 20px;
+  font-size: 18px !important;
+  color: #a2a8ab !important;
+}
+
+/* line 59, ../sass/_elements.scss */
+input[type="button"],
+input[type="submit"] {
+  background: #2f3333 !important;
+}
+
+/* line 65, ../sass/_elements.scss */
+textarea,
+textarea:active,
+textarea:focus {
+  background: #1a1c1c;
+  border: none;
+  height: 120px;
+  color: #a2a8ab;
+  padding: 10px;
+  font-size: 18px;
+}
+
+/* line 76, ../sass/_elements.scss */
+.button {
+  background: #2f3333;
+}
+
+/* line 81, ../sass/_elements.scss */
+.button:hover, .button:focus {
+  background: #2f3333;
+}
+
+/* line 85, ../sass/_elements.scss */
+hr {
+  border: solid #1a1c1c;
+  border-width: 1px 0 0;
+  margin-top: 0;
+  margin-bottom: 4px;
 }
 
 /* Logo */
-/* line 8, ../sass/_header.scss */
+/* line 5, ../sass/_header.scss */
 .logo {
   font-family: "Titillium Web";
   color: #3d454b;
   font-size: 36px;
 }
 
-/* line 14, ../sass/_header.scss */
+/* line 11, ../sass/_header.scss */
 .logo img {
   width: 50px;
   margin-top: -4px;
@@ -150,7 +221,7 @@ header {
   margin-right: -4px;
 }
 
-/* line 21, ../sass/_header.scss */
+/* line 18, ../sass/_header.scss */
 .logo:hover,
 .logo:focus,
 .logo:visited {
@@ -158,14 +229,15 @@ header {
 }
 
 /* Main menu */
-/* line 28, ../sass/_header.scss */
+/* line 25, ../sass/_header.scss */
 #mainMenu {
-  margin-top: 10px;
+  margin-top: 16px;
   text-transform: uppercase;
   float: right;
+  font-size: 18px;
 }
 
-/* line 36, ../sass/_header.scss */
+/* line 34, ../sass/_header.scss */
 #mainMenu ul {
   margin: 0;
   padding: 0;
@@ -174,13 +246,13 @@ header {
 }
 
 /* Subnav */
-/* line 45, ../sass/_header.scss */
+/* line 43, ../sass/_header.scss */
 .subnav {
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.02);
 }
 
-/* line 50, ../sass/_header.scss */
+/* line 48, ../sass/_header.scss */
 .subnav a, .subnav span {
   color: #bbbbbb;
   margin-bottom: -1px;
@@ -191,7 +263,84 @@ header {
   margin-right: 10px;
 }
 
-/* line 44, ../sass/main.scss */
-#page {
+/* line 3, ../sass/_browse.scss */
+#browse-template article {
+  position: relative;
+  width: calc(20% - 2px);
+  margin: 1px;
+  float: left;
+}
+/* line 10, ../sass/_browse.scss */
+#browse-template .dark-overlay {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+}
+
+/* line 1, ../sass/_edit.scss */
+#id_image {
+  position: absolute;
+  z-index: -10;
+}
+
+/* line 6, ../sass/_edit.scss */
+#upload {
+  border-radius: 0;
+  padding: 16px 18px;
+  width: 133px;
+  height: 47px;
+}
+
+/* line 13, ../sass/_edit.scss */
+::-webkit-input-placeholder {
+  color: rgba(162, 168, 171, 0.4);
+}
+
+/* line 18, ../sass/_edit.scss */
+#image-filechoice-container {
+  width: 100%;
+  position: relative;
+}
+
+/* line 23, ../sass/_edit.scss */
+#edit-template textarea {
+  height: 120px;
+}
+
+/* Footer */
+/* line 3, ../sass/_footer.scss */
+footer {
+  height: 40px;
+}
+
+/* line 7, ../sass/_footer.scss */
+footer, footer li, footer p {
+  background-color: #333a42;
+  color: #babfc2;
+}
+
+/* line 12, ../sass/_footer.scss */
+footer a {
+  color: #babfc2;
+}
+
+/* line 16, ../sass/_footer.scss */
+footer h4 {
+  color: #babfc2;
+  text-transform: uppercase;
+  font-size: medium;
+  font-weight: normal;
+}
+
+/* line 24, ../sass/_footer.scss */
+footer {
+  background: #171a1a;
+  z-index: 1;
+}
+
+/* line 28, ../sass/main.scss */
+.page {
   min-height: 82vh;
 }

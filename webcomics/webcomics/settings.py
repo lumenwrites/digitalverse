@@ -138,16 +138,16 @@ STATICFILES_DIRS = (
 )
 
 
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'redis_cache.RedisCache',
-#         'LOCATION': '/var/run/redis/redis.sock',
-#     },
-# }
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': '/var/run/redis/redis.sock',
+    },
+}
 
 # solr-thumbnail related settings
-# THUMBNAIL_DEBUG = True
-# THUMBNAIL_FORMAT = 'PNG'
-# THUMBNAIL_KVSTORE = 'sorl.thumbnail.kvstores.redis_kvstore.KVStore'
-# THUMBNAIL_REDIS_HOST = 'localhost'
-# THUMBNAIL_REDIS_PORT = 6379
+THUMBNAIL_DEBUG = True
+THUMBNAIL_FORMAT = 'PNG'
+THUMBNAIL_KVSTORE = 'sorl.thumbnail.kvstores.redis_kvstore.KVStore'
+THUMBNAIL_REDIS_HOST = 'localhost'
+THUMBNAIL_REDIS_PORT = 6379

@@ -11,6 +11,8 @@ $bright:#a2a8ab;
 $black: #3d454b;
 $cream: #f6f3ea;
 
+$header-bg: #2f3333;
+$body-bg:#232626;
 
 
 @import 'base';
@@ -18,30 +20,11 @@ $cream: #f6f3ea;
 @import 'elements';
 
 
-* {
-    color: $bright;
-    font-family: 'Lato';
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: $bright;
-
-    font-family: 'Lato';
-    font-weight: 200;
-}
-
-a {
-    color: $bright;
-}
-
-.row {
-    /* max-width: 90%; */
-}
-
-
 @import 'header';
+@import 'browse';
+@import 'edit';
+@import 'footer';
 
-#page {
+.page {
     min-height:82vh;
 }
-

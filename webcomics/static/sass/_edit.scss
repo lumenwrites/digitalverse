@@ -1,0 +1,25 @@
+#id_image {
+    position: absolute;
+    z-index: -10;
+}
+
+#upload {
+    border-radius:0;
+    padding:16px 18px;
+    width:133px;
+    height: 47px;
+}
+
+::-webkit-input-placeholder {
+    color:rgba(162,168,171,0.4);
+}
+
+
+#image-filechoice-container {
+    width:100%;
+    position:relative;
+}
+
+#edit-template textarea {
+    height: 120px;
+}
