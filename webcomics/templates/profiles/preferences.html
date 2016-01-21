@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+  <div class="large-12 columns">
+    <h1> Preferences </h1>
+    <br/>
+    {% if message %}
+    <br/>
+    <div class="panel">{{message}}</div>
+    {% endif %}      
+    <form method="post" action="/preferences/"> {% csrf_token %}
+      Username:
+      {{form.username}}
+      {{form.website}}
+      {{form.about}}      
+      <button class="button small right" type="submit">Save</button>	
+    </form>
+	<a href="/update-password">Change Password</a>
+
+    <div class="clearfix"></div>
+    <div style="width:100%; height: 20px"></div>
+  </div>
+</div>
+{% endblock content %}
+
+

@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import authenticate, login
-
+from django.contrib.auth.decorators import login_required
 
 from .models import User
-from .forms import RegistrationForm
+from .forms import RegistrationForm, UserForm
 
 
 
@@ -97,3 +98,49 @@ def register(request):
     return render(request, "profiles/form-invalid.html", {
         'form': form,
     })
+
+
+@login_required
+def preferences(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login/')
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/preferences/')            
+    else:
+        form = UserForm(instance=request.user)
+    
+    return render(request, "profiles/preferences.html", {
+        'form': form
+    })
+
+
+@login_required
+def update_password(request):
+    form = PasswordChangeForm(user=request.user)
+    message = ""
+
+    if request.method == 'GET':
+        if request.GET.get('error')=="1":
+            message = "Error, please try again."
+
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return HttpResponseRedirect('/preferences/')
+        else:
+
+            return HttpResponseRedirect('/update-password/?error=1')            
+    else:
+        form = PasswordChangeForm(user=request.user)
+
+    return render(request, "profiles/update-password.html", {
+        'form': form,
+        'message':message
+    })
+

@@ -17,6 +17,7 @@
       <img src="/media/avatars/signature.png" class="avatar"/>
     </a>
 
+    {% if not user == post.author %}
     <a class="small button upvote {% if post in user.upvoted.all %}upvoted{% endif %}"
        id="post-upvote-{{post.id}}"    
        href="/login/?next={{request.path}}">
@@ -26,6 +27,7 @@
           <i class="fi-arrow-up"></i>Upvote
       {% endif %}
     </a>
+    {% endif %}    
 
 
       {% if not user == post.author %}

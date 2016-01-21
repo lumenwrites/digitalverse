@@ -253,14 +253,19 @@ hr {
   margin-right: 10px;
 }
 
+/* line 41, ../sass/_header.scss */
+#mainMenu a {
+  margin-right: 5px;
+}
+
 /* Subnav */
-/* line 43, ../sass/_header.scss */
+/* line 47, ../sass/_header.scss */
 .subnav {
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.02);
 }
 
-/* line 48, ../sass/_header.scss */
+/* line 52, ../sass/_header.scss */
 .subnav a, .subnav span {
   color: #3d454b;
   margin-bottom: -1px;
@@ -271,7 +276,7 @@ hr {
   margin-right: 10px;
 }
 
-/* line 59, ../sass/_header.scss */
+/* line 63, ../sass/_header.scss */
 .subnav .active {
   color: #bbbbbb;
   /* font-weight: bold; */
@@ -281,12 +286,12 @@ hr {
   margin: -10px;
 }
 
-/* line 68, ../sass/_header.scss */
+/* line 72, ../sass/_header.scss */
 .has-dropdown > a:after {
   border-top-style: none;
 }
 
-/* line 72, ../sass/_header.scss */
+/* line 76, ../sass/_header.scss */
 .categories-dropdown-button,
 .categories-dropdown-button:hover,
 .categories-dropdown-button:active,
@@ -300,12 +305,12 @@ hr {
   padding: 10px;
 }
 
-/* line 86, ../sass/_header.scss */
+/* line 90, ../sass/_header.scss */
 .dropdown-pane ul {
   list-style: none;
 }
 
-/* line 90, ../sass/_header.scss */
+/* line 94, ../sass/_header.scss */
 .dropdown-pane a {
   color: #a2a8ab;
   text-transform: none;

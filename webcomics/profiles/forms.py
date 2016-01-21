@@ -25,14 +25,14 @@ class RegistrationForm(UserCreationForm):
             user.save()
         return user
         
-# class UserForm(ModelForm):
-#     class Meta:
-#         model = User
-#         fields = ['username', 'email', 'website', 'about', 'email_subscriptions', 'email_comments', 'email_messages', 'email_subscribers', 'email_upvotes', 'enable_dark_interface'] # 'rss_feed', 'categories_to_import',
-#         widgets = {
-#             'username' : forms.TextInput(attrs = {'placeholder': 'Username'}),
-#             'email'    : forms.TextInput(attrs = {'placeholder': 'E-Mail'}),
-#             'website'    : forms.TextInput(attrs = {'placeholder': 'Website'}),
-#             'about'    : forms.Textarea(attrs = {'placeholder': 'About'}),
-#         }
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'website', 'about']
+        widgets = {
+            'username' : forms.TextInput(attrs = {'placeholder': 'Username'}),
+            'email'    : forms.TextInput(attrs = {'placeholder': 'E-Mail'}),
+            'website'    : forms.TextInput(attrs = {'placeholder': 'Website'}),
+            'about'    : forms.Textarea(attrs = {'placeholder': 'About'}),
+        }
     
