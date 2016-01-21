@@ -27,10 +27,27 @@
       {% endif %}
     </a>
 
-    <a class="small button" 
-       href="/user/{{post.author.username}}/subscribe">
-      Subscribe
-    </a>
+
+      {% if not user == post.author %}
+          {% if user.is_authenticated %}
+              {% if user not in post.author.subscribers.all %}	
+		   <a class="small button" 
+		      href="/user/{{post.author.username}}/subscribe">
+		     Subscribe
+		   </a>
+	      {% else %}
+		   <a class="small button" 
+		      href="/user/{{post.author.username}}/unsubscribe">
+		     Unsubscribe
+		   </a>
+	      {% endif %}	
+	  {% else %}	   
+              <a class="button"
+		 href="/login/?next={{request.path}}">
+		Subscribe</a>
+	  {% endif %}	   
+      {% endif %}
+    
   </div>
   <div class="clearfix"></div>
   
