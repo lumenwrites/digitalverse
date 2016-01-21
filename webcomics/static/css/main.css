@@ -205,6 +205,14 @@ hr {
   margin-bottom: 4px;
 }
 
+/* Callout */
+/* line 97, ../sass/_elements.scss */
+.callout {
+  background: #1d1f1f;
+  border: none;
+  padding: 40px;
+}
+
 /* Logo */
 /* line 5, ../sass/_header.scss */
 .logo {
@@ -340,11 +348,15 @@ hr {
 
 /* line 18, ../sass/_edit.scss */
 #image-filechoice-container {
-  width: 100%;
   position: relative;
 }
 
-/* line 23, ../sass/_edit.scss */
+/* line 22, ../sass/_edit.scss */
+#image-filechoice-container #id_image {
+  width: 100%;
+}
+
+/* line 27, ../sass/_edit.scss */
 #edit-template textarea {
   height: 120px;
 }

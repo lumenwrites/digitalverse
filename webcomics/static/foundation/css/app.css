@@ -2023,7 +2023,7 @@ select {
   border-radius: 0;
   position: relative;
   color: #a2a8ab;
-  background-color: white; }
+  background-color: #dde0e0; }
   .callout > :first-child {
     margin-top: 0; }
   .callout > :last-child {
@@ -2753,9 +2753,9 @@ body.is-reveal-open {
   display: none;
   z-index: 1006;
   padding: 1rem;
-  border: 1px solid #cacaca;
+  border: none;
   margin: 100px auto 0;
-  background-color: #fefefe;
+  background-color: #232626;
   border-radius: 0;
   position: absolute;
   overflow-y: auto; }

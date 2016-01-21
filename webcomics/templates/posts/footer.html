@@ -1,0 +1,24 @@
+<div class="callout small">
+    	    <a href="/login/?next={{request.path}}"
+    	       class="fi-arrow-up upvote arrow
+    		      {% if post in upvoted %}upvoted{% endif %}"
+    	       id="post-upvote-{{post.id}}"></a>
+    	    <span class="score"> {{post.score}} </span>
+
+	    <a href="{{post.get_absolute_url}}#comments">
+	      <span class="fi-comment"></span>
+	      <span> {#{{post.comments.count}}#}12 </span>
+	    </a>
+	    
+
+	<span class="fi-eye">
+	  {{post.views}} 319
+	</span>
+
+	<div class="right">
+	  <a href="/user/{{post.author.username}}">{{post.author}}</a>	  
+	<a class="small button usersubscribe" 
+	   href="/user/{{post.author.username}}/subscribe">Subscribe</a>
+	</div>
+	    
+</div>

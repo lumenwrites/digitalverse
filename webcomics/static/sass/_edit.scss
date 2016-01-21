@@ -16,9 +16,13 @@
 
 
 #image-filechoice-container {
-    width:100%;
     position:relative;
 }
+
+#image-filechoice-container #id_image {
+    width:100%;
+}
+
 
 #edit-template textarea {
     height: 120px;

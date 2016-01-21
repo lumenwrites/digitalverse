@@ -253,7 +253,7 @@ $buttongroup-expand-max: 6;
 // 13. Callout
 // -----------
 
-$callout-background: $white;
+$callout-background: #232626;
 $callout-background-fade: 85%;
 $callout-border: 1px solid rgba($black, 0.25);
 $callout-margin: 0 0 1rem 0;
@@ -431,12 +431,12 @@ $progress-radius: $global-radius;
 // 27. Reveal
 // ----------
 
-$reveal-background: $white;
+$reveal-background: #232626;
 $reveal-width: 600px;
 $reveal-max-width: $global-width;
 $reveal-offset: rem-calc(100);
 $reveal-padding: $global-padding;
-$reveal-border: 1px solid $medium-gray;
+$reveal-border: none;
 $reveal-radius: $global-radius;
 $reveal-zindex: 1005;
 $reveal-overlay-background: rgba($black, 0.45);

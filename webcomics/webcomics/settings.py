@@ -137,6 +137,9 @@ STATICFILES_DIRS = (
 )
 
 
+AUTH_USER_MODEL = 'profiles.User'
+
+
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.RedisCache',
