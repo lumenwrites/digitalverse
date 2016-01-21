@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 
 from .forms import PostForm
-from .models import Post
+from .models import Post, Category
 
 from .utils import rank_hot
 
@@ -16,16 +16,24 @@ class PostListView(ListView):
     template_name = "posts/browse.html"
 
     def get_queryset(self):
+        qs = super(PostListView, self).get_queryset()
+
+        qs = qs.filter(published=True)
+        
+        category = self.request.GET.get('category')
+        if category:
+            category = Category.objects.get(slug=category)
+            qs = qs.filter(categories=category)
+
         sorting = self.request.GET.get('sorting')
-        filterby = self.request.GET.get('filterby')
         if sorting == 'top':
-            qs = super(PostListView, self).get_queryset().order_by('-score')
+            qs = qs.order_by('-score')
         elif sorting == 'new':
-            qs = super(PostListView, self).get_queryset().order_by('-pub_date')
+            qs = qs.order_by('-pub_date')
         else:
             # hot
-            qs = super(PostListView, self).get_queryset()
             qs = rank_hot(qs)
+
         return qs
 
     def get_context_data(self, **kwargs):

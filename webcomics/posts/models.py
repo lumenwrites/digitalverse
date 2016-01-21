@@ -25,7 +25,8 @@ class Post(models.Model):
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="posts", default="")
 
-    # categories = models.ManyToManyField('categories.Category', related_name="posts", blank=True)
+    categories = models.ManyToManyField('Category', related_name="posts", blank=True)
+    
     score = models.IntegerField(default=0)
 
     def __str__(self):
@@ -58,4 +59,17 @@ class Post(models.Model):
     @permalink
     def get_absolute_url(self):
         return ('post-detail', None, {'slug': self.slug })        
+    
+
+
+class Category(models.Model):
+    title = models.CharField(max_length=64)    
+    slug = models.SlugField(max_length=64, default="")
+    
+    def __str__(self):
+        return self.title        
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Category, self).save(*args, **kwargs)
     
