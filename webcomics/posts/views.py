@@ -9,11 +9,25 @@ from django.utils import timezone
 from .forms import PostForm
 from .models import Post
 
+from .utils import rank_hot
 
 class PostListView(ListView):
     model = Post
     template_name = "posts/browse.html"
-    
+
+    def get_queryset(self):
+        sorting = self.request.GET.get('sorting')
+        filterby = self.request.GET.get('filterby')
+        if sorting == 'top':
+            qs = super(PostListView, self).get_queryset().order_by('-score')
+        elif sorting == 'new':
+            qs = super(PostListView, self).get_queryset().order_by('-pub_date')
+        else:
+            # hot
+            qs = super(PostListView, self).get_queryset()
+            qs = rank_hot(qs)
+        return qs
+
     def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)
         context['now'] = timezone.now()
