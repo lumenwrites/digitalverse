@@ -4,16 +4,13 @@
     <div class="large-6 small-6 columns">
       <div class="rank-types">
 	<a href="/browse/?sorting=hot">
-	  <span class="bold"style="color:#bbbbbb;">Hot</span>
+	  <span {% if sorting = "hot" %}class="active"{% endif %}>Hot</span>
 	</a>
 	<a href="/browse/?sorting=new">
-	  <span style="color: #3d454b;">New</span>
+	  <span {% if sorting = "new" %}class="active"{% endif %}>New</span>
 	</a>
 	<a href="/browse/?sorting=top">
-	  <span style="color: #3d454b;">Top<!-- : --></span>
-	  <!-- <span style="color: #3d454b;">All Time</span> -->
-	  <!-- <span style="color: #3d454b;">Year</span> -->
-	  <!-- <span style="color: #3d454b;">Month</span> -->
+	  <span {% if sorting = "top" %}class="active"{% endif %}>Top</span>
 	</a>
 	<a href="">
 	  <span style="color: #3d454b;">&nbsp;Subscriptions</span>
@@ -22,10 +19,21 @@
       </div>
     </div>
     <div class="large-6 small-6 columns">
-      <div class="rank-types">
-      	<a href="" style="float:right;">
-	  <span> Category: All</span>
-	</a>
+      <div class="rank-types right">
+	  <button class="button categories-dropdown-button" type="button"
+		  data-toggle="categories-dropdown">
+	    Category
+	  </button>
+	  <div class="dropdown-pane bottom"
+	       id="categories-dropdown"
+	       data-dropdown>
+	    <ul>
+	      <li> <a href="/">Category: All</a> </li>
+	      {% for category in categories %}
+	      <li> <a href="/browse/?category={{category.slug}}">{{category.title}} </a></li>
+	      {% endfor %}
+	    </ul>
+	  </div>
       </div>
     </div>
   </div>

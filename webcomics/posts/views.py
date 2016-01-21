@@ -18,20 +18,22 @@ class PostListView(ListView):
     def get_queryset(self):
         qs = super(PostListView, self).get_queryset()
 
+        # Filter published
         qs = qs.filter(published=True)
-        
+
+        # Filter by category
         category = self.request.GET.get('category')
         if category:
             category = Category.objects.get(slug=category)
             qs = qs.filter(categories=category)
 
+        # Sort
         sorting = self.request.GET.get('sorting')
         if sorting == 'top':
             qs = qs.order_by('-score')
         elif sorting == 'new':
             qs = qs.order_by('-pub_date')
         else:
-            # hot
             qs = rank_hot(qs)
 
         return qs
@@ -39,6 +41,9 @@ class PostListView(ListView):
     def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)
         context['now'] = timezone.now()
+        context['sorting'] = self.request.GET.get('sorting')
+        context['category'] = self.request.GET.get('category')
+        context['categories'] = Category.objects.all()
         return context
 
 class PostDetailView(DetailView):
