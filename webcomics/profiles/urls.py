@@ -9,4 +9,6 @@ urlpatterns = [
     url('^register/$', views.register),
     url(r'^authenticate/', views.authenticate_user),
 
+    url(r'^user/(?P<username>[^\.]+)/subscribe', views.subscribe),
+    url(r'^user/(?P<username>[^\.]+)/unsubscribe', views.unsubscribe),
 ]

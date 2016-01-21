@@ -8,6 +8,25 @@ from .models import User
 from .forms import RegistrationForm
 
 
+
+def subscribe(request, username):
+    userprofile = User.objects.get(username=username)
+    if not request.user.is_anonymous():
+        user = request.user
+        user.subscribed.add(userprofile)
+        user.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
+    else:
+        return HttpResponseRedirect('/login/')    
+
+def unsubscribe(request, username):
+    userprofile = User.objects.get(username=username)    
+    user = request.user
+    user.subscribed.remove(userprofile)
+    user.save()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
+    
+
 def login_or_signup(request):
     # If already logged in - get out of here
     if request.user.is_authenticated():

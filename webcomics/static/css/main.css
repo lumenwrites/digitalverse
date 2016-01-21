@@ -311,20 +311,109 @@ hr {
   text-transform: none;
 }
 
+/* line 1, ../sass/_subheader.scss */
+.subheader {
+  padding: 20px;
+  background: url(/media/backgrounds/bg.jpg);
+  background-position-y: -320px;
+  margin: 0;
+}
+
+/* line 10, ../sass/_subheader.scss */
+.user-info {
+  float: left;
+}
+/* line 13, ../sass/_subheader.scss */
+.user-info .avatar {
+  float: left;
+  width: 70px;
+  border-radius: 4px;
+  margin: 10px;
+}
+/* line 20, ../sass/_subheader.scss */
+.user-info .username {
+  font-weight: bold;
+  color: white;
+  margin: 2px 0 0 0px;
+  text-shadow: 1px 1px 2px black;
+}
+/* line 27, ../sass/_subheader.scss */
+.user-info .stats {
+  float: left;
+  color: #d8dadb;
+}
+/* line 32, ../sass/_subheader.scss */
+.user-info i {
+  margin: 0 4px;
+  color: #d8dadb;
+}
+
+/* line 39, ../sass/_subheader.scss */
+.subheader .buttons {
+  margin-top: 20px;
+  float: right;
+}
+
+/* line 43, ../sass/_subheader.scss */
+.subheader .buttons .button {
+  padding: 20px;
+}
+
 /* line 3, ../sass/_browse.scss */
 #browse-template article {
   position: relative;
   width: calc(20% - 2px);
   margin: 1px;
+  width: 20%;
+  margin: 0;
   float: left;
 }
-/* line 10, ../sass/_browse.scss */
+/* line 12, ../sass/_browse.scss */
 #browse-template .dark-overlay {
   position: absolute;
   bottom: 0;
   padding: 10px;
   background: rgba(0, 0, 0, 0.8);
   width: 100%;
+}
+
+/* line 1, ../sass/_post.scss */
+.post-footer {
+  /* .username { */
+  /* 	margin:10px; */
+  /* 	padding: 8px 2px 13px 8px; */
+  /* 	background: #2f3333; */
+  /* 	margin-right: 3px; */
+  /* 	color: #fff; */
+  /* } */
+}
+/* line 2, ../sass/_post.scss */
+.post-footer .stats {
+  float: left;
+  margin: 7px;
+}
+/* line 7, ../sass/_post.scss */
+.post-footer .stats span {
+  margin-right: 8px;
+}
+/* line 11, ../sass/_post.scss */
+.post-footer .fi-arrow-up {
+  transform: scale(1.8, 1);
+}
+/* line 22, ../sass/_post.scss */
+.post-footer .button {
+  margin: 0;
+  font-size: 14px;
+}
+/* line 26, ../sass/_post.scss */
+.post-footer .button i {
+  margin-right: 8px;
+}
+/* line 31, ../sass/_post.scss */
+.post-footer .avatar {
+  width: 30px;
+  margin: -10px -10px -10px 10px;
+  border-radius: 2px;
 }
 
 /* line 1, ../sass/_edit.scss */
@@ -392,7 +481,7 @@ footer {
   z-index: 1;
 }
 
-/* line 28, ../sass/main.scss */
+/* line 31, ../sass/main.scss */
 .page {
   min-height: 82vh;
 }

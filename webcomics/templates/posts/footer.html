@@ -1,24 +1,33 @@
-<div class="callout small">
-    	    <a href="/login/?next={{request.path}}"
-    	       class="fi-arrow-up upvote arrow
-    		      {% if post in upvoted %}upvoted{% endif %}"
-    	       id="post-upvote-{{post.id}}"></a>
-    	    <span class="score"> {{post.score}} </span>
+<div class="callout small post-footer">
 
-	    <a href="{{post.get_absolute_url}}#comments">
-	      <span class="fi-comment"></span>
-	      <span> {#{{post.comments.count}}#}12 </span>
-	    </a>
-	    
+  <div class="stats">
+    <i class="fi-arrow-up"></i>    
+    <span>{{post.score}}</span>
 
-	<span class="fi-eye">
-	  {{post.views}} 319
-	</span>
+    <i class="fi-comment"></i>
+    <span> {#{{post.comments.count}}#}12</span>
+    
+    <i class="fi-eye"></i>
+    <span>{{post.views}} 319</span>
+  </div>
 
-	<div class="right">
-	  <a href="/user/{{post.author.username}}">{{post.author}}</a>	  
-	<a class="small button usersubscribe" 
-	   href="/user/{{post.author.username}}/subscribe">Subscribe</a>
-	</div>
-	    
+  <div class="right">
+    <a class="small button" href="/user/{{post.author.username}}">
+      {{post.author}}
+      <img src="/media/avatars/signature.png" class="avatar"/>
+    </a>
+
+    <a class="small button upvote {% if post in upvoted %}upvoted{% endif %}"
+       id="post-upvote-{{post.id}}"    
+       href="/login/?next={{request.path}}">
+       <i class="fi-arrow-up"></i>Upvote
+    </a>
+
+    <a class="small button" 
+       href="/user/{{post.author.username}}/subscribe">
+      Subscribe
+    </a>
+  </div>
+  <div class="clearfix"></div>
+  
 </div>

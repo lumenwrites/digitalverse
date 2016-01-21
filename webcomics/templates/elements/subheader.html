@@ -1,0 +1,54 @@
+<div class="subheader">
+
+  <div class="large-6 small-6 columns user-info">
+    <a href="/user/rayalez">
+      <img src="/media/avatars/signature.png" class="avatar"/>
+      <div class="left">
+	<h1 class="username"> {{userprofile.username}} </h1>
+	<div class="stats">    
+	  <i class="fi-torsos-all stats-icon"></i>
+	  {{userprofile.subscribers.count}} 64
+
+	  <i class="fi-arrow-up stats-icon"></i>
+	  {{userprofile.karma}} 150
+	  
+	  <i class="fi-eye stats-icon"></i>
+	  2.1K
+	</div>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="large-6 small-6 columns">
+    <div class="buttons">
+      <a class="button"
+	 href="/user/{{userprofile.username}}/subscribe">
+	Website</a>
+
+      <a class="button"
+	 href="/user/{{userprofile.username}}/subscribe">
+	About</a>
+
+      {% if not user == userprofile %}
+          {% if user.is_authenticated %}
+              {% if user not in userprofile.subscribers.all %}	
+                   <a class="button"
+		      href="/user/{{userprofile.username}}/subscribe">
+		     Subscribe</a>
+	      {% else %}
+                   <a class="button"
+		      href="/user/{{userprofile.username}}/unsubscribe">
+		     Unsubscribe</a>
+	      {% endif %}	
+	  {% else %}	   
+              <a class="button"
+		 href="/login/?next={{request.path}}">
+		Subscribe</a>
+	  {% endif %}	   
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+</div>

@@ -1,0 +1,36 @@
+.post-footer {
+    .stats {
+	float:left;
+	margin:7px;
+    }
+
+    .stats span {
+	margin-right: 8px;
+    }
+
+    .fi-arrow-up {
+	transform: scale(1.8,1);
+    }
+    /* .username { */
+    /* 	margin:10px; */
+    /* 	padding: 8px 2px 13px 8px; */
+    /* 	background: #2f3333; */
+    /* 	margin-right: 3px; */
+    /* 	color: #fff; */
+    /* } */
+
+    .button {
+	margin: 0;
+	font-size:14px;
+
+	i {
+	    margin-right: 8px;
+	}
+    }
+
+    .avatar {
+	width:30px;
+	margin: -10px -10px -10px 10px;
+	border-radius:2px;
+    }
+}

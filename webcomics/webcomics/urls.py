@@ -12,6 +12,7 @@ from . import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    url(r'', include(posts_urls)),
     url(r'', include(profiles_urls)),        
+    url(r'', include(posts_urls)),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
