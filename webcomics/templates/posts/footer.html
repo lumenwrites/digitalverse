@@ -17,10 +17,14 @@
       <img src="/media/avatars/signature.png" class="avatar"/>
     </a>
 
-    <a class="small button upvote {% if post in upvoted %}upvoted{% endif %}"
+    <a class="small button upvote {% if post in user.upvoted.all %}upvoted{% endif %}"
        id="post-upvote-{{post.id}}"    
        href="/login/?next={{request.path}}">
-       <i class="fi-arrow-up"></i>Upvote
+      {% if post in user.upvoted.all %}
+          Upvoted
+      {% else %}      
+          <i class="fi-arrow-up"></i>Upvote
+      {% endif %}
     </a>
 
     <a class="small button" 
@@ -31,3 +35,90 @@
   <div class="clearfix"></div>
   
 </div>
+
+
+<script>
+$(document).ready(function(){
+    // getting csrf token.
+    function getCookie(name) {
+	var cookieValue = null;
+	if (document.cookie && document.cookie != '') {
+	    var cookies = document.cookie.split(';');
+	    for (var i = 0; i < cookies.length; i++) {
+		var cookie = jQuery.trim(cookies[i]);
+		// Does this cookie string begin with the name we want?
+		if (cookie.substring(0, name.length + 1) == (name + '=')) {
+		    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		    break;
+		}
+	    }
+	}
+	return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    // Upvote
+    function upvote(postId) {
+	$.ajax({
+	    type: "POST",
+	    url: "/upvote/",
+	    data: {"post-id": postId},
+	    success: function(){
+		var upvoteLink = $('#post-upvote-'+postId);
+		upvoteLink.addClass('upvoted');
+		upvoteLink.html("Upvoted");		
+		upvoteLink.off("click");
+		upvoteLink.click(function(){
+		    var postId = parseInt(this.id.split("-")[2]);
+		    return unupvote(postId);
+		})
+	    },
+	    headers: {
+		'X-CSRFToken': csrftoken
+	    }
+	});
+	return false;
+    }
+
+    
+
+    // Unupvote
+    function unupvote(postId) {
+	$.ajax({
+	    type: "POST",
+	    url: "/unupvote/",
+	    data: {"post-id": postId},
+	    success: function(){
+		var upvoteLink = $('#post-upvote-'+postId);
+		upvoteLink.removeClass('upvoted');
+		upvoteLink.html("<i class='fi-arrow-up'></i>Upvote");				
+		upvoteLink.off("click");
+		upvoteLink.click(function(){
+		    var postId = parseInt(this.id.split("-")[2]);
+		    return upvote(postId);
+		})
+	    },
+	    headers: {
+		'X-CSRFToken': csrftoken
+	    }
+	});
+	return false;
+    }
+
+    
+    {% if user.is_authenticated %}
+    //Connect functions
+    $("a.upvote").click(function(){
+	var postId = parseInt(this.id.split("-")[2]);
+	return upvote(postId);
+    })
+
+    // Upvoted
+    $("a.upvoted").click(function(){
+	var postId = parseInt(this.id.split("-")[2]);
+	return unupvote(postId);
+    })
+    
+    {% endif %}
+})
+</script>

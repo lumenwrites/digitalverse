@@ -410,6 +410,10 @@ hr {
   margin-right: 8px;
 }
 /* line 31, ../sass/_post.scss */
+.post-footer .upvoted, .post-footer .upvoted i {
+  color: #13aff0;
+}
+/* line 34, ../sass/_post.scss */
 .post-footer .avatar {
   width: 30px;
   margin: -10px -10px -10px 10px;

@@ -3,7 +3,8 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 
-from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
 from profiles.models import User 
@@ -117,6 +118,32 @@ class PostCreate(View):
             return render(request, self.template_name, {'form': form})
 
         
+
+
+# Voting
+def upvote(request):
+    post = get_object_or_404(Post, id=request.POST.get('post-id'))
+    post.score += 1
+    post.save()
+    post.author.karma += 1
+    post.author.save()
+    user = request.user
+    user.upvoted.add(post)
+    user.save()
+    return HttpResponse()
+
+def unupvote(request):
+    post = get_object_or_404(Post, id=request.POST.get('post-id'))
+    post.score -= 1
+    post.save()
+    post.author.karma = 1
+    post.author.save()
+    user = request.user
+    user.upvoted.remove(post)
+    user.save()
+    return HttpResponse()
+        
+
 
 def testview(request):
     return render(request, 'posts/profile.html', {
