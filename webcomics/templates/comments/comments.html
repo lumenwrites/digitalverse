@@ -2,11 +2,11 @@
 {% load markdownify %}
 <br/>
 <!-- Comments -->
-<div class="row comments">
+<div class="row">
   <div class="large-12 columns">
     <h4 id="comments"> Comments </h4>
     {% if user.is_authenticated %}      
-    <form action="/comment-submit/{{post.slug}}"
+    <form action="/comment-submit/{{post.slug}}?next={{request.path}}"
 	  method="post">{% csrf_token %}
       <div class="editor">
 	{{form.body}}
@@ -88,7 +88,7 @@
       </div>
       <!-- Reply form -->
       <div class="comment-reply" style="display:none;">
-	<form action="/comment-submit/{{comment.id}}?next={{request.path}}"
+	<form action="/reply-submit/{{comment.id}}?next={{request.path}}"
 	      method="post">{% csrf_token %}
 	  <div class="editor">
 	    {{form.body}}
@@ -118,9 +118,9 @@
 
 
 <!-- EDITOR: -->
-<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"> -->
-<!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css"> -->
-<!-- <script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script> -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
 <!-- Comments js -->
 <script>
@@ -341,7 +341,7 @@ $(document).ready(function(){
     });
 
 })
-pp</script>
+</script>
 
 
 

@@ -163,3 +163,11 @@ def update_password(request):
         'message':message
     })
 
+
+
+def about(request, username):
+    userprofile = User.objects.get(username=username)    
+
+    return render(request, 'profiles/about.html',{
+        'userprofile':userprofile
+    })

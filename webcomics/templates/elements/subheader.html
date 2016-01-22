@@ -1,8 +1,25 @@
+{% load thumbnail %}
+
 <div class="subheader">
-<div class="row">
+{% if userprofile.background %}        
+   {% thumbnail userprofile.background "1581x132" crop="center" as im %}
+       <style>
+	 .subheader {
+	    background:url({{im.url}});
+	 }
+       </style>
+   {% endthumbnail %}	  
+{% endif %}        
+
+  <div class="row">
   <div class="large-6 small-6 columns user-info">
     <a href="/user/rayalez">
-      <img src="/media/{{userprofile.avatar}}" class="avatar"/>
+      {% thumbnail userprofile.avatar "70x70" crop="center" as im %}
+          <img src="{{im.url}}" class="avatar"/>
+      {% endthumbnail %}	  
+
+
+	  
       <div class="left">
 	<h1 class="username"> {{userprofile.username}} </h1>
 	<div class="stats">    
@@ -28,11 +45,13 @@
 	Website</a>
       {% endif %}            
 
-      <!-- 
+
+      {% if userprofile.about %}      
       <a class="button"
-	 href="/user/{{userprofile.username}}/subscribe">
+	 href="/user/{{userprofile}}/about">
 	About</a>
-      -->
+      {% endif %}            
+
 
       {% if not user == userprofile %}
           {% if user.is_authenticated %}

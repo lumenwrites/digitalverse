@@ -8,6 +8,6 @@ register = template.Library()
 def markdownify(text):
     html = markdown.markdown(text)
     if html:
-        return "<br/>"+html+"<br/>"
+        return html
     else:
         return ""

@@ -13,6 +13,7 @@ urlpatterns = [
     # url(r'^user/(?P<slug>[^\.]+)/preferences$', views.UserEdit.as_view()),    
     url(r'^update-password/$', views.update_password),
 
+    url(r'^user/(?P<username>[^\.]+)/about$', views.about),        
 
     url(r'^user/(?P<username>[^\.]+)/subscribe', views.subscribe),
     url(r'^user/(?P<username>[^\.]+)/unsubscribe', views.unsubscribe),    

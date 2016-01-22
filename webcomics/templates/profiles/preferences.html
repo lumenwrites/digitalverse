@@ -41,7 +41,28 @@
 	<input id="id_avatar" name="avatar" type="file">      
       </div>
       <a id="upload" class="small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
-      {% endif %}            
+      {% endif %}
+      <div class="clearfix"></div>
+      
+      <!-- Background -->
+      {% if not user.avatar %}      
+      Background:
+      <div id="image-filechoice-container">
+	<input id="id_background" name="background" type="file">      
+      </div>
+      <a id="upload" class="small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
+      {% else %}
+      <!-- Background Thumbnail -->
+      {% thumbnail user.background "940x78" crop="center" as im %}
+          <img src="{{im.url}}"/><br/>
+      {% endthumbnail %}	  
+      <!-- Repace Background -->
+      Background:
+      <div id="image-filechoice-container">
+	<input id="id_background" name="background" type="file">      
+      </div>
+      <a id="upload_background" class="small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
+      {% endif %}             
       
       <!-- About -->
       {{form.about}}
@@ -59,7 +80,12 @@
     $(document).ready(function(){    
 	$('#upload').click(function(){
 	    $('#id_avatar').click();
+    });
+
+	$('#upload_background').click(function(){
+	    $('#id_background').click();
 	});
+    
     })
 </script>
 

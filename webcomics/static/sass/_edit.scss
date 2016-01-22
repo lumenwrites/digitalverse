@@ -1,4 +1,4 @@
-#id_image, #id_thumbnail, #image-filechoice-container input {
+#image-filechoice-container input {
     position: absolute;
     z-index: -10;
 }
@@ -8,7 +8,7 @@
     display:none!important;
 }
 
-#upload, #upload_thumbnail {
+#upload, #upload_thumbnail, #upload_background {
     border-radius:0;
     padding:16px 18px;
     width:133px;

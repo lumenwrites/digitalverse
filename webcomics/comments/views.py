@@ -25,8 +25,8 @@ def comment_submit(request, post_slug):
             comment.post = post
             comment.save()
 
-            comment_url = request.GET.get('next', '/')+"#id-"+str(comment.id)
-            return HttpResponseRedirect("/post/turtle")
+            comment_url = request.GET.get('next', '/')# +"#id-"+str(comment.id)
+            return HttpResponseRedirect(comment_url)
 
 def reply_submit(request, comment_id):
     if request.method == 'POST':
