@@ -56,9 +56,12 @@
     text-transform: uppercase;
     font-size: 18px;
     font-weight: 400;
-    margin-right: 10px;
+
 }
 
+.subnav a {
+    margin-right: 10px;
+}
 
 .subnav .active {
     color:#bbbbbb;
@@ -85,6 +88,7 @@
     font-size: 18px;
     font-weight: 400;
     padding:10px;
+    margin-top: -11px;    
 }
 
 .dropdown-pane ul {

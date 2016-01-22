@@ -21,13 +21,18 @@
 
   <div class="large-6 small-6 columns">
     <div class="buttons">
-      <a class="button"
-	 href="/user/{{userprofile.username}}/subscribe">
-	Website</a>
 
+      {% if userprofile.website %}      
+      <a class="button"
+	 href="{{userprofile.website}}">
+	Website</a>
+      {% endif %}            
+
+      <!-- 
       <a class="button"
 	 href="/user/{{userprofile.username}}/subscribe">
 	About</a>
+      -->
 
       {% if not user == userprofile %}
           {% if user.is_authenticated %}

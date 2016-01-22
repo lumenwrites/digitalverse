@@ -3,34 +3,38 @@
   <div class="row">
     <div class="large-6 small-6 columns">
       <div class="rank-types">
-	<a href="/browse/?sorting=hot">
+	<a href="{{request.path}}?sorting=hot{% if category %}&category={{category}}{% endif %}	">
 	  <span {% if sorting = "hot" %}class="active"{% endif %}>Hot</span>
 	</a>
-	<a href="/browse/?sorting=new">
+	<a href="{{request.path}}?sorting=new{% if category %}&category={{category}}{% endif %}	">
 	  <span {% if sorting = "new" %}class="active"{% endif %}>New</span>
 	</a>
-	<a href="/browse/?sorting=top">
+	<a href="{{request.path}}?sorting=top{% if category %}&category={{category}}{% endif %}	">
 	  <span {% if sorting = "top" %}class="active"{% endif %}>Top</span>
 	</a>
-	<a href="">
-	  <span style="color: #3d454b;">&nbsp;Subscriptions</span>
-	</a>
 	
+	<a href="/subscriptions/">
+	  <span>&nbsp;Subscriptions</span>
+	</a>
       </div>
     </div>
     <div class="large-6 small-6 columns">
       <div class="rank-types right">
 	  <button class="button categories-dropdown-button" type="button"
 		  data-toggle="categories-dropdown">
-	    Category
+	    {% if category %}
+	    {{category.title}}
+	    {% else %}
+	    Category: All
+	    {% endif %}
 	  </button>
 	  <div class="dropdown-pane bottom"
 	       id="categories-dropdown"
 	       data-dropdown>
 	    <ul>
-	      <li> <a href="/">Category: All</a> </li>
+	      <li> <a href="{{request.path}}">All</a> </li>
 	      {% for category in categories %}
-	      <li> <a href="/browse/?category={{category.slug}}">{{category.title}} </a></li>
+	      <li> <a href="{{request.path}}?category={{category.slug}}{% if sorting %}&sorting={{sorting}}{% else %}&sorting=hot{% endif %}">{{category.title}} </a></li>
 	      {% endfor %}
 	    </ul>
 	  </div>

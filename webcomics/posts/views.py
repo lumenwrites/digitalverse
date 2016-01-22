@@ -11,15 +11,13 @@ from profiles.models import User
 from .forms import PostForm
 from .models import Post, Category
 
-
 from .utils import rank_hot
 
-class PostListView(ListView):
-    model = Post
-    template_name = "posts/browse.html"
 
+
+class BrowseMixin(object):
     def get_queryset(self):
-        qs = super(PostListView, self).get_queryset()
+        qs = super(BrowseMixin, self).get_queryset()
 
         # Filter published
         qs = qs.filter(published=True)
@@ -42,58 +40,60 @@ class PostListView(ListView):
         return qs
 
     def get_context_data(self, **kwargs):
-        context = super(PostListView, self).get_context_data(**kwargs)
-        context['now'] = timezone.now()
-        context['sorting'] = self.request.GET.get('sorting')
+        context = super(BrowseMixin, self).get_context_data(**kwargs)
+        if self.request.GET.get('sorting'):
+            context['sorting'] = self.request.GET.get('sorting')
+        else:
+            context['sorting'] = "hot"
         context['category'] = self.request.GET.get('category')
         context['categories'] = Category.objects.all()
         return context
+    
 
-class ProfileView(ListView):
+
+class BrowseView(BrowseMixin, ListView):
+    model = Post
+    template_name = "posts/browse.html"
+
+    
+
+class SubscriptionsView(BrowseMixin, ListView):
+    model = Post
+    template_name = "posts/browse.html"
+
+    def get_queryset(self):
+        qs = super(SubscriptionsView, self).get_queryset()        
+        # Filter Subscriptions
+        subscribed = self.request.user.subscribed.all()
+        # qs = qs.filter(author__in=subscribed)
+        qs = [post for post in qs if post.author in subscribed]
+
+        return qs
+    
+    
+class ProfileView(BrowseMixin, ListView):
     model = Post
     template_name = "posts/profile.html"
 
     def get_queryset(self):
         qs = super(ProfileView, self).get_queryset()
-
+        # Filter by userprofile
         userprofile = User.objects.get(username=self.kwargs['username'])
-        qs = qs.filter(author=userprofile)
-
-
-        # Filter published
-        qs = qs.filter(published=True)
-
-        # Filter by category
-        category = self.request.GET.get('category')
-        if category:
-            category = Category.objects.get(slug=category)
-            qs = qs.filter(categories=category)
-
-        # Sort
-        sorting = self.request.GET.get('sorting')
-        if sorting == 'top':
-            qs = qs.order_by('-score')
-        elif sorting == 'new':
-            qs = qs.order_by('-pub_date')
-        else:
-            qs = rank_hot(qs)
+        # qs = qs.filter(author=userprofile)
+        qs = [post for post in qs if post.author == userprofile]
 
         return qs
 
     def get_context_data(self, **kwargs):
         context = super(ProfileView, self).get_context_data(**kwargs)
-        context['now'] = timezone.now()
-        context['sorting'] = self.request.GET.get('sorting')
-        context['category'] = self.request.GET.get('category')
-        context['categories'] = Category.objects.all()
 
-        userprofile = User.objects.get(username=self.kwargs['username'])
+        username = self.kwargs['username']
+        userprofile = User.objects.get(username=username)
         context['userprofile'] = userprofile
 
         view_count = 0
         for post in userprofile.posts.all():
             view_count += post.views
-
         context['view_count'] = view_count
             
         return context
@@ -114,6 +114,8 @@ class PostDetailView(DetailView):
             post.save()
         
         return context    
+
+
     
 class PostCreate(View):
     form_class = PostForm
