@@ -3,27 +3,75 @@
 {% block content %}
 <div class="row page" id="edit-template">
   <div class="large-12 small-12 columns">
+
     <br/>	
     <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
       {{ form.title }}
+
+      {% if not post.image %}      
       <div id="image-filechoice-container">
-	{{ form.image }}
+	<input id="id_image" name="image" type="file">	{#{{ form.image }}#}
       </div>
       <a id="upload" class="small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
+      {% else %}
+
+      <!-- Image -->
+      <div style="">      
+	<img src="/media/{{post.image}}" style="margin:auto;
+						/*max-height:450px;*/"/><br/>
+	Replace Image:
+	<div id="image-filechoice-container">
+	  <input id="id_image" name="image" type="file">	{#{{ form.image }}#}
+	</div>
+	<a id="upload" class="small button">
+	  <i class="fa fa-upload"></i>&nbsp; Image</a>
+      </div>
+      <!-- Thumbnail -->
+      <div style="float:right;width:300px;">
+	<img src="/media/{{post.thumbnail}}" style="margin:auto;
+						    max-width:300px;
+						    max-height:300px;"/><br/>
+	<!-- Replace Thumbnail --><!-- <br/>(square, at least 500x500px): -->
+	<div id="image-filechoice-container">      
+	  <input id="id_thumbnail" name="thumbnail" type="file"> {# {{form.thumbnail}}#}
+	</div>
+	<a id="upload_thumbnail" class="small button">
+	  <i class="fa fa-upload"></i>&nbsp; Thumbnail</a>
+      </div>
+
+      {% endif %}      
+
       <!-- {{ form.thumbnail }} -->
 
-      {{ form.description }}
+      {% if creating %}
+      <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10"></textarea>
+      {% else %}      
+      <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10" style="float:left; width: calc(100% - 310px);height:348px;"></textarea>
+      {% endif %}
+      
 
+	<div class="clearfix"></div>
       <!-- <input type="text" placeholder="category"> -->
       <!-- <input id="id_series" maxlength="256" name="series" type="text" -->
       <!-- 	     style="float:right;width:36%;" -->
       <!-- 	     placeholder="series"> -->
       
-      <!-- <input type="submit" value="Delete" />       -->
+
+      {% if not creating %}
+      <a class="button delete" href="/post/{{post.slug}}/delete">Delete</a>
+      {% endif %}
+      
       <div class="right">
-	<!-- <input type="submit" value="Preview" /> -->
-	<!-- <input type="submit" value="Publish" /> -->
+	{% if not creating %}
+    	    {% if not post.published %}
+            <a class="button" href="/post/{{post.slug}}">Preview</a>	
+            <a class="button" href="/post/{{post.slug}}/publish">Publish</a>
+            {% else %}
+            <a class="button" href="/post/{{post.slug}}/unpublish">Unpublish</a>	
+            {% endif %}
+        {% endif %}
 	<input type="submit" value="Save" />
+		
       </div>
       
     </form>
@@ -32,11 +80,16 @@
 </div>
 
 <script>
-  $(document).ready(function(){    
-  $('#upload').click(function(){
-  $('#id_image').click();
-  });
-  })
+    $(document).ready(function(){    
+	$('#upload').click(function(){
+	    $('#id_image').click();
+	});
+
+	$('#upload_thumbnail').click(function(){
+	    $('#id_thumbnail').click();
+	});
+	
+    })
 </script>
 
 {% endblock content %}

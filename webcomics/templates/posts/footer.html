@@ -55,6 +55,28 @@
   
 </div>
 
+More by <a class="" href="/user/{{post.author.username}}">{{post.author}}</a>:
+
+<div id="more-by">
+{% for post in more_by %}
+  <a href="{{post.get_absolute_url}}">  
+    <article>
+    <img src="/media/{{post.thumbnail}}" />
+
+    <div class="dark-overlay">
+      <b style="float:left;">{{post.title}} </b>
+      {% if user == post.author or user.is_staff  %}
+      <a class="edit-post margins-0" href="/post/{{post.slug}}/edit">
+	<i class="fa fa-pencil"></i></a>
+      {% endif %}
+    </div>
+    </article>
+  </a>
+  {% endfor %}
+</div>
+
+
+
 
 <script>
 $(document).ready(function(){

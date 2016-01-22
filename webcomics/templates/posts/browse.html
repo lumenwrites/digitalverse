@@ -14,7 +14,11 @@
     <img src="/media/{{post.thumbnail}}" />
 
     <div class="dark-overlay">
-	<b style="float:left;">{{post.title}} </b><br/>
+      <b style="float:left;">{{post.title}} </b>
+      {% if user == post.author or user.is_staff  %}
+      <a class="edit-post margins-0" href="/post/{{post.slug}}/edit">
+	<i class="fa fa-pencil"></i></a>
+      {% endif %}
     </div>
     </article>
   </a>

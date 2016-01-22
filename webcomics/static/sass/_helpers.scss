@@ -4,6 +4,10 @@
     display:none;
 }
 
+.invisible {
+    visibility:hidden;
+}
+
 .bold {
     font-weight:bold;
 }
@@ -24,6 +28,10 @@
 }
 .gray {
     background: gray!important;
+}
+
+.margins-0 {
+    margin: 0!important;
 }
 
 .margins-10 {

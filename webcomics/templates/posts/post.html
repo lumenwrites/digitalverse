@@ -1,22 +1,68 @@
 {% extends "base.html" %}
+{% load markdownify %}
 
 {% block content %}
 
 <div class="row" id="posts">
   <div class="large-12 small-12 columns posts">
-    <article>
+    <article class="post">
       <!-- Header -->
       <header class="post-header">
+	  {% if user == post.author or user.is_staff  %}
+	  <a class="edit-post" href="/post/{{post.slug}}/edit">
+	    <i class="fa fa-pencil"></i></a>
+	  {% endif %}
     	  <h1> {{object.title}} </h1>
-    	  <hr />
+    	  <!-- <hr /> -->
       </header>
+      
       <!-- Post Body -->
       <img src="/media/{{object.image}}" style="margin:auto;width:100%;"/>
       <div class="clearfix"></div>
+      {{post.description | markdownify | safe}}
+      <div class="clearfix"></div>
+
+
+      <div class="nav-buttons hidden">
+          {% if post.prev_by_author %}
+          <a class="button" href="/post/{{first.slug}}"><< First</a>
+          <a class="button" href="/post/{{prev.slug}}">< Prev</a>
+          {% else %}
+	  <div class="button invisible"></div>
+	  <div class="button invisible"></div>
+          {% endif %}      
+          {% if series %}
+          <a class="button series" href="/post/{{next.slug}}">
+	    <i class="fi-thumbnails"></i>
+	    Orange Mind</a>
+          {% else %}
+	  <style>
+	    .post .nav-buttons .button {
+	    	width: calc(25% - 4px);
+	    }
+	  </style>
+          {% endif %}      
+          {% if post.next_by_author %}
+          <!-- <div class="right"> -->
+          <a class="button" href="/post/{{next.slug}}">Next ></a>     	       
+          <a class="button" href="/post/{{last.slug}}">Last>></a>
+          <!-- </div> -->
+          {% endif %}
+      </div>
+      <!-- <a href="{{ post.get_next_by_pub_pub_date.slug}}">&larr; Previous Post</a> -->
+
+
+      
       <br/>
-      {% include "posts/footer.html" %}      
+      {% include "posts/footer.html" %}
     </article>
   </div>
 </div>
+
+<style>
+  header .row {
+  max-width: 95%!important;
+  }
+</style>
 
 {% endblock content %}

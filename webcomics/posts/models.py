@@ -10,6 +10,9 @@ from django.core.files.base import ContentFile
 from sorl.thumbnail import ImageField
 from sorl.thumbnail import get_thumbnail
 
+from .utils import rank_hot,next_or_prev_in_order
+# from series.models import Series
+
 
 class Post(models.Model):
     title = models.CharField(max_length=256)
@@ -26,6 +29,7 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="posts", default="")
 
     categories = models.ManyToManyField('Category', related_name="posts", blank=True)
+    # series = models.ForeignKey('series.Series', related_name="posts", blank=True)    
     
     score = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
@@ -56,6 +60,15 @@ class Post(models.Model):
             self.thumbnail.save(resized.name, ContentFile(resized.read()), True)            
 
         return super(Post, self).save(*args, **kwargs)
+
+
+    def prev_by_author(self, loop=False):
+        qs = Post.objects.filter(author=self.author)
+        return next_or_prev_in_order(self, True, qs)
+
+    def next_by_author(self, loop=False):
+        qs = Post.objects.filter(author=self.author)
+        return next_or_prev_in_order(self, False, qs)    
 
     @permalink
     def get_absolute_url(self):

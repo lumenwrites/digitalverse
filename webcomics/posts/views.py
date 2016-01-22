@@ -1,7 +1,7 @@
 from django.views.generic import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
@@ -12,8 +12,6 @@ from .forms import PostForm
 from .models import Post, Category
 
 from .utils import rank_hot
-
-
 
 class BrowseMixin(object):
     def get_queryset(self):
@@ -114,7 +112,21 @@ class PostDetailView(DetailView):
         if not self.request.user.is_staff and self.request.user != post.author:
             post.views +=1
             post.save()
-        
+
+
+        qs = super(PostDetailView, self).get_queryset()
+        other_posts = qs.filter(author=post.author)
+        context['first'] = other_posts.order_by('pub_date')[0]
+        context['prev'] = post.prev_by_author()
+        context['next'] = post.next_by_author()        
+        context['last'] = other_posts.order_by('-pub_date')[0]
+
+
+        more_by = Post.objects.filter(author=post.author, published=True).order_by('?')[:4]
+        context['more_by'] = more_by
+        # next_post = post.get_next_by_pub_date(post, author=post.author)
+        # next_post = next_or_prev_in_order(self, True, other_posts)        
+            
         return context    
 
 
@@ -126,7 +138,8 @@ class PostCreate(View):
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, {'form': form,
+                                                    'creating':True})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
@@ -134,11 +147,58 @@ class PostCreate(View):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect(self.success_url)
+            return redirect("/post/"+post.slug+"/edit")
         else:
             return render(request, self.template_name, {'form': form})
+        
+
+class PostEdit(UpdateView):
+    model = Post
+    fields = ["title","image","thumbnail","description"]
+    # success_url = "/"
+    template_name = 'posts/edit.html'
+
+    def get_success_url(self):
+        return self.request.path
 
         
+
+
+def post_publish(request, slug):
+    post = Post.objects.get(slug=slug)
+
+    # throw him out if he's not an author    
+    if request.user != post.author:
+        return HttpResponseRedirect('/')        
+
+    post.published = True
+    post.save()
+
+    return HttpResponseRedirect('/post/'+post.slug+'/edit')
+
+
+def post_unpublish(request, slug):
+    post = Post.objects.get(slug=slug)
+
+    # throw him out if he's not an author
+    if request.user != post.author:
+        return HttpResponseRedirect('/')        
+
+    post.published = False
+    post.save()
+    return HttpResponseRedirect('/post/'+post.slug+'/edit')
+
+def post_delete(request, slug):
+    post = Post.objects.get(slug=slug)
+
+    # throw him out if he's not an author
+    if request.user != post.author:
+        return HttpResponseRedirect('/')        
+
+    post.delete()
+    return HttpResponseRedirect('/')
+
+
 
 
 # Voting

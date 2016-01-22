@@ -1,3 +1,23 @@
+.post h1 {
+
+}
+
+.edit-post{
+    float:right;
+    font-size:18px;
+    margin-top:20px;
+}
+
+.post .nav-buttons {
+    .button {
+	width: calc(20% - 4px);
+    }
+
+    .series {
+
+    }
+}
+
 .post-footer {
     .stats {
 	float:left;
@@ -37,3 +57,24 @@
 	border-radius:2px;
     }
 }
+
+
+#more-by {
+
+    article {
+	position:relative;
+	width:calc(25% - 2px)!important;
+	margin:1px;
+	width: 20%;
+	margin: 0;
+	float:left;
+    }
+
+    .dark-overlay {
+	position:absolute;
+	bottom:0;
+	padding:10px;
+	background:rgba(0,0,0,0.8);width:100%;    
+    }
+}
+
