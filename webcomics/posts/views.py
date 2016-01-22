@@ -69,6 +69,8 @@ class SubscriptionsView(BrowseMixin, ListView):
         qs = [post for post in qs if post.author in subscribed]
 
         return qs
+
+    
     
     
 class ProfileView(BrowseMixin, ListView):

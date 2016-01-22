@@ -44,6 +44,13 @@
 	<!-- <ul><a href="/"> Store </a></ul> -->
 	<!-- <ul><a href="/subscriptions/"> Forum </a></ul>       -->
 	{% if user.is_authenticated %}
+
+	  {% if user.subscribed.count > 0 %}	  
+   	      <a href="/subscriptions/">
+	        <span>Subscriptions</span>
+	      </a>
+	  {% endif %}
+
 	<a href="/upload/"> Upload </a>
 
 	<a href="/user/{{user.username}}">
