@@ -9,6 +9,7 @@
 <div id="browse-template" class="page">
   
 {% for post in object_list %}
+{% if post.published  %}
   <a href="{{post.get_absolute_url}}">  
     <article>
     <img src="/media/{{post.thumbnail}}" />
@@ -22,6 +23,7 @@
     </div>
     </article>
   </a>
+{% endif %}
 {% endfor %}
 </div>
 {% include "posts/pagination.html" %}  

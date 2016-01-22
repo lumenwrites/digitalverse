@@ -79,26 +79,31 @@ body {
 }
 
 /* line 45, ../sass/_helpers.scss */
+.margins-side-10 {
+  margin: 0 10px;
+}
+
+/* line 49, ../sass/_helpers.scss */
 .margins-side-20 {
   margin: 0 20px;
 }
 
-/* line 49, ../sass/_helpers.scss */
+/* line 53, ../sass/_helpers.scss */
 .padding-10 {
   padding: 10px;
 }
 
-/* line 53, ../sass/_helpers.scss */
+/* line 57, ../sass/_helpers.scss */
 .padding-20 {
   padding: 20px;
 }
 
-/* line 57, ../sass/_helpers.scss */
+/* line 61, ../sass/_helpers.scss */
 .grey {
   color: #bbbbbb;
 }
 
-/* line 61, ../sass/_helpers.scss */
+/* line 65, ../sass/_helpers.scss */
 .center-vertically {
   position: absolute;
   left: 50%;
@@ -114,7 +119,7 @@ body {
   -ms-transform: translate(-50%, -50%);
 }
 
-/* line 78, ../sass/_helpers.scss */
+/* line 82, ../sass/_helpers.scss */
 .thin {
   font-weight: 100;
 }
@@ -276,15 +281,20 @@ hr {
   background: rgba(0, 0, 0, 0.2);
 }
 
+/* line 1, ../sass/_header.scss */
+header .row, .subheader .row {
+  max-width: 95% !important;
+}
+
 /* Logo */
-/* line 5, ../sass/_header.scss */
+/* line 10, ../sass/_header.scss */
 .logo {
   font-family: "Titillium Web";
   color: #3d454b;
   font-size: 36px;
 }
 
-/* line 11, ../sass/_header.scss */
+/* line 16, ../sass/_header.scss */
 .logo img {
   width: 50px;
   margin-top: -4px;
@@ -292,7 +302,7 @@ hr {
   margin-right: -4px;
 }
 
-/* line 18, ../sass/_header.scss */
+/* line 23, ../sass/_header.scss */
 .logo:hover,
 .logo:focus,
 .logo:visited {
@@ -300,7 +310,7 @@ hr {
 }
 
 /* Main menu */
-/* line 25, ../sass/_header.scss */
+/* line 30, ../sass/_header.scss */
 #mainMenu {
   margin-top: 16px;
   text-transform: uppercase;
@@ -308,7 +318,7 @@ hr {
   font-size: 18px;
 }
 
-/* line 34, ../sass/_header.scss */
+/* line 39, ../sass/_header.scss */
 #mainMenu ul {
   margin: 0;
   padding: 0;
@@ -316,20 +326,20 @@ hr {
   margin-right: 10px;
 }
 
-/* line 41, ../sass/_header.scss */
+/* line 46, ../sass/_header.scss */
 #mainMenu a {
   margin-right: 5px;
   color: #a2a8ab;
 }
 
 /* Subnav */
-/* line 48, ../sass/_header.scss */
+/* line 53, ../sass/_header.scss */
 .subnav {
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.02);
 }
 
-/* line 53, ../sass/_header.scss */
+/* line 58, ../sass/_header.scss */
 .subnav a, .subnav span {
   color: #3d454b;
   margin-bottom: -1px;
@@ -339,12 +349,12 @@ hr {
   font-weight: 400;
 }
 
-/* line 63, ../sass/_header.scss */
+/* line 68, ../sass/_header.scss */
 .subnav a {
   margin-right: 10px;
 }
 
-/* line 67, ../sass/_header.scss */
+/* line 72, ../sass/_header.scss */
 .subnav .active {
   color: #bbbbbb;
   /* font-weight: bold; */
@@ -354,12 +364,12 @@ hr {
   margin: -10px;
 }
 
-/* line 76, ../sass/_header.scss */
+/* line 81, ../sass/_header.scss */
 .has-dropdown > a:after {
   border-top-style: none;
 }
 
-/* line 80, ../sass/_header.scss */
+/* line 85, ../sass/_header.scss */
 .categories-dropdown-button,
 .categories-dropdown-button:hover,
 .categories-dropdown-button:active,
@@ -374,12 +384,12 @@ hr {
   margin-top: -11px;
 }
 
-/* line 95, ../sass/_header.scss */
+/* line 100, ../sass/_header.scss */
 .dropdown-pane ul {
   list-style: none;
 }
 
-/* line 99, ../sass/_header.scss */
+/* line 104, ../sass/_header.scss */
 .dropdown-pane a {
   color: #a2a8ab;
   text-transform: none;
@@ -391,19 +401,20 @@ hr {
   background: url(/media/backgrounds/bg.jpg);
   background-position-y: -320px;
   margin: 0;
+  background-size: 100% auto !important;
 }
 
-/* line 8, ../sass/_subheader.scss */
+/* line 9, ../sass/_subheader.scss */
 .background {
   position: absolute;
   z-index: -10;
 }
 
-/* line 13, ../sass/_subheader.scss */
+/* line 14, ../sass/_subheader.scss */
 .user-info {
   float: left;
 }
-/* line 16, ../sass/_subheader.scss */
+/* line 17, ../sass/_subheader.scss */
 .user-info .avatar {
   float: left;
   width: 70px;
@@ -411,31 +422,31 @@ hr {
   margin: 10px;
   margin-left: 0;
 }
-/* line 24, ../sass/_subheader.scss */
+/* line 25, ../sass/_subheader.scss */
 .user-info .username {
   font-weight: bold;
   color: white;
   margin: 2px 0 0 0px;
   text-shadow: 1px 1px 2px black;
 }
-/* line 31, ../sass/_subheader.scss */
+/* line 32, ../sass/_subheader.scss */
 .user-info .stats {
   float: left;
   color: #d8dadb;
 }
-/* line 36, ../sass/_subheader.scss */
+/* line 37, ../sass/_subheader.scss */
 .user-info i {
   margin: 0 4px;
   color: #d8dadb;
 }
 
-/* line 43, ../sass/_subheader.scss */
+/* line 44, ../sass/_subheader.scss */
 .subheader .buttons {
   margin-top: 20px;
   float: right;
 }
 
-/* line 47, ../sass/_subheader.scss */
+/* line 48, ../sass/_subheader.scss */
 .subheader .buttons .button {
   padding: 20px;
 }
