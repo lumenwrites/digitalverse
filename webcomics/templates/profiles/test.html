@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+  <div class="large-12 columns">
+
+<form method="post" enctype="multipart/form-data" action=""><input type="hidden" name="csrfmiddlewaretoken" value="6CdgBBUs6pXqSKO5afHytiNHxIRLYyLu">
+      <p><label for="id_username">Username:</label> <input id="id_username" maxlength="30" name="username" type="text" value="rayalez"> <span class="helptext">Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>
+<p><label for="id_avatar">Avatar:</label> <input id="id_avatar" name="avatar" type="file"></p>
+      <button class="button small right" type="submit">Save</button>	
+    </form>
+  </div>
+</div>
+
+{% endblock content %}
+
+

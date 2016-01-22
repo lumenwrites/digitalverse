@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load thumbnail %}
 
 {% block content %}
 
@@ -9,20 +10,60 @@
     {% if message %}
     <br/>
     <div class="panel">{{message}}</div>
-    {% endif %}      
-    <form method="post" action="/preferences/"> {% csrf_token %}
+    {% endif %}
+    <form method="post" enctype="multipart/form-data" action="/preferences/">{% csrf_token %}
       Username:
       {{form.username}}
+      {{form.email}}
       {{form.website}}
-      <!-- {{form.about}}       -->
+
+      <!-- Avatar -->
+      {% if not user.avatar %}      
+      Avatar:
+      <div id="image-filechoice-container">
+	<input id="id_avatar" name="avatar" type="file">      
+      </div>
+      <a id="upload" class="small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
+      {% else %}
+      <!-- Avatar Thumbnail -->
+      <div style="width:70px;
+		  height:70px;
+		  float:left;
+		  margin-right:10px;">
+	{% thumbnail user.avatar "70x70" crop="center" as im %}
+	    <img src="{{im.url}}"/><br/>
+	{% endthumbnail %}	  
+      </div>
+      <!-- Repace Avatar -->
+      Avatar:
+      <div id="image-filechoice-container"
+	   style="width:calc(100% - 80px);">
+	<input id="id_avatar" name="avatar" type="file">      
+      </div>
+      <a id="upload" class="small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
+      {% endif %}            
+      
+      <!-- About -->
+      {{form.about}}
+      <div class="clearfix"></div>        
+
       <button class="button small right" type="submit">Save</button>	
     </form>
-	<a href="/update-password">Change Password</a>
+    <a href="/update-password">Change Password</a>
 
     <div class="clearfix"></div>
-    <div style="width:100%; height: 20px"></div>
   </div>
 </div>
+
+<script>
+    $(document).ready(function(){    
+	$('#upload').click(function(){
+	    $('#id_avatar').click();
+	});
+    })
+</script>
+
+
 {% endblock content %}
 
 

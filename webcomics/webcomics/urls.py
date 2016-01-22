@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 
 from posts import urls as posts_urls
 from profiles import urls as profiles_urls
+from comments import urls as comments_urls
 
 from . import views
 
@@ -14,5 +15,6 @@ urlpatterns = [
 
     url(r'', include(profiles_urls)),        
     url(r'', include(posts_urls)),
+    url(r'', include(comments_urls)),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

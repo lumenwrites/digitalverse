@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^authenticate/', views.authenticate_user),
 
     url(r'^preferences/$', views.preferences),
+    # url(r'^user/(?P<slug>[^\.]+)/preferences$', views.UserEdit.as_view()),    
     url(r'^update-password/$', views.update_password),
 
 

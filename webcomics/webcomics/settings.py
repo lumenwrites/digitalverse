@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     # 'series',
     'posts',
     'profiles',
-    # 'comments'
+    'comments'
 ]
 
 MIDDLEWARE_CLASSES = [

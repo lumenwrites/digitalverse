@@ -1,7 +1,8 @@
-#id_image, #id_thumbnail {
+#id_image, #id_thumbnail, #image-filechoice-container input {
     position: absolute;
     z-index: -10;
 }
+
 
 #image-clear_id, label {
     display:none!important;

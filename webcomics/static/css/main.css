@@ -517,17 +517,17 @@ hr {
 }
 
 /* line 1, ../sass/_edit.scss */
-#id_image, #id_thumbnail {
+#id_image, #id_thumbnail, #image-filechoice-container input {
   position: absolute;
   z-index: -10;
 }
 
-/* line 6, ../sass/_edit.scss */
+/* line 7, ../sass/_edit.scss */
 #image-clear_id, label {
   display: none !important;
 }
 
-/* line 10, ../sass/_edit.scss */
+/* line 11, ../sass/_edit.scss */
 #upload, #upload_thumbnail {
   border-radius: 0;
   padding: 16px 18px;
@@ -535,27 +535,27 @@ hr {
   height: 47px;
 }
 
-/* line 17, ../sass/_edit.scss */
+/* line 18, ../sass/_edit.scss */
 ::-webkit-input-placeholder {
   color: rgba(162, 168, 171, 0.4);
 }
 
-/* line 22, ../sass/_edit.scss */
+/* line 23, ../sass/_edit.scss */
 #image-filechoice-container {
   position: relative;
 }
 
-/* line 26, ../sass/_edit.scss */
+/* line 27, ../sass/_edit.scss */
 #image-filechoice-container #id_image {
   width: 100%;
 }
 
-/* line 31, ../sass/_edit.scss */
+/* line 32, ../sass/_edit.scss */
 #edit-template textarea {
   height: 120px;
 }
 
-/* line 35, ../sass/_edit.scss */
+/* line 36, ../sass/_edit.scss */
 #edit-template .right .button {
   padding: 10px 20px;
   font-size: 18px;
@@ -565,7 +565,7 @@ hr {
   margin-top: -5px;
 }
 
-/* line 44, ../sass/_edit.scss */
+/* line 45, ../sass/_edit.scss */
 #edit-template .delete {
   color: #a2a8ab;
 }

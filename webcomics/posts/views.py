@@ -8,10 +8,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
 from profiles.models import User 
+from comments.forms import CommentForm
+from comments.utils import get_comment_list
+from comments.models import Comment
 from .forms import PostForm
 from .models import Post, Category
 
 from .utils import rank_hot
+
 
 class BrowseMixin(object):
     def get_queryset(self):
@@ -126,7 +130,41 @@ class PostDetailView(DetailView):
         context['more_by'] = more_by
         # next_post = post.get_next_by_pub_date(post, author=post.author)
         # next_post = next_or_prev_in_order(self, True, other_posts)        
-            
+
+
+        ##### COMMENTS ####
+        context['form'] = CommentForm()
+
+        top_lvl_comments = Comment.objects.filter(post = post, parent = None)
+
+        rankby = "new"
+        # Rank comments
+        # if rankby == "hot" or True:
+        #     ranked_comments = rank_hot(top_lvl_comments, top=32)
+        # elif rankby == "top":
+        #     ranked_comments = rank_top(top_lvl_comments, timespan = "all-time")
+        # elif rankby == "new":
+        #     ranked_comments = top_lvl_comments.order_by('-pub_date')
+        # else:
+        #     ranked_comments = []
+
+        ranked_comments = top_lvl_comments.order_by('-pub_date')
+
+        # Nested comments
+        comments = list(get_comment_list(ranked_comments, rankby=rankby))
+
+        # if request.user.is_authenticated():
+        #     comments_upvoted = request.user.comments_upvoted.all()
+        #     comments_downvoted = request.user.comments_downvoted.all()                
+        # else:
+        #     comments_upvoted = []
+        #     comments_downvoted = []  
+
+        context['comments'] = comments
+        # 'comments_upvoted': comments_upvoted,
+        # 'comments_downvoted': comments_downvoted,
+        
+
         return context    
 
 

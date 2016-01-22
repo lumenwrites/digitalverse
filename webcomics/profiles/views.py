@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, Pass
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import CreateView, UpdateView
 
 from .models import User
 from .forms import RegistrationForm, UserForm
@@ -105,17 +106,35 @@ def preferences(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login/')
 
+    message = ""    
+
     if request.method == 'POST':
-        form = UserForm(request.POST, instance=request.user)
+        form = UserForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/preferences/')            
+            return HttpResponseRedirect('/preferences/')
+        else:
+            message="error"
     else:
         form = UserForm(instance=request.user)
     
     return render(request, "profiles/preferences.html", {
-        'form': form
+        'form': form,
+        'message':message
     })
+
+
+
+# class UserEdit(UpdateView):
+#     model = User
+#     slug_field = 'username'
+#     fields = ["username","avatar"]
+#     template_name = 'profiles/test.html'
+
+#     def get_success_url(self):
+#         return "/user/rayalez/preferences"
+#         # return self.request.path
+
 
 
 @login_required

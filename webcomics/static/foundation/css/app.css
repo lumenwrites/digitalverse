@@ -1577,8 +1577,6 @@ textarea {
 
 textarea {
   max-width: 100%; }
-  textarea[rows] {
-    height: auto; }
 
 input:disabled, input[readonly],
 textarea:disabled,
