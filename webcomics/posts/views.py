@@ -18,7 +18,7 @@ from .utils import rank_hot
 
 
 class BrowseMixin(object):
-    paginate_by = 2
+    paginate_by = 25
     def get_queryset(self):
         qs = super(BrowseMixin, self).get_queryset()
 

@@ -3,13 +3,13 @@
   <div class="row">
     <div class="large-6 small-6 columns">
       <div class="rank-types">
-	<a href="{{request.path}}?sorting=hot{% if category %}&category={{category}}{% endif %}	">
+	<a href="{{request.path}}?sorting=hot{% if category %}&category={{category}}{% endif %}">
 	  <span {% if sorting = "hot" %}class="active"{% endif %}>Hot</span>
 	</a>
-	<a href="{{request.path}}?sorting=new{% if category %}&category={{category}}{% endif %}	">
+	<a href="{{request.path}}?sorting=new{% if category %}&category={{category}}{% endif %}">
 	  <span {% if sorting = "new" %}class="active"{% endif %}>New</span>
 	</a>
-	<a href="{{request.path}}?sorting=top{% if category %}&category={{category}}{% endif %}	">
+	<a href="{{request.path}}?sorting=top{% if category %}&category={{category}}{% endif %}">
 	  <span {% if sorting = "top" %}class="active"{% endif %}>Top</span>
 	</a>	
       </div>
@@ -30,7 +30,8 @@
 	    <ul>
 	      <li> <a href="{{request.path}}">All</a> </li>
 	      {% for category in categories %}
-	      <li> <a href="{{request.path}}?category={{category.slug}}{% if sorting %}&sorting={{sorting}}{% else %}&sorting=hot{% endif %}">{{category.title}} </a></li>
+	      <li> <a href="{{request.path}}?category={{category.slug}}{% if sorting %}&sorting={{sorting}}{% else %}&sorting=hot{% endif %}">
+		  {{category.title}} </a></li>
 	      {% endfor %}
 	    </ul>
 	  </div>
