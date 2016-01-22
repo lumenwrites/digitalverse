@@ -175,3 +175,7 @@
 .CodeMirror {
     background: #1a1c1c!important;
 }
+
+.CodeMirror, .CodeMirror-scroll {
+    min-height: 100px!important;
+}

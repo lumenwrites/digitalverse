@@ -6,12 +6,13 @@ from .models import Post
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'image', 'thumbnail', 'description']
+        fields = ['title', 'image', 'thumbnail', 'description', 'categories']
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Title'}),
             'description': forms.Textarea(attrs={'placeholder': 'Description (optional)',
                                                  'class': 'description',
                                                  'id': 'description'}),
+            'categories' : forms.Select(attrs={'id':'categoy-select'})            
         }
 
         

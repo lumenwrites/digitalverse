@@ -79,6 +79,15 @@ textarea:focus {
     font-size: 18px;
 }
 
+select {
+    background: #1a1c1c!important;
+    border:none!important;
+    padding:0px 20px;
+    font-size: 18px!important;
+    color:$bright!important;
+}
+
+
 .button {
     background: $header-bg;    
 }
@@ -116,7 +125,8 @@ hr {
     background: #3d454b;
     background: #171a1a;
     margin-bottom: 0;
-    position:fixed;bottom:0;
+    position:fixed;
+    bottom:0;
 
     text-align: center;
 

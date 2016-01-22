@@ -18,7 +18,7 @@ from .utils import rank_hot
 
 
 class BrowseMixin(object):
-    paginate_by = 25
+    paginate_by = 1
     def get_queryset(self):
         qs = super(BrowseMixin, self).get_queryset()
 
@@ -193,7 +193,8 @@ class PostCreate(View):
 
 class PostEdit(UpdateView):
     model = Post
-    fields = ["title","image","thumbnail","description"]
+    # fields = ["title","image","thumbnail","description","categories"]
+    form_class = PostForm
     # success_url = "/"
     template_name = 'posts/edit.html'
 
