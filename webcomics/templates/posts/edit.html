@@ -52,7 +52,10 @@
       
 
       <div class="clearfix"></div>
-      {{form.categories}}
+	<div class="set-categories">
+	  {{form.categories}}
+	</div>
+	<br/>
       <!-- <input type="text" placeholder="category"> -->
       <!-- <input id="id_series" maxlength="256" name="series" type="text" -->
       <!-- 	     style="float:right;width:36%;" -->
@@ -82,6 +85,11 @@
   </div>
 </div>
 
+
+<!-- Select2 -->
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
 <script>
     $(document).ready(function(){    
 	$('#upload').click(function(){
@@ -90,7 +98,15 @@
 
 	$('#upload_thumbnail').click(function(){
 	    $('#id_thumbnail').click();
-	});
+    });
+
+    // Multiselect
+    $("#id_categories").select2({
+	placeholder: "Select categories", // (maximum 4)
+	allowClear: true,
+	maximumSelectionLength: 2    
+    })
+    
 	
     })
 </script>

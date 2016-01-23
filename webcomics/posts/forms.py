@@ -12,7 +12,6 @@ class PostForm(ModelForm):
             'description': forms.Textarea(attrs={'placeholder': 'Description (optional)',
                                                  'class': 'description',
                                                  'id': 'description'}),
-            'categories' : forms.Select(attrs={'id':'categoy-select'})            
         }
 
         
