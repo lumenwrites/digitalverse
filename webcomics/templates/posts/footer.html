@@ -14,6 +14,13 @@
   <div class="right">
     <a class="small button" href="/user/{{post.author.username}}">
       {{post.author}}
+
+      {% if post.author.avatar %}      
+	{% thumbnail post.author.avatar "40x40" crop="center" as im %}
+	    <img src="{{im.url}}"/><br/>
+	{% endthumbnail %}	  
+      {% endif %}      	    
+
       <img src="/media/avatars/signature.png" class="avatar"/>
     </a>
 
