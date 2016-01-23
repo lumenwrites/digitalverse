@@ -9,6 +9,16 @@
 	float:left;
     }
 
+    @media screen and (orientation:portrait) {
+	article {
+	    width:calc(33% - 2px);	
+	    img {
+		width: 100%;
+	    }
+	}
+
+    }
+
     .dark-overlay {
 	position:absolute;
 	bottom:0;

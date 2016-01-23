@@ -476,7 +476,17 @@ header .row, .subheader .row {
   margin: 0;
   float: left;
 }
-/* line 12, ../sass/_browse.scss */
+@media screen and (orientation: portrait) {
+  /* line 13, ../sass/_browse.scss */
+  #browse-template article {
+    width: calc(33% - 2px);
+  }
+  /* line 15, ../sass/_browse.scss */
+  #browse-template article img {
+    width: 100%;
+  }
+}
+/* line 22, ../sass/_browse.scss */
 #browse-template .dark-overlay {
   position: absolute;
   bottom: 0;
@@ -485,18 +495,18 @@ header .row, .subheader .row {
   width: 100%;
 }
 
-/* line 20, ../sass/_browse.scss */
+/* line 30, ../sass/_browse.scss */
 .pagination {
   margin: 0;
   height: 20px;
 }
-/* line 25, ../sass/_browse.scss */
+/* line 35, ../sass/_browse.scss */
 .pagination .page-links {
   position: relative;
   bottom: 0;
   margin: 0;
 }
-/* line 29, ../sass/_browse.scss */
+/* line 39, ../sass/_browse.scss */
 .pagination .page-links a {
   width: 100%;
   float: left;
