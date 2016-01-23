@@ -169,27 +169,34 @@ class PostDetailView(DetailView):
         return context    
 
 
-    
-class PostCreate(View):
+
+class PostCreate(CreateView):
+    model = Post
     form_class = PostForm
+    template_name = 'posts/edit.html'
+    
     success_url = "/"
     template_name = 'posts/edit.html'
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        return render(request, self.template_name, {'form': form,
-                                                    'creating':True})
+    def form_valid(self, form):
+       user = self.request.user
+       form.instance.author = user
+       success_url = "/post/"+form.instance.slug+"/edit"
+       return super(PostCreate, self).form_valid(form)
+    
 
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            return redirect("/post/"+post.slug+"/edit")
-        else:
-            return render(request, self.template_name, {'form': form})
-        
+
+    def get_success_url(self):
+        success_url = "/post/"+self.object.slug+"/edit"
+        return success_url
+        # return self.request.path    
+
+    def get_context_data(self, **kwargs):
+        context = super(PostCreate, self).get_context_data(**kwargs)
+        context['creating'] = True
+        return context    
+    # return redirect("/post/"+post.slug+"/edit")
+
 
 class PostEdit(UpdateView):
     model = Post
