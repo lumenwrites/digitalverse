@@ -6,7 +6,7 @@ urlpatterns = [
     url(r'^$', views.BrowseView.as_view(), name='post-list'),
     url(r'^browse/$', views.BrowseView.as_view(), name='post-list'),    
     url(r'^subscriptions/$', views.SubscriptionsView.as_view(), name='subscriptions'),    
-    url(r'^user/(?P<username>[^\.]+)$', views.ProfileView.as_view(), name='profile'),
+    url(r'^user/(?P<username>[^\.]+)?/$', views.ProfileView.as_view(), name='profile'),
     
 
 
