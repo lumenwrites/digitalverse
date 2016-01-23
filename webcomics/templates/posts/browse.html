@@ -12,8 +12,9 @@
 {% if post.published  %}
   <a href="{{post.get_absolute_url}}">  
     <article>
-    <img src="/media/{{post.thumbnail}}" />
-    <div class="clearfix"></div>
+      {% thumbnail post.image "500x500" crop="center" as im %}
+          <img src="{{im.url}}" />
+      {% endthumbnail %}	  
     <div class="dark-overlay">
       <b style="float:left;">{{post.title}} </b>
       {% if user == post.author or user.is_staff  %}
