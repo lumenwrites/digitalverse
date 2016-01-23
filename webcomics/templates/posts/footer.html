@@ -19,7 +19,7 @@
 
       {% if post.author.avatar %}      
 	{% thumbnail post.author.avatar "40x40" crop="center" as im %}
-	    <img src="{{im.url}}"/><br/>
+	    <img src="{{im.url}}" class="avatar"/><br/>
 	{% endthumbnail %}	  
       {% endif %}      	    
     </a>
