@@ -12,7 +12,7 @@
 {% if post.published  %}
   <a href="{{post.get_absolute_url}}">  
     <article>
-      {% thumbnail post.image "500x500" crop="center" as im %}
+      {% thumbnail post.image "320x320" crop="center" as im %}
           <img src="{{im.url}}" />
       {% endthumbnail %}	  
     <div class="dark-overlay">
