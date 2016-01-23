@@ -1,3 +1,4 @@
+import itertools
 import datetime
 from django.utils.timezone import utc
 
@@ -10,7 +11,7 @@ from django.core.files.base import ContentFile
 from sorl.thumbnail import ImageField
 from sorl.thumbnail import get_thumbnail
 
-from .utils import rank_hot,next_or_prev_in_order
+from .utils import rank_hot,next_or_prev_in_order #, unique_slugify
 # from series.models import Series
 
 
@@ -47,7 +48,12 @@ class Post(models.Model):
         if slug != "":
             self.slug = slug            
         else:
-            self.slug = slugify(self.title)
+            self.slug = orig = slugify(self.title)
+            # unique_slugify(self, orig) 
+            for x in itertools.count(1):
+                if not Post.objects.filter(slug=self.slug).exists():
+                    break
+                self.slug = '%s-%d' % (orig, x)            
 
         # Pub date
         if not self.id:
