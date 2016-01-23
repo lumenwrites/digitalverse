@@ -13,7 +13,7 @@
   <a href="{{post.get_absolute_url}}">  
     <article>
     <img src="/media/{{post.thumbnail}}" />
-
+    <div class="clearfix"></div>
     <div class="dark-overlay">
       <b style="float:left;">{{post.title}} </b>
       {% if user == post.author or user.is_staff  %}
