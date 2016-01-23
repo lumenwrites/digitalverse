@@ -30,8 +30,10 @@
 	    <ul>
 	      <li> <a href="{{request.path}}">All</a> </li>
 	      {% for category in categories %}
-	      <li> <a href="{{request.path}}?category={{category.slug}}{% if sorting %}&sorting={{sorting}}{% else %}&sorting=hot{% endif %}">
+	          {% if category.posts.all %}
+	          <li> <a href="{{request.path}}?category={{category.slug}}{% if sorting %}&sorting={{sorting}}{% else %}&sorting=hot{% endif %}">
 		  {{category.title}} </a></li>
+		  {% endif %}
 	      {% endfor %}
 	    </ul>
 	  </div>
