@@ -4,7 +4,6 @@
 
 <div class="row page" id="edit-template">
   <div class="large-12 small-12 columns">
-
     <br/>
     {{ form.errors }}
     <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
@@ -12,7 +11,7 @@
 
       {% if not post.image %}      
       <div id="image-filechoice-container">
-	<input id="id_image" name="image" type="file">	{#{{ form.image }}#}
+	<input id="id_image" name="image" type="file">
       </div>
       <a id="upload" class="small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
       {% else %}
