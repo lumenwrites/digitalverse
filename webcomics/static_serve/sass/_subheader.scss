@@ -1,0 +1,50 @@
+.subheader {
+    padding: 20px 0;
+    background:url(/media/backgrounds/bg.jpg);
+    background-position-y: -320px;
+    margin:0;
+    background-size: 100% auto!important;
+}
+
+.background {
+    position: absolute;
+    z-index:-10;
+}
+
+.user-info {
+    float:left;
+
+    .avatar {
+	float:left;
+	width:70px;
+	border-radius: 4px;
+	margin:10px;
+	margin-left:0;
+    }
+
+    .username {
+	font-weight: bold;
+	color: white;
+	margin: 2px 0 0 0px;
+	text-shadow: 1px 1px 2px black;	
+    }
+
+    .stats {
+	float:left;
+	color: lighten($bright,20%);
+    }
+
+    i {
+	margin: 0 4px;
+	color: lighten($bright,20%);
+    }
+    
+}
+
+.subheader .buttons {
+    margin-top: 20px;
+    float:right;
+}
+.subheader .buttons .button {
+    padding:20px;
+}

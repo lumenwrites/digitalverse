@@ -1,5 +1,12 @@
 Django
 sorl-thumbnail
+markdown
+Pillow
 
 psycopg2
-markdown
+redis
+django-redis-cache 
+uwsgi
+
+
+

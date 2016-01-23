@@ -1,0 +1,47 @@
+#image-filechoice-container input {
+    position: absolute;
+    z-index: -10;
+}
+
+
+#image-clear_id, label {
+    display:none!important;
+}
+
+#upload, #upload_thumbnail, #upload_background {
+    border-radius:0;
+    padding:16px 18px;
+    width:133px;
+    height: 47px;
+}
+
+::-webkit-input-placeholder {
+    color:rgba(162,168,171,0.4);
+}
+
+
+#image-filechoice-container {
+    position:relative;
+}
+
+#image-filechoice-container #id_image {
+    width:100%;
+}
+
+
+#edit-template textarea {
+    height: 120px;
+}
+
+#edit-template .right .button {
+    	padding: 10px 20px;
+    	font-size: 18px;
+    	color: #a2a8ab;
+    	margin:0;
+    	height:42px;
+    	margin-top:-5px;
+}
+
+#edit-template .delete {
+    color: #a2a8ab;
+}
