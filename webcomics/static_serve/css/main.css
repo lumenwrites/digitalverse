@@ -522,8 +522,9 @@ header .row, .subheader .row {
   float: left;
   margin: 0;
   padding: 10px 0;
+  color: #a2a8ab;
 }
-/* line 51, ../sass/_browse.scss */
+/* line 52, ../sass/_browse.scss */
 .pagination .page-links a:hover {
   background-color: #A2A8AB;
 }
