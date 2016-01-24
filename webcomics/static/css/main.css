@@ -331,28 +331,8 @@ header .row, .subheader .row {
   margin-top: -5px !important;
 }
 
-/* line 37, ../sass/_header.scss */
-#websites-dropdown {
-  top: 80px !important;
-  width: 250px;
-  width: 190px;
-  background-color: #171A1A;
-  left: 40px !important;
-  padding: 10px 20px;
-}
-@media all {
-  /* line 37, ../sass/_header.scss */
-  #websites-dropdown {
-    left: 25px;
-  }
-}
-/* line 50, ../sass/_header.scss */
-#websites-dropdown .logo {
-  font-size: 32px;
-}
-
 /* Main menu */
-/* line 56, ../sass/_header.scss */
+/* line 39, ../sass/_header.scss */
 #mainMenu {
   margin-top: 16px;
   text-transform: uppercase;
@@ -360,7 +340,7 @@ header .row, .subheader .row {
   font-size: 18px;
 }
 
-/* line 65, ../sass/_header.scss */
+/* line 48, ../sass/_header.scss */
 #mainMenu ul {
   margin: 0;
   padding: 0;
@@ -368,20 +348,20 @@ header .row, .subheader .row {
   margin-right: 10px;
 }
 
-/* line 72, ../sass/_header.scss */
+/* line 55, ../sass/_header.scss */
 #mainMenu a {
   margin-right: 5px;
   color: #a2a8ab;
 }
 
 /* Subnav */
-/* line 79, ../sass/_header.scss */
+/* line 62, ../sass/_header.scss */
 .subnav {
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.02);
 }
 
-/* line 84, ../sass/_header.scss */
+/* line 67, ../sass/_header.scss */
 .subnav a, .subnav span {
   color: #3d454b;
   margin-bottom: -1px;
@@ -391,12 +371,12 @@ header .row, .subheader .row {
   font-weight: 400;
 }
 
-/* line 94, ../sass/_header.scss */
+/* line 77, ../sass/_header.scss */
 .subnav a {
   margin-right: 10px;
 }
 
-/* line 98, ../sass/_header.scss */
+/* line 81, ../sass/_header.scss */
 .subnav .active {
   color: #bbbbbb;
   /* font-weight: bold; */
@@ -406,12 +386,12 @@ header .row, .subheader .row {
   margin: -10px;
 }
 
-/* line 107, ../sass/_header.scss */
+/* line 90, ../sass/_header.scss */
 .has-dropdown > a:after {
   border-top-style: none;
 }
 
-/* line 111, ../sass/_header.scss */
+/* line 94, ../sass/_header.scss */
 .categories-dropdown-button,
 .categories-dropdown-button:hover,
 .categories-dropdown-button:active,
@@ -426,12 +406,12 @@ header .row, .subheader .row {
   margin-top: -11px;
 }
 
-/* line 126, ../sass/_header.scss */
+/* line 109, ../sass/_header.scss */
 .dropdown-pane ul {
   list-style: none;
 }
 
-/* line 130, ../sass/_header.scss */
+/* line 113, ../sass/_header.scss */
 .dropdown-pane a {
   color: #a2a8ab;
   text-transform: none;
