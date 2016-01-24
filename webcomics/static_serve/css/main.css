@@ -340,13 +340,19 @@ header .row, .subheader .row {
   left: 40px !important;
   padding: 10px 20px;
 }
-/* line 45, ../sass/_header.scss */
+@media screen {
+  /* line 37, ../sass/_header.scss */
+  #websites-dropdown {
+    left: 30px !important;
+  }
+}
+/* line 50, ../sass/_header.scss */
 #websites-dropdown .logo {
   font-size: 32px;
 }
 
 /* Main menu */
-/* line 51, ../sass/_header.scss */
+/* line 56, ../sass/_header.scss */
 #mainMenu {
   margin-top: 16px;
   text-transform: uppercase;
@@ -354,7 +360,7 @@ header .row, .subheader .row {
   font-size: 18px;
 }
 
-/* line 60, ../sass/_header.scss */
+/* line 65, ../sass/_header.scss */
 #mainMenu ul {
   margin: 0;
   padding: 0;
@@ -362,20 +368,20 @@ header .row, .subheader .row {
   margin-right: 10px;
 }
 
-/* line 67, ../sass/_header.scss */
+/* line 72, ../sass/_header.scss */
 #mainMenu a {
   margin-right: 5px;
   color: #a2a8ab;
 }
 
 /* Subnav */
-/* line 74, ../sass/_header.scss */
+/* line 79, ../sass/_header.scss */
 .subnav {
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.02);
 }
 
-/* line 79, ../sass/_header.scss */
+/* line 84, ../sass/_header.scss */
 .subnav a, .subnav span {
   color: #3d454b;
   margin-bottom: -1px;
@@ -385,12 +391,12 @@ header .row, .subheader .row {
   font-weight: 400;
 }
 
-/* line 89, ../sass/_header.scss */
+/* line 94, ../sass/_header.scss */
 .subnav a {
   margin-right: 10px;
 }
 
-/* line 93, ../sass/_header.scss */
+/* line 98, ../sass/_header.scss */
 .subnav .active {
   color: #bbbbbb;
   /* font-weight: bold; */
@@ -400,12 +406,12 @@ header .row, .subheader .row {
   margin: -10px;
 }
 
-/* line 102, ../sass/_header.scss */
+/* line 107, ../sass/_header.scss */
 .has-dropdown > a:after {
   border-top-style: none;
 }
 
-/* line 106, ../sass/_header.scss */
+/* line 111, ../sass/_header.scss */
 .categories-dropdown-button,
 .categories-dropdown-button:hover,
 .categories-dropdown-button:active,
@@ -420,12 +426,12 @@ header .row, .subheader .row {
   margin-top: -11px;
 }
 
-/* line 121, ../sass/_header.scss */
+/* line 126, ../sass/_header.scss */
 .dropdown-pane ul {
   list-style: none;
 }
 
-/* line 125, ../sass/_header.scss */
+/* line 130, ../sass/_header.scss */
 .dropdown-pane a {
   color: #a2a8ab;
   text-transform: none;

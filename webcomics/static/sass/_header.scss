@@ -41,6 +41,11 @@ header .row,.subheader .row {
     background-color: #171A1A;
     left: 40px!important;
     padding: 10px 20px;
+
+    @media screen {
+	left: 30px!important;	
+    }
+    
     
     .logo {
 	font-size: 32px;
