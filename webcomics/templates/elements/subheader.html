@@ -13,7 +13,7 @@
 
   <div class="row">
   <div class="large-6 small-6 columns user-info">
-    <a href="/user/rayalez">
+    <a href="/user/{{user.username}}">
       {% thumbnail userprofile.avatar "70x70" crop="center" as im %}
           <img src="{{im.url}}" class="avatar"/>
       {% endthumbnail %}	  
@@ -40,6 +40,23 @@
     <div class="buttons">
 
 
+
+      {% if userprofile.series.all %}
+
+          {% for series in userprofile.series.all %}      
+              <a class="button"
+              	 href="/series/{{series.slug}}">
+              	{{series.title}}
+              
+              {% if series.image %}      
+              	{% thumbnail series.image "40x40" crop="center" as im %}
+              	    <img src="{{im.url}}" class="avatar author-avatar"/><br/>
+              	{% endthumbnail %}	  
+              {% endif %}      	    
+              </a>
+          {% endfor %}      	    
+      {% endif %}            
+      
       {% if userprofile.website %}      
       <a class="button"
 	 href="{{userprofile.website}}">

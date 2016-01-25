@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block content %}
+
+{% include "series/subheader.html" %}
+
+
+<div id="browse-template" class="page">
+  
+{% for post in object_list %}
+{% if post.published  %}
+  <a href="{{post.get_absolute_url}}">  
+    <article>
+      {% thumbnail post.image "320x320" crop="center" as im %}
+          <img src="{{im.url}}" />
+      {% endthumbnail %}	  
+    <div class="dark-overlay">
+      <b style="float:left;">{{post.title}} </b>
+      {% if user == post.author or user.is_staff  %}
+      <a class="edit-post margins-0" href="/post/{{post.slug}}/edit">
+	<i class="fa fa-pencil"></i></a>
+      {% endif %}
+    </div>
+    </article>
+  </a>
+{% endif %}
+{% endfor %}
+</div>
+{% include "posts/pagination.html" %}
+
+{% include "elements/subscribe-popup.html" %}  
+
+<style>
+  .row {
+  max-width: 95%!important;
+  }
+</style>
+{% endblock content %}

@@ -52,15 +52,25 @@
       
 
       <div class="clearfix"></div>
-	<div class="set-categories">
-	  {{form.categories}}
-	</div>
-	<br/>
+      <div class="set-categories"
+	   style="{% if user.series.all %}width: calc(100% - 310px);float:left{% endif %}">
+	{{form.categories}}
+      </div>
+
       <!-- <input type="text" placeholder="category"> -->
       <!-- <input id="id_series" maxlength="256" name="series" type="text" -->
       <!-- 	     style="float:right;width:36%;" -->
       <!-- 	     placeholder="series"> -->
-      
+
+
+      {% if user.series.all %}      
+      <div class="set-series">
+	  {{form.series}}      
+      </div>
+      {% endif %}            
+
+      <div class="clearfix"></div>      
+      <br/>
 
       {% if not creating %}
       <a class="button delete" href="/post/{{post.slug}}/delete">Delete</a>

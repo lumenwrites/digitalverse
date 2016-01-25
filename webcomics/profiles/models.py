@@ -7,6 +7,7 @@ from sorl.thumbnail import ImageField
 from sorl.thumbnail import get_thumbnail
 
 from posts.models import Post
+from series.models import Series
 
 class User(AbstractUser):  
     avatar = models.ImageField(upload_to='avatars/', default=None,blank=True, null=True)
@@ -18,6 +19,7 @@ class User(AbstractUser):
     # created = models.DateTimeField(auto_now_add=True, blank=True)
 
     subscribed = models.ManyToManyField('User', related_name="subscribers", blank=True)
+    subscribed_series = models.ManyToManyField('series.Series', related_name="subscribers", blank=True)    
 
     upvoted = models.ManyToManyField('posts.Post', related_name="upvoters", blank=True)
 

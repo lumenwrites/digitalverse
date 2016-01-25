@@ -1,0 +1,95 @@
+{% load thumbnail %}
+
+<div class="subheader series-subheader">
+{% if series.background %}        
+   {% thumbnail series.background "1581x132" crop="center" as im %}
+       <style>
+	 .subheader {
+	    background:url({{im.url}});
+	 }
+       </style>
+   {% endthumbnail %}	  
+{% endif %}        
+
+  <div class="row">
+  <div class="large-6 small-6 columns user-info">
+    <a href="/series/{{series.slug}}">
+      {% thumbnail series.image "70x70" crop="center" as im %}
+          <img src="{{im.url}}" class="avatar"/>
+      {% endthumbnail %}	  
+
+
+	  
+      <div class="left">
+	<h1 class="username"> {{series.title}}
+	  {% if user == series.author or user.is_staff  %}
+	  <a class="edit-post" href="/series/{{series.slug}}/edit">
+	    <i class="fa fa-pencil"></i></a>
+	  {% endif %}
+	</h1>
+
+
+	
+	<div class="stats">    
+	  <i class="fi-torsos-all stats-icon"></i>
+	  {{series.subscribers.count}}
+
+	  <i class="fi-arrow-up stats-icon"></i>
+	  {{upvotes_count}}
+	  <i class="fi-eye stats-icon"></i>
+	  {{view_count}}
+	</div>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="large-6 small-6 columns">
+    <div class="buttons">
+
+
+      <a class="button"
+	 href="/user/{{series.author.username}}">
+	{{series.author.username}}
+
+      {% if series.author.avatar %}      
+	{% thumbnail series.author.avatar "40x40" crop="center" as im %}
+	    <img src="{{im.url}}" class="avatar author-avatar"/><br/>
+	{% endthumbnail %}	  
+      {% endif %}      	    
+	
+	
+      </a>
+
+
+      <!-- 
+      {% if series.description %}      
+      <a class="button"
+	 href="/user/{{userprofile}}/about">
+	About</a>
+      {% endif %}            
+      -->
+
+      {% if not user == series.author %}
+          {% if user.is_authenticated %}
+              {% if user not in series.subscribers.all %}	
+                   <a class="button"
+		      href="/series/{{series.slug}}/subscribe">
+		     Subscribe</a>
+	      {% else %}
+                   <a class="button"
+		      href="/series/{{series.slug}}/unsubscribe">
+		     Unsubscribe</a>
+	      {% endif %}	
+	  {% else %}	   
+              <a class="button"
+		 href="/login/?next={{request.path}}">
+		Subscribe</a>
+	  {% endif %}	   
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+</div>
+</div>

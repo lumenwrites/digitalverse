@@ -11,8 +11,12 @@ from profiles.models import User
 from comments.forms import CommentForm
 from comments.utils import get_comment_list
 from comments.models import Comment
+
+from series.models import Series
+from categories.models import Category
+
 from .forms import PostForm
-from .models import Post, Category
+from .models import Post
 
 from .utils import rank_hot
 
@@ -72,7 +76,6 @@ class SubscriptionsView(BrowseMixin, ListView):
         qs = [post for post in qs if post.author in subscribed]
 
         return qs
-
     
     
     
@@ -120,7 +123,7 @@ class PostDetailView(DetailView):
 
 
         qs = super(PostDetailView, self).get_queryset()
-        other_posts = qs.filter(author=post.author)
+        other_posts = qs.filter(series=post.series)
         context['first'] = other_posts.order_by('pub_date')[0]
         context['prev'] = post.prev_by_author()
         context['next'] = post.next_by_author()        
@@ -208,6 +211,10 @@ class PostEdit(UpdateView):
     def get_success_url(self):
         return self.request.path
 
+    def get_form_kwargs(self):
+        kwargs = super(PostEdit, self).get_form_kwargs()
+        kwargs.update({'user': self.request.user})
+        return kwargs    
         
 
 

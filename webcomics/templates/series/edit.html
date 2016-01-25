@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block content %}
+
+<div class="row page" id="edit-template">
+  <div class="large-12 small-12 columns">
+    <br/>
+    {{ form.errors }}
+    <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+      {{ form.title }}
+
+      <!-- Image -->
+      {% if not series.image %}      
+      Image:
+      <div id="image-filechoice-container">
+	<input id="id_image" name="image" type="file">      
+      </div>
+      <a id="upload" class="small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
+      {% else %}
+      <!-- Image Thumbnail -->
+      <div style="width:70px;
+		  height:70px;
+		  float:left;
+		  margin-right:10px;">
+	{% thumbnail series.image "70x70" crop="center" as im %}
+	    <img src="{{im.url}}"/><br/>
+	{% endthumbnail %}	  
+      </div>
+      <!-- Repace Image -->
+      Image:
+      <div id="image-filechoice-container"
+	   style="width:calc(100% - 80px);">
+	<input id="id_image" name="image" type="file">      
+      </div>
+      <a id="upload" class="small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
+      {% endif %}
+      <div class="clearfix"></div>
+      
+      <!-- Background -->
+      {% if not series.background %}      
+      Background:
+      <div id="image-filechoice-container">
+	<input id="id_background" name="background" type="file">      
+      </div>
+      <a id="upload_background" class="small button"><i class="fa fa-upload"></i>&nbsp; Background</a>
+      {% else %}
+      <!-- Background Thumbnail -->
+      {% thumbnail series.background "940x78" crop="center" as im %}
+          <img src="{{im.url}}"/><br/>
+      {% endthumbnail %}	  
+      <!-- Repace Background -->
+      Background:
+      <div id="image-filechoice-container">
+	<input id="id_background" name="background" type="file">      
+      </div>
+      <a id="upload_background" class="small button"><i class="fa fa-upload"></i>&nbsp; Background</a>
+      {% endif %}             
+
+      <!-- {{ form.thumbnail }} -->
+
+      <!-- {% if creating %} -->
+      <!-- <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10"></textarea> -->
+      <!-- {% else %}       -->
+      <!-- <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10" style="float:left; width: calc(100% - 310px);height:348px;"></textarea> -->
+      <!-- {% endif %} -->
+      
+
+      <div class="clearfix"></div>
+	<div class="set-categories">
+	  {{form.categories}}
+	</div>
+	<br/>
+      
+
+      {% if not creating %}
+      <a class="button delete" href="/series/{{series.slug}}/delete">Delete</a>
+      {% endif %}
+      
+      <div class="right">
+	{% if not creating %}
+    	    {% if not post.published %}
+            <a class="button" href="/series/{{series.slug}}">Preview</a>	
+            <!-- <a class="button" href="/post/{{post.slug}}/publish">Publish</a> -->
+            {% else %}
+            <a class="button" href="/series/{{series.slug}}">View</a>		    
+            <!-- <a class="button" href="/post/{{post.slug}}/unpublish">Unpublish</a>	 -->
+            {% endif %}
+        {% endif %}
+	<input type="submit" value="Save" />
+	<br/>
+      </div>
+      
+    </form>
+
+  </div>
+</div>
+
+
+<!-- Select2 -->
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
+<script>
+    $(document).ready(function(){    
+	$('#upload').click(function(){
+	    $('#id_image').click();
+	});
+
+	$('#upload_background').click(function(){
+	    $('#id_background').click();
+    });
+
+    // Multiselect
+    $("#id_categories").select2({
+	placeholder: "Select categories", // (maximum 4)
+	allowClear: true,
+	maximumSelectionLength: 2    
+    })
+    
+	
+    })
+</script>
+
+{% endblock content %}

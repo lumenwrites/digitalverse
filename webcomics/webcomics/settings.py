@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     
     'series',
+    'categories',
     'posts',
     'profiles',
     'comments'

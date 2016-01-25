@@ -101,6 +101,16 @@ select {
 }
 
 
+/* Series */
+.set-series {
+    width: 300px;
+    float:right;
+    margin: 0;
+
+    select {
+	    height: 50px;
+    }
+}
 /* from html */
 .select-categories {
     width: calc(100% - 120px);

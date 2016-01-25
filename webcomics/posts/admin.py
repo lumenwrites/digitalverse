@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post, Category
+from .models import Post
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -8,13 +8,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title','body']
 
 
-class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('title',), }
-    class Meta:
-        verbose_name_plural = "categories"
-    
-
 admin.site.register(Post, PostAdmin)
-admin.site.register(Category, CategoryAdmin)
+
 
 

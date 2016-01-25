@@ -11,8 +11,12 @@ from django.core.files.base import ContentFile
 from sorl.thumbnail import ImageField
 from sorl.thumbnail import get_thumbnail
 
+
+from categories.models import Category
+from series.models import Series
+
 from .utils import rank_hot,next_or_prev_in_order #, unique_slugify
-# from series.models import Series
+
 
 
 class Post(models.Model):
@@ -29,8 +33,9 @@ class Post(models.Model):
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="posts", default="")
 
-    categories = models.ManyToManyField('Category', related_name="posts", blank=True)
-    # series = models.ForeignKey('series.Series', related_name="posts", blank=True)    
+    categories = models.ManyToManyField('categories.Category', related_name="posts", blank=True)
+    series = models.ForeignKey('series.Series', related_name="posts",
+                               default=None, blank=True, null=True)
     
     score = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
@@ -70,11 +75,11 @@ class Post(models.Model):
 
 
     def prev_by_author(self, loop=False):
-        qs = Post.objects.filter(author=self.author)
+        qs = Post.objects.filter(series=self.series)
         return next_or_prev_in_order(self, True, qs)
 
     def next_by_author(self, loop=False):
-        qs = Post.objects.filter(author=self.author)
+        qs = Post.objects.filter(series=self.series)
         return next_or_prev_in_order(self, False, qs)    
 
     @permalink
@@ -83,17 +88,3 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["pub_date"]    
-    
-
-
-class Category(models.Model):
-    title = models.CharField(max_length=64)    
-    slug = models.SlugField(max_length=64, default="")
-    
-    def __str__(self):
-        return self.title        
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super(Category, self).save(*args, **kwargs)
-    
