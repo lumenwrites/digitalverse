@@ -24,6 +24,7 @@
 
 
       <div class="nav-buttons hidden">
+	<br/>
           {% if post.prev_by_author %}
           <a class="button" href="/post/{{first.slug}}"><< First</a>
           <a class="button" href="/post/{{prev.slug}}">< Prev</a>
@@ -45,7 +46,7 @@
           {% if post.next_by_author %}
           <!-- <div class="right"> -->
           <a class="button" href="/post/{{next.slug}}">Next ></a>     	       
-          <a class="button" href="/post/{{last.slug}}">Last>></a>
+          <a class="button" href="/post/{{last.slug}}">Last >></a>
           <!-- </div> -->
           {% endif %}
       </div>

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
     'sorl.thumbnail',
     
-    # 'series',
+    'series',
     'posts',
     'profiles',
     'comments'
