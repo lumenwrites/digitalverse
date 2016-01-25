@@ -573,23 +573,24 @@ header .row, .subheader .row {
 .post-footer .button {
   margin: 0;
   font-size: 14px;
+  height: 39px;
 }
-/* line 46, ../sass/_post.scss */
+/* line 47, ../sass/_post.scss */
 .post-footer .button i {
   margin-right: 8px;
 }
-/* line 51, ../sass/_post.scss */
+/* line 52, ../sass/_post.scss */
 .post-footer .upvoted, .post-footer .upvoted i {
   color: #13aff0;
 }
-/* line 54, ../sass/_post.scss */
+/* line 55, ../sass/_post.scss */
 .post-footer .avatar {
   width: 30px;
   margin: -10px -10px -10px 10px;
   border-radius: 2px;
 }
 
-/* line 64, ../sass/_post.scss */
+/* line 65, ../sass/_post.scss */
 #more-by article {
   position: relative;
   width: calc(25% - 2px) !important;
@@ -598,7 +599,7 @@ header .row, .subheader .row {
   margin: 0;
   float: left;
 }
-/* line 73, ../sass/_post.scss */
+/* line 74, ../sass/_post.scss */
 #more-by .dark-overlay {
   position: absolute;
   bottom: 0;

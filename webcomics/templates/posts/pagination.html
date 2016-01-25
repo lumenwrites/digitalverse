@@ -15,7 +15,7 @@
 
                 {% if page_obj.has_next %}
                     <a class="button small next-page"
-		       href="{{request.path}}?page={{ page_obj.next_page_number }}{% if sorting %}&sorting={{sorting}}{% endif %}{% if category %}&category={{category}}{% endif %}">
+		       href="{{request.path}}?page={{ page_obj.next_page_number }}{% if sorting %}&sorting={{sorting}}{% endif %}{% if category %}&category={{category}}{% endif %} ">
 		      next page ></a>
                 {% endif %}
             </span>
