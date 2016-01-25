@@ -79,15 +79,16 @@
       
       <div class="right">
 	{% if not creating %}
-    	    {% if not post.published or True %}
+            <a class="button" href="/series/{{series.slug}}">View</a>		    
+    	    <!-- {% if not post.published or True %} -->
             <!-- <a class="button" href="/series/{{series.slug}}">Preview</a> -->
             <!-- <a class="button" href="/post/{{post.slug}}/publish">Publish</a> -->
-            <a class="button" href="/series/{{series.slug}}">View</a>		    	    
-            {% else %}
-            <a class="button" href="/series/{{series.slug}}">View</a>		    
+            <!-- {% else %} -->
+            <!-- <a class="button" href="/series/{{series.slug}}">View</a>		     -->
             <!-- <a class="button" href="/post/{{post.slug}}/unpublish">Unpublish</a>	 -->
-            {% endif %}
+            <!-- {% endif %} -->
         {% endif %}
+	    
 	<input type="submit" value="Save" />
 	<br/>
       </div>

@@ -92,11 +92,11 @@ class SeriesCreate(CreateView):
         return success_url
 
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(PostCreate, self).get_context_data(**kwargs)
-    #     context['creating'] = True
-    #     return context    
-    # return redirect("/post/"+post.slug+"/edit")
+    def get_context_data(self, **kwargs):
+        context = super(SeriesCreate, self).get_context_data(**kwargs)
+        context['creating'] = True
+        return context    
+
 
 
 class SeriesEdit(UpdateView):
