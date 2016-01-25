@@ -27,7 +27,7 @@ class SeriesView(BrowseMixin, ListView):
     
     def get_queryset(self):
         qs = super(SeriesView, self).get_queryset()
-        qs = sorted(qs, key=lambda x: x.pub_date, reverse=True)
+        qs = sorted(qs, key=lambda x: x.pub_date, reverse=False)
         # qs.reverse()
         # Filter Posts
         series = Series.objects.get(slug=self.kwargs['slug'])
