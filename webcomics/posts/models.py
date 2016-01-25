@@ -75,11 +75,11 @@ class Post(models.Model):
 
 
     def prev_by_author(self, loop=False):
-        qs = Post.objects.filter(series=self.series)
+        qs = Post.objects.filter(series=self.series, published=True)
         return next_or_prev_in_order(self, True, qs)
 
     def next_by_author(self, loop=False):
-        qs = Post.objects.filter(series=self.series)
+        qs = Post.objects.filter(series=self.series, published=True)
         return next_or_prev_in_order(self, False, qs)    
 
     @permalink
