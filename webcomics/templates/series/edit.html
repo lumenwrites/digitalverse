@@ -79,8 +79,8 @@
       
       <div class="right">
 	{% if not creating %}
-    	    {% if not post.published %}
-            <a class="button" href="/series/{{series.slug}}">Preview</a>	
+    	    {% if not post.published or True %}
+            <!-- <a class="button" href="/series/{{series.slug}}">Preview</a> -->
             <!-- <a class="button" href="/post/{{post.slug}}/publish">Publish</a> -->
             {% else %}
             <a class="button" href="/series/{{series.slug}}">View</a>		    
