@@ -27,6 +27,9 @@ def comment_submit(request, post_slug):
 
             comment_url = request.GET.get('next', '/')# +"#id-"+str(comment.id)
             return HttpResponseRedirect(comment_url)
+        else:
+            comment_url = request.GET.get('next', '/')
+            return HttpResponseRedirect(comment_url)            
 
 def reply_submit(request, comment_id):
     if request.method == 'POST':
@@ -41,6 +44,10 @@ def reply_submit(request, comment_id):
 
             comment_url = request.GET.get('next', '/')+"#id-"+str(comment.id)
             return HttpResponseRedirect(comment_url)
+        else:
+            comment_url = request.GET.get('next', '/')
+            return HttpResponseRedirect(comment_url)            
+        
         
 
 def comment_edit(request, comment_id):
