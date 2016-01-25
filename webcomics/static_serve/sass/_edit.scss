@@ -43,7 +43,11 @@
     	color: #a2a8ab;
     	margin:0;
     	height:42px;
-    	margin-top:-5px;
+    	margin-top:-6px;
+}
+
+#edit-template input[type="submit"] {
+    margin-top: -6px;
 }
 
 #edit-template .delete {
@@ -108,7 +112,7 @@ select {
     margin: 0;
 
     select {
-	    height: 50px;
+	height: 50px;
     }
 }
 /* from html */
