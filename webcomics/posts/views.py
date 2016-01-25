@@ -194,6 +194,11 @@ class PostCreate(CreateView):
         return success_url
         # return self.request.path    
 
+    def get_form_kwargs(self):
+        kwargs = super(PostEdit, self).get_form_kwargs()
+        kwargs.update({'user': self.request.user})
+        return kwargs    
+
     def get_context_data(self, **kwargs):
         context = super(PostCreate, self).get_context_data(**kwargs)
         context['creating'] = True
