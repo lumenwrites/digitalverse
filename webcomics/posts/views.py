@@ -195,7 +195,7 @@ class PostCreate(CreateView):
         # return self.request.path    
 
     def get_form_kwargs(self):
-        kwargs = super(PostEdit, self).get_form_kwargs()
+        kwargs = super(PostCreate, self).get_form_kwargs()
         kwargs.update({'user': self.request.user})
         return kwargs    
 
