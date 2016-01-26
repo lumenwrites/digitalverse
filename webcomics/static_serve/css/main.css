@@ -994,8 +994,8 @@ select {
   /* line 163, ../sass/_edit.scss */
   #id_categories {
     list-style-type: none;
-    width: 400px;
-    width: 100%;
+    /* width:400px; */
+    /* width:100%; */
   }
 }
 /* line 171, ../sass/_edit.scss */
