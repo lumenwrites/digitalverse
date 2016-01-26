@@ -833,7 +833,7 @@ header .row, .subheader .row {
 }
 
 /* line 22, ../sass/_edit.scss */
-#upload {
+.images {
   width: 143px !important;
 }
 
