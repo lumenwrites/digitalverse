@@ -10,7 +10,7 @@
       {{ form.title }}
 
       
-      {% if not post.images.all or post.image %}      
+      {% if not post.images.all %}      
       <div id="image-filechoice-container">
 	<input id="id_image" name="images" type="file" multiple>
       </div>
@@ -20,6 +20,10 @@
 
       <!-- Image -->
       <div style="">
+	{% if post.image %}
+	<img src="/media/{{object.image}}" style="margin:auto;width:100%;"/>
+	{% endif %}      
+	
 	{% for image in post.images.all %}
 	<img src="/media/{{image.image}}" style="margin:auto;
 						       /*max-height:450px;*/"/><br/>
