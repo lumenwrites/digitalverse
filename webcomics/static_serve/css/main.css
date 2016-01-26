@@ -985,8 +985,8 @@ select {
 /* line 156, ../sass/_edit.scss */
 #id_categories {
   list-style-type: none;
-  width: 600px;
-  width: 100%;
+  /* width:600px; */
+  /* width:100%;     */
   padding: 0px;
 }
 
