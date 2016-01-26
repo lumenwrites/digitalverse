@@ -10,8 +10,10 @@ urlpatterns = [
     
 
 
-    url(r'^upload/$', views.PostCreate.as_view(), name='post-create'),
-    url(r'^post/(?P<slug>[^\.]+)/edit$', views.PostEdit.as_view()),
+    # url(r'^upload/$', views.PostCreate.as_view(), name='post-create'),
+    url(r'^upload/$', views.post_create, name='post-create'),    
+    # url(r'^post/(?P<slug>[^\.]+)/edit$', views.PostEdit.as_view()),
+    url(r'^post/(?P<slug>[^\.]+)/edit$', views.post_edit),    
     url(r'^post/(?P<slug>[^\.]+)/delete$', views.post_delete),    
     url(r'^post/(?P<slug>[^\.]+)/publish$', views.post_publish),
     url(r'^post/(?P<slug>[^\.]+)/unpublish$', views.post_unpublish),        

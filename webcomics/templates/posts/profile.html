@@ -14,7 +14,10 @@
   <a href="{{post.get_absolute_url}}">  
     <article>
       
-    <img src="/media/{{post.thumbnail}}" />
+      {% thumbnail post.thumbnail "320x320" crop="center" as im %}
+          <img src="{{im.url}}" />
+      {% endthumbnail %}	  
+      
 
     <div class="dark-overlay">
 

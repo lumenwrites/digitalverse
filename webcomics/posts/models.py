@@ -66,10 +66,10 @@ class Post(models.Model):
             self.pub_date = datetime.datetime.now()
 
         # Create thumbnail
-        if not self.id:  
-            super(Post, self).save(*args, **kwargs)  
-            resized = get_thumbnail(self.image, "400x400", crop='center', quality=99)
-            self.thumbnail.save(resized.name, ContentFile(resized.read()), True)            
+        # if not self.id:  
+        #     super(Post, self).save(*args, **kwargs)
+        #     resized = get_thumbnail(image.image, "400x400", crop='center', quality=99)
+        #     self.thumbnail.save(resized.name, ContentFile(resized.read()), True)            
 
         return super(Post, self).save(*args, **kwargs)
 
@@ -88,3 +88,16 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["pub_date"]    
+
+
+class Image(models.Model):
+    post = models.ForeignKey(Post, related_name="images",
+                             default=None,blank=True, null=True)
+    image = models.ImageField(upload_to='comics/',
+                              default=None,blank=True, null=True)
+    # order?
+    def __str__(self):
+        try:
+            return self.post.title + ": " + self.image.name
+        except:
+            return self.image.name            

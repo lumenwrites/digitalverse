@@ -9,20 +9,24 @@
     <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
       {{ form.title }}
 
-      {% if not post.image %}      
+      
+      {% if not post.images.all %}      
       <div id="image-filechoice-container">
-	<input id="id_image" name="image" type="file">
+	<input id="id_image" name="images" type="file" multiple>
       </div>
       <a id="upload" class="small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
+      
       {% else %}
 
       <!-- Image -->
-      <div style="">      
-	<img src="/media/{{post.image}}" style="margin:auto;
-						/*max-height:450px;*/"/><br/>
+      <div style="">
+	{% for image in post.images.all %}
+	<img src="/media/{{image.image}}" style="margin:auto;
+						       /*max-height:450px;*/"/><br/>
+	{% endfor %}
 	Replace Image:
 	<div id="image-filechoice-container">
-	  <input id="id_image" name="image" type="file">	{#{{ form.image }}#}
+	  <input id="id_image" name="images" type="file" multiple>
 	</div>
 	<a id="upload" class="small button">
 	  <i class="fa fa-upload"></i>&nbsp; Image</a>
@@ -47,7 +51,7 @@
       {% if creating %}
       <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10"></textarea>
       {% else %}      
-      <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10" style="float:left; width: calc(100% - 310px);height:348px;"></textarea>
+      <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10" style="float:left; width: calc(100% - 310px);height:348px;">{{post.description}}</textarea>
       {% endif %}
       
 

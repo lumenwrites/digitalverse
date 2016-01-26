@@ -1,3 +1,6 @@
+from sorl.thumbnail import get_thumbnail
+from django.core.files.base import ContentFile
+
 from django.views.generic import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -16,7 +19,7 @@ from series.models import Series
 from categories.models import Category
 
 from .forms import PostForm
-from .models import Post
+from .models import Post, Image
 
 from .utils import rank_hot
 
@@ -173,53 +176,118 @@ class PostDetailView(DetailView):
 
 
 
-class PostCreate(CreateView):
-    model = Post
-    form_class = PostForm
-    template_name = 'posts/edit.html'
+def post_create(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, user=request.user)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            post.categories = form.cleaned_data['categories']
+            post.save()
+            
+            # Upload Images
+            for image in form.cleaned_data['images']:
+                Image.objects.create(image=image, post=post)       
+            # Create Thumbnail
+            image = post.images.all()[0]
+            resized = get_thumbnail(image.image, "400x400", crop='center', quality=99)
+            post.thumbnail.save(resized.name, ContentFile(resized.read()), True)            
+
+            return HttpResponseRedirect('/post/'+post.slug+'/edit')
+    else:
+        form = PostForm(user=request.user)
+    return render(request, 'posts/edit.html', {
+        'form':form,
+        'creating': True
+    })
+
+def post_edit(request,slug):
+    post = Post.objects.get(slug=slug)
+
+    if request.user != post.author and not request.user.is_staff:
+        return HttpResponseRedirect('/')        
     
-    success_url = "/"
-    template_name = 'posts/edit.html'
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, instance=post,user=request.user)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.categories = form.cleaned_data['categories']
+            post.save()
 
-    def form_valid(self, form):
-       user = self.request.user
-       form.instance.author = user
-       success_url = "/post/"+form.instance.slug+"/edit"
-       return super(PostCreate, self).form_valid(form)
+            if form.cleaned_data['images']:
+                # Delete existing images
+                for image in post.images.all():
+                    image.delete()
+                # Upload Images
+                for image in form.cleaned_data['images']:
+                    Image.objects.create(image=image, post=post)       
+
+            return HttpResponseRedirect('/post/'+post.slug+'/edit')
+    else:
+        form = PostForm(instance=post,user=request.user)
+    return render(request, 'posts/edit.html', {
+        'form':form,
+        'post':post
+    })
+
+
+# class PostCreate(CreateView):
+#     model = Post
+#     form_class = PostForm
+#     template_name = 'posts/edit.html'
+    
+#     success_url = "/"
+#     template_name = 'posts/edit.html'
+
+#     def form_valid(self, form):
+#        user = self.request.user
+#        form.instance.author = user
+#        images = form.instance.images
+
+#        # post = form.save()
+#        return super(PostCreate, self).form_valid(form)
     
 
 
-    def get_success_url(self):
-        success_url = "/post/"+self.object.slug+"/edit"
-        return success_url
-        # return self.request.path    
+#     def get_success_url(self):
+#         success_url = "/post/"+self.object.slug+"/edit"
+        
+#         post = Post.objects.get(slug=self.object.slug)
+#         image = Image.objects.create(image=form.cleaned_data['image'])
+#         image.post = post # self.object
+#         image.save()
+        
+#         return success_url
+#         # return self.request.path    
 
-    def get_form_kwargs(self):
-        kwargs = super(PostCreate, self).get_form_kwargs()
-        kwargs.update({'user': self.request.user})
-        return kwargs    
+#     def get_form_kwargs(self):
+#         kwargs = super(PostCreate, self).get_form_kwargs()
+#         kwargs.update({'user': self.request.user})
+#         return kwargs    
 
-    def get_context_data(self, **kwargs):
-        context = super(PostCreate, self).get_context_data(**kwargs)
-        context['creating'] = True
-        return context    
-    # return redirect("/post/"+post.slug+"/edit")
+#     def get_context_data(self, **kwargs):
+#         context = super(PostCreate, self).get_context_data(**kwargs)
+#         context['creating'] = True
+#         return context    
+#    # return redirect("/post/"+post.slug+"/edit")
 
 
-class PostEdit(UpdateView):
-    model = Post
-    # fields = ["title","image","thumbnail","description","categories"]
-    form_class = PostForm
-    # success_url = "/"
-    template_name = 'posts/edit.html'
+# class PostEdit(UpdateView):
+#     model = Post
+#     # fields = ["title","image","thumbnail","description","categories"]
+#     form_class = PostForm
+#     # success_url = "/"
+#     template_name = 'posts/edit.html'
 
-    def get_success_url(self):
-        return self.request.path
+#     def get_success_url(self):
+#         return self.request.path
 
-    def get_form_kwargs(self):
-        kwargs = super(PostEdit, self).get_form_kwargs()
-        kwargs.update({'user': self.request.user})
-        return kwargs    
+#     def get_form_kwargs(self):
+#         kwargs = super(PostEdit, self).get_form_kwargs()
+#         kwargs.update({'user': self.request.user})
+#         return kwargs    
         
 
 
