@@ -20,10 +20,6 @@
 
       <!-- Image -->
       <div style="">
-	{% if post.image %}
-	<img src="/media/{{object.image}}" style="margin:auto;width:100%;"/>
-	{% endif %}      
-	
 	{% for image in post.images.all %}
 	<img src="/media/{{image.image}}" style="margin:auto;
 						       /*max-height:450px;*/"/><br/>
