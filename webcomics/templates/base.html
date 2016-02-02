@@ -5,7 +5,7 @@
 
 <head>
   {% block head %}
-  <title> webcomics </title>
+  <title> webcomics.io </title>
   {% endblock head %}
 
   <!-- jQuery -->
@@ -48,6 +48,11 @@
   <link rel="alternate" type="application/rss+xml"
 	href="http://webcomics.io/user/{{userprofile.username}}/feed/atom/" />
   {% endif %}      	      
+
+  <!-- Meta -->
+  <link rel="shortcut icon" type="image/png" href="http://webcomics.io/static/img/favicon.png"/>
+  <meta property="og:image" content="http://orangemind.io/theme/img/orangemind-square-brain.png">
+  <meta property="og:description" content="Best place to post, read, and discuss webcomics.">
   
 </head>
 
