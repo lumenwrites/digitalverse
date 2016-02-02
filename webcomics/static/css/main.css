@@ -497,13 +497,14 @@ header .row, .subheader .row {
   /* line 17, ../sass/_browse.scss */
   #browse-template article {
     width: calc(33% - 2px);
+    width: 33.3333%;
   }
-  /* line 19, ../sass/_browse.scss */
+  /* line 20, ../sass/_browse.scss */
   #browse-template article img {
     width: 100%;
   }
 }
-/* line 26, ../sass/_browse.scss */
+/* line 27, ../sass/_browse.scss */
 #browse-template .dark-overlay {
   position: absolute;
   bottom: 0;
@@ -512,18 +513,18 @@ header .row, .subheader .row {
   width: 100%;
 }
 
-/* line 34, ../sass/_browse.scss */
+/* line 35, ../sass/_browse.scss */
 .pagination {
   margin: 0;
   height: 20px;
 }
-/* line 39, ../sass/_browse.scss */
+/* line 40, ../sass/_browse.scss */
 .pagination .page-links {
   position: relative;
   bottom: 0;
   margin: 0;
 }
-/* line 44, ../sass/_browse.scss */
+/* line 45, ../sass/_browse.scss */
 .pagination .page-links a {
   width: 100%;
   float: left;
@@ -531,7 +532,7 @@ header .row, .subheader .row {
   padding: 10px 0;
   color: #a2a8ab;
 }
-/* line 52, ../sass/_browse.scss */
+/* line 53, ../sass/_browse.scss */
 .pagination .page-links a:hover {
   background-color: #A2A8AB;
 }
