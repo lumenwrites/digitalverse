@@ -3,9 +3,14 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+
     url(r'^$', views.BrowseView.as_view(), name='post-list'),
     url(r'^browse/$', views.BrowseView.as_view(), name='post-list'),    
     url(r'^subscriptions/$', views.SubscriptionsView.as_view(), name='subscriptions'),    
+
+
+    url(r'^user/(?P<username>[^\.]+)/feed/atom/$', views.UserFeed()),    
+
     url(r'^user/(?P<username>[^\.]+)?/$', views.ProfileView.as_view(), name='profile'),
     
 

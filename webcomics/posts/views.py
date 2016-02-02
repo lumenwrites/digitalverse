@@ -10,6 +10,11 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
+# rss
+from django.contrib.syndication.views import Feed
+from django.utils.feedgenerator import Atom1Feed
+
+
 from profiles.models import User 
 from comments.forms import CommentForm
 from comments.utils import get_comment_list
@@ -353,8 +358,75 @@ def unupvote(request):
         
 
 
+# rss
+class UserFeed(Feed):
+    title = "Django Zone latests posts"
+    link = "/"
+    feed_type = Atom1Feed
+
+    def get_object(self, request, username):
+        return get_object_or_404(User, username=username)
+
+    def title(self, obj):
+        return "webcomics.io: %s comics" % obj.username
+
+    def link(self, obj):
+        return "http://webcomics.io/user/" + obj.username
+    
+    def items(self, obj):
+        return Post.objects.filter(published=True, author=obj)
+
+    def item_title(self, item):
+        return item.title
+
+    def item_pubdate(self, item):
+        return item.pub_date
+    
+
+    def item_description(self, item):
+        return "http://webcomics.io/media/"+str(item.image)
+
+
+
+class SeriesFeed(Feed):
+    title = "Django Zone latests posts"
+    link = "/"
+    feed_type = Atom1Feed
+
+    def get_object(self, request, slug):
+        return get_object_or_404(Series, slug=slug)
+
+    def title(self, obj):
+        return "webcomics.io: %s series" % obj.title
+
+    def link(self, obj):
+        return "http://webcomics.io/series/" + obj.slug
+
+
+    def items(self, obj):
+        return Post.objects.filter(published=True, series=obj)
+
+    def item_title(self, item):
+        return item.title
+
+    def item_pubdate(self, item):
+        return item.pub_date
+    
+
+    def item_description(self, item):
+        return "http://webcomics.io/media/"+str(item.image)
+
+
+
+
+
+
+
 def testview(request):
     return render(request, 'posts/profile.html', {
     })
         
+
+
+
 

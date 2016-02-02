@@ -60,6 +60,10 @@
 		Subscribe</a>
 	      <!-- href="/login/?next={{request.path}}" -->
 	  {% endif %}	   
+              <a class="button rss-icon"
+		 href="/user/{{post.author.username}}/feed/atom/">
+	      <i class="fi-rss large"></i></a>
+	  </span>
       {% endif %}
     
   </div>

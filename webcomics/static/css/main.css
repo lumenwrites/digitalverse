@@ -433,10 +433,16 @@ header .row, .subheader .row {
 }
 
 /* line 14, ../sass/_subheader.scss */
+.subheader .rss-icon {
+  font-size: 48px;
+  padding: 3px 10px !important;
+}
+
+/* line 18, ../sass/_subheader.scss */
 .user-info {
   float: left;
 }
-/* line 17, ../sass/_subheader.scss */
+/* line 21, ../sass/_subheader.scss */
 .user-info .avatar {
   float: left;
   width: 70px;
@@ -444,31 +450,31 @@ header .row, .subheader .row {
   margin: 10px;
   margin-left: 0;
 }
-/* line 25, ../sass/_subheader.scss */
+/* line 29, ../sass/_subheader.scss */
 .user-info .username {
   font-weight: bold;
   color: white;
   margin: 2px 0 0 0px;
   text-shadow: 1px 1px 2px black;
 }
-/* line 32, ../sass/_subheader.scss */
+/* line 36, ../sass/_subheader.scss */
 .user-info .stats {
   float: left;
   color: #d8dadb;
 }
-/* line 37, ../sass/_subheader.scss */
+/* line 41, ../sass/_subheader.scss */
 .user-info i {
   margin: 0 4px;
   color: #d8dadb;
 }
 
-/* line 44, ../sass/_subheader.scss */
+/* line 48, ../sass/_subheader.scss */
 .subheader .buttons {
   margin-top: 20px;
   float: right;
 }
 
-/* line 48, ../sass/_subheader.scss */
+/* line 52, ../sass/_subheader.scss */
 .subheader .buttons .button {
   padding: 20px;
 }
@@ -589,8 +595,13 @@ header .row, .subheader .row {
   margin: -10px -10px -10px 10px;
   border-radius: 2px;
 }
+/* line 61, ../sass/_post.scss */
+.post-footer .rss-icon {
+  font-size: 35px;
+  padding: 2px 0px 2px 8px !important;
+}
 
-/* line 65, ../sass/_post.scss */
+/* line 71, ../sass/_post.scss */
 #more-by article {
   position: relative;
   width: calc(25% - 2px) !important;
@@ -599,7 +610,7 @@ header .row, .subheader .row {
   margin: 0;
   float: left;
 }
-/* line 74, ../sass/_post.scss */
+/* line 80, ../sass/_post.scss */
 #more-by .dark-overlay {
   position: absolute;
   bottom: 0;
