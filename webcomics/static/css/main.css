@@ -424,25 +424,26 @@ header .row, .subheader .row {
   background-position-y: -320px;
   margin: 0;
   background-size: 100% auto !important;
+  background-size: cover !important;
 }
 
-/* line 9, ../sass/_subheader.scss */
+/* line 10, ../sass/_subheader.scss */
 .background {
   position: absolute;
   z-index: -10;
 }
 
-/* line 14, ../sass/_subheader.scss */
+/* line 17, ../sass/_subheader.scss */
 .subheader .rss-icon {
   font-size: 48px;
   padding: 3px 10px !important;
 }
 
-/* line 18, ../sass/_subheader.scss */
+/* line 23, ../sass/_subheader.scss */
 .user-info {
   float: left;
 }
-/* line 21, ../sass/_subheader.scss */
+/* line 26, ../sass/_subheader.scss */
 .user-info .avatar {
   float: left;
   width: 70px;
@@ -450,31 +451,31 @@ header .row, .subheader .row {
   margin: 10px;
   margin-left: 0;
 }
-/* line 29, ../sass/_subheader.scss */
+/* line 34, ../sass/_subheader.scss */
 .user-info .username {
   font-weight: bold;
   color: white;
   margin: 2px 0 0 0px;
   text-shadow: 1px 1px 2px black;
 }
-/* line 36, ../sass/_subheader.scss */
+/* line 41, ../sass/_subheader.scss */
 .user-info .stats {
   float: left;
   color: #d8dadb;
 }
-/* line 41, ../sass/_subheader.scss */
+/* line 46, ../sass/_subheader.scss */
 .user-info i {
   margin: 0 4px;
   color: #d8dadb;
 }
 
-/* line 48, ../sass/_subheader.scss */
+/* line 53, ../sass/_subheader.scss */
 .subheader .buttons {
   margin-top: 20px;
   float: right;
 }
 
-/* line 52, ../sass/_subheader.scss */
+/* line 57, ../sass/_subheader.scss */
 .subheader .buttons .button {
   padding: 20px;
 }
