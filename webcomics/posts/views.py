@@ -384,7 +384,7 @@ class UserFeed(Feed):
     
 
     def item_description(self, item):
-        return "<img src='http://webcomics.io/media/"+str(item.thumbnail)+"'/>"
+        return "<img src='http://webcomics.io/media/"+str(item.image)+"'/>"
 
 
 
@@ -414,7 +414,7 @@ class SeriesFeed(Feed):
     
 
     def item_description(self, item):
-        return "<img src='http://webcomics.io/media/"+str(item.thumbnail)+"'/>"        
+        return "<img src='http://webcomics.io/media/"+str(item.image)+"'/>"        
         # return "http://webcomics.io/media/"+str(item.image)
 
 
