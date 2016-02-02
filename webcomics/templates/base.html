@@ -36,7 +36,19 @@
     ga('create', 'UA-44003603-13', 'auto');
     ga('send', 'pageview');
 
-  </script>  
+  </script>
+
+  <!-- Feeds -->
+  {% if series %}
+  <link rel="alternate" type="application/rss+xml"
+	href="http://webcomics.io/series/{{series.slug}}/feed/atom/" />
+  {% endif %}
+
+  {% if userprofile %}
+  <link rel="alternate" type="application/rss+xml"
+	href="http://webcomics.io/user/{{userprofile.username}}/feed/atom/" />
+  {% endif %}      	      
+  
 </head>
 
 <body>
