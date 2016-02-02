@@ -90,7 +90,8 @@ class SubscriptionsView(BrowseMixin, ListView):
 class ProfileView(BrowseMixin, ListView):
     model = Post
     template_name = "posts/profile.html"
-
+    paginate_by=15
+    
     def get_queryset(self):
         qs = super(ProfileView, self).get_queryset()
         # Filter by userprofile
