@@ -541,18 +541,23 @@ header .row, .subheader .row {
 }
 
 /* line 5, ../sass/_post.scss */
+.post img {
+  width: 100%;
+}
+
+/* line 9, ../sass/_post.scss */
 .edit-post {
   float: right;
   font-size: 18px;
   margin-top: 20px;
 }
 
-/* line 12, ../sass/_post.scss */
+/* line 16, ../sass/_post.scss */
 .post .nav-buttons .button {
   width: calc(20% - 4px);
 }
 
-/* line 21, ../sass/_post.scss */
+/* line 25, ../sass/_post.scss */
 .post-footer {
   /* .username { */
   /* 	margin:10px; */
@@ -562,46 +567,46 @@ header .row, .subheader .row {
   /* 	color: #fff; */
   /* } */
 }
-/* line 22, ../sass/_post.scss */
+/* line 26, ../sass/_post.scss */
 .post-footer .stats {
   float: left;
   margin: 7px;
 }
-/* line 27, ../sass/_post.scss */
+/* line 31, ../sass/_post.scss */
 .post-footer .stats span {
   margin-right: 8px;
 }
-/* line 31, ../sass/_post.scss */
+/* line 35, ../sass/_post.scss */
 .post-footer .fi-arrow-up {
   transform: scale(1.8, 1);
 }
-/* line 42, ../sass/_post.scss */
+/* line 46, ../sass/_post.scss */
 .post-footer .button {
   margin: 0;
   font-size: 14px;
   height: 39px;
 }
-/* line 47, ../sass/_post.scss */
+/* line 51, ../sass/_post.scss */
 .post-footer .button i {
   margin-right: 8px;
 }
-/* line 52, ../sass/_post.scss */
+/* line 56, ../sass/_post.scss */
 .post-footer .upvoted, .post-footer .upvoted i {
   color: #13aff0;
 }
-/* line 55, ../sass/_post.scss */
+/* line 59, ../sass/_post.scss */
 .post-footer .avatar {
   width: 30px;
   margin: -10px -10px -10px 10px;
   border-radius: 2px;
 }
-/* line 61, ../sass/_post.scss */
+/* line 65, ../sass/_post.scss */
 .post-footer .rss-icon {
   font-size: 35px;
   padding: 2px 0px 2px 8px !important;
 }
 
-/* line 71, ../sass/_post.scss */
+/* line 75, ../sass/_post.scss */
 #more-by article {
   position: relative;
   width: calc(25% - 2px) !important;
@@ -610,7 +615,7 @@ header .row, .subheader .row {
   margin: 0;
   float: left;
 }
-/* line 80, ../sass/_post.scss */
+/* line 84, ../sass/_post.scss */
 #more-by .dark-overlay {
   position: absolute;
   bottom: 0;
