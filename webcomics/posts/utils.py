@@ -6,7 +6,7 @@ from django.db import models
 
 
 
-def hot_score(post, gravity=1.8, timebase=120):
+def hot_score(post, gravity=1.1, timebase=120): # gravity=1.8
     rating = (post.score + 1)**0.8
     now = datetime.datetime.utcnow().replace(tzinfo=utc)
     age = int((now - post.pub_date).total_seconds())/60
