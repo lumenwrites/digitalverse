@@ -404,7 +404,7 @@ class SeriesFeed(Feed):
 
 
     def items(self, obj):
-        return Post.objects.filter(published=True, series=obj)
+        return Post.objects.filter(published=True, series=obj).order_by("-pub_date")
 
     def item_title(self, item):
         return item.title
