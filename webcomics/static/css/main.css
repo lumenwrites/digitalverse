@@ -437,13 +437,14 @@ header .row, .subheader .row {
 .subheader .rss-icon {
   font-size: 48px;
   padding: 3px 10px !important;
+  padding: 3px 10px 3px 11px !important;
 }
 
-/* line 23, ../sass/_subheader.scss */
+/* line 24, ../sass/_subheader.scss */
 .user-info {
   float: left;
 }
-/* line 26, ../sass/_subheader.scss */
+/* line 27, ../sass/_subheader.scss */
 .user-info .avatar {
   float: left;
   width: 70px;
@@ -451,31 +452,31 @@ header .row, .subheader .row {
   margin: 10px;
   margin-left: 0;
 }
-/* line 34, ../sass/_subheader.scss */
+/* line 35, ../sass/_subheader.scss */
 .user-info .username {
   font-weight: bold;
   color: white;
   margin: 2px 0 0 0px;
   text-shadow: 1px 1px 2px black;
 }
-/* line 41, ../sass/_subheader.scss */
+/* line 42, ../sass/_subheader.scss */
 .user-info .stats {
   float: left;
   color: #d8dadb;
 }
-/* line 46, ../sass/_subheader.scss */
+/* line 47, ../sass/_subheader.scss */
 .user-info i {
   margin: 0 4px;
   color: #d8dadb;
 }
 
-/* line 53, ../sass/_subheader.scss */
+/* line 54, ../sass/_subheader.scss */
 .subheader .buttons {
   margin-top: 20px;
   float: right;
 }
 
-/* line 57, ../sass/_subheader.scss */
+/* line 58, ../sass/_subheader.scss */
 .subheader .buttons .button {
   padding: 20px;
 }
@@ -605,7 +606,7 @@ header .row, .subheader .row {
 /* line 65, ../sass/_post.scss */
 .post-footer .rss-icon {
   font-size: 35px;
-  padding: 2px 0px 2px 8px !important;
+  padding: 1px 0px 2px 8px !important;
 }
 
 /* line 75, ../sass/_post.scss */
