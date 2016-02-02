@@ -374,7 +374,7 @@ class UserFeed(Feed):
         return "http://webcomics.io/user/" + obj.username
     
     def items(self, obj):
-        return Post.objects.filter(published=True, author=obj)
+        return Post.objects.filter(published=True, author=obj).order_by("-pub_date")
 
     def item_title(self, item):
         return item.title
@@ -401,7 +401,6 @@ class SeriesFeed(Feed):
 
     def link(self, obj):
         return "http://webcomics.io/series/" + obj.slug
-
 
     def items(self, obj):
         return Post.objects.filter(published=True, series=obj).order_by("-pub_date")
