@@ -23,7 +23,7 @@ from .models import Series
 class SeriesView(BrowseMixin, ListView):
     model = Post
     template_name = "series/series.html"
-    paginate_by=11
+    paginate_by=16
     
     def get_queryset(self):
         qs = super(SeriesView, self).get_queryset()
