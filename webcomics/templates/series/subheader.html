@@ -2,7 +2,7 @@
 
 <div class="subheader series-subheader">
 {% if series.background %}        
-   {% thumbnail series.background "1581x132" crop="center" as im %}
+   {% thumbnail series.background "1581x132" crop="top" as im %}
        <style>
 	 .subheader {
 	    background:url({{im.url}});
