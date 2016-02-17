@@ -68,8 +68,8 @@ class BrowseMixin(object):
 
 class BrowseView(BrowseMixin, ListView):
     model = Post
-    template_name = "posts/browse.html"
-
+    template_name = "posts/browse.html"    
+    
     
 
 class SubscriptionsView(BrowseMixin, ListView):
@@ -421,7 +421,8 @@ class SeriesFeed(Feed):
 
 
 
-
+def item(request):
+    return render(request, 'store/item.html', {})
 
 def testview(request):
     return render(request, 'posts/profile.html', {

@@ -150,14 +150,18 @@
 <!-- <script src="  {% static "foundation/js/foundation.min.js" %}"></script> -->
 <script src="  {% static "foundation/bower_components/foundation-sites/dist/foundation.min.js" %}"></script>
 <script src="  {% static "foundation/bower_components/foundation-sites/js/foundation.reveal.js" %}"></script>
+<script src="  {% static "foundation/bower_components/foundation-sites/js/foundation.orbit.js" %}"></script>
 <!-- <script src="  {% static "foundation/js/foundation.dropdown.js" %}"></script> -->
 <!-- <script src="  {% static "vendor/foundation/js/foundation.orbit.js" %}"></script> -->
+<!-- <script src="http://fictionhub.io/static/js/foundation/foundation.orbit.js"></script> -->
+
 <!-- <script src="  {% static "vendor/foundation/js/foundation.reveal.js" %}"></script> -->
 
 
 
 <script>
   $(document).foundation();
+  var elem = new Foundation.Orbit($(".orbit"), {timerDelay: 15000});
 </script>
 
 </body>

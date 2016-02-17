@@ -4,6 +4,9 @@ from . import views
 
 urlpatterns = [
 
+    # Store
+    url(r'^user/rayalez/store/$', views.item),
+    
     url(r'^$', views.BrowseView.as_view(), name='post-list'),
     url(r'^browse/$', views.BrowseView.as_view(), name='post-list'),    
     url(r'^subscriptions/$', views.SubscriptionsView.as_view(), name='subscriptions'),    
@@ -28,4 +31,5 @@ urlpatterns = [
 
     url(r'^upvote/$', views.upvote),
     url(r'^unupvote/$', views.unupvote),
+    
 ]
