@@ -78,7 +78,7 @@ More by <a class="" href="/user/{{post.author.username}}">{{post.author}}</a>:
   <a href="{{post.get_absolute_url}}">  
     <article>
       {% thumbnail post.thumbnail "240x240" crop="center" as im %}      
-    <img src="/media/{{post.thumbnail}}" />
+    <img src="{{im.url}}" /> <!-- /media/{{post.thumbnail}} -->
       {% endthumbnail %}	  
     <div class="dark-overlay">
       <b style="float:left;">{{post.title}} </b>
