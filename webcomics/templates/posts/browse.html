@@ -4,68 +4,72 @@ n{% load thumbnail %}
 {% block content %}
 
 
-
-<!-- <div class="orbit" role="region"data-orbit data-use-m-u-i="false"> -->
-<!--         <ul class="orbit-container"> -->
-<!--           <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button> -->
-<!--           <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button> -->
+<div class="orbit" role="region"data-orbit data-use-m-u-i="false">
+        <ul class="orbit-container">
+          <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+          <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
 	  
-<!--           <li class="is-active orbit-slide"> -->
-<!--             <div> -->
-<!-- 	      <a href="/post/welcome"> -->
-<!-- 	      <img src="/static/img/valley.jpg" style="position:relative;width:100%;top:-320px;" /> -->
-<!-- 	      <figcaption class="orbit-caption">Featured post: &nbsp; Welcome!</figcaption> -->
-<!-- 	      </a> -->
-<!--             </div> -->
-<!--           </li> -->
+          <li class="is-active orbit-slide">
+            <div>
+	      <a href="/post/welcome">
+	      <img src="/static/img/valley.jpg" style="position:relative;width:100%;top:-320px;" />
+	      <figcaption class="orbit-caption">Featured post: &nbsp; Welcome!</figcaption>
+	      </a>
+            </div>
+          </li>
 
 
 
-<!--           <li class="is-active orbit-slide"> -->
-<!--             <div> -->
-<!--  	      <a href="/series/orange-mind"> -->
-<!--  		<\!-- -->
-<!--  	      <div class="subheader series-subheader" deluminate_imagetype="png"> -->
-<!--  		<style> -->
-<!--  		  .subheader { -->
-<!--  		  background:url(/media/cache/7a/e4/7ae4e6228a286e89e5456dce06c63fad.png); -->
-<!--  		  } -->
-<!--  		</style> -->
-<!--  		<div class="row"> -->
-<!--  		  <div class="large-6 small-6 columns user-info"> -->
-<!--  		      <img src="/media/cache/aa/fe/aafed867e404d07676ac3f6008f8f7dc.png" class="avatar"> -->
-<!--  		      <div class="left"> -->
-<!--  			<h1 class="username" style="margin-top: 16px;"> Orange Mind</h1> -->
-<!--  		      </div> -->
-<!--  		  </div> -->
-<!--  		</div> -->
-<!--  	      </div> -->
-<!--  -\-> -->
-<!--  	    <img src="/media/featured/orange-mind4.png" style="margin-top:-30px;margin-left:-10px;"/> -->
-<!--  	    <img src="http://webcomics.io/media/cache/86/50/8650602b5bb95e760ecd8ff3f9b7f012.png" -->
-<!--  		 style="position:relative;width:100%;top:-0;" /> -->
-<!--  	    <figcaption class="orbit-caption">Featured series: &nbsp; Orange Mind</figcaption> -->
+          <li class="is-active orbit-slide">
+            <div>
+ 	      <a href="/series/orange-mind">
+ 		<!--
+ 	      <div class="subheader series-subheader" deluminate_imagetype="png">
+ 		<style>
+ 		  .subheader {
+ 		  background:url(/media/cache/7a/e4/7ae4e6228a286e89e5456dce06c63fad.png);
+ 		  }
+ 		</style>
+ 		<div class="row">
+ 		  <div class="large-6 small-6 columns user-info">
+ 		      <img src="/media/cache/aa/fe/aafed867e404d07676ac3f6008f8f7dc.png" class="avatar">
+ 		      <div class="left">
+ 			<h1 class="username" style="margin-top: 16px;"> Orange Mind</h1>
+ 		      </div>
+ 		  </div>
+ 		</div>
+ 	      </div>
+ -->
+ 	    <img src="/media/featured/orange-mind4.png" style="margin-top:-30px;margin-left:-10px;"/>
+ 	    <img src="http://webcomics.io/media/cache/86/50/8650602b5bb95e760ecd8ff3f9b7f012.png"
+ 		 style="position:relative;width:100%;top:-0;" />
+ 	    <figcaption class="orbit-caption">Featured series: &nbsp; Orange Mind</figcaption>
 		
-<!--  	      </a> -->
-<!--             </div> -->
-<!--           </li> -->
+ 	      </a>
+            </div>
+          </li>
 
 
-<!--           <li class="is-active orbit-slide"> -->
-<!--             <div> -->
-<!--  	      <a href="/user/rayalez"> -->
+          <li class="is-active orbit-slide">
+            <div>
+ 	      <a href="/user/rayalez">
 
-<!--  	    <img src="/media/featured/ray-alez4.png" style="margin-top:-8px;"/> -->
-<!--  	    <img src="http://webcomics.io/media/cache/86/50/8650602b5bb95e760ecd8ff3f9b7f012.png" -->
-<!--  		 style="position:relative;width:100%;top:-0;" /> -->
-<!--  	    <figcaption class="orbit-caption">Featured artist: &nbsp; Ray Alez</figcaption> -->
+ 	    <img src="/media/featured/ray-alez4.png" style="margin-top:-8px;"/>
+ 	    <img src="http://webcomics.io/media/cache/86/50/8650602b5bb95e760ecd8ff3f9b7f012.png"
+ 		 style="position:relative;width:100%;top:-0;" />
+ 	    <figcaption class="orbit-caption">Featured artist: &nbsp; Ray Alez</figcaption>
 		
-<!--  	      </a> -->
-<!--             </div> -->
-<!--           </li> -->
+ 	      </a>
+            </div>
+          </li>
   	  
   
-<!-- </div> -->
+</div>
+
+<script>
+  var elem = new Foundation.Orbit($(".orbit"), {timerDelay: 15000});
+</script>
+
 
 <style>
   .orbit-slide {
