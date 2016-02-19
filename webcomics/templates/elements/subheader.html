@@ -57,7 +57,27 @@
               </a>
           {% endfor %}      	    
       {% endif %}            
-      
+
+
+      {% if userprofile.username == "rayalez" %}     
+      <!--  
+      <a class="button"
+	 href="http://fictionhub.io/user/rayalez/">
+	My Fiction</a>
+      -->
+
+      <!-- 
+      <a class="button"
+	 href="http://fictionhub.io/user/rayalez/">
+	Patreon</a>
+      -->
+      <!-- 
+      <a class="button"
+	 href="http://fictionhub.io/user/rayalez/">
+	Store</a>
+       -->
+      {% endif %}            
+	      
       {% if userprofile.website %}      
       <a class="button"
 	 href="{{userprofile.website}}">

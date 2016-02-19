@@ -47,6 +47,12 @@
   <div class="large-6 small-6 columns"> 
     <div class="buttons">
 
+      <!-- 
+      <a class="button purchase"
+	 href="/series/{{series.slug}}/unsubscribe">
+	Purchase (<span>$</span>5)</a>
+      -->
+
 
       <a class="button"
 	 href="/user/{{series.author.username}}">
@@ -60,7 +66,6 @@
 	
 	
       </a>
-
 
       <!-- 
       {% if series.description %}      
@@ -94,5 +99,12 @@
   </div>
 
   <div class="clearfix"></div>
+
+  {% if series.slug == "orange-mind" %}
+  <div class="tagline">
+    Random jokes. Often about technology, philosophy, and science fiction.
+    Updated every monday and friday. <!-- &nbsp; Free episodes updated every monday, premium - every friday. &nbsp; Purchase this series to support my art and get access to premium episodes! -->
+  </div>
+  {% endif %}
 </div>
 </div>

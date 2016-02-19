@@ -1,0 +1,78 @@
+
+<div id="featured">
+<div class="orbit" role="region"data-orbit data-use-m-u-i="false">
+        <ul class="orbit-container">
+          <button class="orbit-previous" aria-label="previous">
+	    <span class="show-for-sr">Previous Slide</span><i class="fa fa-chevron-left"></i>
+	  </button>
+          <button class="orbit-next" aria-label="next">
+	    <span class="show-for-sr">Next Slide</span><i class="fa fa-chevron-right"></i>
+	  </button>
+	  
+          <li class="is-active orbit-slide">
+            <div>
+	      <a href="/post/welcome">
+	      <img src="/static/img/featured/valley_cropped.png" style="width:100%;" />
+	      <figcaption class="orbit-caption">Featured post: &nbsp; Welcome!</figcaption>
+	      </a>
+            </div>
+          </li>
+
+
+
+          <li class="is-active orbit-slide">
+            <div>
+ 	      <a href="/series/orange-mind">
+ 		<!--
+ 	      <div class="subheader series-subheader" deluminate_imagetype="png">
+ 		<style>
+ 		  .subheader {
+ 		  background:url(/media/cache/7a/e4/7ae4e6228a286e89e5456dce06c63fad.png);
+ 		  }
+ 		</style>
+ 		<div class="row">
+ 		  <div class="large-6 small-6 columns user-info">
+ 		      <img src="/media/cache/aa/fe/aafed867e404d07676ac3f6008f8f7dc.png" class="avatar">
+ 		      <div class="left">
+ 			<h1 class="username" style="margin-top: 16px;"> Orange Mind</h1>
+ 		      </div>
+ 		  </div>
+ 		</div>
+ 	      </div>
+ -->
+ 	    <img src="/static/img/featured/orange-mind6.png" style="width:100%;"/>
+ 	    <figcaption class="orbit-caption">Featured series: &nbsp; Orange Mind</figcaption>
+		
+ 	      </a>
+            </div>
+          </li>
+
+
+          <li class="is-active orbit-slide">
+            <div>
+ 	      <a href="/user/rayalez">
+ 	  	<img src="/static/img/featured/ray-alez5.png" id="rayalez-img"/>
+ 	  	<figcaption class="orbit-caption">Featured artist: &nbsp; Ray Alez</figcaption>
+ 	      </a>
+            </div>
+          </li>
+
+  
+</div>
+</div>
+
+<script>
+  var elem = new Foundation.Orbit($(".orbit"), {timerDelay: 15000});
+</script>
+
+
+<style>
+  .orbit-slide {
+  height:190px;
+  }
+  #featured {
+  height:190px;  
+  }
+
+
+</style>

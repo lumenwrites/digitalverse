@@ -58,3 +58,35 @@
 .subheader .buttons .button {
     padding:20px;
 }
+
+
+/* Purchase */
+.purchase {
+    box-shadow: inset 0px 0px 0px 1px green;
+    span {
+	color: green;
+    }
+}
+
+/* Tagline */
+.tagline {
+    width: calc(100% + 80px);
+    margin: 0px -40px -20px -40px;    
+    padding: 20px;
+    color: #fefefe;
+    background-color: rgba(10, 10, 10, 0.5);
+
+}
+
+
+/* Browse */
+/* Featured */
+
+#rayalez-img {
+    margin-top:-40px;
+}
+@media screen and (orientation:portrait) {
+    #rayalez-img {
+	margin-top:0;
+    }
+}

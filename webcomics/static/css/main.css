@@ -331,8 +331,29 @@ header .row, .subheader .row {
   margin-top: -5px !important;
 }
 
-/* Main menu */
+/* Websites dropdown */
 /* line 39, ../sass/_header.scss */
+#websites-dropdown {
+  top: 80px !important;
+  width: 250px;
+  width: 190px;
+  background-color: #171A1A;
+  left: 40px !important;
+  padding: 10px 20px;
+}
+@media all {
+  /* line 39, ../sass/_header.scss */
+  #websites-dropdown {
+    left: 25px;
+  }
+}
+/* line 52, ../sass/_header.scss */
+#websites-dropdown .logo {
+  font-size: 32px;
+}
+
+/* Main menu */
+/* line 61, ../sass/_header.scss */
 #mainMenu {
   margin-top: 16px;
   text-transform: uppercase;
@@ -340,7 +361,7 @@ header .row, .subheader .row {
   font-size: 18px;
 }
 
-/* line 48, ../sass/_header.scss */
+/* line 70, ../sass/_header.scss */
 #mainMenu ul {
   margin: 0;
   padding: 0;
@@ -348,20 +369,20 @@ header .row, .subheader .row {
   margin-right: 10px;
 }
 
-/* line 55, ../sass/_header.scss */
+/* line 77, ../sass/_header.scss */
 #mainMenu a {
   margin-right: 5px;
   color: #a2a8ab;
 }
 
 /* Subnav */
-/* line 62, ../sass/_header.scss */
+/* line 84, ../sass/_header.scss */
 .subnav {
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.02);
 }
 
-/* line 67, ../sass/_header.scss */
+/* line 89, ../sass/_header.scss */
 .subnav a, .subnav span {
   color: #3d454b;
   margin-bottom: -1px;
@@ -371,12 +392,12 @@ header .row, .subheader .row {
   font-weight: 400;
 }
 
-/* line 77, ../sass/_header.scss */
+/* line 99, ../sass/_header.scss */
 .subnav a {
   margin-right: 10px;
 }
 
-/* line 81, ../sass/_header.scss */
+/* line 103, ../sass/_header.scss */
 .subnav .active {
   color: #bbbbbb;
   /* font-weight: bold; */
@@ -386,12 +407,12 @@ header .row, .subheader .row {
   margin: -10px;
 }
 
-/* line 90, ../sass/_header.scss */
+/* line 112, ../sass/_header.scss */
 .has-dropdown > a:after {
   border-top-style: none;
 }
 
-/* line 94, ../sass/_header.scss */
+/* line 116, ../sass/_header.scss */
 .categories-dropdown-button,
 .categories-dropdown-button:hover,
 .categories-dropdown-button:active,
@@ -406,12 +427,12 @@ header .row, .subheader .row {
   margin-top: -11px;
 }
 
-/* line 109, ../sass/_header.scss */
+/* line 131, ../sass/_header.scss */
 .dropdown-pane ul {
   list-style: none;
 }
 
-/* line 113, ../sass/_header.scss */
+/* line 135, ../sass/_header.scss */
 .dropdown-pane a {
   color: #a2a8ab;
   text-transform: none;
@@ -481,6 +502,39 @@ header .row, .subheader .row {
   padding: 20px;
 }
 
+/* Purchase */
+/* line 64, ../sass/_subheader.scss */
+.purchase {
+  box-shadow: inset 0px 0px 0px 1px green;
+}
+/* line 66, ../sass/_subheader.scss */
+.purchase span {
+  color: green;
+}
+
+/* Tagline */
+/* line 72, ../sass/_subheader.scss */
+.tagline {
+  width: calc(100% + 80px);
+  margin: 0px -40px -20px -40px;
+  padding: 20px;
+  color: #fefefe;
+  background-color: rgba(10, 10, 10, 0.5);
+}
+
+/* Browse */
+/* Featured */
+/* line 85, ../sass/_subheader.scss */
+#rayalez-img {
+  margin-top: -40px;
+}
+
+@media screen and (orientation: portrait) {
+  /* line 89, ../sass/_subheader.scss */
+  #rayalez-img {
+    margin-top: 0;
+  }
+}
 /* line 3, ../sass/_browse.scss */
 #browse-template article {
   position: relative;
