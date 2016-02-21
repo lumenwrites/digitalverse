@@ -61,10 +61,17 @@
   <div class="row" >
     <!-- Logo -->
     <div class="large-6 small-6 columns" >
+      {% if request.META.HTTP_HOST == "webcomics.io"  %}
+      <a href="http://lumiverse.io" class="logo">
+	web<span class="bold">comics</span>
+	<!-- <span class="beta">[beta]</span> -->
+      </a>
+      {% else %}
       <a href="http://lumiverse.io" class="logo">
 	lumi<span class="bold">verse</span>
 	<!-- <span class="beta">[beta]</span> -->
       </a>
+      {% endif %}
 
       <!-- Websites Dropdown -->
       <a data-toggle="websites-dropdown">
