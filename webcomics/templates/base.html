@@ -50,9 +50,12 @@
   {% endif %}      	      
 
   <!-- Meta -->
+  {% if request.META.HTTP_HOST == "webcomics.io"  %}  
   <link rel="shortcut icon" type="image/png" href="http://webcomics.io/static/img/favicon.png"/>
   <meta property="og:description" content="Best place to post, read, and discuss webcomics.">
-  
+  {% elif request.META.HTTP_HOST == "orangemind.io"  %}
+  <link rel="shortcut icon" type="image/png" href="http://webcomics.io/static/img/favicon.ico"/>
+  {% endif %}    
 </head>
 
 <body>
@@ -62,7 +65,7 @@
     <!-- Logo -->
     <div class="large-6 small-6 columns" >
       {% if request.META.HTTP_HOST == "webcomics.io"  %}
-      <a href="http://lumiverse.io" class="logo">
+      <a href="http://webcomics.io" class="logo">
 	web<span class="bold">comics</span>
 	<!-- <span class="beta">[beta]</span> -->
       </a>
