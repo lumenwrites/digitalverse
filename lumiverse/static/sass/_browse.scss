@@ -1,0 +1,82 @@
+#browse-template {
+
+    article {
+	position:relative;
+	width:calc(20% - 8px);
+	margin:4px;
+	float:left;
+	background: #222;
+	img {
+	    width: 100%;
+	}
+    }
+
+    @media screen and (orientation:portrait) {
+	article {
+	    width:calc(33% - 2px);
+	    width:33.3333%;		    
+	    img {
+		width: 100%;
+	    }
+	}
+
+    }
+
+    .dark-overlay {
+	position:absolute;
+	bottom:0;
+	padding:10px;
+	background:rgba(0,0,0,0.8);width:100%;
+    }
+    .card-description {
+	padding: 20px;
+	padding: 10px;
+
+	p {
+	    font-size:16px;
+	}
+    }
+    .video-stats {
+	/* width: 100%; */
+    	text-align: right;
+    float: right;
+    /* margin-top: -10px; */
+    /* margin-top: -12px;     */
+    /* margin-right: -10px;	     */
+	i {
+	    padding: 4px;
+	}
+    }
+
+    .hubs {
+	padding:8px 0;
+	margin-bottom: -22px;
+	margin-bottom: -3px;	
+	/* margin-left: -20px; */
+	/* margin-left: 8px;	 */
+    }
+}
+
+.pagination {
+    margin: 0;
+    height: 20px;
+
+
+    .page-links {
+	position:relative;
+	bottom: 0;
+	margin:0;
+
+	a {
+	    width: 100%;
+	    float: left;
+	    margin: 0;
+	    padding: 10px 0;
+	    color: $bright;
+	}
+
+	a:hover {
+	    background-color: #A2A8AB;	    
+	}
+    }
+}

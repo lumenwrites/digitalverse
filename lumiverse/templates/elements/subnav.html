@@ -1,0 +1,61 @@
+<!-- Subnav -->
+<div class="subnav">
+  <div class="row">
+    <div class="large-6 small-6 columns">
+      <div class="rank-types">
+	<a href="{{request.path}}?sorting=hot{% if category %}&category={{category}}{% endif %}">
+	  <span {% if sorting = "hot" %}class="active"{% endif %}>Hot</span>
+	</a>
+	<a href="{{request.path}}?sorting=new{% if category %}&category={{category}}{% endif %}">
+	  <span {% if sorting = "new" %}class="active"{% endif %}>New</span>
+	</a>
+	<a href="{{request.path}}?sorting=top{% if category %}&category={{category}}{% endif %}">
+	  <span {% if sorting = "top" %}class="active"{% endif %}>Top</span>
+	</a>	
+      </div>
+    </div>
+    <div class="large-6 small-6 columns">
+      <div class="rank-types right">
+	  <button class="button categories-dropdown-button" type="button"
+		  data-toggle="type-dropdown" style="margin-right:10px;">
+	    Browse: Videos
+	  </button>
+
+	  <div class="dropdown-pane bottom"
+	       id="type-dropdown"
+	       data-dropdown>
+	    <ul>
+	      <li> <a href="{{request.path}}">Videos</a> </li>
+	      <li> <a href="{{request.path}}">Subscriptions</a> </li>
+	      <li> <a href="{{request.path}}">Series</a> </li>
+	      <!-- <li> <a href="{{request.path}}">Creators</a> </li>	       -->
+	    </ul>
+	  </div>
+
+	  
+	  <button class="button categories-dropdown-button" type="button"
+		  data-toggle="categories-dropdown">
+	    {% if category %}
+	    {{category.title}}
+	    {% else %}
+	    Hub: All
+	    {% endif %}
+	  </button>
+	  <div class="dropdown-pane bottom"
+	       id="categories-dropdown"
+	       data-dropdown>
+	    <ul>
+	      <li> <a href="{{request.path}}">All</a> </li>
+	      <li> <a href="{{request.path}}">Subscribed</a> </li>	      
+	      {% for category in categories %}
+	          {% if category.posts.all %}
+	          <li> <a href="{{request.path}}?category={{category.slug}}{% if sorting %}&sorting={{sorting}}{% else %}&sorting=hot{% endif %}">
+		  {{category.title}} </a></li>
+		  {% endif %}
+	      {% endfor %}
+	    </ul>
+	  </div>
+      </div>
+    </div>
+  </div>
+</div>

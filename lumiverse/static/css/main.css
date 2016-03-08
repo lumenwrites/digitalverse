@@ -1,0 +1,1183 @@
+@import url("http://fonts.googleapis.com/css?family=Titillium+Web:400");
+@import url("http://fonts.googleapis.com/css?family=Titillium+Web:200");
+@import url("http://fonts.googleapis.com/css?family=Lato");
+@import url("http://fonts.googleapis.com/css?family=Lato:400,700,900,400italic");
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,300,400,700");
+/* line 1, ../sass/_base.scss */
+body {
+  background: #232626;
+}
+
+/* line 5, ../sass/_base.scss */
+#page {
+  min-height: 82vh;
+  background: #171717;
+}
+
+/* line 11, ../sass/_base.scss */
+.main-header {
+  background: #2f3333;
+  padding: 20px 0;
+  box-shadow: 4px 1px 4px rgba(0, 0, 0, 0.1);
+  /* z-index: 10; */
+  position: relative;
+}
+
+/* Helpers */
+/* line 3, ../sass/_helpers.scss */
+.hidden {
+  display: none;
+}
+
+/* line 7, ../sass/_helpers.scss */
+.invisible {
+  visibility: hidden;
+}
+
+/* line 11, ../sass/_helpers.scss */
+.bold {
+  font-weight: bold;
+}
+
+/* line 15, ../sass/_helpers.scss */
+.italic {
+  font-style: italic;
+}
+
+/* line 18, ../sass/_helpers.scss */
+.right {
+  float: right;
+}
+
+/* line 22, ../sass/_helpers.scss */
+.left {
+  float: left;
+}
+
+/* line 26, ../sass/_helpers.scss */
+.black {
+  color: #3d454b;
+}
+
+/* line 29, ../sass/_helpers.scss */
+.gray {
+  background: gray !important;
+}
+
+/* line 33, ../sass/_helpers.scss */
+.margins-0 {
+  margin: 0 !important;
+}
+
+/* line 37, ../sass/_helpers.scss */
+.margins-10 {
+  margin: 10px;
+}
+
+/* line 41, ../sass/_helpers.scss */
+.margins-20 {
+  margin: 20px;
+}
+
+/* line 45, ../sass/_helpers.scss */
+.margins-side-10 {
+  margin: 0 10px;
+}
+
+/* line 49, ../sass/_helpers.scss */
+.margins-side-20 {
+  margin: 0 20px;
+}
+
+/* line 53, ../sass/_helpers.scss */
+.padding-10 {
+  padding: 10px;
+}
+
+/* line 57, ../sass/_helpers.scss */
+.padding-20 {
+  padding: 20px;
+}
+
+/* line 61, ../sass/_helpers.scss */
+.grey {
+  color: #bbbbbb;
+}
+
+/* line 65, ../sass/_helpers.scss */
+.center-vertically {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /*
+  *  Where the magic happens
+  *  Centering method from CSS Tricks
+  *  http://css-tricks.com/centering-percentage-widthheight-elements/
+  */
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+/* line 81, ../sass/_helpers.scss */
+.center-text {
+  text-aign: center;
+}
+
+/* line 85, ../sass/_helpers.scss */
+.thin {
+  font-weight: 100;
+}
+
+/* line 2, ../sass/_elements.scss */
+* {
+  color: #a2a8ab;
+  font-family: 'Lato';
+}
+
+/* line 7, ../sass/_elements.scss */
+h1, h2, h3, h4, h5, h6 {
+  color: #a2a8ab;
+  font-family: 'Lato';
+  font-weight: 200;
+}
+
+/* line 14, ../sass/_elements.scss */
+h1 {
+  font-size: 36px;
+  margin-bottom: 0;
+}
+
+/* line 20, ../sass/_elements.scss */
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+/* line 26, ../sass/_elements.scss */
+h3 {
+  font-size: 26px;
+  margin: 10px 0 2px 0;
+}
+
+/* line 31, ../sass/_elements.scss */
+h4 {
+  font-size: 21px;
+  margin-top: 10px;
+  /* color: black; */
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+/* line 40, ../sass/_elements.scss */
+p {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* line 46, ../sass/_elements.scss */
+a, a:hover {
+  color: white;
+}
+
+/* line 50, ../sass/_elements.scss */
+.row {
+  max-width: 55em;
+}
+
+/* line 55, ../sass/_elements.scss */
+input {
+  background: #1a1c1c !important;
+  border: none !important;
+  padding: 10px 20px;
+  font-size: 18px !important;
+  color: #a2a8ab !important;
+}
+
+/* line 65, ../sass/_elements.scss */
+input[type="button"],
+input[type="submit"] {
+  background: #2f3333 !important;
+}
+
+/* line 71, ../sass/_elements.scss */
+textarea,
+textarea:active,
+textarea:focus {
+  background: #1a1c1c;
+  border: none;
+  height: 120px;
+  color: #a2a8ab;
+  padding: 10px;
+  font-size: 18px;
+}
+
+/* line 82, ../sass/_elements.scss */
+select {
+  background: #1a1c1c !important;
+  border: none !important;
+  padding: 0px 20px;
+  font-size: 18px !important;
+  color: #a2a8ab !important;
+}
+
+/* line 91, ../sass/_elements.scss */
+.button {
+  background: #2f3333;
+}
+
+/* line 96, ../sass/_elements.scss */
+.button:hover, .button:focus {
+  background: #2f3333;
+}
+
+/* line 100, ../sass/_elements.scss */
+hr {
+  border: solid #1a1c1c;
+  border-width: 1px 0 0;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+/* Callout */
+/* line 112, ../sass/_elements.scss */
+.callout {
+  background: #1d1f1f;
+  border: none;
+  padding: 40px;
+}
+
+/* Subscibe */
+/* line 123, ../sass/_elements.scss */
+.subscribe-popup {
+  width: 100%;
+  height: 54px;
+  background: #3d454b;
+  background: #171a1a;
+  margin-bottom: 0;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  display: none;
+}
+/* line 135, ../sass/_elements.scss */
+.subscribe-popup .subscribe-cta {
+  margin: 0 auto;
+  width: 790px;
+}
+/* line 140, ../sass/_elements.scss */
+.subscribe-popup p {
+  margin: 2px 20px 0 0;
+  float: left;
+  font-size: 18px;
+}
+/* line 146, ../sass/_elements.scss */
+.subscribe-popup input {
+  margin: 0px;
+  height: 32px;
+  width: 240px;
+  float: left;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+/* line 153, ../sass/_elements.scss */
+.subscribe-popup .button {
+  margin: 0px;
+  margin-left: 4px;
+  height: 32px;
+  float: left;
+  padding: 0;
+  width: 120px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* line 1, ../sass/_header.scss */
+header .row, .subheader .row {
+  max-width: 95% !important;
+}
+
+/* line 5, ../sass/_header.scss */
+.beta {
+  font-size: 12px;
+}
+
+/* Logo */
+/* line 13, ../sass/_header.scss */
+.logo {
+  font-family: "Titillium Web";
+  color: #3d454b;
+  font-size: 36px;
+}
+
+/* line 19, ../sass/_header.scss */
+.logo img {
+  width: 50px;
+  margin-top: -4px;
+  margin-left: -4px;
+  margin-right: -4px;
+}
+
+/* line 26, ../sass/_header.scss */
+.logo:hover,
+.logo:focus,
+.logo:visited {
+  color: #a2a8ab;
+}
+
+/* line 32, ../sass/_header.scss */
+.down-arrow {
+  width: 10px !important;
+  margin-top: -5px !important;
+}
+
+/* Websites dropdown */
+/* line 39, ../sass/_header.scss */
+#websites-dropdown {
+  top: 80px !important;
+  width: 250px;
+  width: 190px;
+  background-color: #171A1A;
+  left: 40px !important;
+  padding: 10px 20px;
+}
+@media all {
+  /* line 39, ../sass/_header.scss */
+  #websites-dropdown {
+    left: 25px;
+  }
+}
+/* line 52, ../sass/_header.scss */
+#websites-dropdown .logo {
+  font-size: 32px;
+}
+
+/* Main menu */
+/* line 61, ../sass/_header.scss */
+#mainMenu {
+  margin-top: 16px;
+  text-transform: uppercase;
+  float: right;
+  font-size: 18px;
+}
+
+/* line 70, ../sass/_header.scss */
+#mainMenu ul {
+  margin: 0;
+  padding: 0;
+  float: left;
+  margin-right: 10px;
+}
+
+/* line 77, ../sass/_header.scss */
+#mainMenu a {
+  margin-right: 5px;
+  color: #a2a8ab;
+}
+
+/* Subnav */
+/* line 84, ../sass/_header.scss */
+.subnav {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* line 89, ../sass/_header.scss */
+.subnav a, .subnav span {
+  color: #3d454b;
+  margin-bottom: -1px;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* line 99, ../sass/_header.scss */
+.subnav a {
+  margin-right: 10px;
+}
+
+/* line 103, ../sass/_header.scss */
+.subnav .active {
+  color: #bbbbbb;
+  /* font-weight: bold; */
+  background: #151515;
+  background: #2f3333;
+  padding: 10px;
+  margin: -10px;
+}
+
+/* line 112, ../sass/_header.scss */
+.has-dropdown > a:after {
+  border-top-style: none;
+}
+
+/* line 116, ../sass/_header.scss */
+.categories-dropdown-button,
+.categories-dropdown-button:hover,
+.categories-dropdown-button:active,
+.categories-dropdown-button:focus {
+  width: 200px;
+  margin: -10px;
+  color: #a2a8ab;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 10px;
+  margin-top: -11px;
+}
+
+/* line 131, ../sass/_header.scss */
+.dropdown-pane ul {
+  list-style: none;
+}
+
+/* line 135, ../sass/_header.scss */
+.dropdown-pane a {
+  color: #a2a8ab;
+  text-transform: none;
+}
+
+/* line 1, ../sass/_subheader.scss */
+.subheader {
+  padding: 20px 0;
+  background: url(/media/backgrounds/bg.jpg);
+  background-position-y: -320px;
+  margin: 0;
+  background-size: 100% auto !important;
+  background-size: cover !important;
+}
+
+/* line 10, ../sass/_subheader.scss */
+.background {
+  position: absolute;
+  z-index: -10;
+}
+
+/* line 17, ../sass/_subheader.scss */
+.subheader .rss-icon {
+  font-size: 48px;
+  padding: 3px 10px !important;
+  padding: 3px 10px 3px 11px !important;
+}
+
+/* line 24, ../sass/_subheader.scss */
+.user-info {
+  float: left;
+}
+/* line 27, ../sass/_subheader.scss */
+.user-info .avatar {
+  float: left;
+  width: 70px;
+  border-radius: 4px;
+  margin: 10px;
+  margin-left: 0;
+}
+/* line 35, ../sass/_subheader.scss */
+.user-info .username {
+  font-weight: bold;
+  color: white;
+  margin: 2px 0 0 0px;
+  text-shadow: 1px 1px 2px black;
+}
+/* line 42, ../sass/_subheader.scss */
+.user-info .stats {
+  float: left;
+  color: #d8dadb;
+}
+/* line 47, ../sass/_subheader.scss */
+.user-info i {
+  margin: 0 4px;
+  color: #d8dadb;
+}
+
+/* line 54, ../sass/_subheader.scss */
+.subheader .buttons {
+  margin-top: 20px;
+  float: right;
+}
+
+/* line 58, ../sass/_subheader.scss */
+.subheader .buttons .button {
+  padding: 20px;
+}
+
+/* Purchase */
+/* line 64, ../sass/_subheader.scss */
+.purchase {
+  box-shadow: inset 0px 0px 0px 1px green;
+}
+/* line 66, ../sass/_subheader.scss */
+.purchase span {
+  color: green;
+}
+
+/* Tagline */
+/* line 72, ../sass/_subheader.scss */
+.tagline {
+  width: 100%;
+  margin: 0 0 -20px 0;
+  padding: 20px;
+  color: #fefefe;
+  background-color: rgba(10, 10, 10, 0.5);
+}
+
+/* Browse */
+/* Featured */
+/* line 85, ../sass/_subheader.scss */
+#rayalez-img {
+  margin-top: -40px;
+}
+
+@media screen and (orientation: portrait) {
+  /* line 89, ../sass/_subheader.scss */
+  #rayalez-img {
+    margin-top: 0;
+  }
+}
+/* line 3, ../sass/_browse.scss */
+#browse-template article {
+  position: relative;
+  width: calc(20% - 8px);
+  margin: 4px;
+  float: left;
+  background: #222;
+}
+/* line 9, ../sass/_browse.scss */
+#browse-template article img {
+  width: 100%;
+}
+@media screen and (orientation: portrait) {
+  /* line 15, ../sass/_browse.scss */
+  #browse-template article {
+    width: calc(33% - 2px);
+    width: 33.3333%;
+  }
+  /* line 18, ../sass/_browse.scss */
+  #browse-template article img {
+    width: 100%;
+  }
+}
+/* line 25, ../sass/_browse.scss */
+#browse-template .dark-overlay {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+}
+/* line 31, ../sass/_browse.scss */
+#browse-template .card-description {
+  padding: 20px;
+  padding: 10px;
+}
+/* line 35, ../sass/_browse.scss */
+#browse-template .card-description p {
+  font-size: 16px;
+}
+/* line 39, ../sass/_browse.scss */
+#browse-template .video-stats {
+  /* width: 100%; */
+  text-align: right;
+  float: right;
+  /* margin-top: -10px; */
+  /* margin-top: -12px;     */
+  /* margin-right: -10px;	     */
+}
+/* line 46, ../sass/_browse.scss */
+#browse-template .video-stats i {
+  padding: 4px;
+}
+/* line 51, ../sass/_browse.scss */
+#browse-template .hubs {
+  padding: 8px 0;
+  margin-bottom: -22px;
+  margin-bottom: -3px;
+  /* margin-left: -20px; */
+  /* margin-left: 8px;	 */
+}
+
+/* line 60, ../sass/_browse.scss */
+.pagination {
+  margin: 0;
+  height: 20px;
+}
+/* line 65, ../sass/_browse.scss */
+.pagination .page-links {
+  position: relative;
+  bottom: 0;
+  margin: 0;
+}
+/* line 70, ../sass/_browse.scss */
+.pagination .page-links a {
+  width: 100%;
+  float: left;
+  margin: 0;
+  padding: 10px 0;
+  color: #a2a8ab;
+}
+/* line 78, ../sass/_browse.scss */
+.pagination .page-links a:hover {
+  background-color: #A2A8AB;
+}
+
+/* line 1, ../sass/_series.scss */
+.author-avatar {
+  margin: -20px -10px -20px 10px;
+}
+
+/* line 5, ../sass/_post.scss */
+.post img {
+  width: 100%;
+}
+
+/* line 9, ../sass/_post.scss */
+.edit-post {
+  float: right;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+/* line 16, ../sass/_post.scss */
+.post .nav-buttons .button {
+  width: calc(20% - 4px);
+}
+
+/* line 25, ../sass/_post.scss */
+.post-footer {
+  /* .username { */
+  /* 	margin:10px; */
+  /* 	padding: 8px 2px 13px 8px; */
+  /* 	background: #2f3333; */
+  /* 	margin-right: 3px; */
+  /* 	color: #fff; */
+  /* } */
+}
+/* line 26, ../sass/_post.scss */
+.post-footer .stats {
+  float: left;
+  margin: 7px;
+}
+/* line 31, ../sass/_post.scss */
+.post-footer .stats span {
+  margin-right: 8px;
+}
+/* line 35, ../sass/_post.scss */
+.post-footer .fi-arrow-up {
+  transform: scale(1.8, 1);
+}
+/* line 46, ../sass/_post.scss */
+.post-footer .button {
+  margin: 0;
+  font-size: 14px;
+  height: 39px;
+}
+/* line 51, ../sass/_post.scss */
+.post-footer .button i {
+  margin-right: 8px;
+}
+/* line 56, ../sass/_post.scss */
+.post-footer .upvoted, .post-footer .upvoted i {
+  color: #13aff0;
+}
+/* line 59, ../sass/_post.scss */
+.post-footer .avatar {
+  width: 30px;
+  margin: -10px -10px -10px 10px;
+  border-radius: 2px;
+}
+/* line 65, ../sass/_post.scss */
+.post-footer .rss-icon {
+  font-size: 35px;
+  padding: 1px 0px 2px 8px !important;
+}
+
+/* line 75, ../sass/_post.scss */
+#more-by article {
+  position: relative;
+  width: calc(25% - 2px) !important;
+  margin: 1px;
+  width: 20%;
+  margin: 0;
+  float: left;
+}
+/* line 84, ../sass/_post.scss */
+#more-by .dark-overlay {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+}
+
+/* ================ Story Comments ================ */
+/* Review rating */
+/* line 4, ../sass/_comments.scss */
+#id_comment_type {
+  width: 120px;
+  margin-right: 20px;
+}
+
+/* line 9, ../sass/_comments.scss */
+.br-wrapper-b .br-widget {
+  height: 40px;
+}
+
+/* line 12, ../sass/_comments.scss */
+.br-wrapper-b .br-widget a {
+  display: block;
+  width: 80px;
+  height: 40px;
+  float: left;
+  margin: 1px;
+}
+
+/* Submit */
+/* line 20, ../sass/_comments.scss */
+.comment-type {
+  margin: 5px;
+}
+
+/* List */
+/* line 24, ../sass/_comments.scss */
+.comments {
+  margin-left: -32px;
+}
+
+/* line 31, ../sass/_comments.scss */
+.comment-collapse {
+  color: #3d454b;
+}
+
+/* line 35, ../sass/_comments.scss */
+.comment-box {
+  /* border-left: 1px solid #DDDDDD; */
+  margin-left: 32px;
+  margin-top: 10px;
+  box-shadow: 0px 0px 3px 0px #727272;
+  padding: 10px 10px 0px 10px;
+}
+
+/* line 44, ../sass/_comments.scss */
+.comment-body {
+  padding: 10px 0px;
+}
+
+/* line 48, ../sass/_comments.scss */
+.comment-reply textarea {
+  margin-bottom: 4px;
+  height: 150px;
+}
+
+/* line 54, ../sass/_comments.scss */
+.comment-reply .button.small {
+  float: right;
+  padding: 10px;
+  margin: 8px;
+  margin-right: 0;
+}
+
+/* line 61, ../sass/_comments.scss */
+.comment-footer a {
+  color: #3d454b;
+}
+
+/* Comments voting */
+/* line 66, ../sass/_comments.scss */
+.comment-box .vote-column {
+  width: 40px;
+  float: left;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+
+/* Upvote hover is orange */
+/* line 74, ../sass/_comments.scss */
+.comment-upvote:hover {
+  color: #f76300;
+}
+
+/* line 78, ../sass/_comments.scss */
+.comment-upvote,
+.comment-downvote,
+.comment-upvote:focus,
+.comment-downvote:focus,
+.comment-upvote:visited,
+.comment-downvote:visited,
+.comment-upvote:active,
+.comment-downvote:active {
+  color: #3d454b;
+}
+
+/* Once upvoted/downvoted state */
+/* line 90, ../sass/_comments.scss */
+.comment-upvoted,
+.comment-upvoted:focus,
+.comment-upvoted:active,
+.comment-upvoted:visited {
+  color: #f76300;
+}
+
+/* line 97, ../sass/_comments.scss */
+.comment-downvoted,
+.comment-downvoted:focus,
+.comment-downvoted:active,
+.comment-downvoted:visited {
+  color: #008CBA;
+}
+
+/* The opposite button is grey */
+/* line 106, ../sass/_comments.scss */
+.comment-downvoted.comment-upvote,
+.comment-upvoted.comment-downvote,
+.comment-downvoted.comment-upvote:hover,
+.comment-upvoted.comment-downvote:hover,
+.comment-downvoted.comment-upvote:visited,
+.comment-upvoted.comment-downvote:visited {
+  color: #3d454b;
+}
+
+/* dark css */
+/* line 121, ../sass/_comments.scss */
+.editor * {
+  border: none !important;
+}
+
+/* line 125, ../sass/_comments.scss */
+.editor-toolbar {
+  display: none;
+}
+
+/* line 129, ../sass/_comments.scss */
+.f-dropdown.open:before {
+  /* display: none!important; */
+  color: black;
+}
+
+/* line 137, ../sass/_comments.scss */
+.select2-container--open .select2-dropdown--above {
+  border: none !important;
+}
+
+/* line 141, ../sass/_comments.scss */
+.select2-container--default .select2-selection--multiple {
+  border: none !important;
+}
+
+/* line 146, ../sass/_comments.scss */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  border: none !important;
+  border-radius: 0px;
+}
+
+/* line 152, ../sass/_comments.scss */
+.side-nav li a:not(.button),
+.side-nav li a:not(.button):hover,
+.side-nav li a:not(.button):focus,
+.side-nav li a:not(.button):visited {
+  color: #C4C8CA;
+}
+
+/* line 159, ../sass/_comments.scss */
+.logo {
+  font-weight: 300;
+}
+
+/* line 163, ../sass/_comments.scss */
+.logo span {
+  font-weight: normal !important;
+}
+
+/* line 167, ../sass/_comments.scss */
+.comment-box {
+  border-left: none;
+}
+
+/* line 171, ../sass/_comments.scss */
+.CodeMirror-cursor {
+  border-left: 1px solid #a2a8ab !important;
+}
+
+/* line 175, ../sass/_comments.scss */
+.CodeMirror {
+  background: #1a1c1c !important;
+}
+
+/* line 179, ../sass/_comments.scss */
+.CodeMirror, .CodeMirror-scroll {
+  min-height: 100px !important;
+}
+
+/* line 1, ../sass/_edit.scss */
+#image-filechoice-container input {
+  position: absolute;
+  z-index: -10;
+  height: 47px;
+  /* padding: 1px 20px; */
+}
+
+/* line 8, ../sass/_edit.scss */
+.delete {
+  float: left;
+}
+
+/* line 11, ../sass/_edit.scss */
+#image-clear_id, label {
+  display: none !important;
+}
+
+/* line 15, ../sass/_edit.scss */
+#upload, #upload_thumbnail, #upload_background {
+  border-radius: 0;
+  padding: 16px 18px;
+  width: 133px;
+  height: 47px;
+}
+
+/* line 22, ../sass/_edit.scss */
+.images {
+  width: 143px !important;
+}
+
+/* line 28, ../sass/_edit.scss */
+::-webkit-input-placeholder {
+  color: rgba(162, 168, 171, 0.4);
+}
+
+/* line 33, ../sass/_edit.scss */
+#image-filechoice-container {
+  position: relative;
+}
+
+/* line 37, ../sass/_edit.scss */
+#image-filechoice-container #id_image {
+  width: 100%;
+}
+
+/* line 42, ../sass/_edit.scss */
+#edit-template textarea {
+  height: 120px;
+}
+
+/* line 46, ../sass/_edit.scss */
+#edit-template .right .button {
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #a2a8ab;
+  margin: 0;
+  height: 42px;
+  margin-top: -6px;
+}
+
+/* line 55, ../sass/_edit.scss */
+#edit-template input[type="submit"] {
+  margin-top: -6px;
+}
+
+/* line 59, ../sass/_edit.scss */
+#edit-template .delete {
+  color: #a2a8ab;
+}
+
+/* Select 2 */
+/* line 66, ../sass/_edit.scss */
+select {
+  background: #1a1c1c;
+  border: 0;
+  color: #a2a8ab;
+}
+
+/* line 73, ../sass/_edit.scss */
+.select2-container--default
+.select2-selection--multiple {
+  background-color: #1a1c1c;
+}
+
+/* line 78, ../sass/_edit.scss */
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  background-color: #1a1c1c;
+}
+
+/* line 82, ../sass/_edit.scss */
+.select2-results__options {
+  background-color: #1a1c1c;
+}
+
+/* line 86, ../sass/_edit.scss */
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: rgba(119, 119, 119, 0.1) !important;
+}
+
+/* line 90, ../sass/_edit.scss */
+.select2-container--default .select2-results__option[aria-selected=true] {
+  background-color: rgba(119, 119, 119, 0.1) !important;
+}
+
+/* line 94, ../sass/_edit.scss */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: rgba(119, 119, 119, 0.1) !important;
+}
+
+/* line 98, ../sass/_edit.scss */
+.select2-container--open .select2-dropdown--above {
+  border: none !important;
+}
+
+/* line 102, ../sass/_edit.scss */
+.select2-container--default .select2-selection--multiple {
+  background-color: #1a1c1c !important;
+  border: none !important;
+}
+
+/* line 107, ../sass/_edit.scss */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #e4e4e4;
+  border: none !important;
+  border-radius: 0px;
+}
+
+/* Series */
+/* line 115, ../sass/_edit.scss */
+.set-series {
+  width: 300px;
+  float: right;
+  margin: 0;
+}
+/* line 120, ../sass/_edit.scss */
+.set-series select {
+  height: 50px;
+}
+
+/* from html */
+/* line 125, ../sass/_edit.scss */
+.select-categories {
+  width: calc(100% - 120px);
+  width: 200px;
+  width: 100%;
+  float: left;
+  margin-right: 420px;
+}
+
+/* line 134, ../sass/_edit.scss */
+.select2-container--default
+.select2-selection--multiple {
+  border-color: #cccccc;
+}
+
+/* line 139, ../sass/_edit.scss */
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+  border-color: #cccccc;
+}
+
+/* line 144, ../sass/_edit.scss */
+.select2-container--default .select2-selection--multiple {
+  height: 50px;
+}
+
+/* line 148, ../sass/_edit.scss */
+.select-categories input {
+  margin-top: -7px !important;
+}
+
+/* line 152, ../sass/_edit.scss */
+.select2-container--default .select2-selection--multiple .select2-selection__clear {
+  margin-top: 10px;
+}
+
+/* line 156, ../sass/_edit.scss */
+#id_categories {
+  list-style-type: none;
+  /* width:600px; */
+  /* width:100%;     */
+  padding: 0px;
+}
+
+@media screen and (max-width: 1300px) {
+  /* line 163, ../sass/_edit.scss */
+  #id_categories {
+    list-style-type: none;
+    /* width:400px; */
+    /* width:100%; */
+  }
+}
+/* line 171, ../sass/_edit.scss */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #e4e4e4;
+  border: none !important;
+  border-radius: 0px;
+}
+
+/* line 177, ../sass/_edit.scss */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  border-radius: 0px;
+  border: none;
+}
+
+/* line 182, ../sass/_edit.scss */
+.select2-container--default .select2-search--inline .select2-search__field {
+  box-shadow: none;
+}
+
+/* line 187, ../sass/_edit.scss */
+.select2-container--open .select2-dropdown--below {
+  border: none;
+}
+
+/* line 191, ../sass/_edit.scss */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #e4e4e4;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: default;
+  float: left;
+  margin-right: 5px;
+  margin-top: 8px !important;
+  padding: 4px 10px !important;
+}
+
+/* line 202, ../sass/_edit.scss */
+.select2-container--default .select2-selection--multiple .select2-selection__clear {
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+  margin-top: 9px !important;
+  margin-right: 10px !important;
+  font-size: 20px;
+}
+
+/* Footer */
+/* line 3, ../sass/_footer.scss */
+footer {
+  height: 54px;
+}
+
+/* line 7, ../sass/_footer.scss */
+footer, footer li, footer p {
+  background-color: #333a42;
+  color: #babfc2;
+}
+
+/* line 12, ../sass/_footer.scss */
+footer a {
+  color: #babfc2;
+}
+
+/* line 16, ../sass/_footer.scss */
+footer h4 {
+  color: #babfc2;
+  text-transform: uppercase;
+  font-size: medium;
+  font-weight: normal;
+}
+
+/* line 24, ../sass/_footer.scss */
+footer {
+  background: #171a1a;
+  z-index: 1;
+}
+
+/* line 33, ../sass/main.scss */
+.page {
+  min-height: 82vh;
+}
