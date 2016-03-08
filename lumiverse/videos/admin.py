@@ -1,17 +1,14 @@
 from django.contrib import admin
 
-from .models import Post, Image
+from .models import Video
 
 
-class PostAdmin(admin.ModelAdmin):
+class VideoAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',), }
     search_fields = ['title','body']
 
-class ImageAdmin(admin.ModelAdmin):
-    pass
+admin.site.register(Video, VideoAdmin)
 
-admin.site.register(Post, PostAdmin)
-admin.site.register(Image, ImageAdmin)
 
 
 

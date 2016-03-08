@@ -23,8 +23,8 @@ from comments.models import Comment
 from series.models import Series
 from categories.models import Category
 
-from .forms import PostForm
-from .models import Post, Image
+from .forms import VideoForm
+from .models import Video
 
 from .utils import rank_hot
 
@@ -67,29 +67,29 @@ class BrowseMixin(object):
 
 
 class BrowseView(BrowseMixin, ListView):
-    model = Post
-    template_name = "posts/browse.html"    
+    model = Video
+    template_name = "videos/browse.html"    
     
     
 
 class SubscriptionsView(BrowseMixin, ListView):
-    model = Post
-    template_name = "posts/browse.html"
+    model = Video
+    template_name = "videos/browse.html"
 
     def get_queryset(self):
         qs = super(SubscriptionsView, self).get_queryset()        
         # Filter Subscriptions
         subscribed = self.request.user.subscribed.all()
         # qs = qs.filter(author__in=subscribed)
-        qs = [post for post in qs if post.author in subscribed]
+        qs = [video for video in qs if video.author in subscribed]
 
         return qs
     
     
     
 class ProfileView(BrowseMixin, ListView):
-    model = Post
-    template_name = "posts/profile.html"
+    model = Video
+    template_name = "videos/profile.html"
     paginate_by=15
     
     def get_queryset(self):
@@ -97,7 +97,7 @@ class ProfileView(BrowseMixin, ListView):
         # Filter by userprofile
         userprofile = User.objects.get(username=self.kwargs['username'])
         # qs = qs.filter(author=userprofile)
-        qs = [post for post in qs if post.author == userprofile]
+        qs = [video for video in qs if video.author == userprofile]
 
         return qs
 
@@ -109,46 +109,46 @@ class ProfileView(BrowseMixin, ListView):
         context['userprofile'] = userprofile
 
         view_count = 0
-        for post in userprofile.posts.all():
-            view_count += post.views
+        for video in userprofile.videos.all():
+            view_count += video.views
         context['view_count'] = view_count
             
         return context
     
 
     
-class PostDetailView(DetailView):
-    model = Post
-    template_name = "posts/post.html"
+class VideoDetailView(DetailView):
+    model = Video
+    template_name = "videos/video.html"
     
     def get_context_data(self, **kwargs):
-        context = super(PostDetailView, self).get_context_data(**kwargs)
+        context = super(VideoDetailView, self).get_context_data(**kwargs)
         context['now'] = timezone.now()
 
-        post = self.get_object()
-        if not self.request.user.is_staff and self.request.user != post.author:
-            post.views +=1
-            post.save()
+        video = self.get_object()
+        if not self.request.user.is_staff and self.request.user != video.author:
+            video.views +=1
+            video.save()
 
 
-        qs = super(PostDetailView, self).get_queryset()
-        other_posts = qs.filter(series=post.series)
-        context['first'] = other_posts.order_by('pub_date')[0]
-        context['prev'] = post.prev_by_author()
-        context['next'] = post.next_by_author()        
-        context['last'] = other_posts.order_by('-pub_date')[0]
+        qs = super(VideoDetailView, self).get_queryset()
+        other_videos = qs.filter(series=video.series)
+        context['first'] = other_videos.order_by('pub_date')[0]
+        context['prev'] = video.prev_by_author()
+        context['next'] = video.next_by_author()        
+        context['last'] = other_videos.order_by('-pub_date')[0]
 
 
-        more_by = Post.objects.filter(author=post.author, published=True).order_by('?')[:4]
+        more_by = Video.objects.filter(author=video.author, published=True).order_by('?')[:4]
         context['more_by'] = more_by
-        # next_post = post.get_next_by_pub_date(post, author=post.author)
-        # next_post = next_or_prev_in_order(self, True, other_posts)        
+        # next_video = video.get_next_by_pub_date(video, author=video.author)
+        # next_video = next_or_prev_in_order(self, True, other_videos)        
 
 
         ##### COMMENTS ####
         context['form'] = CommentForm()
 
-        top_lvl_comments = Comment.objects.filter(post = post, parent = None)
+        top_lvl_comments = []# Comment.objects.filter(post = video, parent = None)
 
         rankby = "new"
         # Rank comments
@@ -161,7 +161,7 @@ class PostDetailView(DetailView):
         # else:
         #     ranked_comments = []
 
-        ranked_comments = top_lvl_comments.order_by('-pub_date')
+        ranked_comments = top_lvl_comments # .order_by('-pub_date')
 
         # Nested comments
         comments = list(get_comment_list(ranked_comments, rankby=rankby))
@@ -182,153 +182,153 @@ class PostDetailView(DetailView):
 
 
 
-def post_create(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES, user=request.user)
+def video_create(request):
+    if request.method == 'VIDEO':
+        form = VideoForm(request.VIDEO, request.FILES, user=request.user)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            post.categories = form.cleaned_data['categories']
-            post.save()
+            video = form.save(commit=False)
+            video.author = request.user
+            video.save()
+            video.categories = form.cleaned_data['categories']
+            video.save()
             
             # Upload Images
             for image in form.cleaned_data['images']:
-                Image.objects.create(image=image, post=post)       
+                Image.objects.create(image=image, video=video)       
             # Create Thumbnail
-            image = post.images.all()[0]
+            image = video.images.all()[0]
             resized = get_thumbnail(image.image, "400x400", crop='center', quality=99)
-            post.thumbnail.save(resized.name, ContentFile(resized.read()), True)            
+            video.thumbnail.save(resized.name, ContentFile(resized.read()), True)            
 
-            return HttpResponseRedirect('/post/'+post.slug+'/edit')
+            return HttpResponseRedirect('/video/'+video.slug+'/edit')
     else:
-        form = PostForm(user=request.user)
-    return render(request, 'posts/edit.html', {
+        form = VideoForm(user=request.user)
+    return render(request, 'videos/edit.html', {
         'form':form,
         'creating': True
     })
 
-def post_edit(request,slug):
-    post = Post.objects.get(slug=slug)
+def video_edit(request,slug):
+    video = Video.objects.get(slug=slug)
 
-    if request.user != post.author and not request.user.is_staff:
+    if request.user != video.author and not request.user.is_staff:
         return HttpResponseRedirect('/')        
     
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES, instance=post,user=request.user)
+    if request.method == 'VIDEO':
+        form = VideoForm(request.VIDEO, request.FILES, instance=video,user=request.user)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.categories = form.cleaned_data['categories']
-            post.save()
+            video = form.save(commit=False)
+            video.author = request.user
+            video.categories = form.cleaned_data['categories']
+            video.save()
 
             if form.cleaned_data['images']:
                 # Delete existing images
-                for image in post.images.all():
+                for image in video.images.all():
                     image.delete()
                 # Upload Images
                 for image in form.cleaned_data['images']:
-                    Image.objects.create(image=image, post=post)       
+                    Image.objects.create(image=image, video=video)       
 
-            return HttpResponseRedirect('/post/'+post.slug+'/edit')
+            return HttpResponseRedirect('/video/'+video.slug+'/edit')
     else:
-        form = PostForm(instance=post,user=request.user)
-    return render(request, 'posts/edit.html', {
+        form = VideoForm(instance=video,user=request.user)
+    return render(request, 'videos/edit.html', {
         'form':form,
-        'post':post
+        'video':video
     })
 
 
-# class PostCreate(CreateView):
-#     model = Post
-#     form_class = PostForm
-#     template_name = 'posts/edit.html'
+# class VideoCreate(CreateView):
+#     model = Video
+#     form_class = VideoForm
+#     template_name = 'videos/edit.html'
     
 #     success_url = "/"
-#     template_name = 'posts/edit.html'
+#     template_name = 'videos/edit.html'
 
 #     def form_valid(self, form):
 #        user = self.request.user
 #        form.instance.author = user
 #        images = form.instance.images
 
-#        # post = form.save()
-#        return super(PostCreate, self).form_valid(form)
+#        # video = form.save()
+#        return super(VideoCreate, self).form_valid(form)
     
 
 
 #     def get_success_url(self):
-#         success_url = "/post/"+self.object.slug+"/edit"
+#         success_url = "/video/"+self.object.slug+"/edit"
         
-#         post = Post.objects.get(slug=self.object.slug)
+#         video = Video.objects.get(slug=self.object.slug)
 #         image = Image.objects.create(image=form.cleaned_data['image'])
-#         image.post = post # self.object
+#         image.video = video # self.object
 #         image.save()
         
 #         return success_url
 #         # return self.request.path    
 
 #     def get_form_kwargs(self):
-#         kwargs = super(PostCreate, self).get_form_kwargs()
+#         kwargs = super(VideoCreate, self).get_form_kwargs()
 #         kwargs.update({'user': self.request.user})
 #         return kwargs    
 
 #     def get_context_data(self, **kwargs):
-#         context = super(PostCreate, self).get_context_data(**kwargs)
+#         context = super(VideoCreate, self).get_context_data(**kwargs)
 #         context['creating'] = True
 #         return context    
-#    # return redirect("/post/"+post.slug+"/edit")
+#    # return redirect("/video/"+video.slug+"/edit")
 
 
-# class PostEdit(UpdateView):
-#     model = Post
+# class VideoEdit(UpdateView):
+#     model = Video
 #     # fields = ["title","image","thumbnail","description","categories"]
-#     form_class = PostForm
+#     form_class = VideoForm
 #     # success_url = "/"
-#     template_name = 'posts/edit.html'
+#     template_name = 'videos/edit.html'
 
 #     def get_success_url(self):
 #         return self.request.path
 
 #     def get_form_kwargs(self):
-#         kwargs = super(PostEdit, self).get_form_kwargs()
+#         kwargs = super(VideoEdit, self).get_form_kwargs()
 #         kwargs.update({'user': self.request.user})
 #         return kwargs    
         
 
 
-def post_publish(request, slug):
-    post = Post.objects.get(slug=slug)
+def video_publish(request, slug):
+    video = Video.objects.get(slug=slug)
 
     # throw him out if he's not an author    
-    if request.user != post.author:
+    if request.user != video.author:
         return HttpResponseRedirect('/')        
 
-    post.published = True
-    post.save()
+    video.published = True
+    video.save()
 
-    return HttpResponseRedirect('/post/'+post.slug+'/edit')
+    return HttpResponseRedirect('/video/'+video.slug+'/edit')
 
 
-def post_unpublish(request, slug):
-    post = Post.objects.get(slug=slug)
+def video_unpublish(request, slug):
+    video = Video.objects.get(slug=slug)
 
     # throw him out if he's not an author
-    if request.user != post.author:
+    if request.user != video.author:
         return HttpResponseRedirect('/')        
 
-    post.published = False
-    post.save()
-    return HttpResponseRedirect('/post/'+post.slug+'/edit')
+    video.published = False
+    video.save()
+    return HttpResponseRedirect('/video/'+video.slug+'/edit')
 
-def post_delete(request, slug):
-    post = Post.objects.get(slug=slug)
+def video_delete(request, slug):
+    video = Video.objects.get(slug=slug)
 
     # throw him out if he's not an author
-    if request.user != post.author:
+    if request.user != video.author:
         return HttpResponseRedirect('/')        
 
-    post.delete()
+    video.delete()
     return HttpResponseRedirect('/')
 
 
@@ -336,24 +336,24 @@ def post_delete(request, slug):
 
 # Voting
 def upvote(request):
-    post = get_object_or_404(Post, id=request.POST.get('post-id'))
-    post.score += 1
-    post.save()
-    post.author.karma += 1
-    post.author.save()
+    video = get_object_or_404(Video, id=request.VIDEO.get('video-id'))
+    video.score += 1
+    video.save()
+    video.author.karma += 1
+    video.author.save()
     user = request.user
-    user.upvoted.add(post)
+    user.upvoted.add(video)
     user.save()
     return HttpResponse()
 
 def unupvote(request):
-    post = get_object_or_404(Post, id=request.POST.get('post-id'))
-    post.score -= 1
-    post.save()
-    post.author.karma = 1
-    post.author.save()
+    video = get_object_or_404(Video, id=request.VIDEO.get('video-id'))
+    video.score -= 1
+    video.save()
+    video.author.karma = 1
+    video.author.save()
     user = request.user
-    user.upvoted.remove(post)
+    user.upvoted.remove(video)
     user.save()
     return HttpResponse()
         
@@ -361,7 +361,7 @@ def unupvote(request):
 
 # rss
 class UserFeed(Feed):
-    title = "Django Zone latests posts"
+    title = "Django Zone latests videos"
     link = "/"
     feed_type = Atom1Feed
 
@@ -375,7 +375,7 @@ class UserFeed(Feed):
         return "http://webcomics.io/user/" + obj.username
     
     def items(self, obj):
-        return Post.objects.filter(published=True, author=obj).order_by("-pub_date")
+        return Video.objects.filter(published=True, author=obj).order_by("-pub_date")
 
     def item_title(self, item):
         return item.title
@@ -390,7 +390,7 @@ class UserFeed(Feed):
 
 
 class SeriesFeed(Feed):
-    title = "Django Zone latests posts"
+    title = "Django Zone latests videos"
     link = "/"
     feed_type = Atom1Feed
 
@@ -404,7 +404,7 @@ class SeriesFeed(Feed):
         return "http://webcomics.io/series/" + obj.slug
 
     def items(self, obj):
-        return Post.objects.filter(published=True, series=obj).order_by("-pub_date")
+        return Video.objects.filter(published=True, series=obj).order_by("-pub_date")
 
     def item_title(self, item):
         return item.title
@@ -425,7 +425,7 @@ def item(request):
     return render(request, 'store/item.html', {})
 
 def testview(request):
-    return render(request, 'posts/profile.html', {
+    return render(request, 'videos/profile.html', {
     })
         
 

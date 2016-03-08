@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row page" id="edit-template">
+  <div class="large-12 small-12 columns">
+    <br/>
+    {{ form.errors }}
+    <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+      {{ form.title }}
+
+      
+      {% if not post.images.all %}      
+      <div id="image-filechoice-container">
+	<input id="id_image" name="images" type="file" multiple>
+      </div>
+      <a id="upload" class="images small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
+      
+      {% else %}
+
+      <!-- Image -->
+      <div style="">
+	{% for image in post.images.all %}
+	<img src="/media/{{image.image}}" style="margin:auto;    width: 100%;
+						       /*max-height:450px;*/"/><br/>
+	{% endfor %}
+	Replace Image:
+	<div id="image-filechoice-container">
+	  <input id="id_image" name="images" type="file" multiple>
+	</div>
+	<a id="upload" class="images small button">
+	  <i class="fa fa-upload"></i>&nbsp; Image</a>
+      </div>
+      <!-- Thumbnail -->
+      <div style="float:right;width:300px;">
+	<img src="/media/{{post.thumbnail}}" style="margin:auto;
+						    max-width:300px;
+						    max-height:300px;"/><br/>
+	<!-- Replace Thumbnail --><!-- <br/>(square, at least 500x500px): -->
+	<div id="image-filechoice-container">      
+	  <input id="id_thumbnail" name="thumbnail" type="file"> {# {{form.thumbnail}}#}
+	</div>
+	<a id="upload_thumbnail" class="small button">
+	  <i class="fa fa-upload"></i>&nbsp; Thumbnail</a>
+      </div>
+
+      {% endif %}      
+
+      <!-- {{ form.thumbnail }} -->
+
+      {% if creating %}
+      <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10"></textarea>
+      {% else %}      
+      <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10" style="float:left; width: calc(100% - 310px);height:348px;">{{post.description}}</textarea>
+      {% endif %}
+      
+
+      <div class="clearfix"></div>
+      <div class="set-categories"
+	   style="{% if user.series.all %}width: calc(100% - 310px);float:left{% endif %}">
+	{{form.categories}}
+      </div>
+
+      <!-- <input type="text" placeholder="category"> -->
+      <!-- <input id="id_series" maxlength="256" name="series" type="text" -->
+      <!-- 	     style="float:right;width:36%;" -->
+      <!-- 	     placeholder="series"> -->
+
+
+      {% if user.series.all %}      
+      <div class="set-series">
+	  {{form.series}}      
+      </div>
+      {% endif %}            
+
+      <div class="clearfix"></div>      
+      <br/>
+
+      {% if not creating %}
+      <a class="button delete" href="/post/{{post.slug}}/delete">Delete</a>
+      {% endif %}
+      
+      <div class="right">
+	{% if not creating %}
+    	    {% if not post.published %}
+            <a class="button" href="/post/{{post.slug}}">Preview</a>	
+            <a class="button" href="/post/{{post.slug}}/publish">Publish</a>
+            {% else %}
+            <a class="button" href="/post/{{post.slug}}">View</a>		    
+            <a class="button" href="/post/{{post.slug}}/unpublish">Unpublish</a>	
+            {% endif %}
+        {% endif %}
+	<input type="submit" value="Save" />
+	<br/>
+      </div>
+      
+    </form>
+
+  </div>
+</div>
+
+
+<!-- Select2 -->
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
+<script>
+    $(document).ready(function(){    
+	$('#upload').click(function(){
+	    $('#id_image').click();
+	});
+
+	$('#upload_thumbnail').click(function(){
+	    $('#id_thumbnail').click();
+    });
+
+    // Multiselect
+    $("#id_categories").select2({
+	placeholder: "Select categories", // (maximum 4)
+	allowClear: true,
+	maximumSelectionLength: 2    
+    })
+    
+	
+    })
+</script>
+
+{% endblock content %}

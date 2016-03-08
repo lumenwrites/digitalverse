@@ -7,8 +7,8 @@ urlpatterns = [
     # Store
     url(r'^user/rayalez/store/$', views.item),
     
-    url(r'^$', views.BrowseView.as_view(), name='post-list'),
-    url(r'^browse/$', views.BrowseView.as_view(), name='post-list'),    
+    url(r'^$', views.BrowseView.as_view(), name='video-list'),
+    url(r'^browse/$', views.BrowseView.as_view(), name='video-list'),    
     url(r'^subscriptions/$', views.SubscriptionsView.as_view(), name='subscriptions'),    
 
 
@@ -18,16 +18,16 @@ urlpatterns = [
     
 
 
-    # url(r'^upload/$', views.PostCreate.as_view(), name='post-create'),
-    url(r'^upload/$', views.post_create, name='post-create'),    
-    # url(r'^post/(?P<slug>[^\.]+)/edit$', views.PostEdit.as_view()),
-    url(r'^post/(?P<slug>[^\.]+)/edit$', views.post_edit),    
-    url(r'^post/(?P<slug>[^\.]+)/delete$', views.post_delete),    
-    url(r'^post/(?P<slug>[^\.]+)/publish$', views.post_publish),
-    url(r'^post/(?P<slug>[^\.]+)/unpublish$', views.post_unpublish),        
-    url(r'^post/(?P<slug>[^\.]+)$', views.PostDetailView.as_view(), name='post-detail'),
+    # url(r'^upload/$', views.VideoCreate.as_view(), name='video-create'),
+    url(r'^upload/$', views.video_create, name='video-create'),    
+    # url(r'^video/(?P<slug>[^\.]+)/edit$', views.VideoEdit.as_view()),
+    url(r'^video/(?P<slug>[^\.]+)/edit$', views.video_edit),    
+    url(r'^video/(?P<slug>[^\.]+)/delete$', views.video_delete),    
+    url(r'^video/(?P<slug>[^\.]+)/publish$', views.video_publish),
+    url(r'^video/(?P<slug>[^\.]+)/unpublish$', views.video_unpublish),        
+    url(r'^video/(?P<slug>[^\.]+)$', views.VideoDetailView.as_view(), name='video-detail'),
 
-    url(r'^test/$', views.testview, name='post-create'),
+    url(r'^test/$', views.testview, name='video-create'),
 
     url(r'^upvote/$', views.upvote),
     url(r'^unupvote/$', views.unupvote),
