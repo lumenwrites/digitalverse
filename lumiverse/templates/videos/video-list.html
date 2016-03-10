@@ -20,7 +20,17 @@
 
 
       <div class="card-description">
-	<b style="float:left; font-size:18px;color:white;width:100%;">{{video.title}} </b><br/>
+      {% if user == post.author or user.is_staff  %}
+      <a class="edit-post right margins-0" href="/video/{{video.slug}}/edit">
+	<i class="fa fa-pencil"></i></a>
+      {% endif %}
+
+      <b style="float:left; font-size:18px;color:white;width:100%;">{{video.title}} </b>
+      {% if not post.published %}        
+      <span class="">[unpublished]</span>
+      {% endif %}        
+      <br/>
+	
 	<!-- <p>[description]</p> -->
 	<!-- <p style="margin-bottom: -10px;"> -->
 	<!-- by <a style="color:#0b7cac;">Ray Alez</a> -->

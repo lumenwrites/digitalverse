@@ -577,6 +577,11 @@ header .row, .subheader .row {
   font-size: 16px;
 }
 /* line 39, ../sass/_browse.scss */
+#browse-template .card-description .edit-post {
+  position: absolute;
+  right: 10px;
+}
+/* line 45, ../sass/_browse.scss */
 #browse-template .video-stats {
   /* width: 100%; */
   text-align: right;
@@ -585,11 +590,11 @@ header .row, .subheader .row {
   /* margin-top: -12px;     */
   /* margin-right: -10px;	     */
 }
-/* line 46, ../sass/_browse.scss */
+/* line 52, ../sass/_browse.scss */
 #browse-template .video-stats i {
   padding: 4px;
 }
-/* line 51, ../sass/_browse.scss */
+/* line 57, ../sass/_browse.scss */
 #browse-template .hubs {
   padding: 8px 0;
   margin-bottom: -22px;
@@ -598,18 +603,18 @@ header .row, .subheader .row {
   /* margin-left: 8px;	 */
 }
 
-/* line 60, ../sass/_browse.scss */
+/* line 66, ../sass/_browse.scss */
 .pagination {
   margin: 0;
   height: 20px;
 }
-/* line 65, ../sass/_browse.scss */
+/* line 71, ../sass/_browse.scss */
 .pagination .page-links {
   position: relative;
   bottom: 0;
   margin: 0;
 }
-/* line 70, ../sass/_browse.scss */
+/* line 76, ../sass/_browse.scss */
 .pagination .page-links a {
   width: 100%;
   float: left;
@@ -617,7 +622,7 @@ header .row, .subheader .row {
   padding: 10px 0;
   color: #a2a8ab;
 }
-/* line 78, ../sass/_browse.scss */
+/* line 84, ../sass/_browse.scss */
 .pagination .page-links a:hover {
   background-color: #A2A8AB;
 }
