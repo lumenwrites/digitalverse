@@ -189,6 +189,7 @@ def video_create(request):
             video = form.save(commit=False)
             video.author = request.user
             video.video = form.cleaned_data['video']
+            video.video_url = form.cleaned_data['video_url']
             video.save()
             video.categories = form.cleaned_data['categories']
             video.save()
@@ -221,6 +222,7 @@ def video_edit(request,slug):
             video = form.save(commit=False)
             video.author = request.user
             video.video = form.cleaned_data['video']
+            video.video_url = form.cleaned_data['video_url']
             video.categories = form.cleaned_data['categories']
             video.save()
 

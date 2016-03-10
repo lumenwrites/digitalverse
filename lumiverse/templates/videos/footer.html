@@ -74,19 +74,22 @@
 More by <a class="" href="/user/{{video.author.username}}">{{video.author}}</a>:
 
 <div id="more-by">
-{% for post in more_by %}
+{% for video in more_by %}
   <a href="{{video.get_absolute_url}}">  
-    <article>
-      {% thumbnail video.thumbnail "240x240" crop="center" as im %}      
-    <img src="{{im.url}}" /> <!-- /media/{{video.thumbnail}} -->
-      {% endthumbnail %}	  
-    <div class="dark-overlay">
-      <b style="float:left;">{{video.title}} </b>
-      {% if user == video.author or user.is_staff  %}
-      <a class="edit-post margins-0" href="/post/{{video.slug}}/edit">
-	<i class="fa fa-pencil"></i></a>
-      {% endif %}
-    </div>
+    <article style="background: #222;">
+
+    {% if video.video_url %}
+        <img src="http://img.youtube.com/vi/{{video.video_url}}/mqdefault.jpg"
+	     width="320" height="180"/>
+
+    {% else %}
+         {% thumbnail video.thumbnail "320x180" crop="center" as im %}      
+         <img src="{{im.url}}" /> <!-- /media/{{video.thumbnail}} -->
+         {% endthumbnail %}
+    {% endif %}     
+         <div class="card-description">
+	   <b style="float:left; font-size:14px;color:white;width:100%;">{{video.title}} </b>
+	 </div>
     </article>
   </a>
   {% endfor %}

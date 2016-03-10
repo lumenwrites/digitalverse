@@ -1,6 +1,5 @@
 Django
 sorl-thumbnail
-django-multiupload
 markdown
 Pillow
 
@@ -9,5 +8,4 @@ redis
 django-redis-cache 
 uwsgi
 
-
-
+ffvideo

@@ -98,21 +98,32 @@
 	      </a>
 	  {% endif %}
 	      
-	  <button class="categories-dropdown-button vertical" type="button"
-		  data-toggle="type-dropdown"
-		  style="margin-right:10px;/*width:200px;*/
-		  /*width: auto;*/
-		  padding: -30px!important;
-		  margin: 0;">
+	  <a class="categories-dropdown-button vertical" type="button"
+	     data-toggle="type-dropdown"
+	     style="margin-right:10px;/*width:200px;*/
+		    /*width: auto;*/
+		    padding: -30px!important;
+		    margin: 0;">
 	    {{user.username}}
 
  	    {% thumbnail user.avatar "40x40" crop="center" as im %}
    	    <img src="{{im.url}}" class="avatar"
 		 style="width: 25px;margin: -10px 0px -6px 4px;"/><br/>
 	    {% endthumbnail %}	  
-	  </button>
+	  </a>
 
-	  <div class="dropdown-pane bottom"
+	  <style>
+	    .user-dropdown {
+	    position:absolute!important;
+	    top: 68px!important;
+	    left:auto!important;	    
+	    right:0!important;
+
+	    }
+
+	  </style>
+
+	  <div class="dropdown-pane bottom  user-dropdown"
 	       id="type-dropdown"
 	       data-dropdown
 	       style="position: absolute; left:0!important;
@@ -201,7 +212,7 @@
 
 <!-- videojs -->
  <script src="http://vjs.zencdn.net/5.8.0/video.js"></script>
-
+<script src="  {% static "videojs/Youtube.min.js" %}"></script>
 <script>
   $(document).foundation();
   var elem = new Foundation.Orbit($(".orbit"), {timerDelay: 15000});

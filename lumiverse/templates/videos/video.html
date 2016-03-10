@@ -17,12 +17,23 @@
       </header>
       
       <!-- Post Body -->
-
+      {% if video.video_url %}
+      <video
+	 id="video"
+	 class="video-js vjs-default-skin  vjs-big-play-centered"
+	 controls
+	 width="850" height="477"
+	 data-setup='{ "techOrder": ["youtube"],
+	 "sources": [{ "type": "video/youtube",
+	 "src": "https://www.youtube.com/watch?v={{video.video_url}}?modestbranding=1"}] }'>
+      </video>
+      {% else %}
       <video id="video" class="video-js vjs-default-skin vjs-big-play-centered"
 	     controls preload="auto" width="850" height="auto"
 	     poster="/media/{{video.thumbnail}}" data-setup="{}">
 	<source src="/media/{{video.video}}" type='video/mp4'>
       </video>
+      {% endif %}          
 
 
       <div class="clearfix"></div>

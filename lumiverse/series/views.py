@@ -9,8 +9,8 @@ from django.utils import timezone
 
 from profiles.models import User 
 
-from posts.models import Post
-from posts.views import BrowseMixin
+from videos.models import Video
+from videos.views import BrowseMixin
 
 from .forms import SeriesForm
 from .models import Series
@@ -21,7 +21,7 @@ from .models import Series
 
 
 class SeriesView(BrowseMixin, ListView):
-    model = Post
+    model = Video
     template_name = "series/series.html"
     paginate_by=16
     
@@ -29,9 +29,9 @@ class SeriesView(BrowseMixin, ListView):
         qs = super(SeriesView, self).get_queryset()
         qs = sorted(qs, key=lambda x: x.pub_date, reverse=False)
         # qs.reverse()
-        # Filter Posts
+        # Filter Videos
         series = Series.objects.get(slug=self.kwargs['slug'])
-        qs = [post for post in qs if post.series == series]
+        qs = [video for video in qs if video.series == series]
 
         return qs
 
@@ -42,13 +42,13 @@ class SeriesView(BrowseMixin, ListView):
         context['series'] = series
 
         view_count = 0
-        for post in series.posts.all():
-            view_count += post.views
+        for video in series.videos.all():
+            view_count += video.views
         context['view_count'] = view_count
 
         upvotes_count = 0
-        for post in series.posts.all():
-            upvotes_count += post.score
+        for video in series.videos.all():
+            upvotes_count += video.score
         context['upvotes_count'] = upvotes_count
         
         return context
@@ -112,29 +112,29 @@ class SeriesEdit(UpdateView):
         
 
 
-# def post_publish(request, slug):
-#     post = Post.objects.get(slug=slug)
+# def video_publish(request, slug):
+#     video = Video.objects.get(slug=slug)
 
 #     # throw him out if he's not an author    
-#     if request.user != post.author:
+#     if request.user != video.author:
 #         return HttpResponseRedirect('/')        
 
-#     post.published = True
-#     post.save()
+#     video.published = True
+#     video.save()
 
-#     return HttpResponseRedirect('/post/'+post.slug+'/edit')
+#     return HttpResponseRedirect('/video/'+video.slug+'/edit')
 
 
-# def post_unpublish(request, slug):
-#     post = Post.objects.get(slug=slug)
+# def video_unpublish(request, slug):
+#     video = Video.objects.get(slug=slug)
 
 #     # throw him out if he's not an author
-#     if request.user != post.author:
+#     if request.user != video.author:
 #         return HttpResponseRedirect('/')        
 
-#     post.published = False
-#     post.save()
-#     return HttpResponseRedirect('/post/'+post.slug+'/edit')
+#     video.published = False
+#     video.save()
+#     return HttpResponseRedirect('/video/'+video.slug+'/edit')
 
 def series_delete(request, slug):
     series = Series.objects.get(slug=slug)

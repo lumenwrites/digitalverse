@@ -759,6 +759,11 @@ header .row, .subheader .row {
   width: 100%;
 }
 
+/* line 94, ../sass/_post.scss */
+.ytp-watermark {
+  display: none !important;
+}
+
 /* ================ Story Comments ================ */
 /* Review rating */
 /* line 4, ../sass/_comments.scss */

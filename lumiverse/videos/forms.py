@@ -9,12 +9,13 @@ class VideoForm(ModelForm):
 
     class Meta:
         model = Video
-        fields = ['title', 'video', 'thumbnail', 'description', 'categories', 'series']
+        fields = ['title', 'video','video_url', 'thumbnail', 'description', 'categories', 'series']
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Title'}),
             'description': forms.Textarea(attrs={'placeholder': 'Description (optional)',
                                                  'class': 'description',
                                                  'id': 'description'}),
+            'video_url': forms.TextInput(attrs={'placeholder': 'Youtube video id'}),            
         }
 
         
