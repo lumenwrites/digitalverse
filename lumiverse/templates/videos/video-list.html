@@ -42,7 +42,13 @@
 
       <b style="float:left; font-size:18px;color:white;width:100%;">{{video.title}} </b>
       {% if not video.published %}        
-      <span class="">[unpublished]</span>
+      <span class=""><!-- [unpublished] -->
+	<i class="fa fa-eye-slash"
+	   style="float: right;
+		  position: absolute;
+		  right: 34px;
+		  top: 188px;
+		  font-size: 18px;"></i></span>
       {% endif %}        
       <br/>
 	
