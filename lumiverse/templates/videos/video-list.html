@@ -1,0 +1,58 @@
+{% load thumbnail %}
+
+{% for video in object_list %}
+{% if video.published  %}
+  <a href="{{video.get_absolute_url}}">  
+    <article>
+      {% thumbnail video.thumbnail "320x180" crop="center" as im %}
+      <div style="position:relative;">
+          <img src="{{im.url}}" />
+	  <div class="dark-overlay">
+	<div class="video-stats">
+	  <i class="fi-eye">{{video.views}}</i>
+	  <i class="fi-arrow-up">{{video.score}}</i>
+	  <i class="fi-comment">{{video.comments.count}} 0</i>
+	  <i class="fi-clock">09:49</i>
+	</div>		
+	  </div>
+      </div>
+      {% endthumbnail %}
+
+
+      <div class="card-description">
+	<b style="float:left; font-size:18px;color:white;width:100%;">{{video.title}} </b><br/>
+	<!-- <p>[description]</p> -->
+	<!-- <p style="margin-bottom: -10px;"> -->
+	<!-- by <a style="color:#0b7cac;">Ray Alez</a> -->
+	<!-- in <a style="color:#0b7cac;">Orange Mind</a> series -->
+	<!-- </p> -->
+	<!-- <a class="small button" href="/user/rayalez">rayalez</a> -->
+
+      {% if user == video.author or user.is_staff  %}
+      <!-- <a class="edit-video margins-0" href="/video/{{video.slug}}/edit"> -->
+      <!-- 	<i class="fa fa-pencil"></i></a> -->
+      {% endif %}
+      </div>
+
+
+
+	<div class="hubs">
+	<span class="callout small">Tutorials</span>
+	<span class="callout small">Vlog</span>
+	<span class="callout small">Art</span>
+	<a class="small button series right"
+	   href="/series/orange-mind"
+	   style="margin-bottom:0;    margin-top: -5px;"
+	   ><!-- <i class="fi-thumbnails"></i> --> rayalez</a>
+	</div>
+	<!-- 40 minutes ago. -->
+
+    </article>
+  </a>
+{% endif %}
+{% endfor %}
+</div>
+
+
+{% include "videos/pagination.html" %}
+

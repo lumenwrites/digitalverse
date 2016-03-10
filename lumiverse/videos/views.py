@@ -183,22 +183,23 @@ class VideoDetailView(DetailView):
 
 
 def video_create(request):
-    if request.method == 'VIDEO':
-        form = VideoForm(request.VIDEO, request.FILES, user=request.user)
+    if request.method == 'POST':
+        form = VideoForm(request.POST, request.FILES, user=request.user)
         if form.is_valid():
             video = form.save(commit=False)
             video.author = request.user
+            video.video = form.cleaned_data['video']
             video.save()
             video.categories = form.cleaned_data['categories']
             video.save()
             
             # Upload Images
-            for image in form.cleaned_data['images']:
-                Image.objects.create(image=image, video=video)       
+            # for image in form.cleaned_data['images']:
+            #     Image.objects.create(image=image, video=video)       
             # Create Thumbnail
-            image = video.images.all()[0]
-            resized = get_thumbnail(image.image, "400x400", crop='center', quality=99)
-            video.thumbnail.save(resized.name, ContentFile(resized.read()), True)            
+            # image = video.images.all()[0]
+            # resized = get_thumbnail(image.image, "400x400", crop='center', quality=99)
+            # video.thumbnail.save(resized.name, ContentFile(resized.read()), True)            
 
             return HttpResponseRedirect('/video/'+video.slug+'/edit')
     else:
@@ -214,21 +215,15 @@ def video_edit(request,slug):
     if request.user != video.author and not request.user.is_staff:
         return HttpResponseRedirect('/')        
     
-    if request.method == 'VIDEO':
-        form = VideoForm(request.VIDEO, request.FILES, instance=video,user=request.user)
+    if request.method == 'POST':
+        form = VideoForm(request.POST, request.FILES, instance=video,user=request.user)
         if form.is_valid():
             video = form.save(commit=False)
             video.author = request.user
+            video.video = form.cleaned_data['video']
             video.categories = form.cleaned_data['categories']
             video.save()
 
-            if form.cleaned_data['images']:
-                # Delete existing images
-                for image in video.images.all():
-                    image.delete()
-                # Upload Images
-                for image in form.cleaned_data['images']:
-                    Image.objects.create(image=image, video=video)       
 
             return HttpResponseRedirect('/video/'+video.slug+'/edit')
     else:
@@ -336,7 +331,7 @@ def video_delete(request, slug):
 
 # Voting
 def upvote(request):
-    video = get_object_or_404(Video, id=request.VIDEO.get('video-id'))
+    video = get_object_or_404(Video, id=request.POST.get('video-id'))
     video.score += 1
     video.save()
     video.author.karma += 1
@@ -347,7 +342,7 @@ def upvote(request):
     return HttpResponse()
 
 def unupvote(request):
-    video = get_object_or_404(Video, id=request.VIDEO.get('video-id'))
+    video = get_object_or_404(Video, id=request.POST.get('video-id'))
     video.score -= 1
     video.save()
     video.author.karma = 1

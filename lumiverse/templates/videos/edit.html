@@ -6,34 +6,36 @@
   <div class="large-12 small-12 columns">
     <br/>
     {{ form.errors }}
-    <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+    <form action="" enctype="multipart/form-data" method="POST">{% csrf_token %}
       {{ form.title }}
 
       
-      {% if not post.images.all %}      
+      {% if not video.video %}      
       <div id="image-filechoice-container">
-	<input id="id_image" name="images" type="file" multiple>
+	<input id="id_video" name="video" type="file" multiple>
       </div>
-      <a id="upload" class="images small button"><i class="fa fa-upload"></i>&nbsp; Image</a>
+      <a id="upload" class="images small button"><i class="fa fa-upload"></i>&nbsp; Video</a>
       
       {% else %}
 
-      <!-- Image -->
+      <!-- Video -->
       <div style="">
-	{% for image in post.images.all %}
-	<img src="/media/{{image.image}}" style="margin:auto;    width: 100%;
-						       /*max-height:450px;*/"/><br/>
-	{% endfor %}
-	Replace Image:
+      <video id="video" class="video-js vjs-default-skin vjs-big-play-centered"
+	     controls preload="auto" width="850" height="auto"
+	     poster="/media/{{video.thumbnail}}" data-setup="{}">
+	<source src="/media/{{video.video}}" type='video/mp4'>
+      </video>
+
+	Replace Video:
 	<div id="image-filechoice-container">
-	  <input id="id_image" name="images" type="file" multiple>
+	  <input id="id_video" name="video" type="file" multiple>
 	</div>
 	<a id="upload" class="images small button">
 	  <i class="fa fa-upload"></i>&nbsp; Image</a>
       </div>
       <!-- Thumbnail -->
       <div style="float:right;width:300px;">
-	<img src="/media/{{post.thumbnail}}" style="margin:auto;
+	<img src="/media/{{video.thumbnail}}" style="margin:auto;
 						    max-width:300px;
 						    max-height:300px;"/><br/>
 	<!-- Replace Thumbnail --><!-- <br/>(square, at least 500x500px): -->
@@ -51,7 +53,7 @@
       {% if creating %}
       <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10"></textarea>
       {% else %}      
-      <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10" style="float:left; width: calc(100% - 310px);height:348px;">{{post.description}}</textarea>
+      <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10" style="float:left; width: calc(100% - 310px);height:348px;">{{video.description}}</textarea>
       {% endif %}
       
 
@@ -77,17 +79,17 @@
       <br/>
 
       {% if not creating %}
-      <a class="button delete" href="/post/{{post.slug}}/delete">Delete</a>
+      <a class="button delete" href="/video/{{video.slug}}/delete">Delete</a>
       {% endif %}
       
       <div class="right">
 	{% if not creating %}
-    	    {% if not post.published %}
-            <a class="button" href="/post/{{post.slug}}">Preview</a>	
-            <a class="button" href="/post/{{post.slug}}/publish">Publish</a>
+    	    {% if not video.published %}
+            <a class="button" href="/video/{{video.slug}}">Preview</a>	
+            <a class="button" href="/video/{{video.slug}}/publish">Publish</a>
             {% else %}
-            <a class="button" href="/post/{{post.slug}}">View</a>		    
-            <a class="button" href="/post/{{post.slug}}/unpublish">Unpublish</a>	
+            <a class="button" href="/video/{{video.slug}}">View</a>		    
+            <a class="button" href="/video/{{video.slug}}/unpublish">Unpublish</a>	
             {% endif %}
         {% endif %}
 	<input type="submit" value="Save" />
@@ -107,7 +109,7 @@
 <script>
     $(document).ready(function(){    
 	$('#upload').click(function(){
-	    $('#id_image').click();
+	    $('#id_video').click();
 	});
 
 	$('#upload_thumbnail').click(function(){

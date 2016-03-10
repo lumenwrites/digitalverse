@@ -17,7 +17,9 @@ from series.models import Series
 
 from .utils import rank_hot,next_or_prev_in_order #, unique_slugify
 
-
+def generate_filename(self,filename):
+    url = "videos/%s/%s" % (self.author.username,filename)
+    return url
 
 class Video(models.Model):
     title = models.CharField(max_length=256)
@@ -25,7 +27,7 @@ class Video(models.Model):
     published = models.BooleanField(default=False, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
 
-    video = models.FileField(upload_to='videos/', default=None,blank=True, null=True)
+    video = models.FileField(upload_to=generate_filename, default=None,blank=True, null=True)
     thumbnail = models.ImageField(upload_to='videos/thumbnails/',
                                   default=None,blank=True, null=True)    
     
@@ -67,9 +69,9 @@ class Video(models.Model):
 
         # Create thumbnail
         # if not self.id:  
-        #     super(Video, self).save(*args, **kwargs)
-        #     resized = get_thumbnail(image.image, "400x400", crop='center', quality=99)
-        #     self.thumbnail.save(resized.name, ContentFile(resized.read()), True)            
+        # super(Video, self).save(*args, **kwargs)
+        # resized = get_thumbnail(image.image, "400x400", crop='center', quality=99)
+        # self.thumbnail.save(resized.name, ContentFile(resized.read()), True)            
 
         return super(Video, self).save(*args, **kwargs)
 

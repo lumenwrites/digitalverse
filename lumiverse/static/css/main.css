@@ -442,7 +442,7 @@ header .row, .subheader .row {
 /* line 1, ../sass/_subheader.scss */
 .subheader {
   padding: 20px 0;
-  background: url(/media/backgrounds/bg.jpg);
+  background: url(/media/users/backgrounds/bg.jpg);
   background-position-y: -320px;
   margin: 0;
   background-size: 100% auto !important;
@@ -622,6 +622,49 @@ header .row, .subheader .row {
   background-color: #A2A8AB;
 }
 
+/* Sidebar */
+/* .page { */
+/*     width: 80%; */
+/*     float:right; */
+/* } */
+/* .sidebar { */
+/*     width:20%; */
+/*     float:left; */
+/*     background: #19191F; */
+/*     height:100%; */
+/*     padding: 20px 20px 0 40px; */
+/* } */
+/* .subnav { */
+/*     display:none; */
+/* } */
+/* .main-header { */
+/*     display:none; */
+/* } */
+/* #sidebarMenu { */
+/*     font-size: 18px; */
+/*     ul { */
+/* 	margin: 0; */
+/* 	padding: 0; */
+/* 	float: left; */
+/* 	margin-right: 10px; */
+/* 	list-style-type: none!important; */
+/*     } */
+/*     ul a { */
+/* 	color: $bright; */
+/*     } */
+/*     hr { */
+/* 	border-bottom: 1px solid $bright; */
+/*     } */
+/* } */
+/* #browse-template { */
+/*     article { */
+/* 	position:relative; */
+/* 	width:calc(25% - 8px); */
+/*     } */
+/* } */
+/* .main-footer { */
+/*     display:none; */
+/* } */
 /* line 1, ../sass/_series.scss */
 .author-avatar {
   margin: -20px -10px -20px 10px;

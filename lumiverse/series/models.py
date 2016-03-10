@@ -16,7 +16,7 @@ class Series(models.Model):
     published = models.BooleanField(default=False, blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
 
-    image = models.ImageField(upload_to='series/images/',
+    image = models.ImageField(upload_to='series/avatars/',
                                   default=None,blank=True, null=True)    
 
 

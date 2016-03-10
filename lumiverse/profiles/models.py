@@ -10,8 +10,8 @@ from posts.models import Post
 from series.models import Series
 
 class User(AbstractUser):  
-    avatar = models.ImageField(upload_to='avatars/', default=None,blank=True, null=True)
-    background = models.ImageField(upload_to='backgrounds/', default=None,blank=True, null=True)
+    avatar = models.ImageField(upload_to='users/avatars/', default=None,blank=True, null=True)
+    background = models.ImageField(upload_to='users/backgrounds/', default=None,blank=True, null=True)
     about = models.TextField(max_length=512, blank=True)
     website = models.CharField(max_length=64, blank=True)
 

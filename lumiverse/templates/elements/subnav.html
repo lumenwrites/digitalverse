@@ -16,21 +16,6 @@
     </div>
     <div class="large-6 small-6 columns">
       <div class="rank-types right">
-	  <button class="button categories-dropdown-button" type="button"
-		  data-toggle="type-dropdown" style="margin-right:10px;">
-	    Browse: Videos
-	  </button>
-
-	  <div class="dropdown-pane bottom"
-	       id="type-dropdown"
-	       data-dropdown>
-	    <ul>
-	      <li> <a href="{{request.path}}">Videos</a> </li>
-	      <li> <a href="{{request.path}}">Subscriptions</a> </li>
-	      <li> <a href="{{request.path}}">Series</a> </li>
-	      <!-- <li> <a href="{{request.path}}">Creators</a> </li>	       -->
-	    </ul>
-	  </div>
 
 	  
 	  <button class="button categories-dropdown-button" type="button"
@@ -38,7 +23,7 @@
 	    {% if category %}
 	    {{category.title}}
 	    {% else %}
-	    Hub: All
+	    Category: All
 	    {% endif %}
 	  </button>
 	  <div class="dropdown-pane bottom"
@@ -46,15 +31,33 @@
 	       data-dropdown>
 	    <ul>
 	      <li> <a href="{{request.path}}">All</a> </li>
-	      <li> <a href="{{request.path}}">Subscribed</a> </li>	      
+	      <li> <a href="{{request.path}}">Subscribed</a> </li>
+	      <hr style=""/>
+	      <!-- <input type="text"/> -->
 	      {% for category in categories %}
-	          {% if category.posts.all %}
-	          <li> <a href="{{request.path}}?category={{category.slug}}{% if sorting %}&sorting={{sorting}}{% else %}&sorting=hot{% endif %}">
-		  {{category.title}} </a></li>
-		  {% endif %}
+	          {# {% if category.posts.all %} #}
+	      <li>
+		<a class="small button"
+		   style="margin-left:-40px;    margin-left: -30px;
+			  background: #222525;
+			  padding: 6px;
+			  border-radius: 4px;">
+		  <i class="fi-plus"></i></a>
+		<a href="{{request.path}}?category={{category.slug}}{% if sorting %}&sorting={{sorting}}{% else %}&sorting=hot{% endif %}">
+		  {{category.title}} </a>
+	      </li>
+		  {# {% endif %} #}
 	      {% endfor %}
 	    </ul>
 	  </div>
+
+	  <!-- <button class="button categories-dropdown-button" type="button" -->
+	  <!-- 	  data-toggle="type-dropdown" style="margin-left:10px;"> -->
+	  <!--   <\!-- <i class="fi-plus"></i> -\-> -->
+	  <!--   Subscribe -->
+	  <!-- </button> -->
+
+
       </div>
     </div>
   </div>

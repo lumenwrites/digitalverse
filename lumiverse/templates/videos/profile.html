@@ -8,35 +8,9 @@
 
 
 <div id="browse-template" class="page">
+
+  {% include "videos/video-list.html" %}
   
-{% for post in object_list %}
-{% if post.published or user == post.author %}  
-  <a href="{{post.get_absolute_url}}">  
-    <article>
-      
-      {% thumbnail post.thumbnail "320x320" crop="center" as im %}
-          <img src="{{im.url}}" />
-      {% endthumbnail %}	  
-      
-
-    <div class="dark-overlay">
-
-      <b style="float:left;">{{post.title}} </b>
-      {% if user == post.author or user.is_staff  %}
-      <a class="edit-post margins-0" href="/post/{{post.slug}}/edit">
-	<i class="fa fa-pencil"></i></a>
-
-          {% if not post.published %}        
-          <span class="right margins-side-10">[unpublished]</span>
-	  {% endif %}        
-      {% endif %}
-    </div>
-    </article>
-  </a>
-{% endif %}  
-{% endfor %}
-</div>
-{% include "posts/pagination.html" %}  
 <style>
   .row {
   max-width: 95%!important;
