@@ -40,8 +40,9 @@
 	<i class="fa fa-pencil"></i></a>
       {% endif %}
 
-      <span class="video-title">{{video.title|truncatechars:34}} </span>
-	&nbsp;
+      <div class="video-title">
+	{{video.title}} <!-- |truncatechars:34 -->
+      </div>
       <span class="description hidden">
 	{% if video.description  %}
 	{{video.description|truncatechars:38}}
