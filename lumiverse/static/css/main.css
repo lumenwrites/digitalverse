@@ -1073,79 +1073,81 @@ header .row, .subheader .row {
 /* line 70, ../sass/_edit.scss */
 .tabs a {
   color: white;
+  color: #A2A8AB;
+  font-size: 16px;
 }
-/* line 73, ../sass/_edit.scss */
+/* line 75, ../sass/_edit.scss */
 .tabs a:hover {
   background: #2F3333;
 }
 
-/* line 78, ../sass/_edit.scss */
+/* line 80, ../sass/_edit.scss */
 .tabs-title {
   width: 50%;
 }
 
-/* line 82, ../sass/_edit.scss */
+/* line 84, ../sass/_edit.scss */
 .tabs-title > a:focus, .tabs-title > a[aria-selected='true'] {
   background: #2F3333;
 }
 
-/* line 86, ../sass/_edit.scss */
+/* line 88, ../sass/_edit.scss */
 .tabs-content {
   background: none;
   border: none;
 }
 
 /* Select 2 */
-/* line 92, ../sass/_edit.scss */
+/* line 94, ../sass/_edit.scss */
 select {
   background: #1a1c1c;
   border: 0;
   color: #a2a8ab;
 }
 
-/* line 99, ../sass/_edit.scss */
+/* line 101, ../sass/_edit.scss */
 .select2-container--default
 .select2-selection--multiple {
   background-color: #1a1c1c;
 }
 
-/* line 104, ../sass/_edit.scss */
+/* line 106, ../sass/_edit.scss */
 .select2-container--default.select2-container--focus .select2-selection--multiple {
   background-color: #1a1c1c;
 }
 
-/* line 108, ../sass/_edit.scss */
+/* line 110, ../sass/_edit.scss */
 .select2-results__options {
   background-color: #1a1c1c;
 }
 
-/* line 112, ../sass/_edit.scss */
+/* line 114, ../sass/_edit.scss */
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
   background-color: rgba(119, 119, 119, 0.1) !important;
 }
 
-/* line 116, ../sass/_edit.scss */
+/* line 118, ../sass/_edit.scss */
 .select2-container--default .select2-results__option[aria-selected=true] {
   background-color: rgba(119, 119, 119, 0.1) !important;
 }
 
-/* line 120, ../sass/_edit.scss */
+/* line 122, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: rgba(119, 119, 119, 0.1) !important;
 }
 
-/* line 124, ../sass/_edit.scss */
+/* line 126, ../sass/_edit.scss */
 .select2-container--open .select2-dropdown--above {
   border: none !important;
 }
 
-/* line 128, ../sass/_edit.scss */
+/* line 130, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple {
   background-color: #1a1c1c !important;
   border: none !important;
 }
 
-/* line 133, ../sass/_edit.scss */
+/* line 135, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: #e4e4e4;
   border: none !important;
@@ -1153,19 +1155,19 @@ select {
 }
 
 /* Series */
-/* line 141, ../sass/_edit.scss */
+/* line 143, ../sass/_edit.scss */
 .set-series {
   width: 300px;
   float: right;
   margin: 0;
 }
-/* line 146, ../sass/_edit.scss */
+/* line 148, ../sass/_edit.scss */
 .set-series select {
   height: 50px;
 }
 
 /* from html */
-/* line 151, ../sass/_edit.scss */
+/* line 153, ../sass/_edit.scss */
 .select-categories {
   width: calc(100% - 120px);
   width: 200px;
@@ -1174,33 +1176,33 @@ select {
   margin-right: 420px;
 }
 
-/* line 160, ../sass/_edit.scss */
+/* line 162, ../sass/_edit.scss */
 .select2-container--default
 .select2-selection--multiple {
   border-color: #cccccc;
 }
 
-/* line 165, ../sass/_edit.scss */
+/* line 167, ../sass/_edit.scss */
 .select2-container--default.select2-container--focus .select2-selection--multiple {
   border-color: #cccccc;
 }
 
-/* line 170, ../sass/_edit.scss */
+/* line 172, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple {
   height: 50px;
 }
 
-/* line 174, ../sass/_edit.scss */
+/* line 176, ../sass/_edit.scss */
 .select-categories input {
   margin-top: -7px !important;
 }
 
-/* line 178, ../sass/_edit.scss */
+/* line 180, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__clear {
   margin-top: 10px;
 }
 
-/* line 182, ../sass/_edit.scss */
+/* line 184, ../sass/_edit.scss */
 #id_categories {
   list-style-type: none;
   /* width:600px; */
@@ -1209,37 +1211,37 @@ select {
 }
 
 @media screen and (max-width: 1300px) {
-  /* line 189, ../sass/_edit.scss */
+  /* line 191, ../sass/_edit.scss */
   #id_categories {
     list-style-type: none;
     /* width:400px; */
     /* width:100%; */
   }
 }
-/* line 197, ../sass/_edit.scss */
+/* line 199, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: #e4e4e4;
   border: none !important;
   border-radius: 0px;
 }
 
-/* line 203, ../sass/_edit.scss */
+/* line 205, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   border-radius: 0px;
   border: none;
 }
 
-/* line 208, ../sass/_edit.scss */
+/* line 210, ../sass/_edit.scss */
 .select2-container--default .select2-search--inline .select2-search__field {
   box-shadow: none;
 }
 
-/* line 213, ../sass/_edit.scss */
+/* line 215, ../sass/_edit.scss */
 .select2-container--open .select2-dropdown--below {
   border: none;
 }
 
-/* line 217, ../sass/_edit.scss */
+/* line 219, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: #e4e4e4;
   border: 1px solid #aaa;
@@ -1251,7 +1253,7 @@ select {
   padding: 4px 10px !important;
 }
 
-/* line 228, ../sass/_edit.scss */
+/* line 230, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__clear {
   cursor: pointer;
   float: right;
