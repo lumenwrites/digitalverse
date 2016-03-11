@@ -3,7 +3,7 @@ from django.template.defaultfilters import slugify
 from django.conf import settings
 from django.db.models import permalink
 
-from posts.models import *
+# from posts.models import *
 
 class Comment(models.Model):
     video = models.ForeignKey('videos.Video', related_name="comments",
@@ -30,6 +30,6 @@ class Comment(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return ('view_comment', None, { 'story': self.post.slug,
+        return ('view_comment', None, { 'story': self.video.slug,
                                             'comment_id': self.id })
         

@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     
     'series',
     'categories',
-    # 'posts',
+    'posts',
     'videos',    
     'profiles',
     'comments'

@@ -6,7 +6,7 @@ from django.core.files.base import ContentFile
 from sorl.thumbnail import ImageField
 from sorl.thumbnail import get_thumbnail
 
-from posts.models import Post
+# from posts.models import Post
 from series.models import Series
 
 class User(AbstractUser):  
@@ -21,7 +21,7 @@ class User(AbstractUser):
     subscribed = models.ManyToManyField('User', related_name="subscribers", blank=True)
     subscribed_series = models.ManyToManyField('series.Series', related_name="subscribers", blank=True)    
 
-    upvoted = models.ManyToManyField('posts.Post', related_name="upvoters", blank=True)
+    upvoted = models.ManyToManyField('videos.Video', related_name="upvoters", blank=True)
 
     # comments_upvoted = models.ManyToManyField('comments.Comment', related_name="upvoters", blank=True)
     # approved = models.BooleanField(default=False)
