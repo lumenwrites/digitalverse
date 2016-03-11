@@ -4,11 +4,10 @@ from django import forms
 from .models import Post
 from series.models import Series
 
-from multiupload.fields import MultiFileField
+# from multiupload.fields import MultiFileField
 
 class PostForm(ModelForm):
-    images = MultiFileField(min_num=0, max_num=30, max_file_size=1024*1024*5, required=False)
-    
+    # images = MultiFileField(min_num=0, max_num=30, max_file_size=1024*1024*5, required=False)
 
     class Meta:
         model = Post
