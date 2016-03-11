@@ -148,7 +148,7 @@ class VideoDetailView(DetailView):
         ##### COMMENTS ####
         context['form'] = CommentForm()
 
-        top_lvl_comments = []# Comment.objects.filter(post = video, parent = None)
+        top_lvl_comments =Comment.objects.filter(video = video, parent = None)
 
         rankby = "new"
         # Rank comments
@@ -161,7 +161,7 @@ class VideoDetailView(DetailView):
         # else:
         #     ranked_comments = []
 
-        ranked_comments = top_lvl_comments # .order_by('-pub_date')
+        ranked_comments = top_lvl_comments.order_by('-pub_date')
 
         # Nested comments
         comments = list(get_comment_list(ranked_comments, rankby=rankby))

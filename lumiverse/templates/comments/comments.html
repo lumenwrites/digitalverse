@@ -6,7 +6,7 @@
   <div class="large-12 columns">
     <h4 id="comments"> Comments </h4>
     {% if user.is_authenticated %}      
-    <form action="/comment-submit/{{post.slug}}?next={{request.path}}"
+    <form action="/comment-submit/{{video.slug}}?next={{request.path}}"
 	  method="post">{% csrf_token %}
       <div class="editor">
 	{{form.body}}
@@ -27,12 +27,12 @@
     <!-- Ranking -->
 
 <!-- <div class="left hidden"> -->
-<!-- {% if post.comments.all %} -->
-<!--   <a href="{{post.get_absolute_url}}{{filterby}}/hot#comments"> -->
+<!-- {% if video.comments.all %} -->
+<!--   <a href="{{video.get_absolute_url}}{{filterby}}/hot#comments"> -->
 <!--     <span {% if rankby = "hot" %}class="bold"{% endif %}>Hot</span></a>	 -->
-<!--   <a href="{{post.get_absolute_url}}{{filterby}}/new#comments"> -->
+<!--   <a href="{{video.get_absolute_url}}{{filterby}}/new#comments"> -->
 <!--     <span {% if rankby = "new" %}class="bold"{% endif %}>New</span></a>	 -->
-<!--   <a href="{{post.get_absolute_url}}{{filterby}}/top#comments"> -->
+<!--   <a href="{{video.get_absolute_url}}{{filterby}}/top#comments"> -->
 <!--     <span {% if rankby = "top" %}class="bold"{% endif %}>Top</span></a>	 -->
 <!-- {% endif %}   -->
 <!-- </div> -->

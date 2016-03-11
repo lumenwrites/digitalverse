@@ -8,28 +8,31 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # My own stuff
 # Forms
-from posts.forms import PostForm
+from videos.forms import VideoForm
 from comments.forms import CommentForm
 # Models
-from posts.models import Post
+from videos.models import Video
 from .models import Comment
 
 
-def comment_submit(request, post_slug):
+def comment_submit(request, video_slug):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.author = request.user
-            post = Post.objects.get(slug=post_slug)
-            comment.post = post
+            video = Video.objects.get(slug=video_slug)
+            comment.video = video
             comment.save()
 
             comment_url = request.GET.get('next', '/')# +"#id-"+str(comment.id)
             return HttpResponseRedirect(comment_url)
         else:
             comment_url = request.GET.get('next', '/')
-            return HttpResponseRedirect(comment_url)            
+            return HttpResponseRedirect(comment_url)
+    else:
+            comment_url = request.GET.get('next', '/')
+            return HttpResponseRedirect(comment_url)
 
 def reply_submit(request, comment_id):
     if request.method == 'POST':
@@ -38,7 +41,7 @@ def reply_submit(request, comment_id):
             comment = form.save(commit=False)
             comment.author = request.user
             comment.parent = Comment.objects.get(id=comment_id)
-            comment.post = comment.parent.post
+            comment.video = comment.parent.video
             comment.save()
 
 
@@ -72,7 +75,7 @@ def comment_edit(request, comment_id):
     # throw him out if he's not an author
     if request.user != comment.author:
         return HttpResponseRedirect('/')        
-    return HttpResponseRedirect('/') # to post list
+    return HttpResponseRedirect('/') # to video list
 
         
 def comment_delete(request, comment_id):
@@ -82,13 +85,13 @@ def comment_delete(request, comment_id):
     if request.user != comment.author:
         return HttpResponseRedirect('/')        
     try:
-        path = '/post/'+comment.parent.post.slug + '/' + comment.post.slug + '#comments'
+        path = '/video/'+comment.parent.video.slug # + '/' + comment.video.slug + '#comments'
     except:
-        path = '/post/'+comment.post.slug + '#comments'
+        path = '/video/'+comment.video.slug + '#comments'
 
     comment.delete()
 
-    return HttpResponseRedirect(path) # to post list
+    return HttpResponseRedirect(path) # to video list
 
         
 # Comment voting
