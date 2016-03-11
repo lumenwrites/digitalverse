@@ -5,7 +5,12 @@
 <div class="row page" id="edit-template">
   <div class="large-12 small-12 columns">
     <br/>
+{% if not user.is_staff %}
+    <h1>Invite required</h1>
+    <p>Hi! lumiverse is still in beta, and to upload videos you need an invite, sorry about that.</p>
 
+    <p>To receive an invite, send me a message to raymestalez@gmail.com, with a few examples of videos that you are planning to upload.</p>    
+{% else %}
 
     {{ form.errors }}
     <form action="" enctype="multipart/form-data" method="POST">{% csrf_token %}
@@ -17,13 +22,13 @@
       {% if not video.video and not video.video_url %}
       <!-- Tabs -->
       <ul class="tabs" data-tabs id="upload-tabs">
-	<li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Upload</a></li>
-	<li class="tabs-title"><a href="#panel2">Youtube</a></li>
+	<li class="tabs-title"><a href="#panel1">Upload</a></li>
+	<li class="tabs-title is-active"><a href="#panel2" aria-selected="true">Youtube</a></li>
       </ul>
 
 
       <div class="tabs-content" data-tabs-content="upload-tabs">
-	<div class="tabs-panel is-active" id="panel1">
+	<div class="tabs-panel" id="panel1">
 	  <!-- Upload Video -->
 	  <div id="image-filechoice-container">
 	    <input id="id_video" name="video" type="file">
@@ -31,7 +36,7 @@
 	  <a id="upload" class="images small button"><i class="fa fa-upload"></i>&nbsp; Video</a>
 	  <div class="clearfix"></div>            
 	</div>
-	<div class="tabs-panel" id="panel2">
+	<div class="tabs-panel  is-active" id="panel2">
 	  <!-- From youtube -->
 	  {{ form.video_url }}
 	</div>
@@ -138,6 +143,11 @@
       
     </form>
 
+{% endif %} <!-- end invite -->
+
+
+
+
   </div>
 </div>
 
@@ -172,5 +182,7 @@
 	
     })
 </script>
+
+
 
 {% endblock content %}
