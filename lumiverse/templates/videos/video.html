@@ -9,7 +9,7 @@
       <!-- Header -->
       <header class="post-header">
 	  {% if user == video.author or user.is_staff  %}
-	  <a class="edit-post" href="/post/{{video.slug}}/edit">
+	  <a class="edit-post" href="/video/{{video.slug}}/edit">
 	    <i class="fa fa-pencil"></i></a>
 	  {% endif %}
     	  <h1> {{object.title}} </h1>
