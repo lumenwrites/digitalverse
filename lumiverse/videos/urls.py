@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^user/(?P<username>[^\.]+)/feed/atom/$', views.UserFeed()),    
 
     url(r'^user/(?P<username>[^\.]+)?/$', views.ProfileView.as_view(), name='profile'),
+    url(r'^user/(?P<username>[^\.]+)$', views.ProfileView.as_view(), name='profile'),
     
 
 
