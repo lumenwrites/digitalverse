@@ -442,7 +442,7 @@ header .row, .subheader .row {
 /* line 1, ../sass/_subheader.scss */
 .subheader {
   padding: 20px 0;
-  background: url(/media/users/backgrounds/bg.jpg);
+  background: url(/static/img/bg.jpg);
   background-position-y: -320px;
   margin: 0;
   background-size: 100% auto !important;
