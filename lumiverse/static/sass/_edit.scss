@@ -61,6 +61,32 @@
 }
 
 
+
+/* Tabs */
+
+.tabs {
+    background: none;
+    border: none;
+    a {
+	color:white;
+    }
+    a:hover {
+    background: #2F3333;	
+    }
+}
+
+.tabs-title {
+    width: 50%;
+}
+
+.tabs-title > a:focus, .tabs-title > a[aria-selected='true'] {
+    background: #2F3333;
+}
+
+.tabs-content {
+    background: none;
+    border: none;
+}
 /* Select 2 */
 
 select {

@@ -11,7 +11,16 @@
     
     <i class="fi-eye"></i>
     <span>{{video.views}}</span>
+
+
+	{% for category in video.categories.all %}	
+	<span class="callout small category">{{category.title}}</span>
+	{% endfor %}
+      
+
   </div>
+
+  
 
   <div class="right">
     <a class="small button" href="/user/{{video.author.username}}">
@@ -40,7 +49,7 @@
 	  <i class="fi-arrow-up"></i>Upvote</a>
         {% endif %}	
     {% endif %}    
-
+	
 
       {% if not user == video.author %}
           {% if user.is_authenticated %}

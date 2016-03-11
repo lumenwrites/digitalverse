@@ -709,11 +709,17 @@ header .row, .subheader .row {
 }
 
 /* line 16, ../sass/_post.scss */
+.video-js {
+  width: 850px;
+  height: 477px;
+}
+
+/* line 22, ../sass/_post.scss */
 .post .nav-buttons .button {
   width: calc(20% - 4px);
 }
 
-/* line 25, ../sass/_post.scss */
+/* line 31, ../sass/_post.scss */
 .post-footer {
   /* .username { */
   /* 	margin:10px; */
@@ -723,46 +729,50 @@ header .row, .subheader .row {
   /* 	color: #fff; */
   /* } */
 }
-/* line 26, ../sass/_post.scss */
+/* line 32, ../sass/_post.scss */
 .post-footer .stats {
   float: left;
   margin: 7px;
 }
-/* line 31, ../sass/_post.scss */
+/* line 37, ../sass/_post.scss */
 .post-footer .stats span {
   margin-right: 8px;
 }
-/* line 35, ../sass/_post.scss */
+/* line 41, ../sass/_post.scss */
+.post-footer .category {
+  background: #232626;
+}
+/* line 45, ../sass/_post.scss */
 .post-footer .fi-arrow-up {
   transform: scale(1.8, 1);
 }
-/* line 46, ../sass/_post.scss */
+/* line 56, ../sass/_post.scss */
 .post-footer .button {
   margin: 0;
   font-size: 14px;
   height: 39px;
 }
-/* line 51, ../sass/_post.scss */
+/* line 61, ../sass/_post.scss */
 .post-footer .button i {
   margin-right: 8px;
 }
-/* line 56, ../sass/_post.scss */
+/* line 66, ../sass/_post.scss */
 .post-footer .upvoted, .post-footer .upvoted i {
   color: #13aff0;
 }
-/* line 59, ../sass/_post.scss */
+/* line 69, ../sass/_post.scss */
 .post-footer .avatar {
   width: 30px;
   margin: -10px -10px -10px 10px;
   border-radius: 2px;
 }
-/* line 65, ../sass/_post.scss */
+/* line 75, ../sass/_post.scss */
 .post-footer .rss-icon {
   font-size: 35px;
   padding: 1px 0px 2px 8px !important;
 }
 
-/* line 75, ../sass/_post.scss */
+/* line 85, ../sass/_post.scss */
 #more-by article {
   position: relative;
   width: calc(25% - 2px) !important;
@@ -771,7 +781,7 @@ header .row, .subheader .row {
   margin: 0;
   float: left;
 }
-/* line 84, ../sass/_post.scss */
+/* line 94, ../sass/_post.scss */
 #more-by .dark-overlay {
   position: absolute;
   bottom: 0;
@@ -780,7 +790,7 @@ header .row, .subheader .row {
   width: 100%;
 }
 
-/* line 94, ../sass/_post.scss */
+/* line 104, ../sass/_post.scss */
 .ytp-watermark {
   display: none !important;
 }
@@ -1054,57 +1064,88 @@ header .row, .subheader .row {
   color: #a2a8ab;
 }
 
+/* Tabs */
+/* line 67, ../sass/_edit.scss */
+.tabs {
+  background: none;
+  border: none;
+}
+/* line 70, ../sass/_edit.scss */
+.tabs a {
+  color: white;
+}
+/* line 73, ../sass/_edit.scss */
+.tabs a:hover {
+  background: #2F3333;
+}
+
+/* line 78, ../sass/_edit.scss */
+.tabs-title {
+  width: 50%;
+}
+
+/* line 82, ../sass/_edit.scss */
+.tabs-title > a:focus, .tabs-title > a[aria-selected='true'] {
+  background: #2F3333;
+}
+
+/* line 86, ../sass/_edit.scss */
+.tabs-content {
+  background: none;
+  border: none;
+}
+
 /* Select 2 */
-/* line 66, ../sass/_edit.scss */
+/* line 92, ../sass/_edit.scss */
 select {
   background: #1a1c1c;
   border: 0;
   color: #a2a8ab;
 }
 
-/* line 73, ../sass/_edit.scss */
+/* line 99, ../sass/_edit.scss */
 .select2-container--default
 .select2-selection--multiple {
   background-color: #1a1c1c;
 }
 
-/* line 78, ../sass/_edit.scss */
+/* line 104, ../sass/_edit.scss */
 .select2-container--default.select2-container--focus .select2-selection--multiple {
   background-color: #1a1c1c;
 }
 
-/* line 82, ../sass/_edit.scss */
+/* line 108, ../sass/_edit.scss */
 .select2-results__options {
   background-color: #1a1c1c;
 }
 
-/* line 86, ../sass/_edit.scss */
+/* line 112, ../sass/_edit.scss */
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
   background-color: rgba(119, 119, 119, 0.1) !important;
 }
 
-/* line 90, ../sass/_edit.scss */
+/* line 116, ../sass/_edit.scss */
 .select2-container--default .select2-results__option[aria-selected=true] {
   background-color: rgba(119, 119, 119, 0.1) !important;
 }
 
-/* line 94, ../sass/_edit.scss */
+/* line 120, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: rgba(119, 119, 119, 0.1) !important;
 }
 
-/* line 98, ../sass/_edit.scss */
+/* line 124, ../sass/_edit.scss */
 .select2-container--open .select2-dropdown--above {
   border: none !important;
 }
 
-/* line 102, ../sass/_edit.scss */
+/* line 128, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple {
   background-color: #1a1c1c !important;
   border: none !important;
 }
 
-/* line 107, ../sass/_edit.scss */
+/* line 133, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: #e4e4e4;
   border: none !important;
@@ -1112,19 +1153,19 @@ select {
 }
 
 /* Series */
-/* line 115, ../sass/_edit.scss */
+/* line 141, ../sass/_edit.scss */
 .set-series {
   width: 300px;
   float: right;
   margin: 0;
 }
-/* line 120, ../sass/_edit.scss */
+/* line 146, ../sass/_edit.scss */
 .set-series select {
   height: 50px;
 }
 
 /* from html */
-/* line 125, ../sass/_edit.scss */
+/* line 151, ../sass/_edit.scss */
 .select-categories {
   width: calc(100% - 120px);
   width: 200px;
@@ -1133,33 +1174,33 @@ select {
   margin-right: 420px;
 }
 
-/* line 134, ../sass/_edit.scss */
+/* line 160, ../sass/_edit.scss */
 .select2-container--default
 .select2-selection--multiple {
   border-color: #cccccc;
 }
 
-/* line 139, ../sass/_edit.scss */
+/* line 165, ../sass/_edit.scss */
 .select2-container--default.select2-container--focus .select2-selection--multiple {
   border-color: #cccccc;
 }
 
-/* line 144, ../sass/_edit.scss */
+/* line 170, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple {
   height: 50px;
 }
 
-/* line 148, ../sass/_edit.scss */
+/* line 174, ../sass/_edit.scss */
 .select-categories input {
   margin-top: -7px !important;
 }
 
-/* line 152, ../sass/_edit.scss */
+/* line 178, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__clear {
   margin-top: 10px;
 }
 
-/* line 156, ../sass/_edit.scss */
+/* line 182, ../sass/_edit.scss */
 #id_categories {
   list-style-type: none;
   /* width:600px; */
@@ -1168,37 +1209,37 @@ select {
 }
 
 @media screen and (max-width: 1300px) {
-  /* line 163, ../sass/_edit.scss */
+  /* line 189, ../sass/_edit.scss */
   #id_categories {
     list-style-type: none;
     /* width:400px; */
     /* width:100%; */
   }
 }
-/* line 171, ../sass/_edit.scss */
+/* line 197, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: #e4e4e4;
   border: none !important;
   border-radius: 0px;
 }
 
-/* line 177, ../sass/_edit.scss */
+/* line 203, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   border-radius: 0px;
   border: none;
 }
 
-/* line 182, ../sass/_edit.scss */
+/* line 208, ../sass/_edit.scss */
 .select2-container--default .select2-search--inline .select2-search__field {
   box-shadow: none;
 }
 
-/* line 187, ../sass/_edit.scss */
+/* line 213, ../sass/_edit.scss */
 .select2-container--open .select2-dropdown--below {
   border: none;
 }
 
-/* line 191, ../sass/_edit.scss */
+/* line 217, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: #e4e4e4;
   border: 1px solid #aaa;
@@ -1210,7 +1251,7 @@ select {
   padding: 4px 10px !important;
 }
 
-/* line 202, ../sass/_edit.scss */
+/* line 228, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__clear {
   cursor: pointer;
   float: right;

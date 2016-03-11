@@ -5,58 +5,95 @@
 <div class="row page" id="edit-template">
   <div class="large-12 small-12 columns">
     <br/>
+
+
     {{ form.errors }}
     <form action="" enctype="multipart/form-data" method="POST">{% csrf_token %}
       {{ form.title }}
 
-      
-      {% if not video.video %}      
-      <div id="image-filechoice-container">
-	<input id="id_video" name="video" type="file">
+
+
+      <!-- Upload -->
+      {% if not video.video and not video.video_url %}
+      <!-- Tabs -->
+      <ul class="tabs" data-tabs id="upload-tabs">
+	<li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Upload</a></li>
+	<li class="tabs-title"><a href="#panel2">Youtube</a></li>
+      </ul>
+
+
+      <div class="tabs-content" data-tabs-content="upload-tabs">
+	<div class="tabs-panel is-active" id="panel1">
+	  <!-- Upload Video -->
+	  <div id="image-filechoice-container">
+	    <input id="id_video" name="video" type="file">
+	  </div>
+	  <a id="upload" class="images small button"><i class="fa fa-upload"></i>&nbsp; Video</a>
+	  <div class="clearfix"></div>            
+	</div>
+	<div class="tabs-panel" id="panel2">
+	  <!-- From youtube -->
+	  {{ form.video_url }}
+	</div>
       </div>
-      <a id="upload" class="images small button"><i class="fa fa-upload"></i>&nbsp; Video</a>
-      <div class="clearfix"></div>            
+
       
       {% else %}
-
-      <!-- Video -->
-      <div style="">
-      <video id="video" class="video-js vjs-default-skin vjs-big-play-centered"
-	     controls preload="auto" width="850" height="auto"
-	     poster="/media/{{video.thumbnail}}" data-setup="{}">
-	<source src="/media/{{video.video}}" type='video/mp4'>
-      </video>
-
-	Replace Video:
-	<div id="image-filechoice-container">
-	  <input id="id_video" name="video" type="file" multiple>
-	</div>
-	<a id="upload" class="images small button">
-	  <i class="fa fa-upload"></i>&nbsp; Image</a>
-      </div>
-      <!-- Thumbnail -->
-      <div style="float:right;width:300px;">
-	<img src="/media/{{video.thumbnail}}" style="margin:auto;
-						    max-width:300px;
-						    max-height:300px;"/><br/>
-	<!-- Replace Thumbnail --><!-- <br/>(square, at least 500x500px): -->
-	<div id="image-filechoice-container">      
-	  <input id="id_thumbnail" name="thumbnail" type="file"> {# {{form.thumbnail}}#}
-	</div>
-	<a id="upload_thumbnail" class="small button">
-	  <i class="fa fa-upload"></i>&nbsp; Thumbnail</a>
-      </div>
-
+          {% if video.video %}
+          <!-- Video -->
+          <div style="">
+          <video id="video" class="video-js vjs-default-skin vjs-big-play-centered"
+          	     controls preload="auto" width="850" height="auto"
+          	     poster="/media/{{video.thumbnail}}" data-setup='{"fluid":true,}'>
+          	<source src="/media/{{video.video}}" type='video/mp4'>
+          </video>
+          
+          	Replace Video:
+          	<div id="image-filechoice-container">
+          	  <input id="id_video" name="video" type="file" multiple>
+          	</div>
+          	<a id="upload" class="images small button">
+          	  <i class="fa fa-upload"></i>&nbsp; Video</a>
+          </div>
+          <!-- Thumbnail -->
+          <div style="float:right;width:300px;">
+          	<img src="/media/{{video.thumbnail}}" style="margin:auto;
+          						    max-width:300px;
+          						    max-height:300px;"/><br/>
+          	<!-- Replace Thumbnail --><!-- <br/>(square, at least 500x500px): -->
+          	<div id="image-filechoice-container">      
+          	  <input id="id_thumbnail" name="thumbnail" type="file"> {# {{form.thumbnail}}#}
+          	</div>
+          	<a id="upload_thumbnail" class="small button">
+          	  <i class="fa fa-upload"></i>&nbsp; Thumbnail</a>
+          </div>
+	  {% else %}
+	  <video
+	     id="video"
+	     class="video-js vjs-default-skin  vjs-big-play-centered"
+	     controls
+	     width="850" height="477"
+	     data-setup='{ "techOrder": ["youtube"], "fluid":true,
+	     "sources": [{ "type": "video/youtube",
+	     "src": "https://www.youtube.com/watch?v={{video.video_url}}?modestbranding=1"}] }'>
+	  </video>
+	  Youtube video id:
+	  {{ form.video_url }}	  
+	  {% endif %}	  
       {% endif %}      
 
-      <p>or:</p>
-      {{ form.video_url }}
+
 
 
       {% if creating %}
       <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10"></textarea>
-      {% else %}      
-      <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10" style="float:left; width: calc(100% - 310px);height:348px;">{{video.description}}</textarea>
+      {% else %}
+
+          {% if video.video %}      
+          <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10" style="float:left; width: calc(100% - 310px);height:348px;">{{video.description}}</textarea>
+	  {% else %}
+          <textarea class="description" cols="40" id="description" name="description" placeholder="Description (optional)" rows="10" style="float:left; height:348px;">{{video.description}}</textarea>	  
+	  {% endif %}
       {% endif %}
       
 
@@ -104,6 +141,12 @@
   </div>
 </div>
 
+<style>
+  .tabs-panel #upload {
+  width:133px!important;
+  }
+
+</style>
 
 <!-- Select2 -->
 <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
