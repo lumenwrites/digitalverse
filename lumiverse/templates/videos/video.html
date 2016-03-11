@@ -45,8 +45,8 @@
       <div class="nav-buttons">
 	<br/>
           {% if video.prev_by_author %}
-          <a class="button" href="/post/{{first.slug}}"><< First</a>
-          <a class="button" href="/post/{{prev.slug}}">< Prev</a>
+          <a class="button" href="/video/{{first.slug}}"><< First</a>
+          <a class="button" href="/video/{{prev.slug}}">< Prev</a>
           {% else %}
 	  <div class="button invisible"></div>
 	  <div class="button invisible"></div>
@@ -56,8 +56,8 @@
 	    {{video.series.title}}</a>
           {% if video.next_by_author %}
           <!-- <div class="right"> -->
-          <a class="button" href="/post/{{next.slug}}">Next ></a>     	       
-          <a class="button" href="/post/{{last.slug}}">Last >></a>
+          <a class="button" href="/video/{{next.slug}}">Next ></a>     	       
+          <a class="button" href="/video/{{last.slug}}">Last >></a>
           <!-- </div> -->
           {% endif %}
       </div>

@@ -564,36 +564,58 @@ header .row, .subheader .row {
   bottom: 0;
   padding: 10px;
   background: rgba(0, 0, 0, 0.8);
+  /* background:rgba(34,34,34,0.8); */
+  width: 100%;
+  display: none;
+}
+/* line 34, ../sass/_browse.scss */
+#browse-template .video-title {
+  float: left;
+  /* font-size:18px; */
+  color: white;
+  color: #13aff0;
   width: 100%;
 }
-/* line 30, ../sass/_browse.scss */
+/* line 41, ../sass/_browse.scss */
 #browse-template .card-description {
   padding: 20px;
   padding: 10px;
 }
-/* line 34, ../sass/_browse.scss */
+/* line 45, ../sass/_browse.scss */
 #browse-template .card-description p {
   font-size: 16px;
 }
-/* line 38, ../sass/_browse.scss */
+/* line 49, ../sass/_browse.scss */
+#browse-template .card-description .description {
+  color: #BBB;
+}
+/* line 53, ../sass/_browse.scss */
+#browse-template .card-description hr {
+  border-top: 1px solid #333;
+  width: calc(100% + 20px);
+  margin: 0 -10px;
+  margin-right: -10px;
+}
+/* line 60, ../sass/_browse.scss */
 #browse-template .card-description .edit-post {
   position: absolute;
   right: 10px;
 }
-/* line 44, ../sass/_browse.scss */
+/* line 66, ../sass/_browse.scss */
 #browse-template .video-stats {
   /* width: 100%; */
-  text-align: right;
-  float: right;
+  /* 	text-align: right; */
+  /* float: right; */
   /* margin-top: -10px; */
   /* margin-top: -12px;     */
   /* margin-right: -10px;	     */
+  margin-top: 8px;
 }
-/* line 51, ../sass/_browse.scss */
+/* line 74, ../sass/_browse.scss */
 #browse-template .video-stats i {
   padding: 4px;
 }
-/* line 56, ../sass/_browse.scss */
+/* line 79, ../sass/_browse.scss */
 #browse-template .hubs {
   padding: 8px 0;
   margin-bottom: -22px;
@@ -602,18 +624,18 @@ header .row, .subheader .row {
   /* margin-left: 8px;	 */
 }
 
-/* line 65, ../sass/_browse.scss */
+/* line 88, ../sass/_browse.scss */
 .pagination {
   margin: 0;
   height: 20px;
 }
-/* line 70, ../sass/_browse.scss */
+/* line 93, ../sass/_browse.scss */
 .pagination .page-links {
   position: relative;
   bottom: 0;
   margin: 0;
 }
-/* line 75, ../sass/_browse.scss */
+/* line 98, ../sass/_browse.scss */
 .pagination .page-links a {
   width: 100%;
   float: left;
@@ -621,7 +643,7 @@ header .row, .subheader .row {
   padding: 10px 0;
   color: #a2a8ab;
 }
-/* line 83, ../sass/_browse.scss */
+/* line 106, ../sass/_browse.scss */
 .pagination .page-links a:hover {
   background-color: #A2A8AB;
 }

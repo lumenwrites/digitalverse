@@ -31,7 +31,7 @@ class Video(models.Model):
     thumbnail = models.ImageField(upload_to='videos/thumbnails/',
                                   default=None,blank=True, null=True)
 
-    video_url = models.CharField(max_length=256, default="")
+    video_url = models.CharField(max_length=256, default="", blank=True, null=True)
     
     description = models.TextField(default="", null=True, blank=True)
 

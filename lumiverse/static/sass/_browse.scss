@@ -25,7 +25,18 @@
 	position:absolute;
 	bottom:0;
 	padding:10px;
-	background:rgba(0,0,0,0.8);width:100%;
+	background:rgba(0,0,0,0.8);
+	/* background:rgba(34,34,34,0.8); */
+	width:100%;
+	display:none;
+    }
+
+    .video-title {
+	float:left;
+	/* font-size:18px; */
+	color:white;
+	color:$brightblue;
+	width:100%;	
     }
     .card-description {
 	padding: 20px;
@@ -35,6 +46,17 @@
 	    font-size:16px;
 	}
 
+	.description {
+	    color:#BBB;
+	}
+
+	hr {
+	    border-top: 1px solid #333;
+	    width: calc(100% + 20px);
+	    margin: 0 -10px;
+	    margin-right: -10px;	    
+	}
+	
 	.edit-post {
 	    position:absolute;
 	    right: 10px;
@@ -43,11 +65,12 @@
     }
     .video-stats {
 	/* width: 100%; */
-    	text-align: right;
-    float: right;
+    /* 	text-align: right; */
+    /* float: right; */
     /* margin-top: -10px; */
     /* margin-top: -12px;     */
-    /* margin-right: -10px;	     */
+	/* margin-right: -10px;	     */
+	    margin-top: 8px;
 	i {
 	    padding: 4px;
 	}

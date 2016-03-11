@@ -1,7 +1,7 @@
 {% load thumbnail %}
 
 {% for video in object_list %}
-{% if video.published or video.author == userprofile  %}
+{% if video.published or video.author == user  %}
   <a href="{{video.get_absolute_url}}">  
     <article>
 
@@ -35,12 +35,27 @@
       {% endif %}    
     
       <div class="card-description">
-      {% if user == post.author or user.is_staff  %}
+      {% if user == video.author or user.is_staff  %}
       <a class="edit-post right margins-0" href="/video/{{video.slug}}/edit">
 	<i class="fa fa-pencil"></i></a>
       {% endif %}
 
-      <b style="float:left; font-size:18px;color:white;width:100%;">{{video.title}} </b>
+      <span class="video-title">{{video.title}} </span>
+      <span class="description">
+	{% if video.description  %}
+	{{video.description|truncatechars:38}}
+	{% else  %}
+	&nbsp;
+	{% endif %}	
+      </span>
+      <hr/>
+    	      <div class="video-stats">
+    		<i class="fi-eye">{{video.views}}</i>
+    		<i class="fi-arrow-up">{{video.score}}</i>
+    		<i class="fi-comment">{{video.comments.count}} 0</i>
+    		<i class="fi-clock">09:49</i>
+    	      </div>		
+      
       {% if not video.published %}        
       <span class=""><!-- [unpublished] -->
 	<i class="fa fa-eye-slash"
@@ -50,7 +65,7 @@
 		  top: 188px;
 		  font-size: 18px;"></i></span>
       {% endif %}        
-      <br/>
+
 	
 	<!-- <p>[description]</p> -->
 	<!-- <p style="margin-bottom: -10px;"> -->
