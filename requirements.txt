@@ -1,11 +1,9 @@
 Django
 sorl-thumbnail
 markdown
-Pillow
+# Pillow
 
 psycopg2
 redis
 django-redis-cache 
 uwsgi
-
-ffvideo
