@@ -12,6 +12,12 @@
     margin-top:20px;
 }
 
+
+.video-js {
+  width:850px;
+  height:477px;
+}
+
 .post .nav-buttons {
     .button {
 	width: calc(20% - 4px);
@@ -30,6 +36,10 @@
 
     .stats span {
 	margin-right: 8px;
+    }
+
+    .category {
+	background: #232626;
     }
 
     .fi-arrow-up {
@@ -89,3 +99,8 @@
     }
 }
 
+
+
+.ytp-watermark {
+    display:none!important;
+}

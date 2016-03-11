@@ -2,12 +2,10 @@
 
     article {
 	position:relative;
-	width:calc(20% - 2px);
-	margin:1px;
-	width: 20%;
-	margin: 0;
+	width:calc(20% - 8px);
+	margin:4px;
 	float:left;
-
+	background: #222;
 	img {
 	    width: 100%;
 	}
@@ -15,8 +13,7 @@
 
     @media screen and (orientation:portrait) {
 	article {
-	    width:calc(33% - 2px);
-	    width:33.3333%;		    
+	    width:calc(33.3333% - 8px);
 	    img {
 		width: 100%;
 	    }
@@ -28,7 +25,63 @@
 	position:absolute;
 	bottom:0;
 	padding:10px;
-	background:rgba(0,0,0,0.8);width:100%;    
+	background:rgba(0,0,0,0.8);
+	/* background:rgba(34,34,34,0.8); */
+	width:100%;
+	display:none;
+    }
+
+    .video-title {
+	float:left;
+	/* font-size:18px; */
+	color:white;
+	color:$brightblue;
+	width:100%;	
+    }
+    .card-description {
+	padding: 20px;
+	padding: 10px;
+
+	p {
+	    font-size:16px;
+	}
+
+	.description {
+	    color:#BBB;
+	}
+
+	hr {
+	    border-top: 1px solid #333;
+	    width: calc(100% + 20px);
+	    margin: 0 -10px;
+	    margin-right: -10px;	    
+	}
+	
+	.edit-post {
+	    position:absolute;
+	    right: 10px;
+	}
+	
+    }
+    .video-stats {
+	/* width: 100%; */
+    /* 	text-align: right; */
+    /* float: right; */
+    /* margin-top: -10px; */
+    /* margin-top: -12px;     */
+	/* margin-right: -10px;	     */
+	    margin-top: 8px;
+	i {
+	    padding: 4px;
+	}
+    }
+
+    .hubs {
+	padding:8px 0;
+	margin-bottom: -22px;
+	margin-bottom: -3px;	
+	/* margin-left: -20px; */
+	/* margin-left: 8px;	 */
     }
 }
 
@@ -55,3 +108,63 @@
 	}
     }
 }
+
+/* Sidebar */
+/* .page { */
+/*     width: 80%; */
+/*     float:right; */
+/* } */
+
+/* .sidebar { */
+/*     width:20%; */
+/*     float:left; */
+/*     background: #19191F; */
+/*     height:100%; */
+/*     padding: 20px 20px 0 40px; */
+/* } */
+
+/* .subnav { */
+/*     display:none; */
+/* } */
+
+/* .main-header { */
+/*     display:none; */
+/* } */
+
+/* #sidebarMenu { */
+/*     font-size: 18px; */
+
+
+
+/*     ul { */
+/* 	margin: 0; */
+/* 	padding: 0; */
+/* 	float: left; */
+/* 	margin-right: 10px; */
+/* 	list-style-type: none!important; */
+/*     } */
+
+    
+
+/*     ul a { */
+/* 	color: $bright; */
+/*     } */
+
+/*     hr { */
+/* 	border-bottom: 1px solid $bright; */
+/*     } */
+/* } */
+
+
+/* #browse-template { */
+
+/*     article { */
+/* 	position:relative; */
+/* 	width:calc(25% - 8px); */
+/*     } */
+
+/* } */
+
+/* .main-footer { */
+/*     display:none; */
+/* } */
