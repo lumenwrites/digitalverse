@@ -35,10 +35,10 @@
 
     {% if not user == video.author %}
         {% if user.is_authenticated %}
-        <a class="small button upvote {% if post in user.upvoted.all %}upvoted{% endif %}"
+        <a class="small button upvote {% if video in user.upvoted.all %}upvoted{% endif %}"
            id="post-upvote-{{video.id}}"    
            href="/login/?next={{request.path}}">
-          {% if post in user.upvoted.all %}
+          {% if video in user.upvoted.all %}
               Upvoted
           {% else %}      
               <i class="fi-arrow-up"></i>Upvote

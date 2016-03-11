@@ -333,7 +333,7 @@ def video_delete(request, slug):
 
 # Voting
 def upvote(request):
-    video = get_object_or_404(Video, id=request.POST.get('video-id'))
+    video = get_object_or_404(Video, id=request.POST.get('post-id'))
     video.score += 1
     video.save()
     video.author.karma += 1
@@ -344,7 +344,7 @@ def upvote(request):
     return HttpResponse()
 
 def unupvote(request):
-    video = get_object_or_404(Video, id=request.POST.get('video-id'))
+    video = get_object_or_404(Video, id=request.POST.get('post-id'))
     video.score -= 1
     video.save()
     video.author.karma = 1
