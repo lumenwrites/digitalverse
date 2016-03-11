@@ -16,7 +16,14 @@
     </div>
     <div class="large-6 small-6 columns">
       <div class="rank-types right">
-
+	<!-- 
+	<a href="{{request.path}}?sorting=hot{% if category %}&category={{category}}{% endif %}">
+	  <span {% if sorting = "hot" %}class="active"{% endif %}>Videos</span>
+	</a>
+	<a href="{{request.path}}?sorting=new{% if category %}&category={{category}}{% endif %}">
+	  <span {% if sorting = "new" %}class="active"{% endif %}>Series</span>
+	</a>
+	 -->
 	  
 	  <button class="button categories-dropdown-button" type="button"
 		  data-toggle="categories-dropdown">
@@ -31,18 +38,19 @@
 	       data-dropdown>
 	    <ul>
 	      <li> <a href="{{request.path}}">All</a> </li>
-	      <li> <a href="{{request.path}}">Subscribed</a> </li>
-	      <hr style=""/>
+	      <!-- <li> <a href="{{request.path}}">Subscribed</a> </li> -->
+	      <!-- <hr style=""/> -->
 	      <!-- <input type="text"/> -->
 	      {% for category in categories %}
 	          {# {% if category.posts.all %} #}
 	      <li>
+		<!-- Plus
 		<a class="small button"
 		   style="margin-left:-40px;    margin-left: -30px;
 			  background: #222525;
 			  padding: 6px;
 			  border-radius: 4px;">
-		  <i class="fi-plus"></i></a>
+		  <i class="fi-plus"></i></a> -->
 		<a href="{{request.path}}?category={{category.slug}}{% if sorting %}&sorting={{sorting}}{% else %}&sorting=hot{% endif %}">
 		  {{category.title}} </a>
 	      </li>
