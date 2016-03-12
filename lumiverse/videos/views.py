@@ -13,7 +13,7 @@ from django.utils import timezone
 # rss
 from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import Atom1Feed
-
+from markdown import Markdown
 
 from profiles.models import User 
 from comments.forms import CommentForm
@@ -385,9 +385,10 @@ class UserFeed(Feed):
             return "https://www.youtube.com/watch?v="+item.video_url
         else:
             return "http://lumiverse.io/media/"+str(item.video)
-    
+
     def item_description(self, item):
-        return item.description
+        md = Markdown()
+        return md.convert(item.description)
 
 
 
@@ -422,7 +423,8 @@ class SeriesFeed(Feed):
             return "http://lumiverse.io/media/"+str(item.video)
     
     def item_description(self, item):
-        return item.description
+        md = Markdown()
+        return md.convert(item.description)
 
 
 
