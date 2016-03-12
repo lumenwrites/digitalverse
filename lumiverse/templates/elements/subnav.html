@@ -23,8 +23,10 @@
 	<a href="{{request.path}}?sorting=new{% if category %}&category={{category}}{% endif %}">
 	  <span {% if sorting = "new" %}class="active"{% endif %}>Series</span>
 	</a>
-	 -->
-	  
+	<a href="{{request.path}}?sorting=new{% if category %}&category={{category}}{% endif %}">
+	  <span {% if sorting = "new" %}class="active"{% endif %}>Hubs</span>
+	</a>
+	   -->
 	  <button class="button categories-dropdown-button" type="button"
 		  data-toggle="categories-dropdown">
 	    {% if category %}
