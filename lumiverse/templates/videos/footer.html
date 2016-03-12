@@ -72,6 +72,12 @@
               <a class="button rss-icon"
 		 href="/user/{{video.author.username}}/feed/atom/">
 	      <i class="fi-rss large"></i></a>
+
+	      {% if video.author.username == "rayalez" %}	      
+              <a class="button rss-icon"
+		 href="https://www.youtube.com/channel/UCxm7uJEEVtXPRzhEX2EBq_Q/">
+	      <i class="fi-social-youtube large"></i></a>
+	      {% endif %}
 	  </span>
       {% endif %}
     

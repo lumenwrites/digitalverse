@@ -95,6 +95,12 @@
 	    <a href="/series/{{series.slug}}/feed/atom/">
 	      <i class="fi-rss large"></i></a>
 	  </span>
+
+	      {% if series.slug == "orangemind" %}	      
+              <a class="button rss-icon"
+		 href="https://www.youtube.com/channel/UCxm7uJEEVtXPRzhEX2EBq_Q/">
+	      <i class="fi-social-youtube large"></i></a>
+	      {% endif %}
       {% endif %}
     </div>
   </div>
@@ -102,7 +108,7 @@
   <div class="clearfix"></div>
 
   </div>
-  {% if series.slug == "orange-mind" %}
+  {% if series.slug == "orangemind" %}
   <div class="tagline">
     Short videos about rationality, philosophy, computer science, and other stuff.
   </div>
