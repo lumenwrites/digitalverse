@@ -24,7 +24,8 @@ class User(AbstractUser):
     upvoted = models.ManyToManyField('videos.Video', related_name="upvoters", blank=True)
 
     # comments_upvoted = models.ManyToManyField('comments.Comment', related_name="upvoters", blank=True)
-    # approved = models.BooleanField(default=False)
+    approved = models.BooleanField(default=False)
+    hidden = models.BooleanField(default=False)    
     
     # @permalink
     # def get_absolute_url(self):
