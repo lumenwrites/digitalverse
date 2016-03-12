@@ -366,10 +366,10 @@ class UserFeed(Feed):
         return get_object_or_404(User, username=username)
 
     def title(self, obj):
-        return "webcomics.io: %s comics" % obj.username
+        return "lumiverse.io: %s videos" % obj.username
 
     def link(self, obj):
-        return "http://webcomics.io/user/" + obj.username
+        return "http://lumiverse.io/user/" + obj.username
     
     def items(self, obj):
         return Video.objects.filter(published=True, author=obj).order_by("-pub_date")
@@ -380,9 +380,14 @@ class UserFeed(Feed):
     def item_pubdate(self, item):
         return item.pub_date
     
-
+    def item_enclosure_url(self, item):
+        if item.video_url:
+            return "https://www.youtube.com/watch?v="+item.video_url
+        else:
+            return "http://lumiverse.io/media/"+str(item.video)
+    
     def item_description(self, item):
-        return "<img src='http://webcomics.io/media/"+str(item.images.all()[0].image)+"'/>"
+        return item.description
 
 
 
@@ -408,12 +413,16 @@ class SeriesFeed(Feed):
 
     def item_pubdate(self, item):
         return item.pub_date
+
     
-
+    def item_enclosure_url(self, item):
+        if item.video_url:
+            return "https://www.youtube.com/watch?v="+item.video_url
+        else:
+            return "http://lumiverse.io/media/"+str(item.video)
+    
     def item_description(self, item):
-        return "<img src='http://webcomics.io/media/"+str(item.images.all()[0].image)+"'/>"        
-        # return "http://webcomics.io/media/"+str(item.image)
-
+        return item.description
 
 
 
