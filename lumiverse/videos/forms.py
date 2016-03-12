@@ -9,7 +9,7 @@ class VideoForm(ModelForm):
 
     class Meta:
         model = Video
-        fields = ['title', 'video','video_url', 'thumbnail', 'description', 'categories', 'series']
+        fields = ['title', 'video','video_url', 'thumbnail', 'description', 'hubs', 'series']
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Title'}),
             'description': forms.Textarea(attrs={'placeholder': 'Description (optional)',

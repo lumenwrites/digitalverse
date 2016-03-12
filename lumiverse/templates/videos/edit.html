@@ -105,7 +105,7 @@
       <div class="clearfix"></div>
       <div class="set-categories"
 	   style="{% if user.series.all %}width: calc(100% - 310px);float:left{% endif %}">
-	{{form.categories}}
+	{{form.hubs}}
       </div>
 
       <!-- <input type="text" placeholder="category"> -->
@@ -173,8 +173,8 @@
     });
 
     // Multiselect
-    $("#id_categories").select2({
-	placeholder: "Select categories", // (maximum 4)
+    $("#id_hubs").select2({
+	placeholder: "Select hubs", // (maximum 4)
 	allowClear: true,
 	maximumSelectionLength: 2    
     })

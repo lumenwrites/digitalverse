@@ -28,6 +28,7 @@ class Series(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="series", default="")
 
     categories = models.ManyToManyField('categories.Category', related_name="series", blank=True)
+    hubs = models.ManyToManyField('hubs.Hub', related_name="series", blank=True)
     score = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
 

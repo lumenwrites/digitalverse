@@ -1,0 +1,110 @@
+.browse-series {
+
+    article {
+	position:relative;
+	margin:4px;
+	background: #222;
+	height: 180px;
+	width:calc(33.33% - 8px);
+	float:left;
+	img {
+	    width: 100%;
+	}
+	.series-image {
+	    width:180px;
+	    float:left;
+	}
+    }
+
+    @media screen and (orientation:portrait) {
+	article {
+	    img {
+		width: 100%;
+	    }
+	}
+
+    }
+
+    .video-title {
+	float:left;
+	/* font-size:18px; */
+	color:white;
+	color:$brightblue;
+	width:100%;
+
+    }
+    .card-description {
+	float:right;
+
+	width:calc(100% - 180px);
+	
+	padding: 20px;
+	padding: 10px;
+
+	p {
+	    font-size:16px;
+	}
+
+	.description {
+	    color:#BBB;
+	    height: 98px;	    
+	}
+
+	hr {
+	    border-top: 1px solid #333;
+	    width: calc(100% + 20px);
+	    margin: 0 -10px;
+	    margin-right: -10px;	    
+	}
+	
+	.edit-post {
+	    position:absolute;
+	    right: 10px;
+	}
+	
+    }
+    .video-stats {
+	/* width: 100%; */
+    /* 	text-align: right; */
+    /* float: right; */
+    /* margin-top: -10px; */
+    /* margin-top: -12px;     */
+	/* margin-right: -10px;	     */
+	margin-top: 8px;
+	i {
+	    padding: 4px;
+	}
+    }
+
+    .hubs {
+	padding:8px 0;
+	margin-bottom: -22px;
+	margin-bottom: -3px;	
+	/* margin-left: -20px; */
+	/* margin-left: 8px;	 */
+    }
+}
+
+.pagination {
+    margin: 0;
+    height: 20px;
+
+
+    .page-links {
+	position:relative;
+	bottom: 0;
+	margin:0;
+
+	a {
+	    width: 100%;
+	    float: left;
+	    margin: 0;
+	    padding: 10px 0;
+	    color: $bright;
+	}
+
+	a:hover {
+	    background-color: #A2A8AB;	    
+	}
+    }
+}

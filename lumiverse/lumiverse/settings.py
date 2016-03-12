@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     
     'series',
     'categories',
+    'hubs',    
     'posts',
     'videos',    
     'profiles',

@@ -22,6 +22,7 @@ from comments.models import Comment
 
 from series.models import Series
 from categories.models import Category
+from hubs.models import Hub
 
 from .forms import VideoForm
 from .models import Video
@@ -37,11 +38,11 @@ class BrowseMixin(object):
         # Filter published
         # qs = qs.filter(published=True)
 
-        # Filter by category
-        category = self.request.GET.get('category')
-        if category:
-            category = Category.objects.get(slug=category)
-            qs = qs.filter(categories=category)
+        # Filter by hub
+        hub = self.request.GET.get('hub')
+        if hub:
+            hub = Hub.objects.get(slug=hub)
+            qs = qs.filter(hubs=hub)
 
         # Sort
         sorting = self.request.GET.get('sorting')
@@ -60,15 +61,15 @@ class BrowseMixin(object):
             context['sorting'] = self.request.GET.get('sorting')
         else:
             context['sorting'] = "hot"
-        context['category'] = self.request.GET.get('category')
-        context['categories'] = Category.objects.all()
+        context['hub'] = self.request.GET.get('hub')
+        context['hubs'] = Hub.objects.all()
         return context
     
 
 
 class BrowseView(BrowseMixin, ListView):
     model = Video
-    template_name = "videos/browse.html"    
+    template_name = "videos/browse.html"
     
     
 
@@ -191,7 +192,7 @@ def video_create(request):
             video.video = form.cleaned_data['video']
             video.video_url = form.cleaned_data['video_url']
             video.save()
-            video.categories = form.cleaned_data['categories']
+            video.hubs = form.cleaned_data['hubs']
             video.save()
             
             # Upload Images
@@ -223,7 +224,7 @@ def video_edit(request,slug):
             video.author = request.user
             video.video = form.cleaned_data['video']
             video.video_url = form.cleaned_data['video_url']
-            video.categories = form.cleaned_data['categories']
+            video.hubs = form.cleaned_data['hubs']
             video.save()
 
 
@@ -279,7 +280,7 @@ def video_edit(request,slug):
 
 # class VideoEdit(UpdateView):
 #     model = Video
-#     # fields = ["title","image","thumbnail","description","categories"]
+#     # fields = ["title","image","thumbnail","description","hubs"]
 #     form_class = VideoForm
 #     # success_url = "/"
 #     template_name = 'videos/edit.html'

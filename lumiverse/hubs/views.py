@@ -10,46 +10,76 @@ from django.utils import timezone
 from profiles.models import User 
 
 from videos.models import Video
-from videos.views import BrowseMixin
 
-from .forms import SeriesForm
-from .models import Series
+from .forms import HubForm
+from .models import Hub
 
 # from .utils import rank_hot
 
-class SeriesBrowse(BrowseMixin, ListView):
-    model = Series    
-    template_name = "series/browse.html"        
-
-
-class SeriesView(BrowseMixin, ListView):
-    model = Video
-    template_name = "series/series.html"
-    paginate_by=16
-    
+class BrowseMixin(object):
+    paginate_by = 16
     def get_queryset(self):
-        qs = super(SeriesView, self).get_queryset()
-        qs = sorted(qs, key=lambda x: x.pub_date, reverse=False)
-        # qs.reverse()
-        # Filter Videos
-        series = Series.objects.get(slug=self.kwargs['slug'])
-        qs = [video for video in qs if video.series == series]
+        qs = super(BrowseMixin, self).get_queryset()
+
+        # Filter published
+        # qs = qs.filter(published=True)
+
+        # Filter by hub
+        hub = self.request.GET.get('hub')
+        if hub:
+            hub = Hub.objects.get(slug=hub)
+            qs = qs.filter(hubs=hub)
+
+        # Sort
+        sorting = self.request.GET.get('sorting')
+        if sorting == 'top':
+            qs = qs.order_by('-score')
 
         return qs
 
     def get_context_data(self, **kwargs):
-        context = super(SeriesView, self).get_context_data(**kwargs)
+        context = super(BrowseMixin, self).get_context_data(**kwargs)
+        if self.request.GET.get('sorting'):
+            context['sorting'] = self.request.GET.get('sorting')
+        else:
+            context['sorting'] = "hot"
+        context['hub'] = self.request.GET.get('hub')
+        context['hubs'] = Hub.objects.all()
+        return context
 
-        series = Series.objects.get(slug=self.kwargs['slug'])        
-        context['series'] = series
+class HubsBrowse(BrowseMixin, ListView):
+    model = Hub
+    template_name = "hubs/browse.html"        
+
+
+class HubView(BrowseMixin, ListView):
+    model = Video
+    template_name = "hubs/hub.html"
+    paginate_by=16
+    
+    def get_queryset(self):
+        qs = super(HubView, self).get_queryset()
+        qs = sorted(qs, key=lambda x: x.pub_date, reverse=False)
+        # qs.reverse()
+        # Filter Videos
+        hub = Hub.objects.get(slug=self.kwargs['slug'])
+        qs = [video for video in qs if video.hubs == hub]
+
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(HubView, self).get_context_data(**kwargs)
+
+        hub = Hub.objects.get(slug=self.kwargs['slug'])        
+        context['hub'] = hub
 
         view_count = 0
-        for video in series.videos.all():
+        for video in hub.videos.all():
             view_count += video.views
         context['view_count'] = view_count
 
         upvotes_count = 0
-        for video in series.videos.all():
+        for video in hub.videos.all():
             upvotes_count += video.score
         context['upvotes_count'] = upvotes_count
         
@@ -58,55 +88,55 @@ class SeriesView(BrowseMixin, ListView):
     
 
 def subscribe(request, slug):
-    series = Series.objects.get(slug=slug)
+    hub = Hub.objects.get(slug=slug)
     if not request.user.is_anonymous():
         user = request.user
-        user.subscribed_series.add(series)
+        user.subscribed_hub.add(hub)
         user.save()
         return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
     else:
         return HttpResponseRedirect('/login/')    
 
 def unsubscribe(request, slug):
-    series = Series.objects.get(slug=slug)    
+    hub = Hub.objects.get(slug=slug)    
     user = request.user
-    user.subscribed_series.remove(series)
+    user.subscribed_hub.remove(hub)
     user.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
     
 
 
-class SeriesCreate(CreateView):
-    model = Series
-    form_class = SeriesForm
-    template_name = 'series/edit.html'
+class HubCreate(CreateView):
+    model = Hub
+    form_class = HubForm
+    template_name = 'hubs/edit.html'
     
     success_url = "/"
 
     def form_valid(self, form):
        user = self.request.user
        form.instance.author = user
-       return super(SeriesCreate, self).form_valid(form)
+       return super(HubCreate, self).form_valid(form)
     
 
 
     def get_success_url(self):
-        success_url = "/series/"+self.object.slug+"/edit"
+        success_url = "/hub/"+self.object.slug+"/edit"
         return success_url
 
 
     def get_context_data(self, **kwargs):
-        context = super(SeriesCreate, self).get_context_data(**kwargs)
+        context = super(HubCreate, self).get_context_data(**kwargs)
         context['creating'] = True
         return context    
 
 
 
-class SeriesEdit(UpdateView):
-    model = Series
-    form_class = SeriesForm
+class HubEdit(UpdateView):
+    model = Hub
+    form_class = HubForm
     # success_url = "/"
-    template_name = 'series/edit.html'
+    template_name = 'hubs/edit.html'
 
     def get_success_url(self):
         return self.request.path
@@ -138,14 +168,14 @@ class SeriesEdit(UpdateView):
 #     video.save()
 #     return HttpResponseRedirect('/video/'+video.slug+'/edit')
 
-def series_delete(request, slug):
-    series = Series.objects.get(slug=slug)
+def hub_delete(request, slug):
+    hub = Hub.objects.get(slug=slug)
 
     # throw him out if he's not an author
-    if request.user != series.author:
+    if request.user != hubs.author:
         return HttpResponseRedirect('/')        
 
-    series.delete()
+    hub.delete()
     return HttpResponseRedirect('/')
 
 

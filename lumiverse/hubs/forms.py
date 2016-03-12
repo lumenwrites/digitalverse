@@ -1,12 +1,12 @@
 from django.forms import ModelForm
 from django import forms
 
-from .models import Series
+from .models import Hub
 
-class SeriesForm(ModelForm):
+class HubForm(ModelForm):
     class Meta:
-        model = Series
-        fields = ['title', 'image', 'background', 'description', 'hubs']
+        model = Hub
+        fields = ['title', 'avatar', 'background', 'description']
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Title'}),
             'description': forms.Textarea(attrs={'placeholder': 'Description (optional)',

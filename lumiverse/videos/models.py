@@ -38,8 +38,14 @@ class Video(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="videos", default="")
 
     categories = models.ManyToManyField('categories.Category', related_name="videos", blank=True)
+
+    hubs = models.ManyToManyField('hubs.Hub', related_name="videos",
+                            default=None, blank=True, null=True)
+
+
     series = models.ForeignKey('series.Series', related_name="videos",
                                default=None, blank=True, null=True)
+
     
     score = models.IntegerField(default=0)
     views = models.IntegerField(default=0)

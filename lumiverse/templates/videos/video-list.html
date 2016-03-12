@@ -85,8 +85,8 @@
 
 
       <div class="hubs">
-	{% for category in video.categories.all %}	
-	<span class="callout small">{{category.title}}</span>
+	{% for hub in video.hubs.all %}	
+	<span class="callout small">{{hub.title}}</span>
 	{% endfor %}
 
 	{% if video.series  %}

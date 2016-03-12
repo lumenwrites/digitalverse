@@ -1,12 +1,7 @@
 <style>
-
   select {
   display:none;
   }
-  .row {
-  max-width: 95%!important;
-  }
-  
 </style>
 <!-- Subnav -->
 <div class="subnav">
@@ -26,37 +21,54 @@
     </div>
     <div class="large-6 small-6 columns">
       <div class="rank-types right">
+
 	
-	<a href="{{request.path}}?sorting=hot{% if category %}&category={{category}}{% endif %}">
+	<a href="/">
 	  <span {% if sorting = "hot" %}class="active"{% endif %}>Videos</span>
 	</a>
-	<a href="{{request.path}}?sorting=new{% if category %}&category={{category}}{% endif %}">
+	<a href="/series/">
 	  <span {% if sorting = "new" %}class="active"{% endif %}>Series</span>
 	</a>
-	<a href="{{request.path}}?sorting=new{% if category %}&category={{category}}{% endif %}">
+	<!-- 
+	<a href="/hubs/">
 	  <span {% if sorting = "new" %}class="active"{% endif %}>Hubs</span>
 	</a>
+	-->
 
-
+	<!-- Search -->
+	<!-- 
+	<div class="right">
+	  <i class="fi-magnifying-glass right"
+	     style="position: relative;
+		    right: 28px;
+		    width: 0;
+		    top: 1px;
+		    color: #3D454B;"
+	     ></i>
+	  <input type="text"
+		 style="margin: -6px 0 -10px -4px;
+			height: 36px;"/>
+	</div> -->
 	<!-- Hubs Multiselect -->
+	<!-- 
 	<div class="sel-container">
-	<select id="category-search" multiple name="search">
+ 	  <select id="category-search" multiple name="search">
+	  <option value="all">All</option>	    
 	  {% for category in categories %}
 	  <option value="{{category.title}}">{{category.title}}</option>
 	  {% endfor %}
 	</select>
 	</div>
-	<!-- Categories -->
-	<!-- 
+	 -->
+	<!-- Hubs -->
 	  <button class="button categories-dropdown-button" type="button"
 		  data-toggle="categories-dropdown">
-	    {% if category %}
-	    {{category.title}}
+	    {% if hub %}
+	    {{hub.title}}
 	    {% else %}
-	    Category: All
+	    Hub: All
 	    {% endif %}
 	  </button>
-	  -->
 
 	  <div class="dropdown-pane bottom"
 	       id="categories-dropdown"
@@ -66,8 +78,7 @@
 	      <!-- <li> <a href="{{request.path}}">Subscribed</a> </li> -->
 	      <!-- <hr style=""/> -->
 	      <!-- <input type="text"/> -->
-	      {% for category in categories %}
-	          {# {% if category.posts.all %} #}
+	      {% for hub in hubs %}
 	      <li>
 		<!-- Plus
 		<a class="small button"
@@ -76,10 +87,9 @@
 			  padding: 6px;
 			  border-radius: 4px;">
 		  <i class="fi-plus"></i></a> -->
-		<a href="{{request.path}}?category={{category.slug}}{% if sorting %}&sorting={{sorting}}{% else %}&sorting=hot{% endif %}">
-		  {{category.title}} </a>
+		<a href="{{request.path}}?hub={{hub.slug}}{% if sorting %}&sorting={{sorting}}{% else %}&sorting=hot{% endif %}">
+		  {{hub.title}} </a>
 	      </li>
-		  {# {% endif %} #}
 	      {% endfor %}
 	    </ul>
 	  </div>
@@ -95,72 +105,80 @@
   </div>
 </div>
 
+<style>
+.subnav a, .subnav span {
+line-height: 23px;
+}
 
+.categories-dropdown-button, .categories-dropdown-button:hover, .categories-dropdown-button:active, .categories-dropdown-button:focus {
+    margin-left: -8px;
+}
+</style>
 
 
 
 
 <!-- Select2 -->
-<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+<!-- <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" /> -->
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script> -->
 
-<script>
-    $(document).ready(function(){
+<!-- <script> -->
+<!--     $(document).ready(function(){ -->
 
-    // Multiselect
-    $("#category-search").select2({
-	placeholder: "Hubs: All", // (maximum 4)
-	allowClear: true,
-	maximumSelectionLength: 3
-    })
+<!--     // Multiselect -->
+<!--     $("#category-search").select2({ -->
+<!-- 	placeholder: "Hubs: Default", // (maximum 4) -->
+<!-- 	allowClear: true, -->
+<!-- 	maximumSelectionLength: 3 -->
+<!--     }) -->
     
 	
-    })
-</script>
+<!--     }) -->
+<!-- </script> -->
 
 
-<style>
+<!-- <style> -->
 
-  .sel-container {
-    width: 400px;
-    height: 0px;
-    float: right;
-  }
-  .selection {
-  width: 400px;
-  border-radius:4px;
-  }
+<!--   .sel-container { -->
+<!--     width: 400px; -->
+<!--     height: 0px; -->
+<!--     float: right; -->
+<!--   } -->
+<!--   .selection { -->
+<!--   width: 400px; -->
+<!--   border-radius:4px; -->
+<!--   } -->
 
-.select2-container--default .select2-search--inline .select2-search__field {
-  margin: 0;
-  }
+<!-- .select2-container--default .select2-search--inline .select2-search__field { -->
+<!--   margin: 0; -->
+<!--   } -->
 
-.select2-container--default .select2-selection--multiple {
-  height: 40px;
-  }
-.select2-container--default .select2-selection--multiple .select2-selection__choice {
-   padding: 0 5px!important;
-    text-transform: none;
-  }
+<!-- .select2-container--default .select2-selection--multiple { -->
+<!--   height: 40px; -->
+<!--   } -->
+<!-- .select2-container--default .select2-selection--multiple .select2-selection__choice { -->
+<!--    padding: 0 5px!important; -->
+<!--     text-transform: none; -->
+<!--   } -->
 
-.select2-container--default .select2-selection--multiple .select2-selection__choice {
-    margin-top: 6px !important;
+<!-- .select2-container--default .select2-selection--multiple .select2-selection__choice { -->
+<!--     margin-top: 6px !important; -->
 
-  }
+<!--   } -->
 
-.select2-container--default .select2-selection--multiple .select2-selection__clear {
-    margin-top: 4px!important;
-  }
+<!-- .select2-container--default .select2-selection--multiple .select2-selection__clear { -->
+<!--     margin-top: 4px!important; -->
+<!--   } -->
 
-.select2-container {
-  width: 400px!important;
-  height: 40px;
-  margin: -8px 0 0 0;
+<!-- .select2-container { -->
+<!--   width: 400px!important; -->
+<!--   height: 40px; -->
+<!--   margin: -8px 0 0 0; -->
 
-  }
+<!--   } -->
 
-.select2-container--default .select2-results>.select2-results__options {
+<!-- .select2-container--default .select2-results>.select2-results__options { -->
 
-    width: 400px;
-}  
-</style>
+<!--     width: 400px; -->
+<!-- }   -->
+<!-- </style> -->

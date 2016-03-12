@@ -692,6 +692,113 @@ header .row, .subheader .row {
 /* .main-footer { */
 /*     display:none; */
 /* } */
+/* line 3, ../sass/_browseseries.scss */
+.browse-series article {
+  position: relative;
+  margin: 4px;
+  background: #222;
+  height: 180px;
+  width: calc(33.33% - 8px);
+  float: left;
+}
+/* line 10, ../sass/_browseseries.scss */
+.browse-series article img {
+  width: 100%;
+}
+/* line 13, ../sass/_browseseries.scss */
+.browse-series article .series-image {
+  width: 180px;
+  float: left;
+}
+@media screen and (orientation: portrait) {
+  /* line 21, ../sass/_browseseries.scss */
+  .browse-series article img {
+    width: 100%;
+  }
+}
+/* line 28, ../sass/_browseseries.scss */
+.browse-series .video-title {
+  float: left;
+  /* font-size:18px; */
+  color: white;
+  color: #13aff0;
+  width: 100%;
+}
+/* line 36, ../sass/_browseseries.scss */
+.browse-series .card-description {
+  float: right;
+  width: calc(100% - 180px);
+  padding: 20px;
+  padding: 10px;
+}
+/* line 44, ../sass/_browseseries.scss */
+.browse-series .card-description p {
+  font-size: 16px;
+}
+/* line 48, ../sass/_browseseries.scss */
+.browse-series .card-description .description {
+  color: #BBB;
+  height: 98px;
+}
+/* line 53, ../sass/_browseseries.scss */
+.browse-series .card-description hr {
+  border-top: 1px solid #333;
+  width: calc(100% + 20px);
+  margin: 0 -10px;
+  margin-right: -10px;
+}
+/* line 60, ../sass/_browseseries.scss */
+.browse-series .card-description .edit-post {
+  position: absolute;
+  right: 10px;
+}
+/* line 66, ../sass/_browseseries.scss */
+.browse-series .video-stats {
+  /* width: 100%; */
+  /* 	text-align: right; */
+  /* float: right; */
+  /* margin-top: -10px; */
+  /* margin-top: -12px;     */
+  /* margin-right: -10px;	     */
+  margin-top: 8px;
+}
+/* line 74, ../sass/_browseseries.scss */
+.browse-series .video-stats i {
+  padding: 4px;
+}
+/* line 79, ../sass/_browseseries.scss */
+.browse-series .hubs {
+  padding: 8px 0;
+  margin-bottom: -22px;
+  margin-bottom: -3px;
+  /* margin-left: -20px; */
+  /* margin-left: 8px;	 */
+}
+
+/* line 88, ../sass/_browseseries.scss */
+.pagination {
+  margin: 0;
+  height: 20px;
+}
+/* line 93, ../sass/_browseseries.scss */
+.pagination .page-links {
+  position: relative;
+  bottom: 0;
+  margin: 0;
+}
+/* line 98, ../sass/_browseseries.scss */
+.pagination .page-links a {
+  width: 100%;
+  float: left;
+  margin: 0;
+  padding: 10px 0;
+  color: #a2a8ab;
+}
+/* line 106, ../sass/_browseseries.scss */
+.pagination .page-links a:hover {
+  background-color: #A2A8AB;
+}
+
 /* line 1, ../sass/_series.scss */
 .author-avatar {
   margin: -20px -10px -20px 10px;
@@ -1216,33 +1323,49 @@ select {
   #id_categories {
     list-style-type: none;
     /* width:400px; */
-    /* width:100%; */
+    /* nwidth:100%; */
   }
 }
-/* line 199, ../sass/_edit.scss */
+/* line 200, ../sass/_edit.scss */
+#id_hubs {
+  list-style-type: none;
+  /* width:600px; */
+  /* width:100%;     */
+  padding: 0px;
+}
+
+@media screen and (max-width: 1300px) {
+  /* line 207, ../sass/_edit.scss */
+  #id_hubs {
+    list-style-type: none;
+    /* width:400px; */
+    /* nwidth:100%; */
+  }
+}
+/* line 215, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: #e4e4e4;
   border: none !important;
   border-radius: 0px;
 }
 
-/* line 205, ../sass/_edit.scss */
+/* line 221, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   border-radius: 0px;
   border: none;
 }
 
-/* line 210, ../sass/_edit.scss */
+/* line 226, ../sass/_edit.scss */
 .select2-container--default .select2-search--inline .select2-search__field {
   box-shadow: none;
 }
 
-/* line 215, ../sass/_edit.scss */
+/* line 231, ../sass/_edit.scss */
 .select2-container--open .select2-dropdown--below {
   border: none;
 }
 
-/* line 219, ../sass/_edit.scss */
+/* line 235, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: #e4e4e4;
   border: 1px solid #aaa;
@@ -1254,7 +1377,7 @@ select {
   padding: 4px 10px !important;
 }
 
-/* line 230, ../sass/_edit.scss */
+/* line 246, ../sass/_edit.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__clear {
   cursor: pointer;
   float: right;
@@ -1295,7 +1418,7 @@ footer {
   z-index: 1;
 }
 
-/* line 33, ../sass/main.scss */
+/* line 34, ../sass/main.scss */
 .page {
   min-height: 82vh;
 }

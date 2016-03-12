@@ -2,12 +2,12 @@
 {% load thumbnail %}
 
 {% block content %}
+
 <style>
-  .row {
+.row {
   max-width: 95%!important;
   }
 </style>
-
 
 {# {% include "elements/featured.html" %} #}
 {% include "elements/subnav.html" %}
@@ -16,10 +16,10 @@
 
 
 
-<div id="browse-template" class="page" style="">  
-{% include "videos/video-list.html" %}
-
+<div class="browse-series" style="">
+  
+{% include "series/series-list.html" %}
+  
 {% include "elements/subscribe-popup.html" %}  
-
 
 {% endblock content %}

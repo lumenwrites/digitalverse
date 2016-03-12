@@ -1,0 +1,89 @@
+{% load thumbnail %}
+
+{% for series in object_list %}
+  <a href="{{series.get_absolute_url}}">  
+    <article class="series">
+
+      <div class="series-image">
+	{% thumbnail series.image "180x180" crop="center" as im %}
+        <img src="{{im.url}}" />
+	{% endthumbnail %}
+      </div>	  
+    
+      <div class="card-description">
+      {% if user == series.author or user.is_staff  %}
+      <a class="edit-post right margins-0" href="/series/{{series.slug}}/edit">
+	<i class="fa fa-pencil"></i></a>
+      {% endif %}
+
+      <div class="video-title">
+	{{series.title}} <!-- |truncatechars:34 -->
+      </div>
+      <div class="description">
+	{% if series.description  %}
+	{{series.description}}
+	{% else  %}
+	&nbsp;
+	{% endif %}
+      </div>
+      <hr/>
+    	      <div class="video-stats">
+    		<i class="fi-eye">{{series.views}}</i>
+    		<i class="fi-arrow-up">{{series.score}}</i>
+    		<i class="fi-comment">{{series.comments.count}}</i>
+    		<!-- <i class="fi-clock">09:49</i> -->
+    	      </div>		
+      
+	      {% if not series.published %}
+      <span class=""><!-- [unpublished] -->
+	<i class="fa fa-eye-slash"
+	   style="float: right;
+		  position: absolute;
+		  right: 34px;
+		  top: 188px;
+		  font-size: 18px;"></i></span>
+      {% endif %}        
+
+	
+	<!-- <p>[description]</p> -->
+	<!-- <p style="margin-bottom: -10px;"> -->
+	<!-- by <a style="color:#0b7cac;">Ray Alez</a> -->
+	<!-- in <a style="color:#0b7cac;">Orange Mind</a> series -->
+	<!-- </p> -->
+	<!-- <a class="small button" href="/user/rayalez">rayalez</a> -->
+
+      {% if user == series.author or user.is_staff  %}
+      <!-- <a class="edit-video margins-0" href="/video/{{series.slug}}/edit"> -->
+      <!-- 	<i class="fa fa-pencil"></i></a> -->
+      {% endif %}
+      </div>
+
+
+
+      <div class="hubs">
+	{% for category in series.categories.all %}	
+	<span class="callout small">{{category.title}}</span>
+	{% endfor %}
+
+	{% if series.series  %}
+	<a class="small button series right"
+	   href="/series/{{series.series.slug}}"
+	   style="margin-bottom:0;    margin-top: -5px;"
+	   ><!-- <i class="fi-thumbnails"></i> --> {{series.series.title}}</a>
+	{% else %}
+	<a class="small button series right"
+	   href="/user/{{series.author.username}}"
+	   style="margin-bottom:0;    margin-top: -5px;"
+	   ><!-- <i class="fi-thumbnails"></i> --> {{series.author.username}}</a>
+	{% endif %}	
+      </div>
+      <!-- 40 minutes ago. -->
+
+    </article>
+  </a>
+{% endfor %}
+</div>
+
+
+{% include "videos/pagination.html" %}
+
