@@ -711,12 +711,16 @@ header .row, .subheader .row {
   float: left;
 }
 @media screen and (orientation: portrait) {
-  /* line 21, ../sass/_browseseries.scss */
+  /* line 20, ../sass/_browseseries.scss */
+  .browse-series article {
+    width: calc(100% - 8px);
+  }
+  /* line 22, ../sass/_browseseries.scss */
   .browse-series article img {
     width: 100%;
   }
 }
-/* line 28, ../sass/_browseseries.scss */
+/* line 29, ../sass/_browseseries.scss */
 .browse-series .video-title {
   float: left;
   /* font-size:18px; */
@@ -724,35 +728,35 @@ header .row, .subheader .row {
   color: #13aff0;
   width: 100%;
 }
-/* line 36, ../sass/_browseseries.scss */
+/* line 37, ../sass/_browseseries.scss */
 .browse-series .card-description {
   float: right;
   width: calc(100% - 180px);
   padding: 20px;
   padding: 10px;
 }
-/* line 44, ../sass/_browseseries.scss */
+/* line 45, ../sass/_browseseries.scss */
 .browse-series .card-description p {
   font-size: 16px;
 }
-/* line 48, ../sass/_browseseries.scss */
+/* line 49, ../sass/_browseseries.scss */
 .browse-series .card-description .description {
   color: #BBB;
   height: 98px;
 }
-/* line 53, ../sass/_browseseries.scss */
+/* line 54, ../sass/_browseseries.scss */
 .browse-series .card-description hr {
   border-top: 1px solid #333;
   width: calc(100% + 20px);
   margin: 0 -10px;
   margin-right: -10px;
 }
-/* line 60, ../sass/_browseseries.scss */
+/* line 61, ../sass/_browseseries.scss */
 .browse-series .card-description .edit-post {
   position: absolute;
   right: 10px;
 }
-/* line 66, ../sass/_browseseries.scss */
+/* line 67, ../sass/_browseseries.scss */
 .browse-series .video-stats {
   /* width: 100%; */
   /* 	text-align: right; */
@@ -762,11 +766,11 @@ header .row, .subheader .row {
   /* margin-right: -10px;	     */
   margin-top: 8px;
 }
-/* line 74, ../sass/_browseseries.scss */
+/* line 75, ../sass/_browseseries.scss */
 .browse-series .video-stats i {
   padding: 4px;
 }
-/* line 79, ../sass/_browseseries.scss */
+/* line 80, ../sass/_browseseries.scss */
 .browse-series .hubs {
   padding: 8px 0;
   margin-bottom: -22px;
@@ -775,18 +779,18 @@ header .row, .subheader .row {
   /* margin-left: 8px;	 */
 }
 
-/* line 88, ../sass/_browseseries.scss */
+/* line 89, ../sass/_browseseries.scss */
 .pagination {
   margin: 0;
   height: 20px;
 }
-/* line 93, ../sass/_browseseries.scss */
+/* line 94, ../sass/_browseseries.scss */
 .pagination .page-links {
   position: relative;
   bottom: 0;
   margin: 0;
 }
-/* line 98, ../sass/_browseseries.scss */
+/* line 99, ../sass/_browseseries.scss */
 .pagination .page-links a {
   width: 100%;
   float: left;
@@ -794,7 +798,7 @@ header .row, .subheader .row {
   padding: 10px 0;
   color: #a2a8ab;
 }
-/* line 106, ../sass/_browseseries.scss */
+/* line 107, ../sass/_browseseries.scss */
 .pagination .page-links a:hover {
   background-color: #A2A8AB;
 }

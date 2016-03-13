@@ -18,6 +18,7 @@
 
     @media screen and (orientation:portrait) {
 	article {
+	    width:calc(100% - 8px);	    
 	    img {
 		width: 100%;
 	    }
