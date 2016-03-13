@@ -28,11 +28,12 @@ class RegistrationForm(UserCreationForm):
 class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'avatar', 'background', 'website', 'about']
+        fields = ['username', 'email', 'avatar', 'background', 'website', 'youtube_channel', 'about']
         widgets = {
             'username' : forms.TextInput(attrs = {'placeholder': 'Username'}),
             'email'    : forms.TextInput(attrs = {'placeholder': 'E-Mail'}),
             'website'    : forms.TextInput(attrs = {'placeholder': 'Website'}),
+            'youtube_channel'    : forms.TextInput(attrs = {'placeholder': 'Youtube Channel Url'}), 
             'about'    : forms.Textarea(attrs = {'placeholder': 'About'}),
         }
     

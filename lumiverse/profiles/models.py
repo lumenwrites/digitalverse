@@ -14,6 +14,7 @@ class User(AbstractUser):
     background = models.ImageField(upload_to='users/backgrounds/', default=None,blank=True, null=True)
     about = models.TextField(max_length=512, blank=True)
     website = models.CharField(max_length=64, blank=True)
+    youtube_channel = models.CharField(max_length=128, blank=True)    
 
     karma = models.IntegerField(default=0)
     # created = models.DateTimeField(auto_now_add=True, blank=True)
