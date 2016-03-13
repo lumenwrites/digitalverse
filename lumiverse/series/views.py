@@ -11,6 +11,7 @@ from profiles.models import User
 
 from videos.models import Video
 from videos.utils import rank_hot
+from videos.views import BrowseMixin
 
 from hubs.models import Hub
 
@@ -19,10 +20,10 @@ from .models import Series
 
 # from .utils import rank_hot
 
-class BrowseMixin(object):
+class BrowseSeriesMixin(object):
     paginate_by = 16
     def get_queryset(self):
-        qs = super(BrowseMixin, self).get_queryset()
+        qs = super(BrowseSeriesMixin, self).get_queryset()
 
         # Filter published
         # qs = qs.filter(published=True)
@@ -45,7 +46,7 @@ class BrowseMixin(object):
         return qs
 
     def get_context_data(self, **kwargs):
-        context = super(BrowseMixin, self).get_context_data(**kwargs)
+        context = super(BrowseSeriesMixin, self).get_context_data(**kwargs)
         if self.request.GET.get('sorting'):
             context['sorting'] = self.request.GET.get('sorting')
         else:
@@ -55,7 +56,7 @@ class BrowseMixin(object):
         return context
     
 
-class SeriesBrowse(BrowseMixin, ListView):
+class SeriesBrowse(BrowseSeriesMixin, ListView):
     model = Series    
     template_name = "series/browse.html"        
 
