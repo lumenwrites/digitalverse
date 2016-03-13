@@ -158,7 +158,6 @@ class VideoDetailView(DetailView):
             video.views +=1
             video.save()
 
-        video.youtube_id = video_id(video.video_url)            
 
         qs = super(VideoDetailView, self).get_queryset()
         other_videos = qs.filter(series=video.series)
@@ -169,6 +168,9 @@ class VideoDetailView(DetailView):
 
 
         more_by = Video.objects.filter(author=video.author, published=True).order_by('?')[:4]
+        for video in more_by:
+            video.youtube_id = video_id(video.video_url)            
+
         context['more_by'] = more_by
         # next_video = video.get_next_by_pub_date(video, author=video.author)
         # next_video = next_or_prev_in_order(self, True, other_videos)        
