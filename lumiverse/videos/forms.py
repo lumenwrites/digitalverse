@@ -15,7 +15,7 @@ class VideoForm(ModelForm):
             'description': forms.Textarea(attrs={'placeholder': 'Description (optional)',
                                                  'class': 'description',
                                                  'id': 'description'}),
-            'video_url': forms.TextInput(attrs={'placeholder': 'Youtube video id'}),            
+            'video_url': forms.TextInput(attrs={'placeholder': 'Youtube video url'}),            
         }
 
         
