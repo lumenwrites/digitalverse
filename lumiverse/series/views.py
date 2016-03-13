@@ -12,6 +12,8 @@ from profiles.models import User
 from videos.models import Video
 from videos.utils import rank_hot
 
+from hubs.models import Hub
+
 from .forms import SeriesForm
 from .models import Series
 
