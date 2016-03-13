@@ -10,6 +10,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
+from django.db.models import Q
+
 # rss
 from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import Atom1Feed
@@ -60,7 +62,7 @@ class BrowseMixin(object):
         qs = super(BrowseMixin, self).get_queryset()
 
         # Filter published
-        # qs = qs.filter(published=True)
+        # qs = qs.filter(published=True, author__hidden=False)
 
         # Filter by hub
         hub = self.request.GET.get('hub')
@@ -97,6 +99,12 @@ class BrowseMixin(object):
 class BrowseView(BrowseMixin, ListView):
     model = Video
     template_name = "videos/browse.html"
+
+    def get_queryset(self):
+        qs = super(BrowseView, self).get_queryset()        
+        qs = [video for video in qs if (video.author.hidden == False and video.published==True)]
+
+        return qs
     
     
 
