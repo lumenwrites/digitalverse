@@ -63,7 +63,7 @@
 	</div>
 	 -->
 	<!-- Hubs -->
-	{% if not userprofile %}	
+	{% if not userprofile and not request.path = "/subscriptions/" %}	
 	  <button class="button categories-dropdown-button" type="button"
 		  data-toggle="categories-dropdown">
 	    {% if hub %}

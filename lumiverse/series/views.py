@@ -10,12 +10,47 @@ from django.utils import timezone
 from profiles.models import User 
 
 from videos.models import Video
-from videos.views import BrowseMixin
 
 from .forms import SeriesForm
 from .models import Series
 
 # from .utils import rank_hot
+
+class BrowseMixin(object):
+    paginate_by = 16
+    def get_queryset(self):
+        qs = super(BrowseMixin, self).get_queryset()
+
+        # Filter published
+        # qs = qs.filter(published=True)
+
+        # Filter by hub
+        hub = self.request.GET.get('hub')
+        if hub:
+            hub = Hub.objects.get(slug=hub)
+            qs = qs.filter(hubs=hub)
+
+        # Sort
+        sorting = self.request.GET.get('sorting')
+        if sorting == 'top':
+            qs = qs.order_by('-score')
+        elif sorting == 'new':
+            qs = qs.order_by('-pub_date')
+        else:
+            qs = rank_hot(qs)
+
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(BrowseMixin, self).get_context_data(**kwargs)
+        if self.request.GET.get('sorting'):
+            context['sorting'] = self.request.GET.get('sorting')
+        else:
+            context['sorting'] = "hot"
+        context['hub'] = self.request.GET.get('hub')
+        context['hubs'] = Hub.objects.all()
+        return context
+    
 
 class SeriesBrowse(BrowseMixin, ListView):
     model = Series    
