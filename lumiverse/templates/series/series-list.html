@@ -2,7 +2,7 @@
 
 {% for series in object_list %}
   <a href="/series/{{series.slug}}">  
-    <article class="series" style="cursor: pointer;" onclick="window.location='/series/{{series.slug}}';">
+    <article class="series">
 
       <div class="series-image">
 	{% thumbnail series.image "180x180" crop="center" as im %}
@@ -17,7 +17,7 @@
       {% endif %}
 
       <div class="video-title">
-	{{series.title}} <!-- |truncatechars:34 -->
+	<a href="/series/{{series.slug}}">{{series.title}}</a> <!-- |truncatechars:34 -->
       </div>
       <div class="description">
 	{% if series.description  %}

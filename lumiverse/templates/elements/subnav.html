@@ -22,13 +22,15 @@
     <div class="large-6 small-6 columns">
       <div class="rank-types right">
 
-	
+
+	{% if not userprofile %}		
 	<a href="/">
 	  <span {% if request.path = "/" %}class="active"{% endif %}>Videos</span>
 	</a>
 	<a href="/series/">
 	  <span {% if request.path = "/series/" %}class="active"style="margin-right:-4px;" {% endif %}>Series</span>
 	</a>
+	{% endif %}		
 	<!-- 
 	<a href="/hubs/">
 	  <span {% if sorting = "new" %}class="active"{% endif %}>Hubs</span>
