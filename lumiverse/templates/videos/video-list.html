@@ -1,7 +1,7 @@
 {% load thumbnail %}
 
 {% for video in object_list %}
-{% if video.published or video.author == user  %}
+{% if video.published and not video.author.hidden or video.author == user  %}
   <a href="{{video.get_absolute_url}}">  
     <article>
 
@@ -41,7 +41,7 @@
       {% endif %}
 
       <div class="video-title">
-	{{video.title}} <!-- |truncatechars:34 -->
+	<a href="{{video.get_absolute_url}}">{{video.title}}</a> <!-- |truncatechars:34 -->
       </div>
       <span class="description hidden">
 	{% if video.description  %}

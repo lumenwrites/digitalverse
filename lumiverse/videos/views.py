@@ -55,7 +55,7 @@ def video_id(value):
     return None
 
 class BrowseMixin(object):
-    paginate_by = 16
+    paginate_by = 15
     def get_queryset(self):
         qs = super(BrowseMixin, self).get_queryset()
 
