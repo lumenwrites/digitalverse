@@ -13,8 +13,8 @@
     <span>{{video.views}}</span>
 
 
-	{% for category in video.categories.all %}	
-	<span class="callout small category">{{category.title}}</span>
+	{% for hub in video.hubs.all %}	
+	<span class="callout small category">{{hub.title}}</span>
 	{% endfor %}
       
 
