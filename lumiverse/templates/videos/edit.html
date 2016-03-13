@@ -5,7 +5,7 @@
 <div class="row page" id="edit-template">
   <div class="large-12 small-12 columns">
     <br/>
-{% if not user.is_staff %}
+{% if not user.is_staff and not user.approved %}
     <h1>Invite required</h1>
     <p>Hi! lumiverse is still in beta, and to upload videos you need an invite, sorry about that.</p>
 
