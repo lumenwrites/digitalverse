@@ -191,7 +191,23 @@ select {
     #id_categories {
 	list-style-type: none;
 	/* width:400px; */
-	/* width:100%; */
+	/* nwidth:100%; */
+    }
+}
+
+
+
+#id_hubs {
+    list-style-type: none;
+    /* width:600px; */
+    /* width:100%;     */
+    padding: 0px;
+}
+@media screen and (max-width: 1300px) {
+    #id_hubs {
+	list-style-type: none;
+	/* width:400px; */
+	/* nwidth:100%; */
     }
 }
 
@@ -235,3 +251,5 @@ select {
     margin-right: 10px!important;
     font-size: 20px;
 }
+
+
