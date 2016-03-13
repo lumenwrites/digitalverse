@@ -10,6 +10,7 @@ from django.utils import timezone
 from profiles.models import User 
 
 from videos.models import Video
+from videos.utils import rank_hot
 
 from .forms import SeriesForm
 from .models import Series
