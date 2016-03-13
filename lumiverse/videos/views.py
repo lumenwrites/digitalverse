@@ -158,6 +158,8 @@ class VideoDetailView(DetailView):
             video.views +=1
             video.save()
 
+        video.youtube_id = video_id(video.video_url)            
+
         qs = super(VideoDetailView, self).get_queryset()
         other_videos = qs.filter(series=video.series)
         context['first'] = other_videos.order_by('pub_date')[0]
