@@ -24,10 +24,10 @@
 
 	
 	<a href="/">
-	  <span {% if sorting = "hot" %}class="active"{% endif %}>Videos</span>
+	  <span {% if request.path = "/" %}class="active"{% endif %}>Videos</span>
 	</a>
 	<a href="/series/">
-	  <span {% if sorting = "new" %}class="active"{% endif %}>Series</span>
+	  <span {% if request.path = "/series/" %}class="active"style="margin-right:-4px;" {% endif %}>Series</span>
 	</a>
 	<!-- 
 	<a href="/hubs/">
@@ -61,6 +61,7 @@
 	</div>
 	 -->
 	<!-- Hubs -->
+	{% if not userprofile %}	
 	  <button class="button categories-dropdown-button" type="button"
 		  data-toggle="categories-dropdown">
 	    {% if hub %}
@@ -69,6 +70,7 @@
 	    Hub: All
 	    {% endif %}
 	  </button>
+	{% endif %}
 
 	  <div class="dropdown-pane bottom"
 	       id="categories-dropdown"

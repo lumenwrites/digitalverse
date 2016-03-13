@@ -1,8 +1,8 @@
 {% load thumbnail %}
 
 {% for series in object_list %}
-  <a href="{{series.get_absolute_url}}">  
-    <article class="series">
+  <a href="/series/{{series.slug}}">  
+    <article class="series" style="cursor: pointer;" onclick="window.location='/series/{{series.slug}}';">
 
       <div class="series-image">
 	{% thumbnail series.image "180x180" crop="center" as im %}
@@ -28,10 +28,9 @@
       </div>
       <hr/>
     	      <div class="video-stats">
-    		<i class="fi-eye">{{series.views}}</i>
+		<i class="fi-torsos-all stats-icon">{{series.subscribers.count}}</i>
     		<i class="fi-arrow-up">{{series.score}}</i>
-    		<i class="fi-comment">{{series.comments.count}}</i>
-    		<!-- <i class="fi-clock">09:49</i> -->
+    		<i class="fi-eye">{{series.views}}</i>
     	      </div>		
       
 	      {% if not series.published %}
@@ -61,21 +60,15 @@
 
 
       <div class="hubs">
-	{% for category in series.categories.all %}	
-	<span class="callout small">{{category.title}}</span>
+	{% for hub in series.hubs.all %}	
+	<span class="callout small">{{hub.title}}</span>
 	{% endfor %}
 
-	{% if series.series  %}
-	<a class="small button series right"
-	   href="/series/{{series.series.slug}}"
-	   style="margin-bottom:0;    margin-top: -5px;"
-	   ><!-- <i class="fi-thumbnails"></i> --> {{series.series.title}}</a>
-	{% else %}
 	<a class="small button series right"
 	   href="/user/{{series.author.username}}"
 	   style="margin-bottom:0;    margin-top: -5px;"
 	   ><!-- <i class="fi-thumbnails"></i> --> {{series.author.username}}</a>
-	{% endif %}	
+
       </div>
       <!-- 40 minutes ago. -->
 
