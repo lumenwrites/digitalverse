@@ -23,7 +23,7 @@
       <div class="rank-types right">
 
 
-	{% if not userprofile %}		
+	{% if not userprofile and not request.path = "/subscriptions/" %}		
 	<a href="/">
 	  <span {% if request.path = "/" %}class="active"{% endif %}>Videos</span>
 	</a>
