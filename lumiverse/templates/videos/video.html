@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load markdownify %}
 
+{% block head_extra %}
+<meta name="description" content="{{post.body | firstparagraph | safe }}">
+{% endblock %}
+
+
+
 {% block content %}
 
 <div class="row" id="posts">

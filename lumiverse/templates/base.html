@@ -39,6 +39,9 @@
     ga('send', 'pageview');
   </script>
 
+  {% block head_extra %}
+  {% endblock %}
+
   <!-- Feeds -->
   {% if series %}
   <link rel="alternate" type="application/rss+xml"
@@ -56,7 +59,9 @@
   <meta property="og:description" content="Best place to post, read, and discuss webcomics.">
   {% elif request.META.HTTP_HOST == "orangemind.io"  %}
   <link rel="shortcut icon" type="image/png" href="http://webcomics.io/static/img/favicon.ico"/>
-  {% endif %}    
+  {% endif %}
+
+
 </head>
 
 <body>
