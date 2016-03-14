@@ -822,7 +822,7 @@ header .row, .subheader .row {
 }
 
 /* line 9, ../sass/_post.scss */
-.post a {
+.post .description a {
   color: #13aff0;
 }
 

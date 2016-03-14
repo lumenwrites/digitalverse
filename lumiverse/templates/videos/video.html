@@ -52,7 +52,9 @@
 
 
       <div class="clearfix"></div>
-      {{video.description | markdownify | safe}}
+      <div class="description">
+	{{video.description | markdownify | safe}}
+      </div>
       <div class="clearfix"></div>
 
 
