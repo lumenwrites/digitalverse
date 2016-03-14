@@ -1,7 +1,7 @@
 {% load thumbnail %}
 
 {% for series in object_list %}
-{% if series.published and not sereis.author.hidden or series.author == user  %}
+{% if series.published and not sereis.author.hidden %} <!--  or series.author == user  -->
   <a href="/series/{{series.slug}}">  
     <article class="series">
 
