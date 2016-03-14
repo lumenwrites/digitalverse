@@ -822,24 +822,29 @@ header .row, .subheader .row {
 }
 
 /* line 9, ../sass/_post.scss */
+.post a {
+  color: #13aff0;
+}
+
+/* line 12, ../sass/_post.scss */
 .edit-post {
   float: right;
   font-size: 18px;
   margin-top: 20px;
 }
 
-/* line 16, ../sass/_post.scss */
+/* line 19, ../sass/_post.scss */
 .video-js {
   width: 850px;
   height: 477px;
 }
 
-/* line 22, ../sass/_post.scss */
+/* line 25, ../sass/_post.scss */
 .post .nav-buttons .button {
   width: calc(20% - 4px);
 }
 
-/* line 31, ../sass/_post.scss */
+/* line 34, ../sass/_post.scss */
 .post-footer {
   /* .username { */
   /* 	margin:10px; */
@@ -849,50 +854,50 @@ header .row, .subheader .row {
   /* 	color: #fff; */
   /* } */
 }
-/* line 32, ../sass/_post.scss */
+/* line 35, ../sass/_post.scss */
 .post-footer .stats {
   float: left;
   margin: 7px;
 }
-/* line 37, ../sass/_post.scss */
+/* line 40, ../sass/_post.scss */
 .post-footer .stats span {
   margin-right: 8px;
 }
-/* line 41, ../sass/_post.scss */
+/* line 44, ../sass/_post.scss */
 .post-footer .category {
   background: #232626;
 }
-/* line 45, ../sass/_post.scss */
+/* line 48, ../sass/_post.scss */
 .post-footer .fi-arrow-up {
   transform: scale(1.8, 1);
 }
-/* line 56, ../sass/_post.scss */
+/* line 59, ../sass/_post.scss */
 .post-footer .button {
   margin: 0;
   font-size: 14px;
   height: 39px;
 }
-/* line 61, ../sass/_post.scss */
+/* line 64, ../sass/_post.scss */
 .post-footer .button i {
   margin-right: 8px;
 }
-/* line 66, ../sass/_post.scss */
+/* line 69, ../sass/_post.scss */
 .post-footer .upvoted, .post-footer .upvoted i {
   color: #13aff0;
 }
-/* line 69, ../sass/_post.scss */
+/* line 72, ../sass/_post.scss */
 .post-footer .avatar {
   width: 30px;
   margin: -10px -10px -10px 10px;
   border-radius: 2px;
 }
-/* line 75, ../sass/_post.scss */
+/* line 78, ../sass/_post.scss */
 .post-footer .rss-icon {
   font-size: 35px;
   padding: 1px 0px 2px 8px !important;
 }
 
-/* line 85, ../sass/_post.scss */
+/* line 88, ../sass/_post.scss */
 #more-by article {
   position: relative;
   width: calc(25% - 2px) !important;
@@ -901,7 +906,7 @@ header .row, .subheader .row {
   margin: 0;
   float: left;
 }
-/* line 94, ../sass/_post.scss */
+/* line 97, ../sass/_post.scss */
 #more-by .dark-overlay {
   position: absolute;
   bottom: 0;
@@ -910,7 +915,7 @@ header .row, .subheader .row {
   width: 100%;
 }
 
-/* line 104, ../sass/_post.scss */
+/* line 107, ../sass/_post.scss */
 .ytp-watermark {
   display: none !important;
 }
