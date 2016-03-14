@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% load markdownify %}
 
-{% block head_extra %}
-<meta name="description" content="{{post.body | firstparagraph | safe }}">
+{% block title %}
+    {{video.title}}
 {% endblock %}
 
 
+{% block head_extra %}
+{% endblock %}
 
 {% block content %}
 
