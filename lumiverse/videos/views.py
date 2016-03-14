@@ -132,7 +132,13 @@ class ProfileView(BrowseMixin, ListView):
 class VideoDetailView(DetailView):
     model = Video
     template_name = "videos/video.html"
+
+    def get_object(self):
+        video = super(VideoDetailView, self).get_object()
+        video.youtube_id = video_id(video.video_url)    
+        return video
     
+
     def get_context_data(self, **kwargs):
         context = super(VideoDetailView, self).get_context_data(**kwargs)
         context['now'] = timezone.now()

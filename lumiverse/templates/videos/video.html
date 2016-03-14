@@ -26,15 +26,22 @@
       
       <!-- Post Body -->
       {% if video.video_url %}
-      <video
-	 id="video"
-	 class="video-js vjs-default-skin  vjs-big-play-centered"
-	 controls
-	 width="850" height="477"
-	 data-setup='{ "techOrder": ["youtube"],
-	 "sources": [{ "type": "video/youtube",
-	 "src": "{{video.video_url}}"}] }'>
-      </video>
+          {% if not video.author.youtube_player %}
+          <video
+          	 id="video"
+          	 class="video-js vjs-default-skin  vjs-big-play-centered"
+          	 controls
+          	 width="850" height="477"
+          	 data-setup='{ "techOrder": ["youtube"],
+          	 "sources": [{ "type": "video/youtube",
+          	 "src": "{{video.video_url}}"}] }'>
+          </video>
+	  {% else %}
+	  <div class="flex-video widescreen youtube">
+	  <iframe src="https://www.youtube.com/embed/{{video.youtube_id}}?rel=0&amp;showinfo=0;modestbranding=1;"
+		  frameborder="0" allowfullscreen></iframe>
+	  </div>
+	  {% endif %}
       {% else %}
       <video id="video" class="video-js vjs-default-skin vjs-big-play-centered"
 	     controls preload="auto" width="850" height="auto"
