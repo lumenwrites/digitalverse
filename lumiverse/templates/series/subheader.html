@@ -108,10 +108,11 @@
   <div class="clearfix"></div>
 
   </div>
-  {% if series.slug == "orangemind" %}
+  {% if series.description %}
   <div class="tagline">
-    Short videos about rationality, philosophy, computer science, and other stuff.
+    {{series.description}}
   </div>
   {% endif %}
+  
   
 </div>
