@@ -169,35 +169,38 @@ class VideoDetailView(DetailView):
         ##### COMMENTS ####
         context['form'] = CommentForm()
 
+        #### List comments:
+
+        video = self.get_object()        
         top_lvl_comments =Comment.objects.filter(video = video, parent = None)
 
         rankby = "new"
-        # Rank comments
-        # if rankby == "hot" or True:
-        #     ranked_comments = rank_hot(top_lvl_comments, top=32)
-        # elif rankby == "top":
-        #     ranked_comments = rank_top(top_lvl_comments, timespan = "all-time")
-        # elif rankby == "new":
-        #     ranked_comments = top_lvl_comments.order_by('-pub_date')
-        # else:
-        #     ranked_comments = []
+        # Rank comments 
+        if rankby == "hot" or True:
+            ranked_comments = rank_hot(top_lvl_comments)
+        elif rankby == "top":
+            ranked_comments = rank_top(top_lvl_comments, timespan = "all-time")
+        elif rankby == "new":
+            ranked_comments = top_lvl_comments.order_by('-pub_date')
+        else:
+            ranked_comments = []
 
         ranked_comments = top_lvl_comments.order_by('-pub_date')
 
         # Nested comments
         comments = list(get_comment_list(ranked_comments, rankby=rankby))
 
-        # if request.user.is_authenticated():
-        #     comments_upvoted = request.user.comments_upvoted.all()
-        #     comments_downvoted = request.user.comments_downvoted.all()                
+        # if self.request.user.is_authenticated():
+        #     comments_upvoted = self.request.user.comments_upvoted.all()
+        #     comments_downvoted = self.request.user.comments_downvoted.all()                
         # else:
         #     comments_upvoted = []
         #     comments_downvoted = []  
 
         context['comments'] = comments
-        # 'comments_upvoted': comments_upvoted,
-        # 'comments_downvoted': comments_downvoted,
         
+        # context['comments_upvoted'] = comments_upvoted
+        # context['comments_downvoted'] = comments_downvoted        
 
         return context    
 
@@ -453,11 +456,9 @@ class SeriesFeed(Feed):
 def item(request):
     return render(request, 'store/item.html', {})
 
-def testview(request):
-    return render(request, 'videos/profile.html', {
-    })
-        
 
+def testview(request):
+    return HttpResponse("ok")
 
 
 

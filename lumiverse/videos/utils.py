@@ -30,7 +30,7 @@ def video_id(value):
     return None
 
 
-def hot_score(post, gravity=1.8, timebase=120): # gravity=1.8
+def hot_score(post, gravity=1.4, timebase=120): # hn - gravity=1.8. top on top - 1.1
     rating = (post.score + 1)**0.8
     now = datetime.datetime.utcnow().replace(tzinfo=utc)
     age = int((now - post.pub_date).total_seconds())/60
