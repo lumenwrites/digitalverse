@@ -26,16 +26,16 @@
 
     <!-- Ranking -->
 
-<!-- <div class="left hidden"> -->
-<!-- {% if video.comments.all %} -->
-<!--   <a href="{{video.get_absolute_url}}{{filterby}}/hot#comments"> -->
-<!--     <span {% if rankby = "hot" %}class="bold"{% endif %}>Hot</span></a>	 -->
-<!--   <a href="{{video.get_absolute_url}}{{filterby}}/new#comments"> -->
-<!--     <span {% if rankby = "new" %}class="bold"{% endif %}>New</span></a>	 -->
-<!--   <a href="{{video.get_absolute_url}}{{filterby}}/top#comments"> -->
-<!--     <span {% if rankby = "top" %}class="bold"{% endif %}>Top</span></a>	 -->
-<!-- {% endif %}   -->
-<!-- </div> -->
+<div class="right comment-dark">
+{% if video.comments.all %}
+  <a href="{{video.get_absolute_url}}{{filterby}}/hot#comments">
+    <span {% if rankby = "hot" %}class="bold"{% endif %}>Hot</span></a>
+  <a href="{{video.get_absolute_url}}{{filterby}}/new#comments">
+    <span {% if rankby = "new" %}class="bold"{% endif %}>New</span></a>
+  <a href="{{video.get_absolute_url}}{{filterby}}/top#comments">
+    <span {% if rankby = "top" %}class="bold"{% endif %}>Top</span></a>
+{% endif %}
+</div>
 
 
 <div class="clearfix"></div>	
@@ -66,27 +66,90 @@
 
       <div class="comment-header">
 	<!-- {% if not comment.leaf %}<a class="comment-collapse">[-]</a>{% endif %}    -->
+	<!-- 2 hours ago -->
+      </div>
+
+      <div style="width: 10px; float:left; display:none;">
+	  <button class="button comment-vote" type="button">
+	    <i class="fi-arrow-up"></i>
+	  </button>
+	  <button class="button comment-vote" type="button">
+	    <i class="fi-arrow-down"></i>
+	  </button>
+	  <style>
+	    .comment-vote {
+	    padding: 4px 6px;
+	    border-radius: 3px;
+	    margin-bottom:0px;
+	    }
+	    .comment-body {
+	    /*width: calc(100% - 40px);*/
+	    /*float:right;*/
+	    padding: 0;
+
+	    }
+
+	    .comment-footer {
+	    text-align:right;
+	    }
+	    hr {
+	    border-top: 1px solid #333;
+	    }
+	    .comment-box {
+	    border: 1px solid #333;
+	    box-shadow:none;
+	    padding-bottom: 10px;	    
+	    }
+
+	    .comment-dark, .score {
+	    color: #3d454b;
+	    }
+
+    .comment-upvoted span, .comment-upvoted .score, .comment-upvoted i {
+	color: #a2a8ab;	
+	    }
+	  </style>
+      </div>
+
+      <div class="comment-body">      
+	{{comment.body | markdownify | safe }}
+
+
+	<div class="comment-footer">
 	<span class="bold">
 	  <a class="black" href="/user/{{comment.author.username}}">{{comment.author}}</a>
 	</span>
-	{% if comment.rating %}
-	<div class="comment-rating" id="{{comment.rating}}"></div>
-	{% endif %}        	
-	<!-- {{comment.score}} points  -->
-	<!-- 2 hours ago -->
-      </div>
-      <div class="comment-body">      
-	{{comment.body | markdownify | safe }}
-      </div>
-      <div class="comment-footer">
+
+
+	
 	{% if user.is_authenticated %}      
 	<a class="show-reply">reply</a>
 	{% endif %}        
 	{% if comment.author == user %}        
 	<a href="/comment/{{comment.id}}/edit?next={{request.path}}">edit</a>
 	<a href="/comment/{{comment.id}}/delete?next={{request.path}}">delete</a>
+	{% else %}        
+	<!--  -->
+	<span class="comment-dark" style="margin-left: 5px;font-weight: bold;">
+
+	    <a href="/login/?next={{request.path}}"
+	       class="comment-upvote
+		      {% if comment in user.comments_upvoted.all %}comment-upvoted{% endif %}"
+	       id="comment-upvote-{{comment.id}}">
+	      <span class="score">{{comment.score}}</span>
+	      <!-- upvote s/d --> <!-- points -->	    
+	      <i class="comment-dark fi-arrow-up"></i>
+	    </a>
+
+	</span>
+	
 	{% endif %}        
       </div>
+      </div>
+	  <div class="clearfix"></div>		    	
+
+
+      
       <!-- Reply form -->
       <div class="comment-reply" style="display:none;">
 	<form action="/reply-submit/{{comment.id}}?next={{request.path}}"
@@ -144,6 +207,9 @@ $(document).ready(function(){
     }
     var csrftoken = getCookie('csrftoken');
 
+
+				
+				
     // Upvote
     function commentUpvote(commentId) {
 	$.ajax({
@@ -152,16 +218,12 @@ $(document).ready(function(){
 	    data: {"comment-id": commentId},
 	    success: function(){
 		var upvoteLink = $('#comment-upvote-'+commentId);
-		var downvoteLink = $('#comment-downvote-'+commentId);		    
-		upvoteLink.addClass('comment-upvoted');
-		downvoteLink.addClass('comment-upvoted');		    
 		var score = upvoteLink.parent().find(".score");
                 var notUpdated = Number(score.html());
                 score.html(notUpdated + 1);
+		upvoteLink.addClass('comment-upvoted');		    
 		upvoteLink.off("click");
-		downvoteLink.off("click");		    
 		// upvoteLink.click(function(){ return false;});
-		downvoteLink.click(function(){ return false;});
 		upvoteLink.click(function(){
 		    var commentId = parseInt(this.id.split("-")[2]);
 		    return commentUnupvote(commentId);
@@ -174,38 +236,9 @@ $(document).ready(function(){
 	return false;
     }
 
-    // Downvote
-    function commentDownvote(commentId) {
-	$.ajax({
-	    type: "POST",
-	    url: "/comment-downvote/",
-	    data: {"comment-id": commentId},
-	    success: function(){
-		var upvoteLink = $('#comment-upvote-'+commentId);		    
-		var downvoteLink = $('#comment-downvote-'+commentId);
-		upvoteLink.addClass('comment-downvoted');		    
-		downvoteLink.addClass('comment-downvoted');
-		var score = downvoteLink.parent().find(".score");
-                var notUpdated = Number(score.html());
-                score.html(notUpdated - 1);
-		upvoteLink.off("click");
-		downvoteLink.off("click");		    
-		upvoteLink.click(function(){ return false;});
-		// downvoteLink.click(function(){ return false;});
-		downvoteLink.click(function(){
-		    var commentId = parseInt(this.id.split("-")[2]);
-		    return commentUndownvote(commentId);
-		})		
-	    },
-	    headers: {
-		'X-CSRFToken': csrftoken
-	    }
-	});
-	return false;
-    }
     
 
-    // Upvote
+    // Unupvote
     function commentUnupvote(commentId) {
 	$.ajax({
 	    type: "POST",
@@ -213,23 +246,15 @@ $(document).ready(function(){
 	    data: {"comment-id": commentId},
 	    success: function(){
 		var upvoteLink = $('#comment-upvote-'+commentId);
-		var downvoteLink = $('#comment-downvote-'+commentId);		    
 		upvoteLink.removeClass('comment-upvoted');
-		downvoteLink.removeClass('comment-upvoted');		    
 		var score = upvoteLink.parent().find(".score");
                 var notUpdated = Number(score.html());
                 score.html(notUpdated - 1);
 		upvoteLink.off("click");
-		downvoteLink.off("click");		    
 		// upvoteLink.click(function(){ return false;});
-		// downvoteLink.click(function(){ return false;});
 		upvoteLink.click(function(){
 		    var commentId = parseInt(this.id.split("-")[2]);
 		    return commentUpvote(commentId);
-		})
-		downvoteLink.click(function(){
-		    var commentId = parseInt(this.id.split("-")[2]);
-		    return commentDownvote(commentId);
 		})
 	    },
 	    headers: {
@@ -239,41 +264,6 @@ $(document).ready(function(){
 	return false;
     }
 
-    // Downvote
-    function commentUndownvote(commentId) {
-	$.ajax({
-	    type: "POST",
-	    url: "/comment-undownvote/",
-	    data: {"comment-id": commentId},
-	    success: function(){
-		var upvoteLink = $('#comment-upvote-'+commentId);		    
-		var downvoteLink = $('#comment-downvote-'+commentId);
-		upvoteLink.removeClass('comment-downvoted');		    
-		downvoteLink.removeClass('comment-downvoted');
-		var score = downvoteLink.parent().find(".score");
-                var notUpdated = Number(score.html());
-                score.html(notUpdated + 1);
-		upvoteLink.off("click");
-		downvoteLink.off("click");		    
-		// upvotelink.click(function(){ return false;});
-		// downvoteLink.click(function(){ return false;});
-console.log('yes!')
-		upvoteLink.click(function(){
-		    var commentId = parseInt(this.id.split("-")[2]);
-		    return commentUpvote(commentId);
-		})
-		downvoteLink.click(function(){
-		    var commentId = parseInt(this.id.split("-")[2]);
-		    return commentDownvote(commentId);
-		})
-	    	
-	    },
-	    headers: {
-		'X-CSRFToken': csrftoken
-	    }
-	});
-	return false;
-    }
     
     {% if user.is_authenticated %}
     //Connect functions
@@ -281,27 +271,15 @@ console.log('yes!')
 	var commentId = parseInt(this.id.split("-")[2]);
 	return commentUpvote(commentId);
     })
-    $("a.comment-downvote").click(function(){
-	var commentId = parseInt(this.id.split("-")[2]);
-	return commentDownvote(commentId);
-    })
     // Disabe voted
     $("a.comment-upvoted").off("click");
-    $("a.comment-downvoted").off("click");	
     $("a.comment-upvoted").click(function(){ return false;});
-    $("a.comment-downvoted").click(function(){ return false;});	
     $("a.comment-upvoted").click(function(){
 	var commentId = parseInt(this.id.split("-")[2]);
 	return commentUnupvote(commentId);
     })
-    $("a.comment-downvoted").click(function(){
-	var commentId = parseInt(this.id.split("-")[2]);
-	return commentUndownvote(commentId);
-    })
     $("a.comment-upvoted.comment-downvote").off("click");
-    $("a.comment-downvoted.comment-upvote").off("click");	
     $("a.comment-upvoted.comment-downvote").click(function(){ return false;});
-    $("a.comment-downvoted.comment-upvote").click(function(){ return false;});	
     
     {% endif %}
 })
@@ -334,7 +312,8 @@ $(document).ready(function(){
     //Toggle reply
     $('.show-reply').click(function () {
 	$('.comment-reply').hide()
-	$(this).parent().parent().find('.comment-reply').toggle();
+	//$(this).parent().parent().find('.comment-reply').toggle();
+	$(this).parent().parent().parent().find('.comment-reply').toggle();a
     });
     //cancel
     $('.cancel').click(function () {

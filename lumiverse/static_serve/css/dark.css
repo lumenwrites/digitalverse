@@ -266,17 +266,17 @@ a {
     font-weight: bold;
 }
 
-.upvote:hover {
-    color: #C4C8CA;    
-}
+/* .upvote:hover { */
+/*     color: #C4C8CA;     */
+/* } */
 
 
-.upvoted,
-.upvoted:focus,
-.upvoted:active,
-.upvoted:visited {
-    color: #C4C8CA;    
-}
+/* .upvoted, */
+/* .upvoted:focus, */
+/* .upvoted:active, */
+/* .upvoted:visited { */
+/*     color: #C4C8CA;     */
+/* } */
 
 
 .editor * {
