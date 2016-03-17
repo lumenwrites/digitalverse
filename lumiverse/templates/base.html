@@ -54,14 +54,12 @@
   {% endif %}      	      
 
   <!-- Meta -->
-  {% if request.META.HTTP_HOST == "webcomics.io"  %}  
-  <link rel="shortcut icon" type="image/png" href="http://webcomics.io/static/img/favicon.png"/>
-  <meta property="og:description" content="Best place to post, read, and discuss webcomics.">
-  {% elif request.META.HTTP_HOST == "orangemind.io"  %}
-  <link rel="shortcut icon" type="image/png" href="http://webcomics.io/static/img/favicon.ico"/>
-  {% endif %}
-
-
+  {% block meta_info %}
+  <link rel="shortcut icon" type="image/png" href="http://lumiverse.io/static/img/favicon.png"/>
+  <meta property="og:description" content="Best place to publish, discover, and discuss educational videos.">
+  <meta property="og:image" content="http://lumiverse.io/static/img/lumiverse2.png">
+  {% endblock %}
+  
 </head>
 
 <body>
