@@ -46,6 +46,7 @@
       {% if userprofile.series.all %}
 
           {% for series in userprofile.series.all %}      
+          {% if series.published %}      
               <a class="button"
               	 href="/series/{{series.slug}}">
               	{{series.title}}
@@ -56,6 +57,7 @@
               	{% endthumbnail %}	  
               {% endif %}      	    
               </a>
+          {% endif %}      	    
           {% endfor %}      	    
       {% endif %}            
 
