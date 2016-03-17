@@ -121,10 +121,14 @@ class ProfileView(BrowseMixin, ListView):
         context['userprofile'] = userprofile
 
         view_count = 0
+        score = 0        
         for video in userprofile.videos.all():
             view_count += video.views
         context['view_count'] = view_count
-            
+        for video in userprofile.videos.all():
+            score += video.score
+        context['score'] = score
+                       
         return context
     
 
