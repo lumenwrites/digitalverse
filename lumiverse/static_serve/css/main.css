@@ -104,7 +104,19 @@ body {
   color: #bbbbbb;
 }
 
-/* line 65, ../sass/_helpers.scss */
+/* .disabled, .color-gray:hover { */
+/* 		 color: #656565; */
+/* 		 cursor: auto; */
+/* } */
+/* line 70, ../sass/_helpers.scss */
+.button.disabled, .button[disabled], .button.disabled i {
+  opacity: 1;
+  color: #656565;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* line 76, ../sass/_helpers.scss */
 .center-vertically {
   position: absolute;
   left: 50%;
@@ -120,12 +132,12 @@ body {
   -ms-transform: translate(-50%, -50%);
 }
 
-/* line 81, ../sass/_helpers.scss */
+/* line 92, ../sass/_helpers.scss */
 .center-text {
   text-aign: center;
 }
 
-/* line 85, ../sass/_helpers.scss */
+/* line 96, ../sass/_helpers.scss */
 .thin {
   font-weight: 100;
 }
