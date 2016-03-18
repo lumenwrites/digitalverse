@@ -147,6 +147,13 @@ class SeriesEdit(UpdateView):
     # success_url = "/"
     template_name = 'series/edit.html'
 
+    def dispatch(self, request, *args, **kwargs):
+        """ Making sure that only authors can update stories """
+        series = self.get_object()
+        if series.author != self.request.user:
+            return redirect("/series/"+series.slug)
+        return super(SeriesEdit, self).dispatch(request, *args, **kwargs)
+
     def get_success_url(self):
         return self.request.path
 

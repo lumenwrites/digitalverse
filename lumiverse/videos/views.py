@@ -242,7 +242,7 @@ def video_edit(request,slug):
     video = Video.objects.get(slug=slug)
 
     if request.user != video.author and not request.user.is_staff:
-        return HttpResponseRedirect('/')        
+        return HttpResponseRedirect('/video/'+video.slug)        
     
     if request.method == 'POST':
         form = VideoForm(request.POST, request.FILES, instance=video,user=request.user)
