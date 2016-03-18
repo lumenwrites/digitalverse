@@ -114,7 +114,11 @@
               <!-- <a class="button" -->
 	      <!-- 	 href="/login/?next={{request.path}}"> -->
 	      <!-- 	Subscribe</a> -->	      
-	  {% endif %}	   
+	  {% endif %}	 
+      {% else %}  
+              <a class="button disabled">
+		Subscribe</a>
+      {% endif %}  
 	  <span class="button rss-icon">
 	    <a href="/user/{{userprofile.username}}/feed/atom/">
 	      <i class="fi-rss large"></i></a>
@@ -126,7 +130,7 @@
 	      <i class="fi-social-youtube large"></i></a>
 	      {% endif %}
 
-      {% endif %}
+
     </div>
   </div>
 

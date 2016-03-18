@@ -48,6 +48,10 @@
 	<a class="small button upvote" data-open="login-popup">
 	  <i class="fi-arrow-up"></i>Upvote</a>
         {% endif %}	
+    {% else %}    
+	<!-- Nothing
+	<a class="small button upvote disabled">
+	  <i class="fi-arrow-up"></i>Upvote</a> -->
     {% endif %}    
 	
 
@@ -69,6 +73,13 @@
 		Subscribe</a>
 	      <!-- href="/login/?next={{request.path}}" -->
 	  {% endif %}	   
+      {% else %}
+	      <!-- Nothing
+	      <a class="small button disabled" >
+		Subscribe
+	      </a> -->
+      {% endif %}
+
               <a class="button rss-icon"
 		 href="/user/{{video.author.username}}/feed/atom/">
 	      <i class="fi-rss large"></i></a>
@@ -78,8 +89,7 @@
 		 href="{{video.author.youtube_channel}}">
 	      <i class="fi-social-youtube large"></i></a>
 	      {% endif %}
-	  </span>
-      {% endif %}
+
     
   </div>
   <div class="clearfix"></div>
