@@ -88,20 +88,26 @@
 		     Subscribed</a>
 	      {% endif %}	
 	  {% else %}	   
-              <a class="button" data-open="login-popup">
+              <a class="button" data-open="lognin-popup">
 		Subscribe</a>
 	  {% endif %}	   
-	  <span class="button rss-icon">
-	    <a href="/series/{{series.slug}}/feed/atom/">
-	      <i class="fi-rss large"></i></a>
-	  </span>
+      {% else %}
+              <a class="button disabled">
+		Subscribe</a>
+      {% endif %}
+
+	      <span class="button rss-icon">
+		<a href="/series/{{series.slug}}/feed/atom/">
+		  <i class="fi-rss large"></i></a>
+	      </span>
 
 	      {% if series.slug == "orangemind" %}	      
               <a class="button rss-icon"
 		 href="https://www.youtube.com/channel/UCxm7uJEEVtXPRzhEX2EBq_Q/">
-	      <i class="fi-social-youtube large"></i></a>
+		<i class="fi-social-youtube large"></i></a>
 	      {% endif %}
-      {% endif %}
+
+
     </div>
   </div>
 
