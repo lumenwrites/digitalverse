@@ -117,6 +117,8 @@
   }
 </style>
 
+{% if not request.META.HTTP_HOST == "orangemind.lumiverse.io" %}  	  
 {% include "comments/comments.html" %}
+{% endif %}
 
 {% endblock content %}
