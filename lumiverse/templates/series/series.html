@@ -10,8 +10,12 @@
 
 {% block content %}
 
-{% include "series/subheader.html" %}
 
+{% if request.META.HTTP_HOST == "orangemind.lumiverse.io" or  request.META.HTTP_HOST == "localhost:8000" %}  
+    {% include "elements/orangemind-header.html" %}
+{% else  %}
+    {% include "series/subheader.html" %}
+{% endif %}
 
 <div id="browse-template" class="page">
 

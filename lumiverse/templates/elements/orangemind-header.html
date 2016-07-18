@@ -1,0 +1,174 @@
+{% load thumbnail %}
+
+
+  <style>
+    .main-header {
+    display:none;
+    }
+    .username {
+    margin-top: 18px!important;
+    }
+
+    .video-stats, .hubs {
+    display:none;
+    }
+
+    .comment-section, .post-footer, .moreby {
+    display: none;
+    }
+
+    #browse-template article {
+    }
+
+    #browse-template .card-description {
+    height: 50px;
+    overflow: hidden;
+    }
+
+  </style>
+
+  
+<div class="subheader series-subheader">
+  <style>
+    .subheader {
+    background:url("/static/img/OM-header-dark2.png");
+    }
+  </style>
+
+  <div class="row">
+  <div class="large-6 small-6 columns user-info">
+    <a href="http://orangemind.webcomics.io">
+      <img src="/static/img/brain-logo.png" class="avatar"/>
+	  
+      <div class="left">
+	<h1 class="username"> Orange Mind
+	  {% if user == series.author or user.is_staff  %}
+	  <a class="edit-post" href="/series/{{series.slug}}/edit">
+	    <i class="fa fa-pencil"></i></a>
+	  {% endif %}
+	</h1>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="large-6 small-6 columns"> 
+    <div class="buttons">
+
+      <!-- 
+      <a class="button"
+	 href="/user/{{userprofile}}/about">
+	About</a>
+      -->
+
+      
+      <a class="button" data-open="login-popup">
+	Subscribe</a>
+
+      <!-- 
+      <span class="button rss-icon">
+	<a href="/series/{{series.slug}}/feed/atom/">
+	  <i class="fi-rss large"></i></a>
+      </span>
+      -->
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  </div>
+  <!--  
+  <div class="tagline">
+    Random jokes. Often about technology, philosophy, and science fiction.
+    Updated every monday and friday.
+  </div>
+  -->
+  <!-- &nbsp; Free episodes updated every monday, premium - every friday. &nbsp; Purchase this series to support my art and get access to premium episodes! -->
+</div>
+
+
+
+
+
+
+<div class="reveal" id="login-popup" data-reveal style="padding-bottom: 0;">
+  <div class="row">
+    
+    <div id="mc_embed_signup" style="/* margin-left:60; float: right;*/">
+      <form action="//orangemind.us7.list-manage.com/subscribe/post?u=0f23c7984541d915d1108a16e&amp;id=d7b10e6744" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+        <div class="mc-field-group">
+
+	  <!-- RSS icon -->
+	  <span class="rss-icon" style="
+					font-size: 32px;
+					margin: 0;
+					float: right;
+					background: #2f3333;
+					padding: 5px 10px;
+					line-height: 0px;
+					height: 42px;">
+	    <a href="/series/orangemind/feed/atom/">
+	      <i class="fi-rss large"></i></a>
+	  </span>
+
+	  <!-- Youtube -->
+          <a class="button rss-icon" style="
+					font-size: 32px;
+					margin: 0;
+					float: right;
+					background: #2f3333;
+					padding: 5px 10px;
+					line-height: 0px;
+					height: 42px;
+					margin-right: 6px;"
+	     href="https://www.youtube.com/channel/UCxm7uJEEVtXPRzhEX2EBq_Q/">
+	    <i class="fi-social-youtube large"></i></a>
+
+
+          <input class="required email"
+                 id="mce-EMAIL"
+                 name="EMAIL"
+                 placeholder="Enter your email"
+                 type="email"
+                 value=""
+		 style="/*width: 65%;*/
+			width:calc(100% - 50px);
+			height: 42px;
+			float: left;
+			margin: 0;
+			width: calc(100% - 220px);"/>
+          <input class="small button right"
+                 id="subscribeButton"
+                 name="subscribe"
+                 type="submit"
+                 value="Subscribe"
+		 style="width:100%;
+			width:calc(100% - 50px);
+			float:left!important;
+			margin-top:4px;
+			margin-top: 0;
+			height: 42px;
+			width: 120px;
+			padding: 0;			
+			"/>
+        </div>
+
+        <div class="clear" id="mce-responses">
+          <div class="response" id="mce-error-response" style="display:none">&nbsp;</div>
+          <div class="response" id="mce-success-response" style="display:none">&nbsp;</div>
+        </div>
+
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_0f23c7984541d915d1108a16e_d7b10e6744" tabindex="-1" value=""></div>
+    </div>
+	
+
+      </form>
+    </div>
+    
+  </div>
+</div>
+
+
+

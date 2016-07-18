@@ -16,6 +16,11 @@
 
 {% block content %}
 
+{% if request.META.HTTP_HOST == "orangemind.lumiverse.io" or  request.META.HTTP_HOST == "localhost:8000" %}  
+{% include "elements/orangemind-header.html" %}
+{% endif  %}
+
+
 <div class="row" id="posts">
   <div class="large-12 small-12 columns posts">
     <article class="post">
@@ -71,17 +76,28 @@
           <a class="button" href="/video/{{first.slug}}"><< First</a>
           <a class="button" href="/video/{{prev.slug}}">< Prev</a>
           {% else %}
-	  <div class="button invisible"></div>
-	  <div class="button invisible"></div>
+          <a class="button disabled" href="/video/{{first.slug}}"><< First</a>
+          <a class="button disabled" href="/video/{{prev.slug}}">< Prev</a>
           {% endif %}      
+
+	  {% if request.META.HTTP_HOST == "orangemind.lumiverse.io" %}  	  
+          <a class="button series" href="orangemind.lumiverse.io">
+	    <i class="fi-thumbnails"></i>
+	    Browse</a>
+          {% else %}
           <a class="button series" href="/series/{{video.series.slug}}">
 	    <i class="fi-thumbnails"></i>
 	    {{video.series.title}}</a>
+          {% endif %}
+
           {% if video.next_by_author %}
           <!-- <div class="right"> -->
           <a class="button" href="/video/{{next.slug}}">Next ></a>     	       
           <a class="button" href="/video/{{last.slug}}">Last >></a>
           <!-- </div> -->
+          {% else %}
+          <a class="button disabled" href="/video/{{next.slug}}">Next ></a>     	       
+          <a class="button disabled" href="/video/{{last.slug}}">Last >></a>
           {% endif %}
       </div>
       {% endif %}      

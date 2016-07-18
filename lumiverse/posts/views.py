@@ -361,7 +361,7 @@ def unupvote(request):
 
 # rss
 class UserFeed(Feed):
-    title = "Django Zone latests posts"
+    title = "lumiverse latests posts"
     link = "/"
     feed_type = Atom1Feed
 
@@ -369,10 +369,10 @@ class UserFeed(Feed):
         return get_object_or_404(User, username=username)
 
     def title(self, obj):
-        return "webcomics.io: %s comics" % obj.username
+        return "lumiverse.io: %s videos" % obj.username
 
     def link(self, obj):
-        return "http://webcomics.io/user/" + obj.username
+        return "http://lumiverse.io/user/" + obj.username
     
     def items(self, obj):
         return Post.objects.filter(published=True, author=obj).order_by("-pub_date")
@@ -385,12 +385,12 @@ class UserFeed(Feed):
     
 
     def item_description(self, item):
-        return "<img src='http://webcomics.io/media/"+str(item.images.all()[0].image)+"'/>"
+        return item.get_absolute_url()        
 
 
 
 class SeriesFeed(Feed):
-    title = "Django Zone latests posts"
+    title = "lumiverse latests posts"
     link = "/"
     feed_type = Atom1Feed
 
@@ -398,10 +398,10 @@ class SeriesFeed(Feed):
         return get_object_or_404(Series, slug=slug)
 
     def title(self, obj):
-        return "webcomics.io: %s series" % obj.title
+        return "lumiverse.io: %s series" % obj.title
 
     def link(self, obj):
-        return "http://webcomics.io/series/" + obj.slug
+        return "http://lumiverse.io/series/" + obj.slug
 
     def items(self, obj):
         return Post.objects.filter(published=True, series=obj).order_by("-pub_date")
@@ -414,8 +414,7 @@ class SeriesFeed(Feed):
     
 
     def item_description(self, item):
-        return "<img src='http://webcomics.io/media/"+str(item.images.all()[0].image)+"'/>"        
-        # return "http://webcomics.io/media/"+str(item.image)
+        return item.get_absolute_url()
 
 
 
