@@ -60,7 +60,7 @@
        <style>
 	 .subheader {
 	    background:url({{im.url}});
-	    background:url("/media/{{series.background}}");
+	    background:url("/media/series/backgrounds/learn_junichi.jpg");
 	 }
        </style>
    {% endthumbnail %}	  
@@ -68,32 +68,16 @@
 
   <div class="row">
   <div class="large-6 small-6 columns user-info">
-    <a href="/series/{{series.slug}}">
-      {% thumbnail series.image "70x70" crop="center" as im %}
-          <img src="{{im.url}}" class="avatar"/>
-      {% endthumbnail %}	  
+    <a href="/series/digitalverse">
+      <img src="/media/cache/48/fd/48fd6a61f5d167ebf2625301d07698e9.png" class="avatar"/>
 
 
 	  
       <div class="left">
-	<h1 class="username"> {{series.title}}
-	  {% if user == series.author or user.is_staff  %}
-	  <a class="edit-post" href="/series/{{series.slug}}/edit">
-	    <i class="fa fa-pencil"></i></a>
-	  {% endif %}
+	<h1 class="username"> digitalverse
 	</h1>
 
 
-	
-	<div class="stats">    
-	  <i class="fi-torsos-all stats-icon"></i>
-	  {{series.subscribers.count}}
-
-	  <i class="fi-arrow-up stats-icon"></i>
-	  {{upvotes_count}}
-	  <i class="fi-eye stats-icon"></i>
-	  {{view_count}}
-	</div>
       </div>
     </a>
   </div>
@@ -126,12 +110,9 @@
   <div class="clearfix"></div>
 
   </div>
-  {% if series.description %}
   <div class="tagline">
-    {{series.description}}
+    CG Tutorials. SideFX Houdini, 3D modeling, animation.
   </div>
-  {% endif %}
-  
   
 </div>
 
