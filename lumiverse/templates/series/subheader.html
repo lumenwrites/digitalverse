@@ -1,5 +1,29 @@
 {% load thumbnail %}
 
+{% if request.META.HTTP_HOST == "digitalverse.io" or  request.META.HTTP_HOST == "localhost:8000" %}  
+<style>
+  .username {
+  font-family: "Titillium Web";
+    font-weight: 100;
+    font-size: 40px;
+  }
+
+    .main-header {
+    display:none;
+    }
+    .username {
+    margin-top: 18px!important;
+    }
+    .stats {
+    display:none;
+    }
+
+    .dark-overlay {
+    display:none;
+    }
+</style>
+{% endif  %}
+
 <div class="subheader series-subheader">
 {% if series.background %}        
    {% thumbnail series.background "1581x132" crop="center" as im %}
