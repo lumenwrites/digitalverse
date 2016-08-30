@@ -55,16 +55,11 @@
 
 
 <div class="subheader series-subheader">
-{% if series.background %}        
-   {% thumbnail series.background "1581x132" crop="center" as im %}
        <style>
 	 .subheader {
-	    background:url({{im.url}});
 	    background:url("/media/series/backgrounds/learn_junichi.jpg");
 	 }
        </style>
-   {% endthumbnail %}	  
-{% endif %}        
 
   <div class="row">
   <div class="large-6 small-6 columns user-info">
