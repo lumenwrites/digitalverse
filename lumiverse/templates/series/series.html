@@ -11,8 +11,10 @@
 {% block content %}
 
 
-{% if request.META.HTTP_HOST == "orangemind.lumiverse.io" or  request.META.HTTP_HOST == "localhost:8000" %}  
+{% if request.META.HTTP_HOST == "orangemind.lumiverse.io" %}  
     {% include "elements/orangemind-header.html" %}
+{% elif request.META.HTTP_HOST == "digitalverse.io" or  request.META.HTTP_HOST == "localhost:8000" %}  
+    {% include "series/dv-subheader.html" %}
 {% else  %}
     {% include "series/subheader.html" %}
 {% endif %}
