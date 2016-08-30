@@ -50,6 +50,8 @@ class Video(models.Model):
     score = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
 
+    digitalverse = models.BooleanField(default=False)    
+
     def __str__(self):
         return self.title
 

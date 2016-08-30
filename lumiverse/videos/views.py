@@ -29,7 +29,7 @@ from hubs.models import Hub
 from .forms import VideoForm
 from .models import Video
 
-from .utils import rank_hot,video_id
+from .utils import rank_hot,video_id, check_if_digitalverse
 
 
 class BrowseMixin(object):
@@ -39,6 +39,13 @@ class BrowseMixin(object):
 
         # Filter published
         # qs = qs.filter(published=True, author__hidden=False)
+
+        # Filter by site
+        if check_if_digitalverse(self.request):
+            qs = qs.filter(digitalverse=True)
+        else:
+            qs = qs.filter(digitalverse=False)            
+        
 
         # Filter by hub
         hub = self.request.GET.get('hub')

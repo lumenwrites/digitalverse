@@ -92,6 +92,17 @@ def next_or_prev_in_order(instance, prev=False, qs=None, loop=False):
     return None
 
 
+
+def check_if_digitalverse(request):
+    digitalverse = False
+    if request.META['HTTP_HOST'] == "digitalverse.io":
+        digitalverse = True
+    return digitalverse
+
+
+
+
+
 import re
 from django.template.defaultfilters import slugify
 
