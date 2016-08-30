@@ -44,7 +44,7 @@ class BrowseMixin(object):
         if check_if_digitalverse(self.request):
             qs = qs.filter(digitalverse=True)
         else:
-            qs = qs.filter(digitalverse=False)            
+            qs = qs.filter(digitalverse=False)  
         
 
         # Filter by hub
