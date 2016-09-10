@@ -68,7 +68,7 @@ class SeriesView(BrowseMixin, ListView):
 
     def dispatch(self, request, *args, **kwargs):
         slug = self.kwargs['slug']
-        if slug = "digitalverse":
+        if slug == "digitalverse":
             return redirect('https://www.youtube.com/channel/UCrzEUtLCSfHduoy8c-iBPcw')
         else:
             return super(SeriesView, self).dispatch(request, *args, **kwargs)
