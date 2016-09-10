@@ -57,7 +57,7 @@ class BrowseSeriesMixin(object):
     
 
 class SeriesBrowse(BrowseSeriesMixin, ListView):
-    model = Series    
+    model = Series
     template_name = "series/browse.html"        
 
 
@@ -65,6 +65,15 @@ class SeriesView(BrowseMixin, ListView):
     model = Video
     template_name = "series/series.html"
     paginate_by=16
+
+    def dispatch(self, request, *args, **kwargs):
+        slug = self.kwargs['slug']
+        if slug = "digitalverse":
+            return redirect('https://www.youtube.com/channel/UCrzEUtLCSfHduoy8c-iBPcw')
+        else:
+            return super(SeriesView, self).dispatch(request, *args, **kwargs)
+    
+
     
     def get_queryset(self):
         qs = super(SeriesView, self).get_queryset()
@@ -81,7 +90,7 @@ class SeriesView(BrowseMixin, ListView):
 
         series = Series.objects.get(slug=self.kwargs['slug'])        
         context['series'] = series
-
+        
         view_count = 0
         for video in series.videos.all():
             view_count += video.views
