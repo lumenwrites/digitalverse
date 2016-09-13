@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'lumiverse.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':"lumiverse",
+        'NAME':"digitalverse",
         'USER':os.environ["PG_USERNAME"],
         'PASSWORD':os.environ["PG_PASS"],
         'HOST': 'localhost',
