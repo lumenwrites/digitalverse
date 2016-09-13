@@ -1,5 +1,7 @@
-# Webcomics
+# Digital Verse
 
-This is a platform for the website http://webcomics.io - the best webcomic publishing platform on the internet =)
+http://digitalverse.io
 
-![school](http://i.imgur.com/kxElTE2.png)
+SideFX Houdini and 3D Animation tutorials.
+
+![digitalverse](http://digitalverse.io/static/img/dv.png)
