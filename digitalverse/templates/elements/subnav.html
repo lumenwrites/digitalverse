@@ -1,0 +1,188 @@
+<style>
+  select {
+  display:none;
+  }
+</style>
+<!-- Subnav -->
+<div class="subnav">
+  <div class="row">
+    <div class="large-6 small-6 columns">
+      <div class="rank-types">
+	<a href="{{request.path}}?sorting=hot{% if category %}&category={{category}}{% endif %}">
+	  <span {% if sorting = "hot" %}class="active"{% endif %}>Hot</span>
+	</a>
+	<a href="{{request.path}}?sorting=new{% if category %}&category={{category}}{% endif %}">
+	  <span {% if sorting = "new" %}class="active"{% endif %}>New</span>
+	</a>
+	<a href="{{request.path}}?sorting=top{% if category %}&category={{category}}{% endif %}">
+	  <span {% if sorting = "top" %}class="active"{% endif %}>Top</span>
+	</a>	
+      </div>
+    </div>
+    <div class="large-6 small-6 columns">
+      <div class="rank-types right">
+
+
+	{% if not userprofile and not request.path = "/subscriptions/" %}		
+	<a href="/">
+	  <span {% if request.path = "/" %}class="active"{% endif %}>Videos</span>
+	</a>
+	<a href="/series/">
+	  <span {% if request.path = "/series/" %}class="active"style="margin-right:-4px;" {% endif %}>Series</span>
+	</a>
+	{% endif %}		
+	<!-- 
+	<a href="/hubs/">
+	  <span {% if sorting = "new" %}class="active"{% endif %}>Hubs</span>
+	</a>
+	-->
+
+	<!-- Search -->
+	<!-- 
+	<div class="right">
+	  <i class="fi-magnifying-glass right"
+	     style="position: relative;
+		    right: 28px;
+		    width: 0;
+		    top: 1px;
+		    color: #3D454B;"
+	     ></i>
+	  <input type="text"
+		 style="margin: -6px 0 -10px -4px;
+			height: 36px;"/>
+	</div> -->
+	<!-- Hubs Multiselect -->
+	<!-- 
+	<div class="sel-container">
+ 	  <select id="category-search" multiple name="search">
+	  <option value="all">All</option>	    
+	  {% for category in categories %}
+	  <option value="{{category.title}}">{{category.title}}</option>
+	  {% endfor %}
+	</select>
+	</div>
+	 -->
+	<!-- Hubs -->
+	{% if not userprofile and not request.path = "/subscriptions/" %}	
+	  <button class="button categories-dropdown-button" type="button"
+		  data-toggle="categories-dropdown">
+	    {% if hub %}
+	    {{hub.title}}
+	    {% else %}
+	    Hub: All
+	    {% endif %}
+	  </button>
+
+	  <div class="dropdown-pane bottom"
+	       id="categories-dropdown"
+	       data-dropdown>
+	    <ul>
+	      <li> <a href="{{request.path}}">All</a> </li>
+	      <!-- <li> <a href="{{request.path}}">Subscribed</a> </li> -->
+	      <!-- <hr style=""/> -->
+	      <!-- <input type="text"/> -->
+	      {% for hub in hubs %}
+	      <li>
+		<!-- Plus
+		<a class="small button"
+		   style="margin-left:-40px;    margin-left: -30px;
+			  background: #222525;
+			  padding: 6px;
+			  border-radius: 4px;">
+		  <i class="fi-plus"></i></a> -->
+		<a href="{{request.path}}?hub={{hub.slug}}{% if sorting %}&sorting={{sorting}}{% else %}&sorting=hot{% endif %}">
+		  {{hub.title}} </a>
+	      </li>
+	      {% endfor %}
+	    </ul>
+	  </div>
+	{% endif %}
+
+	  <!-- <button class="button categories-dropdown-button" type="button" -->
+	  <!-- 	  data-toggle="type-dropdown" style="margin-left:10px;"> -->
+	  <!--   <\!-- <i class="fi-plus"></i> -\-> -->
+	  <!--   Subscribe -->
+	  <!-- </button> -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.subnav a, .subnav span {
+line-height: 23px;
+}
+
+.categories-dropdown-button, .categories-dropdown-button:hover, .categories-dropdown-button:active, .categories-dropdown-button:focus {
+    margin-left: -8px;
+}
+</style>
+
+
+
+
+<!-- Select2 -->
+<!-- <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" /> -->
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script> -->
+
+<!-- <script> -->
+<!--     $(document).ready(function(){ -->
+
+<!--     // Multiselect -->
+<!--     $("#category-search").select2({ -->
+<!-- 	placeholder: "Hubs: Default", // (maximum 4) -->
+<!-- 	allowClear: true, -->
+<!-- 	maximumSelectionLength: 3 -->
+<!--     }) -->
+    
+	
+<!--     }) -->
+<!-- </script> -->
+
+
+<!-- <style> -->
+
+<!--   .sel-container { -->
+<!--     width: 400px; -->
+<!--     height: 0px; -->
+<!--     float: right; -->
+<!--   } -->
+<!--   .selection { -->
+<!--   width: 400px; -->
+<!--   border-radius:4px; -->
+<!--   } -->
+
+<!-- .select2-container--default .select2-search--inline .select2-search__field { -->
+<!--   margin: 0; -->
+<!--   } -->
+
+<!-- .select2-container--default .select2-selection--multiple { -->
+<!--   height: 40px; -->
+<!--   } -->
+<!-- .select2-container--default .select2-selection--multiple .select2-selection__choice { -->
+<!--    padding: 0 5px!important; -->
+<!--     text-transform: none; -->
+<!--   } -->
+
+<!-- .select2-container--default .select2-selection--multiple .select2-selection__choice { -->
+<!--     margin-top: 6px !important; -->
+
+<!--   } -->
+
+<!-- .select2-container--default .select2-selection--multiple .select2-selection__clear { -->
+<!--     margin-top: 4px!important; -->
+<!--   } -->
+
+<!-- .select2-container { -->
+<!--   width: 400px!important; -->
+<!--   height: 40px; -->
+<!--   margin: -8px 0 0 0; -->
+
+<!--   } -->
+
+<!-- .select2-container--default .select2-results>.select2-results__options { -->
+
+<!--     width: 400px; -->
+<!-- }   -->
+<!-- </style> -->

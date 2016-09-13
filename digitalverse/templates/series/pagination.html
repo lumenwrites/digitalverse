@@ -1,0 +1,32 @@
+<div class="clearfix"></div>	
+{% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a class="button small prev-page"
+		       href="{{request.path}}?page={{ page_obj.previous_page_number }}{% if sorting %}&sorting={{sorting}}{% endif %}{% if category %}&category={{category}}{% endif %}">
+		      < previous page</a>
+                {% endif %}
+		    <!-- 
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+		-->
+
+                {% if page_obj.has_next %}
+                    <a class="button small next-page"
+		       href="{{request.path}}?page={{ page_obj.next_page_number }}{% if sorting %}&sorting={{sorting}}{% endif %}{% if category %}&category={{category}}{% endif %}">
+		      next page ></a>
+                {% endif %}
+            </span>
+        </div>
+<div class="clearfix"></div>	
+        {% if page_obj.has_previous and page_obj.has_next  %}
+	<style>
+	  .page-links a {
+	  width: 50%!important;
+	  }
+	</style>
+        {% endif %}
+    {% endif %}
+

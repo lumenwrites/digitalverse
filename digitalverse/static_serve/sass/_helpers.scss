@@ -1,0 +1,98 @@
+/* Helpers */
+
+.hidden {
+    display:none;
+}
+
+.invisible {
+    visibility:hidden;
+}
+
+.bold {
+    font-weight:bold;
+}
+
+.italic {
+    font-style: italic;
+}
+.right{
+    float:right;
+}
+
+.left{
+    float:left;
+}
+
+.black {
+    color: $black;
+}
+.gray {
+    background: gray!important;
+}
+
+.margins-0 {
+    margin: 0!important;
+}
+
+.margins-10 {
+    margin: 10px;
+}
+
+.margins-20 {
+    margin: 20px;
+}
+
+.margins-side-10 {
+    margin: 0 10px;
+}
+
+.margins-side-20 {
+    margin: 0 20px;
+}
+
+.padding-10 {
+    padding: 10px;    
+}
+
+.padding-20 {
+    padding: 20px;    
+}
+
+.grey {
+    color: #bbbbbb;
+}
+
+/* .disabled, .color-gray:hover { */
+/* 		 color: #656565; */
+/* 		 cursor: auto; */
+/* } */
+
+.button.disabled, .button[disabled],.button.disabled i {
+    opacity: 1;
+    color: #656565;    
+    cursor: not-allowed;
+    pointer-events: none;
+}
+.center-vertically {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    /*
+    *  Where the magic happens
+    *  Centering method from CSS Tricks
+    *  http://css-tricks.com/centering-percentage-widthheight-elements/
+    */
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.center-text {
+    text-aign:center;
+}
+
+.thin {
+    font-weight: 100;
+}

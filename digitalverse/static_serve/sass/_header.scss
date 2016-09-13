@@ -1,0 +1,139 @@
+header .row,.subheader .row {
+    max-width: 95%!important;
+}
+
+.beta {
+    font-size: 12px;
+}
+
+.main-header {
+}
+
+/* Logo */
+.logo {
+    font-family: "Titillium Web";
+    color: $black;
+    font-size: 36px;
+}
+
+.logo img {
+  width: 50px;
+  margin-top: -4px;
+  margin-left: -4px;
+  margin-right: -4px;  
+}
+
+.logo:hover,
+.logo:focus,
+.logo:visited{
+    color: #a2a8ab;
+}
+
+.down-arrow {
+    width:10px!important;
+    margin-top:-5px!important;
+}
+
+/* Websites dropdown */
+      
+#websites-dropdown {
+    top: 80px !important;
+    width: 250px;
+    width: 190px;    
+    background-color: #171A1A;
+    left: 40px!important;
+    padding: 10px 20px;
+
+    @media all {
+	left: 25px;	
+    }
+    
+    
+    .logo {
+	font-size: 32px;
+    }
+}
+      
+
+
+
+/* Main menu */
+#mainMenu {
+	margin-top: 16px;
+	text-transform: uppercase;
+	float:right;
+	font-size: 18px;
+}
+
+
+
+#mainMenu ul {
+	margin: 0;
+	padding: 0;
+	float: left;
+	margin-right: 10px;
+}
+
+#mainMenu a {
+    margin-right: 5px;
+    color: $bright;
+}
+
+
+/* Subnav */
+.subnav {
+  padding: 10px;
+  background-color: rgba(0,0,0,0.02);
+}
+
+.subnav a, .subnav span {
+    color: #3d454b;
+    margin-bottom: -1px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+
+}
+
+.subnav a {
+    margin-right: 10px;
+}
+
+.subnav .active {
+    color:#bbbbbb;
+    /* font-weight: bold; */
+    background: #151515;
+    background: #2f3333;
+    padding: 10px;
+    margin: -10px;
+}
+
+.has-dropdown > a:after {
+    border-top-style: none;
+}
+
+.categories-dropdown-button,
+.categories-dropdown-button:hover,
+.categories-dropdown-button:active,
+.categories-dropdown-button:focus{
+    width:200px;
+    margin:-10px;
+    color: #a2a8ab;
+
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+    padding:10px;
+    margin-top: -14px;
+    
+}
+
+.dropdown-pane ul {
+    list-style:none;
+}
+
+.dropdown-pane a {
+    color: #a2a8ab;
+    text-transform:none;
+}

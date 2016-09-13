@@ -1,0 +1,107 @@
+{% load thumbnail %}
+
+{% for video in object_list %}
+{% if video.published and not video.author.hidden or video.author == user  %}
+  <a href="{{video.get_absolute_url}}">  
+    <article>
+
+      {% if video.video_url %}
+          <div style="position:relative;">
+            <img src="http://img.youtube.com/vi/{{video.youtube_id}}/mqdefault.jpg"
+		 width="320" height="180"/>
+          </div>
+      {% else %}      
+          {% thumbnail video.thumbnail "320x180" crop="center" as im %}
+          <div style="position:relative;">
+            <img src="{{im.url}}" />
+          </div>
+          {% endthumbnail %}
+      {% endif %}    
+    
+      <div class="card-description">
+      {% if user == video.author or user.is_staff  %}
+      <a class="edit-post right margins-0" href="/video/{{video.slug}}/edit">
+	<i class="fa fa-pencil"></i></a>
+      {% endif %}
+
+      <div class="video-title">
+	<a href="{{video.get_absolute_url}}">{{video.title}}</a> <!-- |truncatechars:34 -->
+      </div>
+      <span class="description hidden">
+	{% if video.description  %}
+	{{video.description|truncatechars:38}}
+	{% else  %}
+	&nbsp;
+	{% endif %}	
+      </span>
+
+
+      <!--       
+      <hr/>
+      <div class="video-stats">
+    	<i class="fi-eye">{{video.views}}</i>
+    	<i class="fi-arrow-up">{{video.score}}</i>
+    	<i class="fi-comment">{{video.comments.count}}</i>
+    	<i class="fi-clock">09:49</i>
+      </div>		
+      -->
+
+      {% if not video.published %}        
+      <span class=""><!-- [unpublished] -->
+	<i class="fa fa-eye-slash"
+	   style="float: right;
+		  position: absolute;
+		  right: 34px;
+		  top: 188px;
+		  font-size: 18px;"></i></span>
+      {% endif %}        
+
+	
+	<!-- <p>[description]</p> -->
+	<!-- <p style="margin-bottom: -10px;"> -->
+	<!-- by <a style="color:#0b7cac;">Ray Alez</a> -->
+	<!-- in <a style="color:#0b7cac;">Orange Mind</a> series -->
+	<!-- </p> -->
+	<!-- <a class="small button" href="/user/rayalez">rayalez</a> -->
+
+      {% if user == video.author or user.is_staff  %}
+      <!-- <a class="edit-video margins-0" href="/video/{{video.slug}}/edit"> -->
+      <!-- 	<i class="fa fa-pencil"></i></a> -->
+      {% endif %}
+      </div>
+
+
+      
+      <div class="hubs hidden">
+	<!-- Hubs -->
+	{% for hub in video.hubs.all %}	
+	<span class="callout small">{{hub.title}}</span>
+	<span class="orange">{{hub.title}}</span>	
+	{% endfor %}
+
+	<!-- Series -->
+	{% if video.series  %}
+	<a class="small button series right"
+	   href="/series/{{video.series.slug}}"
+	   style="margin-bottom:0;    margin-top: -5px;"
+	   > <i class="fi-thumbnails"></i> {{video.series.title}}</a>
+	{% else %}
+
+	<!-- Author -->
+	<a class="small button series right"
+	   href="/user/{{video.author.username}}"
+	   style="margin-bottom:0;    margin-top: -5px;"
+	   >{{video.author.username}}</a>
+	{% endif %}	
+      </div>
+      <!-- 40 minutes ago. -->
+
+    </article>
+  </a>
+{% endif %}
+{% endfor %}
+</div>
+
+
+{% include "videos/pagination.html" %}
+

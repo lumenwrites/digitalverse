@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block content %}
+<style>
+  .row {
+  max-width: 95%!important;
+  }
+</style>
+
+{% if not hub %}
+{% include "elements/featured.html" %}
+{% endif %}
+{# {% include "elements/subnav.html" %} #}
+
+{# {% include "elements/sidebar.html" %} #} <!-- sidebar test -->
+
+
+
+<div id="browse-template" class="page" style="">
+
+<h1 class="section-header"> Recent uploads </h1>
+  
+{% include "videos/video-list.html" %}
+
+{% include "elements/subscribe-popup.html" %}  
+
+
+{% endblock content %}

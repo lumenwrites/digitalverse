@@ -1,0 +1,173 @@
+{% load thumbnail %}
+
+<div class="callout small post-footer">
+
+  <div class="stats">
+    <!-- 
+    <i class="fi-arrow-up"></i>    
+    <span>{{video.score}}</span>
+
+    <i class="fi-comment"></i>
+    <span> {{video.comments.count}}</span>
+    
+    <i class="fi-eye"></i>
+    <span>{{video.views}}</span>
+    -->
+
+	{% for hub in video.hubs.all %}	
+	<span class="callout small category">{{hub.title}}</span>
+	{% endfor %}
+      
+
+  </div>
+
+  
+
+  <div class="right">
+      
+      <a class="button rss-icon"
+	 href="/user/{{video.author.username}}/feed/atom/">
+	<i class="fi-rss large"></i></a>
+
+      <a class="button rss-icon"
+	 href="{{video.author.youtube_channel}}">
+	<i class="fi-social-youtube large"></i></a>
+
+
+
+    <div id="mc_embed_signup" style="float: left;">
+      <form action="//digitalverse.us7.list-manage.com/subscribe/post?u=0f23c7984541d915d1108a16e&amp;id=cd51a6bb9f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+        <div class="mc-field-group">
+
+          <input class="required email"
+                 id="mce-EMAIL"
+                 name="EMAIL"
+                 placeholder="Enter your email"
+                 type="email"
+                 value=""
+		 style="
+			float: left;
+			margin: 0;
+			height: 39px;
+			width: 230px;
+			box-shadow: none;"/>
+          <input class="small button right"
+                 id="subscribeButton"
+                 name="subscribe"
+                 type="submit"
+                 value="Subscribe"
+		 style="float:left!important;
+			margin: 0;
+			font-size: 14px!important;
+			height: 39px;
+			background: #141414;
+			color: #fff!important;
+			width:90px;
+			margin-right:3px;
+			"/>
+        </div>
+
+        <div class="clear" id="mce-responses">
+          <div class="response" id="mce-error-response" style="display:none">&nbsp;</div>
+          <div class="response" id="mce-success-response" style="display:none">&nbsp;</div>
+        </div>
+
+	<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+	<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_0f23c7984541d915d1108a16e_cd51a6bb9f" tabindex="-1" value=""></div>
+    </div>
+    </form>    
+  </div>
+  <div class="clearfix"></div>
+  
+  </div>
+
+  
+</div>
+
+
+<script>
+$(document).ready(function(){
+    // getting csrf token.
+    function getCookie(name) {
+	var cookieValue = null;
+	if (document.cookie && document.cookie != '') {
+	    var cookies = document.cookie.split(';');
+	    for (var i = 0; i < cookies.length; i++) {
+		var cookie = jQuery.trim(cookies[i]);
+		// Does this cookie string begin with the name we want?
+		if (cookie.substring(0, name.length + 1) == (name + '=')) {
+		    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		    break;
+		}
+	    }
+	}
+	return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    // Upvote
+    function upvote(postId) {
+	$.ajax({
+	    type: "POST",
+	    url: "/upvote/",
+	    data: {"post-id": postId},
+	    success: function(){
+		var upvoteLink = $('#post-upvote-'+postId);
+		upvoteLink.addClass('upvoted');
+		upvoteLink.html("Upvoted");		
+		upvoteLink.off("click");
+		upvoteLink.click(function(){
+		    var postId = parseInt(this.id.split("-")[2]);
+		    return unupvote(postId);
+		})
+	    },
+	    headers: {
+		'X-CSRFToken': csrftoken
+	    }
+	});
+	return false;
+    }
+
+    
+
+    // Unupvote
+    function unupvote(postId) {
+	$.ajax({
+	    type: "POST",
+	    url: "/unupvote/",
+	    data: {"post-id": postId},
+	    success: function(){
+		var upvoteLink = $('#post-upvote-'+postId);
+		upvoteLink.removeClass('upvoted');
+		upvoteLink.html("<i class='fi-arrow-up'></i>Upvote");				
+		upvoteLink.off("click");
+		upvoteLink.click(function(){
+		    var postId = parseInt(this.id.split("-")[2]);
+		    return upvote(postId);
+		})
+	    },
+	    headers: {
+		'X-CSRFToken': csrftoken
+	    }
+	});
+	return false;
+    }
+
+    
+    {% if user.is_authenticated %}
+    //Connect functions
+    $("a.upvote").click(function(){
+	var postId = parseInt(this.id.split("-")[2]);
+	return upvote(postId);
+    })
+
+    // Upvoted
+    $("a.upvoted").click(function(){
+	var postId = parseInt(this.id.split("-")[2]);
+	return unupvote(postId);
+    })
+    
+    {% endif %}
+})
+</script>

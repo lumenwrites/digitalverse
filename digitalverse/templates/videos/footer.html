@@ -1,0 +1,213 @@
+{% load thumbnail %}
+
+<div class="callout small post-footer">
+
+  <div class="stats">
+    <i class="fi-arrow-up"></i>    
+    <span>{{video.score}}</span>
+
+    <i class="fi-comment"></i>
+    <span> {{video.comments.count}} </span>
+    
+    <i class="fi-eye"></i>
+    <span>{{video.views}}</span>
+
+
+	{% for hub in video.hubs.all %}	
+	<span class="callout small category">{{hub.title}}</span>
+	{% endfor %}
+      
+
+  </div>
+
+  
+
+  <div class="right">
+    <a class="small button" href="/user/{{video.author.username}}">
+      {{video.author}}
+
+      {% if video.author.avatar %}      
+	{% thumbnail video.author.avatar "40x40" crop="center" as im %}
+	    <img src="{{im.url}}" class="avatar"/><br/>
+	{% endthumbnail %}	  
+      {% endif %}      	    
+    </a>
+
+    {% if not user == video.author %}
+        {% if user.is_authenticated %}
+        <a class="small button upvote {% if video in user.upvoted.all %}upvoted{% endif %}"
+           id="post-upvote-{{video.id}}"    
+           href="/login/?next={{request.path}}">
+          {% if video in user.upvoted.all %}
+              Upvoted
+          {% else %}      
+              <i class="fi-arrow-up"></i>Upvote
+          {% endif %}
+        </a>
+        {% else %}
+	<a class="small button upvote" data-open="login-popup">
+	  <i class="fi-arrow-up"></i>Upvote</a>
+        {% endif %}	
+    {% else %}    
+	<!-- Nothing
+	<a class="small button upvote disabled">
+	  <i class="fi-arrow-up"></i>Upvote</a> -->
+    {% endif %}    
+	
+
+      {% if not user == video.author %}
+          {% if user.is_authenticated %}
+              {% if user not in video.author.subscribers.all %}	
+		   <a class="small button" 
+		      href="/user/{{video.author.username}}/subscribe">
+		     Subscribe
+		   </a>
+	      {% else %}
+		   <a class="small button" 
+		      href="/user/{{video.author.username}}/unsubscribe">
+		     Subscribed
+		   </a>
+	      {% endif %}	
+	  {% else %}	   
+              <a class="button" data-open="login-popup">
+		Subscribe</a>
+	      <!-- href="/login/?next={{request.path}}" -->
+	  {% endif %}	   
+      {% else %}
+	      <!-- Nothing
+	      <a class="small button disabled" >
+		Subscribe
+	      </a> -->
+      {% endif %}
+
+              <a class="button rss-icon"
+		 href="/user/{{video.author.username}}/feed/atom/">
+	      <i class="fi-rss large"></i></a>
+
+	      {% if video.author.youtube_channel %}	      
+              <a class="button rss-icon"
+		 href="{{video.author.youtube_channel}}">
+	      <i class="fi-social-youtube large"></i></a>
+	      {% endif %}
+
+    
+  </div>
+  <div class="clearfix"></div>
+  
+</div>
+
+<div class="moreby">
+More by <a class="" href="/user/{{video.author.username}}">{{video.author}}</a>:
+</div>
+
+<div id="more-by">
+{% for video in more_by %}
+  <a href="{{video.get_absolute_url}}">  
+    <article style="background: #222;">
+
+    {% if video.video_url %}
+        <img src="http://img.youtube.com/vi/{{video.youtube_id}}/mqdefault.jpg"
+	     width="320" height="180"/>
+
+    {% else %}
+         {% thumbnail video.thumbnail "320x180" crop="center" as im %}      
+         <img src="{{im.url}}" /> <!-- /media/{{video.thumbnail}} -->
+         {% endthumbnail %}
+    {% endif %}     
+         <div class="card-description">
+	   <div style="float:left; font-size:14px;width:100%; height:50px;padding:4px;">
+	     {{video.title}}</div>
+	 </div>
+    </article>
+  </a>
+  {% endfor %}
+</div>
+
+
+
+
+<script>
+$(document).ready(function(){
+    // getting csrf token.
+    function getCookie(name) {
+	var cookieValue = null;
+	if (document.cookie && document.cookie != '') {
+	    var cookies = document.cookie.split(';');
+	    for (var i = 0; i < cookies.length; i++) {
+		var cookie = jQuery.trim(cookies[i]);
+		// Does this cookie string begin with the name we want?
+		if (cookie.substring(0, name.length + 1) == (name + '=')) {
+		    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+		    break;
+		}
+	    }
+	}
+	return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    // Upvote
+    function upvote(postId) {
+	$.ajax({
+	    type: "POST",
+	    url: "/upvote/",
+	    data: {"post-id": postId},
+	    success: function(){
+		var upvoteLink = $('#post-upvote-'+postId);
+		upvoteLink.addClass('upvoted');
+		upvoteLink.html("Upvoted");		
+		upvoteLink.off("click");
+		upvoteLink.click(function(){
+		    var postId = parseInt(this.id.split("-")[2]);
+		    return unupvote(postId);
+		})
+	    },
+	    headers: {
+		'X-CSRFToken': csrftoken
+	    }
+	});
+	return false;
+    }
+
+    
+
+    // Unupvote
+    function unupvote(postId) {
+	$.ajax({
+	    type: "POST",
+	    url: "/unupvote/",
+	    data: {"post-id": postId},
+	    success: function(){
+		var upvoteLink = $('#post-upvote-'+postId);
+		upvoteLink.removeClass('upvoted');
+		upvoteLink.html("<i class='fi-arrow-up'></i>Upvote");				
+		upvoteLink.off("click");
+		upvoteLink.click(function(){
+		    var postId = parseInt(this.id.split("-")[2]);
+		    return upvote(postId);
+		})
+	    },
+	    headers: {
+		'X-CSRFToken': csrftoken
+	    }
+	});
+	return false;
+    }
+
+    
+    {% if user.is_authenticated %}
+    //Connect functions
+    $("a.upvote").click(function(){
+	var postId = parseInt(this.id.split("-")[2]);
+	return upvote(postId);
+    })
+
+    // Upvoted
+    $("a.upvoted").click(function(){
+	var postId = parseInt(this.id.split("-")[2]);
+	return unupvote(postId);
+    })
+    
+    {% endif %}
+})
+</script>

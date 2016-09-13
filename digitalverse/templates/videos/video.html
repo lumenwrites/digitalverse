@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load markdownify %}
+
+{% block title %}
+<title>{{video.title}} - lumiverse</title>
+{% endblock %}
+
+{% block meta_info %}
+<!-- <meta property="og:description" content="{{video.title}} {{video.description  | markdownify | safe}}"> -->
+<meta property="og:image" content="http://img.youtube.com/vi/{{video.youtube_id}}/maxresdefault.jpg">
+{% endblock %}
+
+  
+{% block head_extra %}
+{% endblock %}
+
+{% block content %}
+
+{% if request.META.HTTP_HOST == "digitalverse.io" %}  
+{% include "series/dv-subheader.html" %}
+{% endif  %}
+
+
+<div class="row" id="posts">
+  <div class="large-12 small-12 columns posts">
+    <article class="post">
+      <!-- Header -->
+      <header class="post-header">
+	  {% if user == video.author or user.is_staff  %}
+	  <a class="edit-post" href="/video/{{video.slug}}/edit">
+	    <i class="fa fa-pencil"></i></a>
+	  {% endif %}
+    	  <h1> {{object.title}} </h1>
+    	  <!-- <hr /> -->
+      </header>
+
+      <!-- Post Body -->
+
+      {% if video.video_url %}
+          {% if not video.author.youtube_player %}
+          <video
+          	 id="video"
+          	 class="video-js vjs-default-skin  vjs-big-play-centered"
+          	 controls
+          	 width="850" height="477"
+          	 data-setup='{ "techOrder": ["youtube"],
+          	 "sources": [{ "type": "video/youtube",
+          	 "src": "{{video.video_url}}"}] }'>
+          </video>
+	  {% else %}
+	  <div class="flex-video widescreen youtube">
+	  <iframe src="https://www.youtube.com/embed/{{video.youtube_id}}?rel=0&amp;showinfo=0;modestbranding=1;"
+		  frameborder="0" allowfullscreen></iframe>
+	  </div>
+	  {% endif %}
+      {% else %}
+      <video id="video" class="video-js vjs-default-skin vjs-big-play-centered"
+	     controls preload="auto" width="850" height="auto"
+	     poster="/media/{{video.thumbnail}}" data-setup="{}">
+	<source src="/media/{{video.video}}" type='video/mp4'>
+      </video>
+      {% endif %}          
+
+
+      <div class="clearfix"></div>
+      <div class="description">
+	{{video.description | markdownify | safe}}
+      </div>
+      <div class="clearfix"></div>
+
+
+      {% if video.series %}
+      <div class="nav-buttons">
+	<br/>
+          {% if video.prev_by_author %}
+          <a class="button" href="/video/{{first.slug}}"><< First</a>
+          <a class="button" href="/video/{{prev.slug}}">< Prev</a>
+          {% else %}
+          <a class="button disabled" href="/video/{{first.slug}}"><< First</a>
+          <a class="button disabled" href="/video/{{prev.slug}}">< Prev</a>
+          {% endif %}      
+
+	  {% if request.META.HTTP_HOST == "orangemind.lumiverse.io" %}  	  
+          <a class="button series" href="http://orangemind.lumiverse.io">
+	    <i class="fi-thumbnails"></i>
+	    Browse</a>
+          {% else %}
+          <a class="button series" href="/series/{{video.series.slug}}">
+	    <i class="fi-thumbnails"></i>
+	    {{video.series.title}}</a>
+          {% endif %}
+
+          {% if video.next_by_author %}
+          <!-- <div class="right"> -->
+          <a class="button" href="/video/{{next.slug}}">Next ></a>     	       
+          <a class="button" href="/video/{{last.slug}}">Last >></a>
+          <!-- </div> -->
+          {% else %}
+          <a class="button disabled" href="/video/{{next.slug}}">Next ></a>     	       
+          <a class="button disabled" href="/video/{{last.slug}}">Last >></a>
+          {% endif %}
+      </div>
+      {% endif %}      
+      <!-- <a href="{{ video.get_next_by_pub_pub_date.slug}}">&larr; Previous Post</a> -->
+
+
+      
+      <br/>
+      {% include "elements/subscribe-footer.html" %}
+      {# {% include "videos/footer.html" %} #}
+    </article>
+  </div>
+</div>
+
+<style>
+  header .row {
+  max-width: 95%!important;
+  }
+</style>
+
+{# {% include "comments/comments.html" %} #}
+
+{% endblock content %}

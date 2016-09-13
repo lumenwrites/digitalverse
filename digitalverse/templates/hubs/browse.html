@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+{% block content %}
+
+<style>
+.row {
+  max-width: 95%!important;
+  }
+</style>
+
+{# {% include "elements/featured.html" %} #}
+{% include "elements/subnav.html" %}
+
+{# {% include "elements/sidebar.html" %} #} <!-- sidebar test -->
+
+
+
+<div class="browse-series" style="">
+  
+{% include "hubs/hubs-list.html" %}
+  
+{% include "elements/subscribe-popup.html" %}  
+
+{% endblock content %}

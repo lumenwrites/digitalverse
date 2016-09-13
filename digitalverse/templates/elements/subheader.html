@@ -1,0 +1,146 @@
+{% load thumbnail %}
+
+
+<div class="subheader">
+{% if userprofile.background %}        
+   {% thumbnail userprofile.background "1581x132" crop="center" as im %}
+       <style>
+	 .subheader {
+	    background:url({{im.url}});
+	    background:url("/media/{{userprofile.background}}");
+	 }
+       </style>
+   {% endthumbnail %}	  
+{% endif %}        
+
+  <div class="row">
+  <div class="large-4 small-4 columns user-info">
+    <a href="/user/{{userprofile.username}}">
+      {% thumbnail userprofile.avatar "70x70" crop="center" as im %}
+          <img src="{{im.url}}" class="avatar"/>
+      {% endthumbnail %}	  
+
+
+	  
+      <div class="left">
+	<h1 class="username"> {{userprofile.username}} </h1>
+	<div class="stats">    
+	  <i class="fi-torsos-all stats-icon"></i>
+	  {{userprofile.subscribers.count}}
+
+	  <i class="fi-arrow-up stats-icon"></i>
+	  {{score}}
+	  <i class="fi-eye stats-icon"></i>
+	  {{view_count}}
+	</div>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="large-8 small-8 columns">
+    <div class="buttons">
+
+
+
+      {% if userprofile.series.all %}
+
+          {% for series in userprofile.series.all %}      
+          {% if series.published %}      
+              <a class="button"
+              	 href="/series/{{series.slug}}">
+              	{{series.title}}
+              
+              {% if series.image %}      
+              	{% thumbnail series.image "40x40" crop="center" as im %}
+              	    <img src="{{im.url}}" class="avatar author-avatar"/><br/>
+              	{% endthumbnail %}	  
+              {% endif %}      	    
+              </a>
+          {% endif %}      	    
+          {% endfor %}      	    
+      {% endif %}            
+
+
+      {% if userprofile.username == "rayalez" %}     
+      <!--  
+      <a class="button"
+	 href="http://fictionhub.io/user/rayalez/">
+	My Fiction</a>
+      -->
+
+      <!-- 
+      <a class="button"
+	 href="http://fictionhub.io/user/rayalez/">
+	Patreon</a>
+      -->
+      <!-- 
+      <a class="button"
+	 href="http://fictionhub.io/user/rayalez/">
+	Store</a>
+       -->
+      {% endif %}            
+	      
+      {% if userprofile.website %}      
+      <a class="button"
+	 href="{{userprofile.website}}">
+	Website</a>
+      {% endif %}            
+
+
+      {% if userprofile.about %}      
+      <!-- 
+      <a class="button"
+	 href="/user/{{userprofile}}/about">
+	About</a>
+      -->      
+      {% endif %}            
+
+
+      {% if not user == userprofile %}
+          {% if user.is_authenticated %}
+              {% if user not in userprofile.subscribers.all %}	
+                   <a class="button"
+		      href="/user/{{userprofile.username}}/subscribe">
+		     Subscribe</a>
+	      {% else %}
+                   <a class="button"
+		      href="/user/{{userprofile.username}}/unsubscribe">
+		     Subscribed</a>
+	      {% endif %}	
+	  {% else %}	   
+              <a class="button" data-open="login-popup">
+		Subscribe</a>
+              <!-- <a class="button" -->
+	      <!-- 	 href="/login/?next={{request.path}}"> -->
+	      <!-- 	Subscribe</a> -->	      
+	  {% endif %}	 
+      {% else %}  
+              <a class="button disabled">
+		Subscribe</a>
+      {% endif %}  
+	  <span class="button rss-icon">
+	    <a href="/user/{{userprofile.username}}/feed/atom/">
+	      <i class="fi-rss large"></i></a>
+	  </span>
+
+	      {% if userprofile.youtube_channel %}	      
+              <a class="button rss-icon"
+		 href="{{userprofile.youtube_channel}}">
+	      <i class="fi-social-youtube large"></i></a>
+	      {% endif %}
+
+
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+</div>
+
+  {% if userprofile.about %}
+  <div class="tagline">
+    {{userprofile.about}}
+  </div>
+  {% endif %}
+
+</div>

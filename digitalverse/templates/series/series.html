@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+
+{% block title %}
+<title>{{series.title}} - lumiverse</title>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+{% if request.META.HTTP_HOST == "orangemind.lumiverse.io" %}  
+    {% include "elements/orangemind-header.html" %}
+{% elif request.META.HTTP_HOST == "digitalverse.io" or  request.META.HTTP_HOST == "localhost:8000" %}  
+    {% include "series/dv-subheader.html" %}
+{% else  %}
+    {% include "series/subheader.html" %}
+{% endif %}
+
+<div id="browse-template" class="page">
+
+  {% include "videos/video-list.html" %}  
+
+<style>
+  .row {
+  max-width: 95%!important;
+  }
+</style>
+{% endblock content %}

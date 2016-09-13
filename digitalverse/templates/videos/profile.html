@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+
+{% block title %}
+<title>{{userprofile.username}} - lumiverse</title>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<style>
+  .row {
+  max-width: 95%!important;
+  }
+</style>
+
+{% include "elements/subheader.html" %}
+{% include "elements/subnav.html" %}
+
+
+<div id="browse-template" class="page">
+
+{% include "videos/video-list.html" %}
+{% endblock content %}

@@ -1,0 +1,247 @@
+{% load thumbnail %}
+
+<style>
+  .username {
+  font-family: "Titillium Web";
+    font-weight: 100!important;
+    font-size: 40px;
+  }
+
+    .main-header {
+    display:none;
+    }
+    .username {
+    margin-top: 18px!important;
+    }
+    .stats {
+    display:none;
+    }
+
+  .subheader {
+  padding: 40px 0;
+  padding-bottom: 20px;
+  }
+
+.tagline {
+    padding-left: 60px;
+  }
+
+  #browse-template {
+    padding-top: 4px;  
+  }
+    .username {
+    margin-top: 18px!important;
+    }
+
+    .video-stats, .hubs {
+    display:none;
+    }
+
+    .comment-section, .post-footer, .moreby {
+    display: none;
+    }
+
+  
+    #browse-template .card-description {
+  height: 70px;  
+    overflow: hidden;
+    }
+
+  
+/*
+.row {
+  width:66%!important;
+  }
+  .reveal .row {
+      width: 100%!important;
+  }
+*/
+  
+#browse-template {
+    padding-top: 10px!important;
+    width: 65%!important;
+    margin: auto!important;
+}
+
+#browse-template article {
+    position: relative;
+    width: calc(33.33% - 20px)!important;
+    margin: 10px!important;
+    float: left;
+    background: #222;
+  }
+
+
+body {
+    background: #111111;
+}  
+  #browse-template article {
+      background: #1f1f1f;
+    }
+
+#browse-template .video-title a {
+    color: #13aff0;
+color: #dcdcdc;  
+}  
+
+  #browse-template .card-description hr {
+    display: none;
+}
+  
+</style>
+
+
+<div class="subheader series-subheader">
+       <style>
+	 .subheader {
+	    background:url("/media/series/backgrounds/learn_junichi.jpg");
+	 }
+       </style>
+
+  <div class="row">
+  <div class="large-6 small-6 columns user-info">
+    <a href="/series/digitalverse">
+      <img src="/media/cache/48/fd/48fd6a61f5d167ebf2625301d07698e9.png" class="avatar"/>
+
+
+	  
+      <div class="left">
+	<h1 class="username"> digitalverse
+	</h1>
+
+
+      </div>
+    </a>
+  </div>
+
+
+  <div class="large-6 small-6 columns"> 
+    <div class="buttons">
+
+      <!-- 
+      <a class="button purchase"
+	 href="/series/{{series.slug}}/unsubscribe">
+	Purchase (<span>$</span>5)</a>
+      -->
+
+
+      <a class="button" data-open="login-popup">
+	Subscribe</a>
+
+      <!-- 
+      {% if series.description %}      
+      <a class="button"
+	 href="/user/{{userprofile}}/about">
+	About</a>
+      {% endif %}            
+      -->
+
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  </div>
+  <div class="tagline">
+    SideFX Houdini and 3D animation tutorials.
+    <!-- 
+    <div style="margin:auto;
+		width: 70%;
+		color: #fefefe";>
+    </div>
+     -->
+  </div>
+  
+</div>
+
+
+
+
+<div class="reveal" id="login-popup" data-reveal style="padding-bottom: 0;">
+  <div class="row">
+    
+    <div id="mc_embed_signup" style="/* margin-left:60; float: right;*/">
+      <form action="//digitalverse.us7.list-manage.com/subscribe/post?u=0f23c7984541d915d1108a16e&amp;id=cd51a6bb9f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+        <div class="mc-field-group">
+
+	  <!-- RSS icon -->
+	  <span class="rss-icon" style="
+					font-size: 32px;
+					margin: 0;
+					float: right;
+					background: #2f3333;
+					padding: 5px 10px;
+					line-height: 0px;">
+	  <a href="https://www.youtube.com/feeds/videos.xml?channel_id=UCrzEUtLCSfHduoy8c-iBPcw">
+	      <i class="fi-rss large"></i></a>
+
+	    <!-- 
+	    <a href="/series/digitalverse/feed/atom/">
+	      <i class="fi-rss large"></i></a>
+	     -->
+	  </span>
+
+
+	  <!-- Youtube -->
+          <a class="button rss-icon" style="
+					font-size: 32px;
+					margin: 0;
+					float: right;
+					background: #2f3333;
+					padding: 5px 10px;
+					line-height: 0px;
+					height: 42px;
+					margin-right: 6px;"
+	     href="https://www.youtube.com/channel/UCrzEUtLCSfHduoy8c-iBPcw">
+	    <i class="fi-social-youtube large"></i></a>
+
+
+	  
+          <input class="required email"
+                 id="mce-EMAIL"
+                 name="EMAIL"
+                 placeholder="Enter your email"
+                 type="email"
+                 value=""
+		 style="/*width: 65%;*/
+			width:calc(100% - 50px);
+			height: 42px;
+			float: left;
+			margin: 0;
+			width: calc(100% - 220px);"/>
+          <input class="small button right"
+                 id="subscribeButton"
+                 name="subscribe"
+                 type="submit"
+                 value="Subscribe"
+		 style="width:100%;
+			width:calc(100% - 50px);
+			float:left!important;
+			margin-top:4px;
+			margin-top: 0;
+			height: 42px;
+			width: 120px;
+			padding: 0;
+			background: #2F3333!important;
+			"/>
+        </div>
+
+        <div class="clear" id="mce-responses">
+          <div class="response" id="mce-error-response" style="display:none">&nbsp;</div>
+          <div class="response" id="mce-success-response" style="display:none">&nbsp;</div>
+        </div>
+
+	<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_0f23c7984541d915d1108a16e_cd51a6bb9f" tabindex="-1" value=""></div>
+    </div>
+	
+
+      </form>
+    </div>
+    
+  </div>
+</div>
+
+
+

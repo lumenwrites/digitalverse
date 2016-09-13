@@ -1,0 +1,92 @@
+.subheader {
+    padding: 20px 0;
+    background:url(/static/img/bg.jpg);
+    background-position-y: -320px;
+    margin:0;
+    background-size: 100% auto!important;
+    background-size: cover!important;    
+}
+
+.background {
+    position: absolute;
+    z-index:-10;
+}
+
+
+
+.subheader .rss-icon {
+    font-size:48px;
+    padding: 3px 10px!important;
+    padding: 3px 10px 3px 11px !important;    
+}
+
+
+.user-info {
+    float:left;
+
+    .avatar {
+	float:left;
+	width:70px;
+	border-radius: 4px;
+	margin:10px;
+	margin-left:0;
+    }
+
+    .username {
+	font-weight: bold;
+	color: white;
+	margin: 2px 0 0 0px;
+	text-shadow: 1px 1px 2px black;	
+    }
+
+    .stats {
+	float:left;
+	color: lighten($bright,20%);
+    }
+
+    i {
+	margin: 0 4px;
+	color: lighten($bright,20%);
+    }
+    
+}
+
+.subheader .buttons {
+    margin-top: 20px;
+    float:right;
+}
+.subheader .buttons .button {
+    padding:20px;
+}
+
+
+/* Purchase */
+.purchase {
+    box-shadow: inset 0px 0px 0px 1px green;
+    span {
+	color: green;
+    }
+}
+
+/* Tagline */
+.tagline {
+    width: 100%;
+    margin: 0 0 -20px 0;    
+    padding: 20px;
+    color: #fefefe;
+    background-color: rgba(10, 10, 10, 0.5);
+
+}
+
+
+/* Browse */
+/* Featured */
+
+#rayalez-img {
+    margin-top:-40px;
+}
+@media screen and (orientation:portrait) {
+    #rayalez-img {
+	margin-top:0;
+    }
+}
