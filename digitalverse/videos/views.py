@@ -41,10 +41,10 @@ class BrowseMixin(object):
         # qs = qs.filter(published=True, author__hidden=False)
 
         # Filter by site
-        if check_if_digitalverse(self.request):
-            qs = qs.filter(digitalverse=True)
-        else:
-            qs = qs.filter(digitalverse=False)  
+        # if check_if_digitalverse(self.request):
+        #     qs = qs.filter(digitalverse=True)
+        # else:
+        #     qs = qs.filter(digitalverse=False)  
         
 
         # Filter by hub
