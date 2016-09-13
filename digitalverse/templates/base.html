@@ -50,14 +50,15 @@
 
   {% if userprofile %}
   <link rel="alternate" type="application/rss+xml"
-	href="http://webcomics.io/user/{{userprofile.username}}/feed/atom/" />
+	href="http://digitalverse.io/user/{{userprofile.username}}/feed/atom/" />
   {% endif %}      	      
 
   <link rel="shortcut icon" type="image/png" href="http://lumiverse.io/static/img/favicon.png"/>
   
   <!-- Meta -->
   {% block meta_info %}
-  <meta property="og:description" content="Best place to publish, discover, and discuss educational videos.">
+  <meta property="og:description"
+	content="SideFX Houdini and 3D Animation tutorials.">
   <meta property="og:image" content="http://lumiverse.io/static/img/lumiverse2.png">
   {% endblock %}
   
