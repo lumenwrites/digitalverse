@@ -10,6 +10,10 @@ header .row,.subheader .row {
 }
 
 /* Logo */
+
+.logo-column {
+    padding:0;
+}
 .logo {
     font-family: "Titillium Web";
     color: $black;
@@ -34,6 +38,13 @@ header .row,.subheader .row {
     margin-top:-5px!important;
 }
 
+/* Subscribe */
+
+.subscribe-header {
+    text-transform: uppercase;
+    background: #222222;
+    padding: 15px 20px;
+}
 /* Websites dropdown */
       
 #websites-dropdown {
@@ -59,10 +70,9 @@ header .row,.subheader .row {
 
 /* Main menu */
 #mainMenu {
-	margin-top: 16px;
-	text-transform: uppercase;
-	float:right;
-	font-size: 18px;
+    margin-top: 16px;
+    float:right;
+    font-size: 18px;
 }
 
 
@@ -77,6 +87,7 @@ header .row,.subheader .row {
 #mainMenu a {
     margin-right: 5px;
     color: $bright;
+    color: #A0A0A0;
 }
 
 
@@ -90,7 +101,6 @@ header .row,.subheader .row {
     color: #3d454b;
     margin-bottom: -1px;
     display: inline-block;
-    text-transform: uppercase;
     font-size: 18px;
     font-weight: 400;
 
@@ -121,7 +131,6 @@ header .row,.subheader .row {
     margin:-10px;
     color: #a2a8ab;
 
-    text-transform: uppercase;
     font-size: 18px;
     font-weight: 400;
     padding:10px;

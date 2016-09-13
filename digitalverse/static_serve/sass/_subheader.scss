@@ -81,7 +81,32 @@
 
 /* Browse */
 /* Featured */
-
+#featured {
+    background:#171717;
+    padding: 10px 30px;
+    .card {
+	float:left;
+	background: #222222;
+	margin:10px;
+	width:calc(33.3333% - 20px);
+	.image {
+	    width: 100%;
+	    width: 487px;
+	    height: 274px;
+	    overflow:hidden;
+	}
+	img {
+	    width: 100%;
+	}
+	.description {
+	    padding: 10px 20px;
+	}
+	h1 {
+	    font-size: 22px;
+	    color:white;
+	}
+    }
+}
 #rayalez-img {
     margin-top:-40px;
 }

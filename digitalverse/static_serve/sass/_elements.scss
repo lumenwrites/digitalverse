@@ -6,16 +6,23 @@
 
 h1, h2, h3, h4, h5, h6 {
     color: $bright;
-
     font-family: 'Lato';
     font-weight: 200;
 }
+
 
 h1 {
     font-size: 36px;
     margin-bottom: 0;
     
 }
+
+.section-header {
+    font-weight:bold;
+    font-size: 22px;
+    /* text-transform: uppercase; */
+}
+
 
 h2 {
     font-size: 30px;
