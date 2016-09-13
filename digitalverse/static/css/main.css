@@ -574,32 +574,33 @@ header .row, .subheader .row {
 }
 /* line 92, ../sass/_subheader.scss */
 #featured .card .image {
-  width: 100%;
   width: 487px;
   height: 274px;
+  width: 100%;
+  height: auto;
   overflow: hidden;
 }
-/* line 98, ../sass/_subheader.scss */
+/* line 99, ../sass/_subheader.scss */
 #featured .card img {
   width: 100%;
 }
-/* line 101, ../sass/_subheader.scss */
+/* line 102, ../sass/_subheader.scss */
 #featured .card .description {
   padding: 10px 20px;
 }
-/* line 104, ../sass/_subheader.scss */
+/* line 105, ../sass/_subheader.scss */
 #featured .card h1 {
   font-size: 22px;
   color: white;
 }
 
-/* line 110, ../sass/_subheader.scss */
+/* line 111, ../sass/_subheader.scss */
 #rayalez-img {
   margin-top: -40px;
 }
 
 @media screen and (orientation: portrait) {
-  /* line 114, ../sass/_subheader.scss */
+  /* line 115, ../sass/_subheader.scss */
   #rayalez-img {
     margin-top: 0;
   }
