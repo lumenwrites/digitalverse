@@ -90,9 +90,10 @@
 	margin:10px;
 	width:calc(33.3333% - 20px);
 	.image {
-	    width: 100%;
 	    width: 487px;
 	    height: 274px;
+	    width: 100%;
+	    height: auto;
 	    overflow:hidden;
 	}
 	img {
