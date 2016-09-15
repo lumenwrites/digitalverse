@@ -1,0 +1,125 @@
+.forum-header  {
+    background: #171717;
+    padding: 40px;
+    padding-bottom: 10px;
+    text-align:center;
+    margin-bottom:40px;
+    .button {
+	background: $orange;
+	text-transform: uppercase;
+	color: white;
+	margin:20px;
+	margin-bottom: -25px;
+    }
+}
+
+.forum-page {
+    padding-bottom:40px;
+    article {
+	background:#1f1f1f;
+	padding: 20px 30px;
+	padding-bottom: 10px;
+	margin-bottom: 1px;
+	h2 {
+	    color: #9ba09b;
+	    font-size: 22px;
+	    font-weight: normal;
+	}
+	.stats span {
+	    margin-right: 5px;
+	}
+	.stats span, .stats i {
+	    color:$orange;
+	}
+    }
+    
+    input {
+	width: 200px;
+    box-shadow: none;
+    margin-bottom: 5px;
+    height: 34px;
+    background: #141414!important;
+    }
+
+    .forum-nav {
+	display:none;
+	position: relative;
+	.fi-magnifying-glass {
+	    position: absolute;
+	    right: 4px;
+	    margin: 6px;
+	    color: #3d3d3d;
+	}
+	.button {
+	    margin-bottom:5px;
+	}
+	
+    }
+}
+
+
+.thread-page {
+    padding:40px;
+    article {
+	background:#1f1f1f;
+	padding: 20px 30px;
+	padding-bottom: 0;
+	margin-bottom: 40px;
+	h1 {
+	    color: #9ba09b;
+	    font-size: 32px;
+	    font-weight: normal;
+	}
+	p {
+	    color: $white-subdued;
+	    font-size: 20px;
+	}
+	hr {
+	    border-bottom: 1px solid rgba(155, 160, 155, 0.1);
+	}
+	.post-footer {
+	    margin: 0 -30px;
+	    background: rgba(20, 20, 20, 0.62);
+	    padding: 5px 5px;
+	    margin-top: 20px;
+	    padding-left: 30px;	    
+	    .stats {
+		margin: 0;
+		margin-top: 7px;
+	    }
+	    .stats span, .stats i {
+		/* color:$orange; */
+		color: $white-subdued;	    
+	    }
+	    .stats span {
+		margin-right: 5px;
+	    }
+	}
+	
+	.post-footer .buttons {
+	    float: right;
+	}
+	
+    }
+
+    textarea {
+	resize: none;
+	height: 74px;
+	margin: 0;
+	box-shadow: none;
+	background: #181818;
+    }
+    .comment {
+	color: $white-subdued;
+	.comment-footer {
+	    margin-right: -20px;
+	    margin-bottom: 4px;
+	    float:right;
+	    color: rgb(100, 100, 100);
+	    font-weight: bold;
+	    i {
+		color: rgb(100, 100, 100);
+	    }
+	}
+    }
+}

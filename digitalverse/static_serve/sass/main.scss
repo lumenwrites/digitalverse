@@ -13,7 +13,8 @@ $bright:#cfcfcf;
 $black: #3d454b;
 $cream: #f6f3ea;
 $brightblue: #13aff0;
-
+$orange: #f6653c;
+$white-subdued: #9ba09b;
 $header-bg: #141414;
 $body-bg:#111111;
 
@@ -32,6 +33,7 @@ $body-bg:#111111;
 @import 'comments';
 @import 'edit';
 @import 'footer';
+@import 'forum';
 
 .page {
     min-height:82vh;
