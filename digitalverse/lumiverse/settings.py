@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'posts',
     'videos',    
     'profiles',
-    'comments'
+    'comments',
+    'forum'
 ]
 
 MIDDLEWARE_CLASSES = [

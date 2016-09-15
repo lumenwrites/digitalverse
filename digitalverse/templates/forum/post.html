@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="thread-page">
+
+
+<div class="row">
+  <div class="large-12 small-12 columns">
+    <article>
+      <h1>Post topic</h1>
+      <hr/>
+
+      <div class="post-body">
+	<p> Hey, everyone! Welcome to our awesome forum! </p>
+      </div>
+
+
+      <div class="post-footer">
+	<div class="stats">
+    	  <span>
+	    <i class="fi-arrow-up arrow"></i>
+	    12 {{post.score}}
+	  </span>
+	  <span>
+	    <i class="fi-comment"></i>
+	    12 {{post.comments.count}}
+	  </span>
+	  <span>
+	    <i class="fi-eye"></i>
+	    123 	  {{post.views}}
+	  </span>
+	  <!-- 
+	  <span>
+	    <i class="fi-clock"></i>
+	    1h 53m ago
+	  </span>
+	  -->
+	</div>
+
+	<div class="buttons">
+	  <a class="small button">
+	    alexanderwales
+	  </a>
+	  <a class="small button">
+	    <i class="fi-arrow-up"></i>Upvote
+	  </a>
+	</div>
+	<div class="clearfix"></div>
+	  
+      </div>
+    </article>
+
+    <textarea placeholder="Write reply..."></textarea>
+    <a class="button right">
+      Submit Reply
+    </a>
+    <div class="clearfix"></div>    
+
+    <article class="comment">
+      <p>
+	Hey, great post! This is my cool reply!
+      </p>
+      <div class="comment-footer">
+	alexanderwales
+	12
+	<i class="fi-arrow-up arrow"></i>
+      </div>
+      <div class="clearfix"></div>    
+    </article>
+    
+  </div> <!-- End 12-columns -->
+</div> <!-- End row -->
+
+
+</div> <!-- End forum-page -->
+
+
+<script>
+  $('textarea').each(function () {
+  this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+}).on('input', function () {
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+  });
+</script>
+{% endblock content %}

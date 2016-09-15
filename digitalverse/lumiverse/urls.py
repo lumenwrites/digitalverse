@@ -10,6 +10,7 @@ from series import urls as series_urls
 from hubs import urls as hubs_urls
 from profiles import urls as profiles_urls
 from comments import urls as comments_urls
+from forum import urls as forum_urls
 
 from . import views
 
@@ -24,5 +25,6 @@ urlpatterns = [
     url(r'', include(series_urls)),
     url(r'', include(hubs_urls)),        
     url(r'', include(comments_urls)),
+    url(r'', include(forum_urls)),    
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

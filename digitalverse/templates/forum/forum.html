@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="forum-page">
+
+<div class="forum-header">
+  <h1>Digital Verse Community</h1>
+  <p>Discussion about Computer Graphics and Animation</p>
+  <a class="small button orange">New Post</a>
+</div>
+
+
+<div class="row">
+  <div class="large-12 small-12 columns">
+
+    <div class="forum-nav">
+      <a class="small button">
+	Category: All
+      </a>
+
+      <a class="small button">
+	Hot
+      </a>
+
+      <i class="fi-magnifying-glass right"></i>
+      <input class="right" type="text">
+    </div>
+
+    <article>
+      <a href="/forum/post">
+	<h2>Forum topic</h2>
+      </a>
+      <div class="stats">
+    	<span>
+	  <i class="fi-arrow-up arrow"></i>
+	  12 {{post.score}}
+	</span>
+	<span>
+	  <i class="fi-comment"></i>
+	  12 {{post.comments.count}}
+	</span>
+	<span>
+	  <i class="fi-eye"></i>
+	  123 	  {{post.views}}
+	</span>
+	<span>
+	  <i class="fi-clock"></i>
+	  1h 53m ago
+	</span>
+	<!-- 
+	<span>
+	  [Houdini | Animation | WIP]
+	</span>
+	-->
+	<!-- &nbsp; -->
+	<span>
+	  by alexanderwales
+	</span>
+      </div>
+    </article>
+    <article>
+      <h2>Forum topic</h2>
+    </article>
+    <article>
+      <h2>Forum topic</h2>
+    </article>
+
+    
+  </div>
+</div>
+
+</div> <!-- End forum-page -->
+
+
+{% endblock content %}
