@@ -1,14 +1,14 @@
-1. Body dynamics. Sports. Golf, cycling, soccer, baseball. tennis.?  
-2. Physical strength
-3. Balance
+- Body dynamics. Sports. Golf, cycling, soccer, baseball. tennis.?  
+- Physical strength
+- Balance
 
-4. Happiness
-5. Excitement
-6. Devastation
+- Happiness
+- Excitement
+- Devastation
 
-7. Exhaustion
-8. Boredom
-9. Concern
+- Exhaustion
+- Boredom
+- Concern
 
 
 
