@@ -41,10 +41,10 @@ def markdownify(text, short = "False"):
             pass
         text = text[:1024]
 
-    # Urlify
-    text = linkify(text, 180)
-    
     html = markdown.markdown(text)
 
+    # Urlify
+    # html = linkify(html, 180)
+    
     return html
 
