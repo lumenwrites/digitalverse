@@ -1,7 +1,6 @@
 # markdownify
 from django import template
 import markdown
-import bleach
 
  
 register = template.Library()
