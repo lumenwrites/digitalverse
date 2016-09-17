@@ -1,70 +1,102 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% load markdownify %}
 
 {% block content %}
 
-<div class="row" id="posts">
-  <div class="large-12 small-12 columns posts">
-    <article class="post">
-      <!-- Header -->
-      <header class="post-header">
-	  {% if user == post.author or user.is_staff  %}
-	  <a class="edit-post" href="/post/{{post.slug}}/edit">
-	    <i class="fa fa-pencil"></i></a>
-	  {% endif %}
-    	  <h1> {{object.title}} </h1>
-    	  <!-- <hr /> -->
-      </header>
-      
-      <!-- Post Body -->
-      {% for image in post.images.all %}
-      <!-- <img class="comics-image" src="/media/{{image.image}}" style="margin:auto; -->
-      <!-- 					       /*max-height:450px;*/"/><br/> -->
-      {% endfor %}
-
-      <div class="clearfix"></div>
-      {{post.description | markdownify | safe}}
-      <div class="clearfix"></div>
+<div class="thread-page">
 
 
-      {% if post.series %}
-      <div class="nav-buttons">
-	<br/>
-          {% if post.prev_by_author %}
-          <a class="button" href="/post/{{first.slug}}"><< First</a>
-          <a class="button" href="/post/{{prev.slug}}">< Prev</a>
-          {% else %}
-	  <div class="button invisible"></div>
-	  <div class="button invisible"></div>
-          {% endif %}      
-          <a class="button series" href="/series/{{post.series.slug}}">
-	    <i class="fi-thumbnails"></i>
-	    {{post.series.title}}</a>
-          {% if post.next_by_author %}
-          <!-- <div class="right"> -->
-          <a class="button" href="/post/{{next.slug}}">Next ></a>     	       
-          <a class="button" href="/post/{{last.slug}}">Last >></a>
-          <!-- </div> -->
-          {% endif %}
+<div class="row">
+  <div class="large-12 small-12 columns">
+    <article>
+
+      <!-- Edit -->
+      {% if user == post.author or user.is_staff %}
+      <a class="edit-post" href="{{post.get_absolute_url}}/edit">
+	<i class="fa fa-pencil"></i>
+      </a>
+      {% endif %}
+
+      <!-- Title -->
+      <h1>{{post.title}}</h1>
+      <hr/>
+
+      <!-- Body -->
+      <div class="post-body">
+	{{post.body | markdownify | safe }}
       </div>
-      {% endif %}      
-      <!-- <a href="{{ post.get_next_by_pub_pub_date.slug}}">&larr; Previous Post</a> -->
 
 
-      
-      <br/>
-      {% include "posts/footer.html" %}
+      <div class="post-footer hidden">
+	<div class="stats">
+    	  <span>
+	    <i class="fi-arrow-up arrow"></i>
+	    12 {{post.score}}
+	  </span>
+	  <span>
+	    <i class="fi-comment"></i>
+	    12 {{post.comments.count}}
+	  </span>
+	  <span>
+	    <i class="fi-eye"></i>
+	    123 	  {{post.views}}
+	  </span>
+	  <!-- 
+	  <span>
+	    <i class="fi-clock"></i>
+	    1h 53m ago
+	  </span>
+	  -->
+	</div>
+
+	<div class="buttons">
+	  <a class="small button">
+	    alexanderwales
+	  </a>
+	  <a class="small button">
+	    <i class="fi-arrow-up"></i>Upvote
+	  </a>
+	</div>
+	<div class="clearfix"></div>
+	  
+      </div> <!-- End post footer -->
     </article>
-  </div>
-</div>
 
-<style>
-  header .row {
-  max-width: 95%!important;
-  }
-</style>
+    <!-- Comments -->
+    <div class="comments hidden">
+      <textarea placeholder="Write reply..."></textarea>
+      <a class="button right">
+	Submit Reply
+      </a>
+      <div class="clearfix"></div>    
+
+      <article class="comment">
+	<p>
+	  Hey, great post! This is my cool reply!
+	</p>
+	<div class="comment-footer">
+	  alexanderwales
+	  12
+	  <i class="fi-arrow-up arrow"></i>
+	</div>
+	<div class="clearfix"></div>    
+      </article>
+    </div> <!-- End .comments -->
+
+  </div> <!-- End 12-columns -->
+</div> <!-- End row -->
 
 
-{% include "comments/comments.html" %}
+</div> <!-- End forum-page -->
 
+
+<script>
+  $('textarea').each(function () {
+  this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+}).on('input', function () {
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+  });
+</script>
 {% endblock content %}

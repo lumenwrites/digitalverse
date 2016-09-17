@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
 from . import views
-from posts.views import SeriesFeed
+from .views import SeriesFeed
 
 urlpatterns = [
     # url(r'^$', views.BrowseView.as_view(), name='post-list'),

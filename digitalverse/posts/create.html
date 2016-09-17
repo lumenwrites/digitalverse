@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+<div class="row">
+  <div class="large-12 columns">
+    <br/>
+    {{form.errors}}
+    {{form.non_field_errors}}
+
+    <form action="/post/add" method="post">{% csrf_token %}
+      <div class="editor">
+      	{{form.body}}
+      </div>
+
+      <!-- 
+      <br/>
+      <div class="set-hubs">
+	{{form.hubs}}
+      </div>
+      -->
+      <button class="button small right" type="submit">Submit</button>
+      <div class="clearfix"></div>
+    </form>
+    <!-- End Submit Form -->
+  </div> <!-- End 12 columns -->
+</div>	 <!-- End row -->
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+
+{% endblock content %}
+

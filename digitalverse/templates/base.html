@@ -82,7 +82,10 @@
 	<!-- <ul><a href="/"> Store </a></ul> -->
 	<!-- <ul><a href="/subscriptions/"> Forum </a></ul>       -->
 	{% if user.is_authenticated %}
-	
+	<a href="/forum/">
+	  <span>Forum</span>
+	</a>
+
 	<!-- 
 	      <a href="/">
 	        <span>Videos</span>
@@ -321,7 +324,7 @@
 <!-- <script src="  {% static "foundation/js/foundation.min.js" %}"></script> -->
 <script src="  {% static "foundation/bower_components/foundation-sites/dist/foundation.min.js" %}"></script>
 <script src="  {% static "foundation/bower_components/foundation-sites/js/foundation.reveal.js" %}"></script>
-<script src="  {% static "foundation/bower_components/foundation-sites/js/foundation.orbit.js" %}"></script>
+
 <!-- <script src="  {% static "foundation/js/foundation.dropdown.js" %}"></script> -->
 <!-- <script src="  {% static "vendor/foundation/js/foundation.orbit.js" %}"></script> -->
 <!-- <script src="http://fictionhub.io/static/js/foundation/foundation.orbit.js"></script> -->
@@ -329,11 +332,10 @@
 <!-- <script src="  {% static "vendor/foundation/js/foundation.reveal.js" %}"></script> -->
 
 <!-- videojs -->
- <script src="http://vjs.zencdn.net/5.8.0/video.js"></script>
+<script src="http://vjs.zencdn.net/5.8.0/video.js"></script>
 <script src="  {% static "videojs/Youtube.min.js" %}"></script>
 <script>
   $(document).foundation();
-  var elem = new Foundation.Orbit($(".orbit"), {timerDelay: 15000});
 </script>
 
 </body>

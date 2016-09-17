@@ -7,6 +7,9 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
+from django.contrib.syndication.views import Feed
+from django.utils.feedgenerator import Atom1Feed
+
 from profiles.models import User 
 
 from videos.models import Video
@@ -203,6 +206,35 @@ def series_delete(request, slug):
     series.delete()
     return HttpResponseRedirect('/')
 
+
+
+
+class SeriesFeed(Feed):
+    title = "lumiverse latests posts"
+    link = "/"
+    feed_type = Atom1Feed
+
+    def get_object(self, request, slug):
+        return get_object_or_404(Series, slug=slug)
+
+    def title(self, obj):
+        return "lumiverse.io: %s series" % obj.title
+
+    def link(self, obj):
+        return "http://lumiverse.io/series/" + obj.slug
+
+    def items(self, obj):
+        return Post.objects.filter(published=True, series=obj).order_by("-pub_date")
+
+    def item_title(self, item):
+        return item.title
+
+    def item_pubdate(self, item):
+        return item.pub_date
+    
+
+    def item_description(self, item):
+        return item.get_absolute_url()
 
 
 

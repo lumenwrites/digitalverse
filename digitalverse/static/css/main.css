@@ -199,19 +199,26 @@ h4 {
 p {
   margin: 0;
   font-size: 18px;
+  color: #9ba09b;
 }
 
 /* line 53, ../sass/_elements.scss */
+li {
+  font-size: 18px;
+  color: #9ba09b;
+}
+
+/* line 58, ../sass/_elements.scss */
 a, a:hover {
   color: white;
 }
 
-/* line 57, ../sass/_elements.scss */
+/* line 62, ../sass/_elements.scss */
 .row {
   max-width: 55em;
 }
 
-/* line 62, ../sass/_elements.scss */
+/* line 67, ../sass/_elements.scss */
 input {
   background: #1a1c1c !important;
   border: none !important;
@@ -220,13 +227,13 @@ input {
   color: #cfcfcf !important;
 }
 
-/* line 72, ../sass/_elements.scss */
+/* line 77, ../sass/_elements.scss */
 input[type="button"],
 input[type="submit"] {
   background: #141414 !important;
 }
 
-/* line 78, ../sass/_elements.scss */
+/* line 83, ../sass/_elements.scss */
 textarea,
 textarea:active,
 textarea:focus {
@@ -238,7 +245,7 @@ textarea:focus {
   font-size: 18px;
 }
 
-/* line 89, ../sass/_elements.scss */
+/* line 94, ../sass/_elements.scss */
 select {
   background: #1a1c1c !important;
   border: none !important;
@@ -247,17 +254,17 @@ select {
   color: #cfcfcf !important;
 }
 
-/* line 98, ../sass/_elements.scss */
+/* line 103, ../sass/_elements.scss */
 .button {
   background: #141414;
 }
 
-/* line 103, ../sass/_elements.scss */
+/* line 108, ../sass/_elements.scss */
 .button:hover, .button:focus {
   background: #141414;
 }
 
-/* line 107, ../sass/_elements.scss */
+/* line 112, ../sass/_elements.scss */
 hr {
   border: solid #1a1c1c;
   border-width: 1px 0 0;
@@ -266,7 +273,7 @@ hr {
 }
 
 /* Callout */
-/* line 119, ../sass/_elements.scss */
+/* line 124, ../sass/_elements.scss */
 .callout {
   background: #1d1f1f;
   border: none;
@@ -274,7 +281,7 @@ hr {
 }
 
 /* Subscibe */
-/* line 130, ../sass/_elements.scss */
+/* line 135, ../sass/_elements.scss */
 .subscribe-popup {
   width: 100%;
   height: 54px;
@@ -286,18 +293,18 @@ hr {
   text-align: center;
   display: none;
 }
-/* line 142, ../sass/_elements.scss */
+/* line 147, ../sass/_elements.scss */
 .subscribe-popup .subscribe-cta {
   margin: 0 auto;
   width: 790px;
 }
-/* line 147, ../sass/_elements.scss */
+/* line 152, ../sass/_elements.scss */
 .subscribe-popup p {
   margin: 2px 20px 0 0;
   float: left;
   font-size: 18px;
 }
-/* line 153, ../sass/_elements.scss */
+/* line 158, ../sass/_elements.scss */
 .subscribe-popup input {
   margin: 0px;
   height: 32px;
@@ -306,7 +313,7 @@ hr {
   border-radius: 2px;
   background: rgba(0, 0, 0, 0.2) !important;
 }
-/* line 160, ../sass/_elements.scss */
+/* line 165, ../sass/_elements.scss */
 .subscribe-popup .button {
   margin: 0px;
   margin-left: 4px;
@@ -1595,15 +1602,10 @@ footer {
   font-weight: normal;
 }
 /* line 73, ../sass/_forum.scss */
-.thread-page article p {
-  color: #9ba09b;
-  font-size: 20px;
-}
-/* line 77, ../sass/_forum.scss */
 .thread-page article hr {
   border-bottom: 1px solid rgba(155, 160, 155, 0.1);
 }
-/* line 80, ../sass/_forum.scss */
+/* line 76, ../sass/_forum.scss */
 .thread-page article .post-footer {
   margin: 0 -30px;
   background: rgba(20, 20, 20, 0.62);
@@ -1611,25 +1613,25 @@ footer {
   margin-top: 20px;
   padding-left: 30px;
 }
-/* line 86, ../sass/_forum.scss */
+/* line 82, ../sass/_forum.scss */
 .thread-page article .post-footer .stats {
   margin: 0;
   margin-top: 7px;
 }
-/* line 90, ../sass/_forum.scss */
+/* line 86, ../sass/_forum.scss */
 .thread-page article .post-footer .stats span, .thread-page article .post-footer .stats i {
   /* color:$orange; */
   color: #9ba09b;
 }
-/* line 94, ../sass/_forum.scss */
+/* line 90, ../sass/_forum.scss */
 .thread-page article .post-footer .stats span {
   margin-right: 5px;
 }
-/* line 99, ../sass/_forum.scss */
+/* line 95, ../sass/_forum.scss */
 .thread-page article .post-footer .buttons {
   float: right;
 }
-/* line 105, ../sass/_forum.scss */
+/* line 101, ../sass/_forum.scss */
 .thread-page textarea {
   resize: none;
   height: 74px;
@@ -1637,11 +1639,11 @@ footer {
   box-shadow: none;
   background: #181818;
 }
-/* line 112, ../sass/_forum.scss */
+/* line 108, ../sass/_forum.scss */
 .thread-page .comment {
   color: #9ba09b;
 }
-/* line 114, ../sass/_forum.scss */
+/* line 110, ../sass/_forum.scss */
 .thread-page .comment .comment-footer {
   margin-right: -20px;
   margin-bottom: 4px;
@@ -1649,7 +1651,7 @@ footer {
   color: #646464;
   font-weight: bold;
 }
-/* line 120, ../sass/_forum.scss */
+/* line 116, ../sass/_forum.scss */
 .thread-page .comment .comment-footer i {
   color: #646464;
 }

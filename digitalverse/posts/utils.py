@@ -1,142 +1,92 @@
 import datetime
+import time
+import praw    
+import re, random
+from string import punctuation
+
 from django.utils.timezone import utc
 
-from functools import reduce
-from django.db import models
+from django.utils.timezone import utc
+from django.shortcuts import get_object_or_404
+
+from posts.models import Post
+# from posts.forms import PostForm
 
 
 
-def hot_score(post, gravity=1.1, timebase=120): # gravity=1.8
-    rating = (post.score + 1)**0.8
+def rank_hot(stories, top=180, consider=1000):
+    # top - number of stories to show,
+    # consider - number of latest stories to rank
+    
+    def score(post, gravity=1.2, timebase=120):
+        # number_of_comments = len(post.comments.all())
+        rating = (post.score + 1)**0.8 # + number_of_comments
+        now = datetime.datetime.utcnow().replace(tzinfo=utc)
+        age = int((now - post.pub_date).total_seconds())/60
+        # temporary hack to not let score be below zero
+        try:
+            if float(rating) > 1:
+                scr = rating/(age+timebase)**gravity
+            else:
+                scr = 0
+        except:
+            scr = 0
+        return scr
+
+    latest_stories = stories.order_by('-pub_date')#[:consider]
+    #comprehension, stories with rating, sorted
+    stories_with_rating = [(score(story), story) for story in latest_stories]
+    #ranked_stories = sorted(stories_with_rating, reverse = True) - old but worked
+    ranked_stories = sorted(latest_stories, key=score, reverse = True)
+    #strip away the rating and return only stories
+    # return [story for _, story in ranked_stories][:top] - old but worked
+    return ranked_stories
+
+def rank_top(stories, timespan = None):
+    # if timespan == "day":
+    #     day = datetime.datetime.utcnow().replace(tzinfo=utc).__getattribute__('day')
+    #     stories = stories.filter(pub_date__day = day)        
+    # elif timespan == "month":
+    #     month = datetime.datetime.utcnow().replace(tzinfo=utc).__getattribute__('month')
+    #     stories = stories.filter(pub_date__month = month)        
+    # elif timespan == "all-time":
+    #     year = datetime.datetime.utcnow().replace(tzinfo=utc).__getattribute__('year')
+    #     stories = stories.filter(pub_date__year = year)                
+    
+    top_stories = stories.order_by('-score')
+    return top_stories
+
+
+
+
+
+
+
+
+def age(timestamp):
     now = datetime.datetime.utcnow().replace(tzinfo=utc)
-    age = int((now - post.pub_date).total_seconds())/60
-    scr = rating/(age+timebase)**gravity
-    return scr
+    created_at = datetime.datetime.fromtimestamp(timestamp).replace(tzinfo=utc)
+    
+    age_in_minutes = int((now-created_at).total_seconds())/60
 
-def rank_hot(posts):
-    posts = posts.order_by('-pub_date')[:180] # 180 latest posts
-    ranked_posts = sorted(posts, key=hot_score, reverse = True)
-    return ranked_posts
+    # usage: age(prompt.created_utc)
+    return age_in_minutes
 
 
-def get_model_attr(instance, attr):
-    """Example usage: get_model_attr(instance, 'category__slug')"""
-    for field in attr.split('__'):
-        instance = getattr(instance, field)
-    return instance
-
-def next_or_prev_in_order(instance, prev=False, qs=None, loop=False):
-    """Get the next (or previous with prev=True) item for instance, from the
-       given queryset (which is assumed to contain instance) respecting
-       queryset ordering. If loop is True, return the first/last item when the
-       end/start is reached. """
-
-    if not qs:
-        qs = instance.__class__.objects
-    if prev:
-        qs = qs.reverse()
-        lookup = 'lt'
-    else:
-        lookup = 'gt'
-
-    q_list = []
-    prev_fields = []
-    if qs.model._meta.ordering:
-        ordering = list(qs.model._meta.ordering)
-    else:
-        ordering = []
-
-    for field in (ordering + ['pub_date']):
-        if field[0] == '-':
-            this_lookup = (lookup == 'gt' and 'lt' or 'gt')
-            field = field[1:]
-        else:
-            this_lookup = lookup
-        q_kwargs = dict([(f, get_model_attr(instance, f))
-                         for f in prev_fields])
-        key = "%s__%s" % (field, this_lookup)
-        q_kwargs[key] = get_model_attr(instance, field)
-        q_list.append(models.Q(**q_kwargs))
-        prev_fields.append(field)
-    try:
-        return qs.filter(reduce(models.Q.__or__, q_list))[0]
-    except IndexError:
-        length = qs.count()
-        if loop and length > 1:
-            # queryset is reversed above if prev
-            return qs[0]
-    return None
 
 
-import re
-from django.template.defaultfilters import slugify
 
+def count_words(post):
+    r = re.compile(r'[{}]'.format(punctuation))
+    wordcount = 0
+    text = r.sub(' ', post.body)
+    wordcount += len(text.split())
 
-def unique_slugify(instance, value, slug_field_name='slug', queryset=None,
-                   slug_separator='-'):
-    """
-    Calculates and stores a unique slug of ``value`` for an instance.
+    if post.children:
+        for child in post.children.all():
+            text = r.sub(' ',child.body)
+            wordcount += len(text.split())
+    if wordcount > 1000:
+        wordcount = str(int(wordcount/1000)) + "K"
 
-    ``slug_field_name`` should be a string matching the name of the field to
-    store the slug in (and the field to check against for uniqueness).
-
-    ``queryset`` usually doesn't need to be explicitly provided - it'll default
-    to using the ``.all()`` queryset from the model's default manager.
-    """
-    slug_field = instance._meta.get_field(slug_field_name)
-
-    slug = getattr(instance, slug_field.attname)
-    slug_len = slug_field.max_length
-
-    # Sort out the initial slug, limiting its length if necessary.
-    slug = slugify(value)
-    if slug_len:
-        slug = slug[:slug_len]
-    slug = _slug_strip(slug, slug_separator)
-    original_slug = slug
-
-    # Create the queryset if one wasn't explicitly provided and exclude the
-    # current instance from the queryset.
-    if queryset is None:
-        queryset = instance.__class__._default_manager.all()
-    if instance.pk:
-        queryset = queryset.exclude(pk=instance.pk)
-
-    # Find a unique slug. If one matches, at '-2' to the end and try again
-    # (then '-3', etc).
-    next = 2
-    while not slug or queryset.filter(**{slug_field_name: slug}):
-        slug = original_slug
-        end = '%s%s' % (slug_separator, next)
-        if slug_len and len(slug) + len(end) > slug_len:
-            slug = slug[:slug_len-len(end)]
-            slug = _slug_strip(slug, slug_separator)
-        slug = '%s%s' % (slug, end)
-        next += 1
-
-    setattr(instance, slug_field.attname, slug)
-
-
-def _slug_strip(value, separator='-'):
-    """
-    Cleans up a slug by removing slug separator characters that occur at the
-    beginning or end of a slug.
-
-    If an alternate separator is used, it will also replace any instances of
-    the default '-' separator with the new separator.
-    """
-    separator = separator or ''
-    if separator == '-' or not separator:
-        re_sep = '-'
-    else:
-        re_sep = '(?:-|%s)' % re.escape(separator)
-    # Remove multiple instances and if an alternate separator is provided,
-    # replace the default '-' separator.
-    if separator != re_sep:
-        value = re.sub('%s+' % re_sep, separator, value)
-    # Remove separator from the beginning and end of the slug.
-    if separator:
-        if separator != '-':
-            re_sep = re.escape(separator)
-        value = re.sub(r'^%s+|%s+$' % (re_sep, re_sep), '', value)
-    return value
+    return wordcount

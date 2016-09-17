@@ -1,73 +1,77 @@
 {% extends "base.html" %}
-{% load thumbnail %}
+{% load staticfiles %}
 
 {% block content %}
-{# {% include "elements/featured.html" %} #}
-{% include "elements/subnav.html" %}
 
+<div class="forum-page">
 
-<div id="browse-template" class="page">
-  
-{% for post in object_list %}
-{% if post.published  %}
-  <a href="{{post.get_absolute_url}}">  
-    <article>
-      {% thumbnail post.thumbnail "320x180" crop="center" as im %}
-      <div style="position:relative;">
-          <img src="{{im.url}}" />
-	  <div class="dark-overlay">
-	<div class="video-stats">
-	  <i class="fi-eye">316</i>
-	  <i class="fi-arrow-up">15</i>
-	  <i class="fi-comment">8</i>
-	  <i class="fi-clock">09:49</i>
-	</div>		
-	  </div>
-      </div>
-      {% endthumbnail %}
-
-
-      <div class="card-description">
-	<b style="float:left; font-size:18px;color:white;width:100%;">{{post.title}} </b><br/>
-	<!-- <p>[description]</p> -->
-	<!-- <p style="margin-bottom: -10px;"> -->
-	<!-- by <a style="color:#0b7cac;">Ray Alez</a> -->
-	<!-- in <a style="color:#0b7cac;">Orange Mind</a> series -->
-	<!-- </p> -->
-	<!-- <a class="small button" href="/user/rayalez">rayalez</a> -->
-
-      {% if user == post.author or user.is_staff  %}
-      <!-- <a class="edit-post margins-0" href="/post/{{post.slug}}/edit"> -->
-      <!-- 	<i class="fa fa-pencil"></i></a> -->
-      {% endif %}
-      </div>
-
-
-
-	<div class="hubs">
-	<span class="callout small">Tutorials</span>
-	<span class="callout small">Vlog</span>
-	<span class="callout small">Art</span>
-	<a class="small button series right"
-	   href="/series/orange-mind"
-	   style="margin-bottom:0;    margin-top: -5px;"
-	   ><i class="fi-thumbnails"></i> Orange Mind</a>
-	</div>
-	<!-- 40 minutes ago. -->
-
-    </article>
-  </a>
-{% endif %}
-{% endfor %}
+<div class="forum-header">
+  <h1>Digital Verse Forum</h1>
+  <p>Discussion about Computer Graphics and Animation</p>
+  <a class="small button orange" href="/post/add">New Post</a>
 </div>
-{% include "posts/pagination.html" %}
 
-{% include "elements/subscribe-popup.html" %}  
 
-<style>
-  .row {
-  max-width: 95%!important;
-  }
-</style>
+<div class="row">
+<div class="large-12 small-12 columns">
+
+<!-- Forum Navigation -->
+<div class="forum-nav">
+  <a class="small button">
+    Category: All
+  </a>
+
+  <a class="small button">
+    Hot
+  </a>
+
+  <i class="fi-magnifying-glass right"></i>
+  <input class="right" type="text">
+</div>
+
+<!-- Articles -->
+{% for post in posts %}
+    <article>
+      <a href="{{post.get_absolute_url}}">
+	<h2>
+	    {{post.title}}
+	</h2>
+      </a>
+      <div class="stats">
+    	<span>
+	  <i class="fi-arrow-up arrow"></i>
+	  12 {{post.score}}
+	</span>
+	<span>
+	  <i class="fi-comment"></i>
+	  12 {{post.comments.count}}
+	</span>
+	<span>
+	  <i class="fi-eye"></i>
+	  123 	  {{post.views}}
+	</span>
+	<span>
+	  <i class="fi-clock"></i>
+	  1h 53m ago
+	</span>
+	<span>
+	  [Blogs]
+	</span>
+	<!-- &nbsp; -->
+	<span>
+	  by alexanderwales
+	</span>
+      </div>
+    </article>
+{% endfor %}    
+
+<!-- Pagination -->
+{# {% include "elements/pagination.html" %} #}
+
+</div> <!-- End .columns -->
+</div> <!-- End .row -->
+
+</div> <!-- End forum-page -->
+
 
 {% endblock content %}

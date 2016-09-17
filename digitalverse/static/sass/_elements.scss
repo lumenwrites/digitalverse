@@ -47,8 +47,13 @@ h4 {
 p {
     margin:0;
     font-size: 18px;
+    color: $white-subdued;    
 }
 
+li {
+    font-size: 18px;
+    color: $white-subdued;
+}
 
 a, a:hover {
     color: white;
