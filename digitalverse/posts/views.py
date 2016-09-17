@@ -62,7 +62,6 @@ class FilterMixin(object):
         # for hub in filterhubs:
         #     qs = qs.filter(hubs=hub)            
 
-
         # Filter by query
         # query = self.request.GET.get('query')
         # if query:
@@ -136,6 +135,19 @@ class BrowseView(FilterMixin, ListView):
 
         return qs
 
+
+class BlogView(ListView):
+    model = Post
+    context_object_name = 'posts'    
+    template_name = "posts/blog.html"
+
+    def get_queryset(self):
+        qs = super(BlogView, self).get_queryset()
+        qs = [p for p in qs if (p.published == True and
+                                p.author.username == "rayalez")]
+
+        return qs
+    
 
 
 def PostView(request):

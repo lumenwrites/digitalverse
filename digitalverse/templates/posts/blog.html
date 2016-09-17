@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load markdownify %}
+
+{% block content %}
+
+<div class="forum-page">
+
+<div class="forum-header">
+  <h1>Digital Verse Blog</h1>
+  <!-- <p>Computer Graphics and Animation</p> -->
+
+  {% if user.is_authenticated and user.is_staff %}
+  <a class="small button orange" href="/post/add">New Post</a>
+  {% endif %}  
+</div>
+
+
+<div class="row">
+<div class="large-12 small-12 columns">
+
+<!-- Articles -->
+{% for post in posts %}
+    <article>
+      <a href="{{post.get_absolute_url}}">
+	<h2>{{post.title}}</h2>
+      </a>
+      <!-- <hr/> -->
+      
+      <!-- Body -->
+      <!-- 
+      <div class="post-body">
+	{{post.body | markdownify | safe }}
+      </div>
+      -->
+
+    </article>
+{% endfor %}    
+
+<!-- Pagination -->
+{# {% include "elements/pagination.html" %} #}
+
+</div> <!-- End .columns -->
+</div> <!-- End .row -->
+
+</div> <!-- End forum-page -->
+
+
+{% endblock content %}
