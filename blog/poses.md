@@ -29,4 +29,5 @@ ninja, on the edge, cycling.
 + Body dynamics. Sports. Golf, cycling, soccer, baseball. tennis.?  
 + Copy from references.
 
-Keith Lango notes / principles.
+
+# Keith Lango notes / principles.
