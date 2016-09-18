@@ -97,6 +97,7 @@
       {% endif %}            
 
 
+      <!--  Subscribe 
       {% if not user == userprofile %}
           {% if user.is_authenticated %}
               {% if user not in userprofile.subscribers.all %}	
@@ -111,9 +112,6 @@
 	  {% else %}	   
               <a class="button" data-open="login-popup">
 		Subscribe</a>
-              <!-- <a class="button" -->
-	      <!-- 	 href="/login/?next={{request.path}}"> -->
-	      <!-- 	Subscribe</a> -->	      
 	  {% endif %}	 
       {% else %}  
               <a class="button disabled">
@@ -129,7 +127,7 @@
 		 href="{{userprofile.youtube_channel}}">
 	      <i class="fi-social-youtube large"></i></a>
 	      {% endif %}
-
+	      -->
 
     </div>
   </div>

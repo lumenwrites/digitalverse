@@ -8,7 +8,11 @@
 <div class="forum-header">
   <h1>Digital Verse Forum</h1>
   <!-- <p>Discussion about Computer Graphics and Animation</p> -->
+  {% if user.is_authenticated %}  
   <a class="small button orange" href="/post/add">New Post</a>
+  {% else %}
+  <a class="small button orange"  data-open="login-popup">New Post</a>  
+  {% endif %}  
 </div>
 
 

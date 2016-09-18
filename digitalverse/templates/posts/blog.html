@@ -5,6 +5,9 @@
 {% block content %}
 
 
+{% if userprofile %}
+{% include "elements/subheader.html" %}
+{% else %}
 <div class="forum-header" style="margin-bottom:0;">
   <h1>Digital Verse Blog</h1>
   <!-- <p>Computer Graphics and Animation</p> -->
@@ -15,6 +18,7 @@
   <br/>
   {% endif %}  
 </div>
+{% endif %}
 
 <div class="thread-page">
 <div class="row">

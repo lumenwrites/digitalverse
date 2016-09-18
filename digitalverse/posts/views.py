@@ -254,3 +254,56 @@ def post_edit(request, slug):
         'form':form,
     })
 
+
+
+
+
+
+
+class UserprofileView(FilterMixin, ListView):
+    model = Post
+    context_object_name = 'posts'    
+    template_name = "posts/blog.html"
+
+    def get_queryset(self):
+        qs = super(UserprofileView, self).get_queryset()
+
+        # Filter by user
+        userprofile = User.objects.get(username=self.kwargs['username'])        
+        qs = [p for p in qs if (p.author==userprofile)]
+
+        # Show only published to everyone else
+        # if self.request.user != userprofile:
+        #     qs = [p for p in qs if (p.published==True)]            
+        
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(UserprofileView, self).get_context_data(**kwargs)
+        userprofile = User.objects.get(username=self.kwargs['username'])        
+        context['userprofile'] = userprofile
+
+        # Sorting
+        if self.request.GET.get('sorting'):
+            sorting = self.request.GET.get('sorting')
+        else:
+            sorting = "new"
+        context['sorting'] = sorting
+        
+
+        view_count = 0
+        for post in userprofile.posts.all():
+            view_count += post.views
+        if view_count > 1000:
+            view_count = str(floor(view_count/1000)) + "K"
+        context['view_count'] = view_count
+                
+        score = 0        
+        for post in userprofile.posts.all():
+            score += post.score
+        if score > 1000:
+            score = str(int(score/1000)) + "K"
+        context['score'] = score
+        
+        return context    
+    
