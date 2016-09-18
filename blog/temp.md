@@ -1,9 +1,19 @@
-<style>.post-body img{width:100%;}</style>
+<style>
+.post-body img{width:100%;}
+.images{    width: 100%!important;}
+</style>
+
 
 - Body dynamics.
+<div style="width:100%;">
+<a class="expand">Examples</a>
+<div class="images hidden">
 ![](/media/images/poses/01_body_dynamics.jpg)  
+</div>
+</div>
 
 - Physical strength   
+<div style="width:100%;">
 <a class="expand">Examples</a>
 <div class="images hidden">
 ![](/media/images/poses/02_strength.jpg)  
@@ -19,7 +29,7 @@
 </div>
 
 - Balance  
-<div>
+<div style="width:100%;">
 <a class="expand">Examples</a>
 <div class="images hidden">
 ![](/media/images/poses/03_balance.jpg)  
@@ -33,7 +43,7 @@
 
 
 - Happiness/Excitement
-<div>
+<div style="width:100%;">
 <a class="expand">Examples</a>
 <div class="images hidden">
 ![](/media/images/poses/05_excitement.jpg)  
@@ -48,7 +58,7 @@
 </div>
 
 - Devastation  
-<div>
+<div style="width:100%;">
 <a class="expand">Examples</a>
 <div class="images hidden">
 ![](/media/images/poses/06_devastation.jpg)  
@@ -60,7 +70,7 @@
 </div>
 
 - Exhaustion  
-<div>
+<div style="width:100%;">
 <a class="expand">Examples</a>
 <div class="images hidden">
 ![](/media/images/poses/07_exhaustion.jpg)  
@@ -73,7 +83,7 @@
 </div>
 
 - Boredom  
-<div>
+<div style="width:100%;">
 <a class="expand">Examples</a>
 <div class="images hidden">
 ![](/media/images/poses/08_boredom1.jpg)  
@@ -81,7 +91,7 @@
 </div>
 
 - Concern  
-<div>
+<div style="width:100%;">
 <a class="expand">Examples</a>
 <div class="images hidden">
 ![](/media/images/poses/09_concern.jpg)  
@@ -128,42 +138,5 @@ $('.expand').each(function() {
 	images.toggle();
     });
 });
+});
 </script>
-
-
-
-
-
-
-- Body dynamics. 
-- Physical strength
-- Balance
-- Happiness
-- Excitement
-- Devastation
-- Exhaustion
-- Boredom
-- Concern
-
-
-
-
-# Notes:
-//Copy from references.
-
-ideas:
-
-- Happiness/Excitement
-- Devastation
-- Concer
-for a kid?
-- Exhaustion
-- Physical strength
-- Balance
-ninja, on the edge, cycling.
-- Bored
-+ Body dynamics. Sports. Golf, cycling, soccer, baseball. tennis.?  
-+ Copy from references.
-
-
-# Keith Lango notes / principles.
