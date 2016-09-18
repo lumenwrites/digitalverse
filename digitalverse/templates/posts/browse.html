@@ -7,7 +7,7 @@
 
 <div class="forum-header">
   <h1>Digital Verse Forum</h1>
-  <p>Discussion about Computer Graphics and Animation</p>
+  <!-- <p>Discussion about Computer Graphics and Animation</p> -->
   <a class="small button orange" href="/post/add">New Post</a>
 </div>
 
@@ -40,26 +40,31 @@
       <div class="stats">
     	<span>
 	  <i class="fi-arrow-up arrow"></i>
-	  12 {{post.score}}
+	  {{post.score}}
 	</span>
 	<span>
 	  <i class="fi-comment"></i>
-	  12 {{post.comments.count}}
+	  0 {{post.comments.count}}
 	</span>
 	<span>
 	  <i class="fi-eye"></i>
-	  123 	  {{post.views}}
+	  {{post.views}}
 	</span>
+	<!-- 
 	<span>
 	  <i class="fi-clock"></i>
 	  1h 53m ago
 	</span>
+	-->
+	<!-- 
 	<span>
 	  [Blogs]
 	</span>
+	 -->
 	<!-- &nbsp; -->
 	<span>
-	  by alexanderwales
+	  by
+	  <span class="bold">{{post.author.username}}</span>
 	</span>
       </div>
     </article>

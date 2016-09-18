@@ -1598,25 +1598,29 @@ footer {
   margin-bottom: 40px;
 }
 /* line 68, ../sass/_forum.scss */
+.thread-page article a {
+  color: #f6653c;
+}
+/* line 71, ../sass/_forum.scss */
 .thread-page article h1 {
   color: #9ba09b;
   font-size: 36px;
   font-weight: normal;
 }
-/* line 73, ../sass/_forum.scss */
+/* line 76, ../sass/_forum.scss */
 .thread-page article h2 {
   font-size: 26px;
   margin-top: 22px;
 }
-/* line 77, ../sass/_forum.scss */
+/* line 80, ../sass/_forum.scss */
 .thread-page article h3 {
   font-size: 24px;
 }
-/* line 80, ../sass/_forum.scss */
+/* line 83, ../sass/_forum.scss */
 .thread-page article hr {
   border-bottom: 1px solid rgba(155, 160, 155, 0.1);
 }
-/* line 83, ../sass/_forum.scss */
+/* line 86, ../sass/_forum.scss */
 .thread-page article .post-footer {
   margin: 0 -30px;
   background: rgba(20, 20, 20, 0.62);
@@ -1624,25 +1628,25 @@ footer {
   margin-top: 20px;
   padding-left: 30px;
 }
-/* line 89, ../sass/_forum.scss */
+/* line 92, ../sass/_forum.scss */
 .thread-page article .post-footer .stats {
   margin: 0;
   margin-top: 7px;
 }
-/* line 93, ../sass/_forum.scss */
+/* line 96, ../sass/_forum.scss */
 .thread-page article .post-footer .stats span, .thread-page article .post-footer .stats i {
   /* color:$orange; */
   color: #9ba09b;
 }
-/* line 97, ../sass/_forum.scss */
+/* line 100, ../sass/_forum.scss */
 .thread-page article .post-footer .stats span {
   margin-right: 5px;
 }
-/* line 102, ../sass/_forum.scss */
+/* line 105, ../sass/_forum.scss */
 .thread-page article .post-footer .buttons {
   float: right;
 }
-/* line 108, ../sass/_forum.scss */
+/* line 111, ../sass/_forum.scss */
 .thread-page textarea {
   resize: none;
   height: 74px;
@@ -1650,11 +1654,11 @@ footer {
   box-shadow: none;
   background: #181818;
 }
-/* line 115, ../sass/_forum.scss */
+/* line 118, ../sass/_forum.scss */
 .thread-page .comment {
   color: #9ba09b;
 }
-/* line 117, ../sass/_forum.scss */
+/* line 120, ../sass/_forum.scss */
 .thread-page .comment .comment-footer {
   margin-right: -20px;
   margin-bottom: 4px;
@@ -1662,7 +1666,7 @@ footer {
   color: #646464;
   font-weight: bold;
 }
-/* line 123, ../sass/_forum.scss */
+/* line 126, ../sass/_forum.scss */
 .thread-page .comment .comment-footer i {
   color: #646464;
 }

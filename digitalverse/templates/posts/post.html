@@ -28,7 +28,8 @@
       </div>
 
 
-      <div class="post-footer">
+      <br/>
+      <div class="post-footer hidden">
 	<div class="stats">
     	  <span>
 	    <i class="fi-arrow-up arrow"></i>
@@ -101,7 +102,9 @@
 </script>
 
 <script>
-// $(document).ready(function(){
+$(document).ready(function(){
+
+var links = $('.post-body').find('a').attr('href');
 
 // function convertVideo(html) {
 //     var pattern = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g;
@@ -113,9 +116,34 @@
 //     return html;
 // }
 
-// $('.post-body').html(function(html) {
-//     return convertVideo($('.post-body').html());    
-// });
+
+// function replaceLink(link){
+//         var pattern = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g;
+
+//         if(pattern.test(link)){
+//               var replacement = '<iframe width="420" height="345" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>';
+//               var embed = link.replace(pattern, replacement);
+//         } 
+
+//         return embed;
+// }    
+
+// $('.post-body').find("a").each(function() {
+//     $(this).click(function(event) {
+// 	event.preventDefault();
+// 	console.log($(this).attr('href'));
+// 	link = 	$(this).attr('href');
+// 	$(this).replaceWith(replaceLink(link));
+//     });
+    
+// })
+    
+
+    // $('.post-body').html(
+	// $(this).html(function(html) {
+	//     return convertVideo($(this).html());    
+	// });
+    
 })
 
 </script>  
