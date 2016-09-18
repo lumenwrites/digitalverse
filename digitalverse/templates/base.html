@@ -113,13 +113,11 @@
 	      </a>
 	  {% endif %}
 	      
-	  <a class="categories-dropdown-button vertical" type="button"
+	  <a class="categories-dropdown-button vertical subscribe-header" type="button"
 	     data-toggle="type-dropdown"
-	     style="margin-right:10px;/*width:200px;*/
-		    /*width: auto;*/
-		    padding: -30px!important;
-		    margin: 0;">
-	    {{user.username}}
+	     style="text-transform: none;
+	     padding: 5px 0;">
+	    <span style="margin:10px;">{{user.username}}</span>
 	    <!-- 
  	    {% thumbnail user.avatar "40x40" crop="center" as im %}
    	    <img src="{{im.url}}" class="avatar"

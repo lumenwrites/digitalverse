@@ -17,7 +17,8 @@ from . import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^about/', views.about),
-    url(r'^lumen/', views.lumen),        
+    url(r'^lumen/', views.lumen),
+    url(r'^rigs/', views.rigs),            
 
     url(r'', include(profiles_urls)),        
     url(r'', include(posts_urls)),

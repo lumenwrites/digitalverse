@@ -22,7 +22,7 @@
 }
 /* List */
 .comments {
-    margin-left: -32px;
+    margin-left: -30px;
 }
 
 .comment {
@@ -83,7 +83,11 @@
 .comment-downvote:visited,
 .comment-upvote:active,
 .comment-downvote:active {
-    color: $black;        
+    color: #3d454b;		
+    i, .score {
+	color: #3d454b;		
+    }
+    
 }
 
 /* Once upvoted/downvoted state */
@@ -91,14 +95,17 @@
 .comment-upvoted:focus,
 .comment-upvoted:active,
 .comment-upvoted:visited {
-    color: $orange;    
+    color: $orange;
+    i, .score {
+	color: $orange;
+    }
 }
 
 .comment-downvoted,
 .comment-downvoted:focus,
 .comment-downvoted:active,
 .comment-downvoted:visited {
-    color: $blue;    
+    color: $blue;
 }
 
 

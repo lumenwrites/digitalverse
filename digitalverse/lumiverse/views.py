@@ -13,3 +13,7 @@ def about(request):
 def lumen(request):
     return render(request, 'lumen.html', {
     })
+
+def rigs(request):
+    return render(request, 'rigs.html', {
+    })
