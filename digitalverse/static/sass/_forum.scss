@@ -117,16 +117,22 @@
     }
     .comment {
 	color: $white-subdued;
+	margin-bottom: 1px;	
 	.comment-footer {
 	    margin-right: -20px;
 	    margin-bottom: 4px;
 	    float:right;
 	    color: rgb(100, 100, 100);
 	    font-weight: bold;
-	    i {
-		color: rgb(100, 100, 100);
-	    }
 	}
+	a {
+	    color: #3d454b;
+	}
+	
     }
+
+.CodeMirror {
+    border-radius: 0
+}
 }
 

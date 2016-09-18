@@ -65,25 +65,7 @@
     </article>
 
     <!-- Comments -->
-    <div class="comments hidden">
-      <textarea placeholder="Write reply..."></textarea>
-      <a class="button right">
-	Submit Reply
-      </a>
-      <div class="clearfix"></div>    
-
-      <article class="comment">
-	<p>
-	  Hey, great post! This is my cool reply!
-	</p>
-	<div class="comment-footer">
-	  alexanderwales
-	  12
-	  <i class="fi-arrow-up arrow"></i>
-	</div>
-	<div class="clearfix"></div>    
-      </article>
-    </div> <!-- End .comments -->
+    {% include "comments/post-comments.html" %}
 
   </div> <!-- End 12-columns -->
 </div> <!-- End row -->
@@ -153,7 +135,7 @@ $(document).ready(function(){
 
 //     if(pattern.test(html)){
 //         var replacement = '<iframe width="420" height="345" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>';
-//         var html = html.replace(pattern, replacement);
+pp//         var html = html.replace(pattern, replacement);
 //     }
 //     return html;
 // }

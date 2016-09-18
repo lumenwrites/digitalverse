@@ -146,14 +146,18 @@
 	       top: 76px!important;
 	       right: 0!important;">
 	    <ul>
-	      <li><a href="/user/{{user.username}}">
+	      <li><a href="/profile/{{user.username}}">
 		  <i class="fa fa-home"></i> Profile </a></li>
+	      <!-- 
 	      <li><a href="/upload/">
 		  <i class="fa fa-upload"></i> Upload </a></li>
+	      -->
+	      <!-- 
 	      {% if user.approved or user.is_staff %}
 	      <li><a href="/create-series/">
 		  <i class="fa fa-th"></i> Create Series </a></li>
 	      {% endif %}
+	      -->	      
 	      <li><a href="/preferences/">
 		  <i class="fa fa-cog"></i> Preferences</a></li>
 	      <li><a href="/logout/?next={{request.path}}">

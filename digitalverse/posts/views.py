@@ -30,15 +30,17 @@ from django.conf import settings
 from .utils import rank_hot, rank_top
 from .utils import count_words
 from .shortcuts import get_or_none
+from comments.utils import get_comment_list
+
 # Forms
 from .forms import PostForm
-# from comments.forms import CommentForm
+from comments.forms import CommentForm
 # from hubs.forms import HubForm
 # Models
 from .models import Post
 from profiles.models import User
 # from hubs.models import Hub
-# from comments.models import Comment
+from comments.models import Comment
 # from notifications.models import Message
 
 
@@ -163,40 +165,54 @@ def post(request, slug):
 
     post = get_object_or_404(Post, slug=slug)
 
-    # # Comments
-    # comments = get_comments(post=post)
+    # Comments
+    top_lvl_comments =Comment.objects.filter(post=post, parent = None)
+
+    rankby = "hot"
+    # Rank comments 
+    if rankby == "hot":
+        ranked_comments = rank_hot(top_lvl_comments)
+    elif rankby == "top":
+        ranked_comments = rank_top(top_lvl_comments, timespan = "all-time")
+    elif rankby == "new":
+        ranked_comments = top_lvl_comments.order_by('-pub_date')
+    else:
+        ranked_comments = []
+
+    # Nested comments
+    comments = list(get_comment_list(ranked_comments, rankby=rankby))
 
     # # Submit comments
-    # if request.method == 'POST':
-    #     if chapter:
-    #         submit_comment(request, chapter)
-    #     else:
-    #         submit_comment(request, post)            
-    # form = CommentForm()
+    if request.method == 'POST':
+        if chapter:
+            submit_comment(request, chapter)
+        else:
+            submit_comment(request, post)            
+    form = CommentForm()
 
-    # # Footer info
-    # if request.user.is_authenticated():
-    #     upvoted = request.user.upvoted.all()
-    #     # subscribed_to = request.user.subscribed_to.all()
-    #     comments_upvoted = request.user.comments_upvoted.all()
-    # else:
-    #     upvoted = []
-    #     # subscribed_to = []
-    #     comments_upvoted = []
+    # Footer info
+    if request.user.is_authenticated():
+        upvoted = request.user.upvoted.all()
+        # subscribed_to = request.user.subscribed_to.all()
+        comments_upvoted = request.user.comments_upvoted.all()
+    else:
+        upvoted = []
+        # subscribed_to = []
+        comments_upvoted = []
 
     # hubs = post.hubs.all()        
 
-    # # Increment views counter. Do clever memcache laters.
-    # if not request.user.is_staff and request.user != post.author:
-    #     post.views +=1
-    #     post.save()
+    # Increment views counter. Do clever memcache laters.
+    if not request.user.is_staff and request.user != post.author:
+        post.views +=1
+        post.save()
         
     return render(request, 'posts/post.html',{
         'post': post,
-        # 'upvoted': upvoted,
-        # 'comments': comments,
-        # 'comments_upvoted': comments_upvoted,
-        # 'form': form,
+        'upvoted': upvoted,
+        'comments': comments,
+        'comments_upvoted': comments_upvoted,
+        'form': form,
         # 'hubs':hubs,
         # 'subscribed_to':subscribed_to,
     })
@@ -255,6 +271,15 @@ def post_edit(request, slug):
     })
 
 
+def post_delete(request, post):
+    post = Post.objects.get(slug=post)
+
+    # throw him out if he's not an author
+    if request.user != post.author:
+        return HttpResponseRedirect('/')        
+
+    post.delete()
+    return HttpResponseRedirect('/') # to post list
 
 
 

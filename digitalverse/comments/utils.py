@@ -1,4 +1,4 @@
-# from posts.utils import rank_hot, rank_top
+from posts.utils import rank_hot, rank_top
 
 # Comments
 def get_comment_list(comments=None, rankby="hot"):
@@ -12,14 +12,14 @@ def get_comment_list(comments=None, rankby="hot"):
         # get comment's children
         children = comment.children.all()
         ranked_children = children.order_by('-pub_date')
-        # if rankby == "hot":
-        #     ranked_children = rank_hot(children, top=32)
-        # elif rankby == "top":
-        #     ranked_children = rank_top(children, timespan = "all-time")
-        # elif rankby == "new":
-        #     ranked_children = children.order_by('-pub_date')
-        # else:
-        #     ranked_children = []
+        if rankby == "hot":
+            ranked_children = rank_hot(children, top=32)
+        elif rankby == "top":
+            ranked_children = rank_top(children, timespan = "all-time")
+        elif rankby == "new":
+            ranked_children = children.order_by('-pub_date')
+        else:
+            ranked_children = []
         
         # If there's any children
         if len(ranked_children):

@@ -4,7 +4,8 @@ from . import views
 
 urlpatterns = [
     # Comments
-    url(r'^comment-submit/(?P<video_slug>[^\.]+)', views.comment_submit),    
+    url(r'^comment-submit/(?P<video_slug>[^\.]+)', views.comment_submit),
+    url(r'^post-comment/(?P<post_slug>[^\.]+)', views.comment_submit),        
     url(r'^reply-submit/(?P<comment_id>[^\.]+)', views.reply_submit),
 
     url(r'^comment/(?P<comment_id>[^\.]+)/edit', views.comment_edit),

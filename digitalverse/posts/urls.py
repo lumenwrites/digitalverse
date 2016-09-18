@@ -22,8 +22,9 @@ urlpatterns = [
     # CRUD Posts
     url(r'^post/add$', views.post_create),
     url(r'^post/(?P<slug>[^\.]+)/edit$', views.post_edit),
+    url(r'^post/(?P<post>[^\.]+)/delete$', views.post_delete),
     url(r'^post/(?P<slug>[^\.]+)/?$', views.post, name='view_post'),
-    # url(r'^forum/(?P<post>[^\.]+)/delete$', views.post_delete),
+
 
 
     # url(r'^upvote/$', views.upvote),

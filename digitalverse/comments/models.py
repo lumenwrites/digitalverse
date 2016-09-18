@@ -6,6 +6,8 @@ from django.db.models import permalink
 # from posts.models import *
 
 class Comment(models.Model):
+    post = models.ForeignKey('posts.Post', related_name="comments",
+                              default=None, null=True, blank=True)    
     video = models.ForeignKey('videos.Video', related_name="comments",
                               default=None, null=True, blank=True)
     parent = models.ForeignKey('Comment', related_name="children",

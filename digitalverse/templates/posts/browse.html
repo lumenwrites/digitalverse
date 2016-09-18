@@ -48,7 +48,7 @@
 	</span>
 	<span>
 	  <i class="fi-comment"></i>
-	  0 {{post.comments.count}}
+	  {{post.comments.count}}
 	</span>
 	<span>
 	  <i class="fi-eye"></i>
@@ -68,7 +68,7 @@
 	<!-- &nbsp; -->
 	<span>
 	  by
-	  <span class="bold">{{post.author.username}}</span>
+	  <a class="bold orange" href="/profile/{{post.author.username}}">{{post.author.username}}</a>
 	</span>
       </div>
     </article>

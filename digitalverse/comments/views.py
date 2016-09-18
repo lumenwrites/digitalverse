@@ -12,17 +12,23 @@ from videos.forms import VideoForm
 from comments.forms import CommentForm
 # Models
 from videos.models import Video
+from posts.models import Post
 from .models import Comment
 
 
-def comment_submit(request, video_slug):
+def comment_submit(request, video_slug="", post_slug=""):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.author = request.user
-            video = Video.objects.get(slug=video_slug)
-            comment.video = video
+            if video_slug:
+                video = Video.objects.get(slug=video_slug)
+                comment.video = video
+            elif post_slug:
+                post = Post.objects.get(slug=post_slug)
+                comment.post = post
+                
             comment.save()
 
             comment_url = request.GET.get('next', '/')# +"#id-"+str(comment.id)
@@ -84,10 +90,17 @@ def comment_delete(request, comment_id):
     # throw him out if he's not an author
     if request.user != comment.author:
         return HttpResponseRedirect('/')        
-    try:
-        path = '/video/'+comment.parent.video.slug # + '/' + comment.video.slug + '#comments'
-    except:
-        path = '/video/'+comment.video.slug + '#comments'
+
+    if comment.video:
+        try:
+            path = '/video/'+comment.parent.video.slug # + '/' + comment.video.slug + '#comments'
+        except:
+            path = '/video/'+comment.video.slug + '#comments'
+    elif comment.post:
+        try:
+            path = '/post/'+comment.parent.post.slug
+        except:
+            path = '/post/'+comment.post.slug
 
     comment.delete()
 

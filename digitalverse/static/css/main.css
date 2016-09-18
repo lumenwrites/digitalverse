@@ -105,6 +105,11 @@ body {
 }
 
 /* line 66, ../sass/_helpers.scss */
+.white {
+  color: white;
+}
+
+/* line 70, ../sass/_helpers.scss */
 .orange {
   color: #f6653c;
 }
@@ -113,7 +118,7 @@ body {
 /* 		 color: #656565; */
 /* 		 cursor: auto; */
 /* } */
-/* line 76, ../sass/_helpers.scss */
+/* line 80, ../sass/_helpers.scss */
 .button.disabled, .button[disabled], .button.disabled i {
   opacity: 1;
   color: #656565;
@@ -121,7 +126,7 @@ body {
   pointer-events: none;
 }
 
-/* line 82, ../sass/_helpers.scss */
+/* line 86, ../sass/_helpers.scss */
 .center-vertically {
   position: absolute;
   left: 50%;
@@ -137,12 +142,12 @@ body {
   -ms-transform: translate(-50%, -50%);
 }
 
-/* line 98, ../sass/_helpers.scss */
+/* line 102, ../sass/_helpers.scss */
 .center-text {
   text-aign: center;
 }
 
-/* line 102, ../sass/_helpers.scss */
+/* line 106, ../sass/_helpers.scss */
 .thin {
   font-weight: 100;
 }
@@ -210,17 +215,22 @@ li {
   color: #9ba09b;
 }
 
-/* line 60, ../sass/_elements.scss */
+/* line 61, ../sass/_elements.scss */
+i {
+  font-style: normal;
+}
+
+/* line 65, ../sass/_elements.scss */
 a, a:hover {
   color: white;
 }
 
-/* line 64, ../sass/_elements.scss */
+/* line 69, ../sass/_elements.scss */
 .row {
   max-width: 55em;
 }
 
-/* line 69, ../sass/_elements.scss */
+/* line 74, ../sass/_elements.scss */
 input {
   background: #1a1c1c !important;
   border: none !important;
@@ -229,13 +239,13 @@ input {
   color: #cfcfcf !important;
 }
 
-/* line 79, ../sass/_elements.scss */
+/* line 84, ../sass/_elements.scss */
 input[type="button"],
 input[type="submit"] {
   background: #141414 !important;
 }
 
-/* line 85, ../sass/_elements.scss */
+/* line 90, ../sass/_elements.scss */
 textarea,
 textarea:active,
 textarea:focus {
@@ -247,7 +257,7 @@ textarea:focus {
   font-size: 18px;
 }
 
-/* line 96, ../sass/_elements.scss */
+/* line 101, ../sass/_elements.scss */
 select {
   background: #1a1c1c !important;
   border: none !important;
@@ -256,17 +266,17 @@ select {
   color: #cfcfcf !important;
 }
 
-/* line 105, ../sass/_elements.scss */
+/* line 110, ../sass/_elements.scss */
 .button {
   background: #141414;
 }
 
-/* line 110, ../sass/_elements.scss */
+/* line 115, ../sass/_elements.scss */
 .button:hover, .button:focus {
   background: #141414;
 }
 
-/* line 114, ../sass/_elements.scss */
+/* line 119, ../sass/_elements.scss */
 hr {
   border: solid #1a1c1c;
   border-width: 1px 0 0;
@@ -275,7 +285,7 @@ hr {
 }
 
 /* Callout */
-/* line 126, ../sass/_elements.scss */
+/* line 131, ../sass/_elements.scss */
 .callout {
   background: #1d1f1f;
   border: none;
@@ -283,7 +293,7 @@ hr {
 }
 
 /* Subscibe */
-/* line 137, ../sass/_elements.scss */
+/* line 142, ../sass/_elements.scss */
 .subscribe-popup {
   width: 100%;
   height: 54px;
@@ -295,18 +305,18 @@ hr {
   text-align: center;
   display: none;
 }
-/* line 149, ../sass/_elements.scss */
+/* line 154, ../sass/_elements.scss */
 .subscribe-popup .subscribe-cta {
   margin: 0 auto;
   width: 790px;
 }
-/* line 154, ../sass/_elements.scss */
+/* line 159, ../sass/_elements.scss */
 .subscribe-popup p {
   margin: 2px 20px 0 0;
   float: left;
   font-size: 18px;
 }
-/* line 160, ../sass/_elements.scss */
+/* line 165, ../sass/_elements.scss */
 .subscribe-popup input {
   margin: 0px;
   height: 32px;
@@ -315,7 +325,7 @@ hr {
   border-radius: 2px;
   background: rgba(0, 0, 0, 0.2) !important;
 }
-/* line 167, ../sass/_elements.scss */
+/* line 172, ../sass/_elements.scss */
 .subscribe-popup .button {
   margin: 0px;
   margin-left: 4px;
@@ -1035,7 +1045,7 @@ header .row, .subheader .row {
 /* List */
 /* line 24, ../sass/_comments.scss */
 .comments {
-  margin-left: -32px;
+  margin-left: -30px;
 }
 
 /* line 31, ../sass/_comments.scss */
@@ -1102,17 +1112,45 @@ header .row, .subheader .row {
 .comment-downvote:active {
   color: #3d454b;
 }
+/* line 87, ../sass/_comments.scss */
+.comment-upvote i, .comment-upvote .score,
+.comment-downvote i,
+.comment-downvote .score,
+.comment-upvote:focus i,
+.comment-upvote:focus .score,
+.comment-downvote:focus i,
+.comment-downvote:focus .score,
+.comment-upvote:visited i,
+.comment-upvote:visited .score,
+.comment-downvote:visited i,
+.comment-downvote:visited .score,
+.comment-upvote:active i,
+.comment-upvote:active .score,
+.comment-downvote:active i,
+.comment-downvote:active .score {
+  color: #3d454b;
+}
 
 /* Once upvoted/downvoted state */
-/* line 90, ../sass/_comments.scss */
+/* line 94, ../sass/_comments.scss */
 .comment-upvoted,
 .comment-upvoted:focus,
 .comment-upvoted:active,
 .comment-upvoted:visited {
   color: #f6653c;
 }
+/* line 99, ../sass/_comments.scss */
+.comment-upvoted i, .comment-upvoted .score,
+.comment-upvoted:focus i,
+.comment-upvoted:focus .score,
+.comment-upvoted:active i,
+.comment-upvoted:active .score,
+.comment-upvoted:visited i,
+.comment-upvoted:visited .score {
+  color: #f6653c;
+}
 
-/* line 97, ../sass/_comments.scss */
+/* line 104, ../sass/_comments.scss */
 .comment-downvoted,
 .comment-downvoted:focus,
 .comment-downvoted:active,
@@ -1121,7 +1159,7 @@ header .row, .subheader .row {
 }
 
 /* The opposite button is grey */
-/* line 106, ../sass/_comments.scss */
+/* line 113, ../sass/_comments.scss */
 .comment-downvoted.comment-upvote,
 .comment-upvoted.comment-downvote,
 .comment-downvoted.comment-upvote:hover,
@@ -1132,39 +1170,39 @@ header .row, .subheader .row {
 }
 
 /* dark css */
-/* line 121, ../sass/_comments.scss */
+/* line 128, ../sass/_comments.scss */
 .editor * {
   border: none !important;
 }
 
-/* line 125, ../sass/_comments.scss */
+/* line 132, ../sass/_comments.scss */
 .editor-toolbar {
   display: none;
 }
 
-/* line 129, ../sass/_comments.scss */
+/* line 136, ../sass/_comments.scss */
 .f-dropdown.open:before {
   /* display: none!important; */
   color: black;
 }
 
-/* line 137, ../sass/_comments.scss */
+/* line 144, ../sass/_comments.scss */
 .select2-container--open .select2-dropdown--above {
   border: none !important;
 }
 
-/* line 141, ../sass/_comments.scss */
+/* line 148, ../sass/_comments.scss */
 .select2-container--default .select2-selection--multiple {
   border: none !important;
 }
 
-/* line 146, ../sass/_comments.scss */
+/* line 153, ../sass/_comments.scss */
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   border: none !important;
   border-radius: 0px;
 }
 
-/* line 152, ../sass/_comments.scss */
+/* line 159, ../sass/_comments.scss */
 .side-nav li a:not(.button),
 .side-nav li a:not(.button):hover,
 .side-nav li a:not(.button):focus,
@@ -1172,32 +1210,32 @@ header .row, .subheader .row {
   color: #C4C8CA;
 }
 
-/* line 159, ../sass/_comments.scss */
+/* line 166, ../sass/_comments.scss */
 .logo {
   font-weight: 300;
 }
 
-/* line 163, ../sass/_comments.scss */
+/* line 170, ../sass/_comments.scss */
 .logo span {
   font-weight: normal !important;
 }
 
-/* line 167, ../sass/_comments.scss */
+/* line 174, ../sass/_comments.scss */
 .comment-box {
   border-left: none;
 }
 
-/* line 171, ../sass/_comments.scss */
+/* line 178, ../sass/_comments.scss */
 .CodeMirror-cursor {
   border-left: 1px solid #a2a8ab !important;
 }
 
-/* line 175, ../sass/_comments.scss */
+/* line 182, ../sass/_comments.scss */
 .CodeMirror {
   background: #1a1c1c !important;
 }
 
-/* line 179, ../sass/_comments.scss */
+/* line 186, ../sass/_comments.scss */
 .CodeMirror, .CodeMirror-scroll {
   min-height: 100px !important;
 }
@@ -1657,8 +1695,9 @@ footer {
 /* line 118, ../sass/_forum.scss */
 .thread-page .comment {
   color: #9ba09b;
+  margin-bottom: 1px;
 }
-/* line 120, ../sass/_forum.scss */
+/* line 121, ../sass/_forum.scss */
 .thread-page .comment .comment-footer {
   margin-right: -20px;
   margin-bottom: 4px;
@@ -1666,9 +1705,13 @@ footer {
   color: #646464;
   font-weight: bold;
 }
-/* line 126, ../sass/_forum.scss */
-.thread-page .comment .comment-footer i {
-  color: #646464;
+/* line 128, ../sass/_forum.scss */
+.thread-page .comment a {
+  color: #3d454b;
+}
+/* line 134, ../sass/_forum.scss */
+.thread-page .CodeMirror {
+  border-radius: 0;
 }
 
 /* line 38, ../sass/main.scss */
