@@ -1,6 +1,11 @@
 {% load thumbnail %}
 
-
+<style>
+  .narrow {
+  max-width: 55em;
+  margin: auto;
+  }
+</style>
 <div class="subheader">
 {% if userprofile.background %}        
    {% thumbnail userprofile.background "1581x132" crop="center" as im %}
@@ -14,6 +19,7 @@
 {% endif %}        
 
   <div class="row">
+  <div class="narrow">
   <div class="large-4 small-4 columns user-info">
     <a href="/user/{{userprofile.username}}">
       {% thumbnail userprofile.avatar "70x70" crop="center" as im %}
@@ -24,10 +30,11 @@
 	  
       <div class="left">
 	<h1 class="username"> {{userprofile.username}} </h1>
-	<div class="stats">    
+	<div class="stats">
+	  <!-- 
 	  <i class="fi-torsos-all stats-icon"></i>
 	  {{userprofile.subscribers.count}}
-
+	  -->
 	  <i class="fi-arrow-up stats-icon"></i>
 	  {{score}}
 	  <i class="fi-eye stats-icon"></i>
@@ -36,7 +43,6 @@
       </div>
     </a>
   </div>
-
 
   <div class="large-8 small-8 columns">
     <div class="buttons">
@@ -63,17 +69,6 @@
 
 
       {% if userprofile.username == "rayalez" %}     
-      <!--  
-      <a class="button"
-	 href="http://fictionhub.io/user/rayalez/">
-	My Fiction</a>
-      -->
-
-      <!-- 
-      <a class="button"
-	 href="http://fictionhub.io/user/rayalez/">
-	Patreon</a>
-      -->
       <!-- 
       <a class="button"
 	 href="http://fictionhub.io/user/rayalez/">
@@ -85,15 +80,6 @@
       <a class="button"
 	 href="{{userprofile.website}}">
 	Website</a>
-      {% endif %}            
-
-
-      {% if userprofile.about %}      
-      <!-- 
-      <a class="button"
-	 href="/user/{{userprofile}}/about">
-	About</a>
-      -->      
       {% endif %}            
 
 
@@ -131,13 +117,15 @@
 
     </div>
   </div>
-
+  </div> <!-- End Narrow -->
   <div class="clearfix"></div>
 </div>
 
   {% if userprofile.about %}
   <div class="tagline">
-    {{userprofile.about}}
+    <div class="narrow">
+      <span style="margin-left:20px;">{{userprofile.about}}</span>
+    </div>
   </div>
   {% endif %}
 
