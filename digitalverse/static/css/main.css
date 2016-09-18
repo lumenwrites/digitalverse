@@ -1633,7 +1633,7 @@ footer {
   background: #1f1f1f;
   padding: 20px 30px;
   padding-bottom: 0;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 /* line 68, ../sass/_forum.scss */
 .thread-page article a {
@@ -1680,11 +1680,15 @@ footer {
 .thread-page article .post-footer .stats span {
   margin-right: 5px;
 }
-/* line 105, ../sass/_forum.scss */
+/* line 106, ../sass/_forum.scss */
 .thread-page article .post-footer .buttons {
   float: right;
 }
-/* line 111, ../sass/_forum.scss */
+/* line 108, ../sass/_forum.scss */
+.thread-page article .post-footer .buttons a {
+  color: #9ba09b;
+}
+/* line 116, ../sass/_forum.scss */
 .thread-page textarea {
   resize: none;
   height: 74px;
@@ -1692,12 +1696,12 @@ footer {
   box-shadow: none;
   background: #181818;
 }
-/* line 118, ../sass/_forum.scss */
+/* line 123, ../sass/_forum.scss */
 .thread-page .comment {
   color: #9ba09b;
   margin-bottom: 1px;
 }
-/* line 121, ../sass/_forum.scss */
+/* line 126, ../sass/_forum.scss */
 .thread-page .comment .comment-footer {
   margin-right: -20px;
   margin-bottom: 4px;
@@ -1705,13 +1709,17 @@ footer {
   color: #646464;
   font-weight: bold;
 }
-/* line 128, ../sass/_forum.scss */
+/* line 133, ../sass/_forum.scss */
 .thread-page .comment a {
   color: #3d454b;
 }
-/* line 134, ../sass/_forum.scss */
+/* line 139, ../sass/_forum.scss */
 .thread-page .CodeMirror {
   border-radius: 0;
+}
+/* line 142, ../sass/_forum.scss */
+.thread-page .editor-statusbar {
+  display: none;
 }
 
 /* line 38, ../sass/main.scss */

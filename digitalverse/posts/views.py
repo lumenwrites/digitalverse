@@ -283,6 +283,40 @@ def post_delete(request, post):
 
 
 
+# Voting
+def upvote(request):
+    post = get_object_or_404(Post, id=request.POST.get('post-id'))
+    post.score += 1
+    post.save()
+    post.author.karma += 1
+    post.author.save()
+    user = request.user
+    user.posts_upvoted.add(post)
+    user.save()
+
+    # Notification
+    # message = Message(from_user=request.user,
+    #                   to_user=post.author,
+    #                   story=post,
+    #                   message_type="upvote")
+    # message.save()
+    # post.author.new_notifications = True
+    # post.author.save()
+    return HttpResponse()
+
+def unupvote(request):
+    post = get_object_or_404(Post, id=request.POST.get('post-id'))
+    post.score -= 1
+    post.save()
+    post.author.karma -= 1
+    post.author.save()
+    user = request.user
+    user.posts_upvoted.remove(post)
+    user.save()
+    return HttpResponse()
+
+
+
 
 
 class UserprofileView(FilterMixin, ListView):

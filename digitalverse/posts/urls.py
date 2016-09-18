@@ -27,8 +27,8 @@ urlpatterns = [
 
 
 
-    # url(r'^upvote/$', views.upvote),
-    # url(r'^unupvote/$', views.unupvote),
+    url(r'^post-upvote/$', views.upvote),
+    url(r'^post-unupvote/$', views.unupvote),
 
     # Comments
     # url(r'^forum/(?P<post>[^\.]+)/comment-submit$', views.comment_submit),

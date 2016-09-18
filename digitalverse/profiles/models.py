@@ -23,6 +23,7 @@ class User(AbstractUser):
     subscribed_series = models.ManyToManyField('series.Series', related_name="subscribers", blank=True)    
 
     upvoted = models.ManyToManyField('videos.Video', related_name="upvoters", blank=True)
+    posts_upvoted = models.ManyToManyField('posts.Post', related_name="upvoters", blank=True)
     comments_upvoted = models.ManyToManyField('comments.Comment', related_name="upvoters", blank=True)
 
     approved = models.BooleanField(default=False)
