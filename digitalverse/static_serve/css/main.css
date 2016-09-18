@@ -198,27 +198,29 @@ h4 {
 /* line 47, ../sass/_elements.scss */
 p {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 28px;
   color: #9ba09b;
 }
 
-/* line 53, ../sass/_elements.scss */
+/* line 54, ../sass/_elements.scss */
 li {
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 28px;
   color: #9ba09b;
 }
 
-/* line 58, ../sass/_elements.scss */
+/* line 60, ../sass/_elements.scss */
 a, a:hover {
   color: white;
 }
 
-/* line 62, ../sass/_elements.scss */
+/* line 64, ../sass/_elements.scss */
 .row {
   max-width: 55em;
 }
 
-/* line 67, ../sass/_elements.scss */
+/* line 69, ../sass/_elements.scss */
 input {
   background: #1a1c1c !important;
   border: none !important;
@@ -227,13 +229,13 @@ input {
   color: #cfcfcf !important;
 }
 
-/* line 77, ../sass/_elements.scss */
+/* line 79, ../sass/_elements.scss */
 input[type="button"],
 input[type="submit"] {
   background: #141414 !important;
 }
 
-/* line 83, ../sass/_elements.scss */
+/* line 85, ../sass/_elements.scss */
 textarea,
 textarea:active,
 textarea:focus {
@@ -245,7 +247,7 @@ textarea:focus {
   font-size: 18px;
 }
 
-/* line 94, ../sass/_elements.scss */
+/* line 96, ../sass/_elements.scss */
 select {
   background: #1a1c1c !important;
   border: none !important;
@@ -254,17 +256,17 @@ select {
   color: #cfcfcf !important;
 }
 
-/* line 103, ../sass/_elements.scss */
+/* line 105, ../sass/_elements.scss */
 .button {
   background: #141414;
 }
 
-/* line 108, ../sass/_elements.scss */
+/* line 110, ../sass/_elements.scss */
 .button:hover, .button:focus {
   background: #141414;
 }
 
-/* line 112, ../sass/_elements.scss */
+/* line 114, ../sass/_elements.scss */
 hr {
   border: solid #1a1c1c;
   border-width: 1px 0 0;
@@ -273,7 +275,7 @@ hr {
 }
 
 /* Callout */
-/* line 124, ../sass/_elements.scss */
+/* line 126, ../sass/_elements.scss */
 .callout {
   background: #1d1f1f;
   border: none;
@@ -281,7 +283,7 @@ hr {
 }
 
 /* Subscibe */
-/* line 135, ../sass/_elements.scss */
+/* line 137, ../sass/_elements.scss */
 .subscribe-popup {
   width: 100%;
   height: 54px;
@@ -293,18 +295,18 @@ hr {
   text-align: center;
   display: none;
 }
-/* line 147, ../sass/_elements.scss */
+/* line 149, ../sass/_elements.scss */
 .subscribe-popup .subscribe-cta {
   margin: 0 auto;
   width: 790px;
 }
-/* line 152, ../sass/_elements.scss */
+/* line 154, ../sass/_elements.scss */
 .subscribe-popup p {
   margin: 2px 20px 0 0;
   float: left;
   font-size: 18px;
 }
-/* line 158, ../sass/_elements.scss */
+/* line 160, ../sass/_elements.scss */
 .subscribe-popup input {
   margin: 0px;
   height: 32px;
@@ -313,7 +315,7 @@ hr {
   border-radius: 2px;
   background: rgba(0, 0, 0, 0.2) !important;
 }
-/* line 165, ../sass/_elements.scss */
+/* line 167, ../sass/_elements.scss */
 .subscribe-popup .button {
   margin: 0px;
   margin-left: 4px;
@@ -1598,14 +1600,23 @@ footer {
 /* line 68, ../sass/_forum.scss */
 .thread-page article h1 {
   color: #9ba09b;
-  font-size: 32px;
+  font-size: 36px;
   font-weight: normal;
 }
 /* line 73, ../sass/_forum.scss */
+.thread-page article h2 {
+  font-size: 26px;
+  margin-top: 22px;
+}
+/* line 77, ../sass/_forum.scss */
+.thread-page article h3 {
+  font-size: 24px;
+}
+/* line 80, ../sass/_forum.scss */
 .thread-page article hr {
   border-bottom: 1px solid rgba(155, 160, 155, 0.1);
 }
-/* line 76, ../sass/_forum.scss */
+/* line 83, ../sass/_forum.scss */
 .thread-page article .post-footer {
   margin: 0 -30px;
   background: rgba(20, 20, 20, 0.62);
@@ -1613,25 +1624,25 @@ footer {
   margin-top: 20px;
   padding-left: 30px;
 }
-/* line 82, ../sass/_forum.scss */
+/* line 89, ../sass/_forum.scss */
 .thread-page article .post-footer .stats {
   margin: 0;
   margin-top: 7px;
 }
-/* line 86, ../sass/_forum.scss */
+/* line 93, ../sass/_forum.scss */
 .thread-page article .post-footer .stats span, .thread-page article .post-footer .stats i {
   /* color:$orange; */
   color: #9ba09b;
 }
-/* line 90, ../sass/_forum.scss */
+/* line 97, ../sass/_forum.scss */
 .thread-page article .post-footer .stats span {
   margin-right: 5px;
 }
-/* line 95, ../sass/_forum.scss */
+/* line 102, ../sass/_forum.scss */
 .thread-page article .post-footer .buttons {
   float: right;
 }
-/* line 101, ../sass/_forum.scss */
+/* line 108, ../sass/_forum.scss */
 .thread-page textarea {
   resize: none;
   height: 74px;
@@ -1639,11 +1650,11 @@ footer {
   box-shadow: none;
   background: #181818;
 }
-/* line 108, ../sass/_forum.scss */
+/* line 115, ../sass/_forum.scss */
 .thread-page .comment {
   color: #9ba09b;
 }
-/* line 110, ../sass/_forum.scss */
+/* line 117, ../sass/_forum.scss */
 .thread-page .comment .comment-footer {
   margin-right: -20px;
   margin-bottom: 4px;
@@ -1651,7 +1662,7 @@ footer {
   color: #646464;
   font-weight: bold;
 }
-/* line 116, ../sass/_forum.scss */
+/* line 123, ../sass/_forum.scss */
 .thread-page .comment .comment-footer i {
   color: #646464;
 }

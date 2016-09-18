@@ -11,7 +11,6 @@ This is a collection of animation exercises that will  take you from learning th
 - Poses
 
 ## Basic body mechanics
-Mike:
 
 - 180 degree turn
 - Sneak walkcycle.  
@@ -29,7 +28,7 @@ Mike:
 - Walk against heavy wind.
 ([1](https://youtube.com/watch?v=wGZejfftB8A))
 
-Proxy:
+&nbsp;
 
 - Lift
 ([1](https://youtube.com/watch?v=QrtpzXL-rIY))
