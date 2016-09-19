@@ -133,16 +133,14 @@
 	    <ul>
 	      <li><a href="/profile/{{user.username}}">
 		  <i class="fa fa-home"></i> Profile </a></li>
-	      <!-- 
+
+	      {% if user.is_staff %}
 	      <li><a href="/upload/">
 		  <i class="fa fa-upload"></i> Upload </a></li>
-	      -->
-	      <!-- 
-	      {% if user.approved or user.is_staff %}
 	      <li><a href="/create-series/">
 		  <i class="fa fa-th"></i> Create Series </a></li>
 	      {% endif %}
-	      -->	      
+
 	      <li><a href="/preferences/">
 		  <i class="fa fa-cog"></i> Preferences</a></li>
 	      <li><a href="/logout/?next={{request.path}}">
@@ -208,6 +206,7 @@
 	<input id="id_password1" name="password1" placeholder="Password (8+ symbols)" type="password">
 	<input id="id_password2" name="password2" placeholder="Repeat Password" type="password">
 
+	{{form.
 	<!-- Newsletter -->
 	<div class="newsletter-checkbox">
 	  <input type="checkbox" name="newsletter" id="newsletter" class="css-checkbox"/>
