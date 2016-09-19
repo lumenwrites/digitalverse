@@ -200,5 +200,32 @@ $(document).ready(function(){
 })
 </script>
 
+<script>
 
+$(document).ready(function(){
+function convertVideo(html) {
+    var pattern = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.[A-Za-z0-9\-\_]+)[\s\.\<]/g;
+    
+    if(pattern.test(html)){
+        var replacement = '<div class="flex-video widescreen youtube"><iframe width="640" height="360" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe></div>';
+        var html = html.replace(pattern, replacement);
+    }
+    return html;
+}
+
+function convertVideoCustomPlayer(html) {
+    var pattern = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.[A-Za-z0-9\-\_]+)/g;
+    
+    if(pattern.test(html)){
+        var replacement = '<video id="video" class="video-js vjs-default-skin  vjs-big-play-centered" controls width="850" height="477" data-setup="{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=sZwFBfeWJZQ"}] }"></video>';
+	console.log(replacement);
+        var html = html.replace(pattern, replacement);
+    }
+    return html;
+}    
+var videosReplaced =  convertVideo($(".post-body").html());    
+// $('.post-body').html(videosReplaced);
+})
+
+</script>
 {% endblock content %}

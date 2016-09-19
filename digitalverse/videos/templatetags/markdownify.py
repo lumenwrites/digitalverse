@@ -43,7 +43,7 @@ def markdownify(text, short = "False"):
 
 
     # Youtube embed
-    pattern =  re.compile("(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.[A-Za-z0-9\-\_]+)[\s\.\n]")
+    pattern =  re.compile("(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.[A-Za-z0-9\-\_]+)[\s\n$]?")
     replacement = r'<div class="flex-video widescreen youtube"><iframe width="640" height="360" src="http://www.youtube.com/embed/\1" frameborder="0" allowfullscreen></iframe></div>'    
     text = pattern.sub(replacement, text)        
     
