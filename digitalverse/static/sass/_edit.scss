@@ -8,8 +8,11 @@
 .delete {
     float:left;
 }
-#image-clear_id, label {
-    display:none!important;
+
+#edit-template {
+    #image-clear_id, label {
+	display:none!important;
+    }
 }
 
 #upload, #upload_thumbnail, #upload_background {

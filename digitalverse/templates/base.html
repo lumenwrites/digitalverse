@@ -94,19 +94,6 @@
 	    <span>Forum</span>
 	  </a>
 
-	<!-- 
-	      <a href="/">
-	        <span>Videos</span>
-	      </a>
-
-	      <a href="/series/">
-	        <span>Series</span>
-	      </a>
-
-	      <a href="/subscriptions/">
-	        <span>Subscriptions</span>
-	      </a>
-	      --> 
 	  {% if user.subscribed.count > 0 %}	  
    	      <a href="/subscriptions/">
 	        <span>Subscriptions</span>
@@ -165,7 +152,6 @@
 	      
 	  {% else %}
 
-	  <!-- 
 	  <a href="/blog/">
 	    <span>Blog</span>
 	  </a>
@@ -174,17 +160,16 @@
 	    <span>Rigs</span>
 	  </a>
 
-	  <a href="/forum/" style="margin-right:20px;">
+	  <a href="/forum/">
 	    <span>Forum</span>
 	  </a>
-	  -->
-	  <!-- 
-	       <a data-open="login-popup orange">Home</a>	  	  
-	       <a data-open="login-popup">Forum</a>
-	       <a data-open="login-popup">Login</a>
-	       -->
-	<!-- <ul><a href="/login/?next={{request.path}}"> Login </a></ul>	 -->
-	<a class="subscribe-header" data-open="sub-popup">Subscribe</a>
+
+	  <a data-open="login-popup">
+	    <span>Login</span>
+	  </a>
+	  <div  style="margin-right:20px;float:right;">&nbsp;</div>
+	  
+	  <a class="subscribe-header" data-open="sub-popup">Subscribe</a>
 	
 	
 	{% endif %}
@@ -197,10 +182,10 @@
 {% endblock %}
 
 
-<div class="reveal" id="login-popup" data-reveal>
+<div class="reveal login-popup" id="login-popup" data-reveal>
 
   <div class="row">
-    <div class="large-5 columns">
+    <div class="large-6 columns">
       <!-- Login -->
       <h2> Login </h2>
       <form method="post" action="/authenticate/?next={{request.path}}">{% csrf_token %}
@@ -213,7 +198,7 @@
       </form>
     </div>
     
-    <div class="large-5 columns">
+    <div class="large-6 columns">
       <!-- Register -->
       <h2> Sign Up </h2>
       <form method="post" action="/register/?next={{request.path}}">{% csrf_token %}
@@ -222,6 +207,15 @@
 	<input id="id_email" name="email" placeholder="E-Mail" type="text">
 	<input id="id_password1" name="password1" placeholder="Password (8+ symbols)" type="password">
 	<input id="id_password2" name="password2" placeholder="Repeat Password" type="password">
+
+	<!-- Newsletter -->
+	<div class="newsletter-checkbox">
+	  <input type="checkbox" name="newsletter" id="newsletter" class="css-checkbox"/>
+	  <label for="newsletter" class="css-label checkbox-label">
+	    Receive weekly newsletter (tutorials, articles, updates, no spam).
+	  </label>
+	</div>
+
 	<input type="submit" class="button small" value="submit">
 	<input type="hidden" name="next" value="">
 	<div class="clearfix"></div>
@@ -231,10 +225,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 
 
 
@@ -361,6 +351,7 @@
 <script src="  {% static "videojs/Youtube.min.js" %}"></script>
 <script>
   $(document).foundation();
+  <!-- $('#login-popup').foundation('open'); -->
 </script>
 
 </body>

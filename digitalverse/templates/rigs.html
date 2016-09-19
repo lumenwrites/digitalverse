@@ -45,9 +45,19 @@ height: 250px !important;
 	<input placeholder="Enter email" style="width:100%;
 						text-align:center;"></input>
 	-->
-	<a href="/media/files/lumen_rig.otl"class="button" style="width:100%;
-								  background: #f6653c;">
+
+	{% if user.is_authenticated %}
+	<a href="/media/files/lumen_rig.otl"class="button"
+	   style="width:100%;
+		  background: #f6653c;">
 	  Download</a>
+	{% else %}
+	<a data-open="login-popup" class="button"
+	   style="width:100%;
+		  background: #f6653c;">
+	  Login to Download
+	</a>
+	{% endif %}		
       </div>
     </article>
 
@@ -63,9 +73,18 @@ height: 250px !important;
 	<input placeholder="Enter email" style="width:100%;
 						text-align:center;"></input>
 	-->
-	<a href="/media/files/mike_rig.otl"class="button" style="width:100%;
-								  background: #f6653c;">
+	{% if user.is_authenticated %}
+	<a href="/media/files/mike_rig.otl"class="button"
+	   style="width:100%;
+		  background: #f6653c;">
 	  Download</a>
+	{% else %}
+	<a data-open="login-popup" class="button"
+	   style="width:100%;
+		  background: #f6653c;">
+	  Login to Download
+	</a>
+	{% endif %}		
       </div>
     </article>
     
