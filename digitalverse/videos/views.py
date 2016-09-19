@@ -33,7 +33,7 @@ from .utils import rank_hot,video_id, check_if_digitalverse
 
 
 class BrowseMixin(object):
-    paginate_by = 15
+    paginate_by = 12
     def get_queryset(self):
         qs = super(BrowseMixin, self).get_queryset()
 
@@ -109,7 +109,7 @@ class SubscriptionsView(BrowseMixin, ListView):
 class ProfileView(BrowseMixin, ListView):
     model = Video
     template_name = "videos/profile.html"
-    paginate_by=15
+    paginate_by=12
     
     def get_queryset(self):
         qs = super(ProfileView, self).get_queryset()
