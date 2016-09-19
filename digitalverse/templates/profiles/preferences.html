@@ -15,8 +15,19 @@
       Username:
       {{form.username}}
       {{form.email}}
+      <!-- Newsletter -->
+      <div class="newsletter-checkbox">
+	<input type="checkbox" name="newsletter" id="newsletter" class="css-checkbox"
+	       {% if user.newsletter %}checked{%endif%}/>
+	<label for="newsletter" class="css-label checkbox-label"
+	        style="margin: 0;
+		       margin-bottom: 14px;">
+	  Receive weekly newsletter (tutorials, articles, updates, no spam).
+	</label>
+      </div>
       {{form.website}}
-      {{form.youtube_channel}}      
+
+
 
       <!-- Avatar -->
       {% if not user.avatar %}      

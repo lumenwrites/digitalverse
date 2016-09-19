@@ -82,9 +82,8 @@ def register(request):
             # new_user = form.save()
             user = User.objects.create_user(form.cleaned_data['username'], None, form.cleaned_data['password1'])
             user.email = form.cleaned_data['email']
-            user.rational = rational
-            if rational:
-                user.approved = True
+            user.newsletter = form.cleaned_data['newsletter']            
+
             user.save()
 
             # log user in after signig up
@@ -134,7 +133,6 @@ def preferences(request):
 #     def get_success_url(self):
 #         return "/user/rayalez/preferences"
 #         # return self.request.path
-
 
 
 @login_required

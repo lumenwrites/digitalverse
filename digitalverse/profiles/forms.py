@@ -9,10 +9,11 @@ class RegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username", "email", "password1", "password2", "newsletter")
         widgets = {
             'username' : forms.TextInput(attrs = {'placeholder': 'Username'}),
             'email'    : forms.TextInput(attrs = {'placeholder': 'E-Mail'}),
+            # 'newsletter'    : forms.CheckboxInput(attrs = {'placeholder': 'E-Mail'}),
             # These don't work, had to redefine in views(login_or_signup)
             # 'password1' : forms.PasswordInput(attrs = {'placeholder': 'Password'}),
             # 'password2' : forms.PasswordInput(attrs = {'placeholder': 'Repeat Password'})
@@ -28,7 +29,7 @@ class RegistrationForm(UserCreationForm):
 class UserForm(ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'avatar', 'background', 'website', 'youtube_channel', 'about']
+        fields = ['username', 'email', 'newsletter', 'avatar', 'background', 'website', 'youtube_channel', 'about']
         widgets = {
             'username' : forms.TextInput(attrs = {'placeholder': 'Username'}),
             'email'    : forms.TextInput(attrs = {'placeholder': 'E-Mail'}),

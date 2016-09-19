@@ -26,6 +26,7 @@ class User(AbstractUser):
     posts_upvoted = models.ManyToManyField('posts.Post', related_name="upvoters", blank=True)
     comments_upvoted = models.ManyToManyField('comments.Comment', related_name="upvoters", blank=True)
 
+    newsletter = models.BooleanField(default=False)    
     approved = models.BooleanField(default=False)
     hidden = models.BooleanField(default=False)
 
