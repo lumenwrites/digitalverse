@@ -17,6 +17,8 @@ def markdownifyOne(text, short = "False"):
     # Urlify
     urlfinder = re.compile("([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}|((news|telnet|nttp|file|http|ftp|https)://)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+):[0-9]*)?/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*[^]'\\.}>\\),\\\"]")
     html = urlfinder.sub(r'<a href="\1">\1</a>', html)    
+
+
     
     html = markdown.markdown(text)
 
