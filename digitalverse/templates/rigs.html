@@ -67,7 +67,7 @@ height: 250px !important;
 					     margin-top: -20px;"/>
       <div style="float:left;    width: 55%;"> 
 	<h1 style="margin-top: 30px;">Mike Rig</h1>
-	<p>This is a very simple rig created for learning the basics of animation.</p>
+	<p>This is a very simple rig created for learning the basics of animation (walkcycles, basic body dynamics, etc).</p>
 
 	<!--
 	<input placeholder="Enter email" style="width:100%;
@@ -87,7 +87,32 @@ height: 250px !important;
 	{% endif %}		
       </div>
     </article>
-    
+    <div class="clearfix"></div>
+
+    <article style="margin-bottom:80px;">
+      <img src="/media/images/lex.png" style="float:left;
+					     width: 40%;
+					     margin-top: 70px;"/>
+      <div class="clearfix">      
+      <div style="float:right;    width: 55%;"> 
+	<h1 style="margin-top: 60px;">lex</h1>
+	<p>This is a very simple character rig created for learning the foundations of animation (Squash and Stretch, Arcs, Overlapping Action).</p>
+
+
+	{% if user.is_authenticated %}
+	<a href="/media/files/lumen_lex.otl"class="button"
+	   style="width:100%;
+		  background: #f6653c;">
+	  Download</a>
+	{% else %}
+	<a data-open="login-popup" class="button"
+	   style="width:100%;
+		  background: #f6653c;">
+	  Login to Download
+	</a>
+	{% endif %}		
+      </div>
+    </article>    
   </div>
 </div>
  
