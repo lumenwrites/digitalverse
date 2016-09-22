@@ -1,0 +1,115 @@
+* Rig
+ - Lumen
+   paint/improve weights. jaw.
+   make basic blendshapes? face setup.
+   try uploading to the asset store. right way to put under one node?
+ - Try facial rig separately. Minimal, simplified, family guy style! 
+   Maybe even that proxy face! 
+ - Rig a dog
+ + cannon
+ + monster
+
+- character picker tutorial
+ 
+   
+* Model
+# chars
+- monstrer
+- trex
+- robot details
+- Cat
+- Beark   
+  
+- Blendshapes  
+# sets
+- Garage
+- NYC
+# props
+- revolver
+- Car
+
+* Assets.
+- browse artstation and tutorials for more cool fun ideas.
+
+* Animation
+- Awesome poses.
+- Animate speech on a proxy rig face
+
+- Walk a dog
+
+- ?
+- From harmontown/RSD.
+
+
+
+
+* Houdini
+- record gear tutorial
+- power of procedural awesomeness example on character workflow.
+  that'll blow their freakin' minhds.
+
+# Tech
+procedural textures
+- good houdini intro for complete newbies - ?? 
+- Copystamping.
+- procedural modeling 
+  //buildings, cities, roads, whatnot.
+
+# Rendering/Lighting/Surfacing/FX
+- Mantra surface basics.
+- vex, building a shader. //good pretty example.
+
+- Something with Comp?
+- Passes?
+- particles and fancy fx. from torrent tutorials?
+- Takes
+
+- Pretty low poly scene. Mountains and stuff.
+- particles - snowflakes?
+- lighting setup?
+- rendering basics?
+- building a basic shader?
+- lsystems
+
+- renderman
+- nuke.
+
+# rigging
+> Rigging
+   - setup one of the simple rigs, like a ball. Parenting, linking channels, making assets.
+   - Using autorig to setup my cartoon character(ninja).
+   - Skinning
+   - Facial rigging.
+   - using fetch to pick up props.
+
+
+- using auto rig to setup my guy
+- painting weights/deforms, skinning (seo friendly, easy to find)
+- adding props to a character.
+
+
+- python character picker
+- Scripting  
+
+
+
+- Port maya/torrent tutorials
+
+# Foundations. Tips and tricks. 
+- explain how certain nodes work. light/rendering/etc, simple. Where's what.
+- Pipeline. script-storyboard-poses-animation-rendering.
+
+
+
+# Animation   
+- Keys, contacts, all that. Pipeline process.(before jump, some on walkcycle.)
+
+  
+# Modeling. Digital art.
+- anatomy!! Male/female.
+- basic proportions for modelling? based on char/human?
+
+- perspective, drawing. gesture. proko/villppu.
+- creating video with procreate and editor thingy. my apps my pipeline.
+- my writing process.
+

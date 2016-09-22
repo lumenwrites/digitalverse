@@ -20,6 +20,8 @@ class Post(models.Model):
     views = models.IntegerField(default=0)
 
 
+    dvblog = models.BooleanField(default=False, blank=True)
+    
     def __str__(self):
         return self.title
 

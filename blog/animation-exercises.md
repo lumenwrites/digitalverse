@@ -1,22 +1,37 @@
-This is a collection of animation exercises that will  take you from learning the fundamentals of animation to creating advanced acting scenes(links to great examples in parentheses).
+This is a collection of animation exercises that will  take you from learning the fundamentals of animation to creating advanced acting scenes.
 
 ## Fundamentals of animation
 
-- Bouncing ball.(Slow in/out, Squash and Stretch.)
-- Light ball and a heavy cannon ball. (Timing. Showing Weight.)
-- Pendulum platform. Tailor. (Arcs and Overlapping action.)
-- Poses
+- Bouncing ball.(Slow in/out, Squash and Stretch.)  
+[Example 1](https://www.youtube.com/watch?v=ViUfPcXT47w)  
+- Light ball and a heavy cannon ball. (Timing. Showing Weight.)  
+[Example 1](https://www.youtube.com/watch?v=slI-TXXFK7A)  
+- Pendulum platform. 
+- Tailor obstacle course. (Arcs and Overlapping action.)  
+[Example 1](https://www.youtube.com/watch?v=Na8k1C3g7Gc)
+- Poses.
 
 ### Walkcycles
 
-- Simple normal walk.
-- Run cycle.
-- Happy.
-- Sad.
-- Injured leg
-- Sneaking.
-- Personality walk.
-- Dog walkcycle
+- Simple normal walk.  
+[Example 1](https://www.youtube.com/watch?v=FEHWx1qAVuc)  
+[Example 2](https://www.youtube.com/watch?v=0g60SSh00tk)  
+[Example 3](https://www.youtube.com/watch?v=RAwo-nga_XU)  
+- Run cycle.  
+[Example 1](https://www.youtube.com/watch?v=zkCPYG1b24U)  
+- Happy. 
+- Sad/Tired.
+- Angry  
+[Example 1](https://www.youtube.com/watch?v=mMnYlY5fPVs)  
+- Injured leg  
+- Sneaking.   
+[Example 1](https://www.youtube.com/watch?v=2kkIGUFTsbA)
+- Skipping.
+- Personality walk.  
+[Example 1](https://www.youtube.com/watch?v=cwnafMmrdwo)  
+[Example 2](https://www.youtube.com/watch?v=0u9j89dJ7Ms)  
+- Dog walkcycle  
+[Example 1](https://www.youtube.com/watch?v=Dw9qFmlFRI0)  
 
 ## Basic body mechanics
 
@@ -81,3 +96,37 @@ This is a collection of animation exercises that will  take you from learning th
 [Example 1](https://www.youtube.com/watch?v=Q2YZCVVQxb4)  
 [Example 2](https://www.youtube.com/watch?v=rmZ2n-DJwOw)  
 
+
+
+
+<script>
+$(document).ready(function(){
+
+function replaceLink(link){
+        var pattern = /(?:http?s?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g;
+				var timepattern = /\?t=(.*)/;
+        if(pattern.test(link)){
+
+						//if (timepattern.exec(link)) {
+						//			var time = timepattern.exec(link)[0]
+						//} else { var time = ""}
+
+              var replacement = '<iframe width="640" height="360" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe><br/>';
+              var embed = link.replace(pattern, replacement);
+        } 
+
+        return embed;
+}    
+
+$('.post-body').find("a").each(function() {
+    $(this).click(function(event) {
+	event.preventDefault();
+	console.log($(this).attr('href'));
+	link = 	$(this).attr('href');
+	$(this).replaceWith(replaceLink(link));
+    });
+    
+})
+})
+
+</script>

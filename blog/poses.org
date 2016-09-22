@@ -1,0 +1,33 @@
+- Drag and overlap
+  https://www.youtube.com/watch?v=UgwGWE3CUhk
+  12 principles just to practice!!I'll have a ton of great ideas with this.
+
+- Timing and spacing.  
+  From vts.
+
+- Principles of poses.
+  What Ive got from lango plus some research to make sure I diddn't miss anything.
+
+- Types of keys - //Key, breakdown, inbetween.
+Breakdown drawing is a drawing that defines how the character gets from one extreme to another extreme!!  
+
+
+- I can make poses not to just illustrate the emotions, but all of these principles!
+- I could animate pendulum for ease in/out!
+
+
+- Sneak cycle making of.
+- Walkcycle tutorial. Break down into short parts, like digital tutors do, edit them together.
+  - In this tutorial I will show you... so lets get started. [recorded later] 
+  - Load the rig, default pose. Open the reference. Gibal here.
+  - Set the keys. Contact and passing. Mirror trick. defaults? //talk on up and down? later.
+  - Spread them around the timeline. Set cycles everywhere.
+  - Hide the arms, nail the leg motions. 
+     Linear when moving backwards, correct ankle loops, correct hip loop.
+  - Show the arms, move gimbal(i will explain it in a separate tutorial, for now just..), animate arms.
+  - Add hip motions, chest motions, weight shift.
+  - Fix knee popping.
+  - Add lags.(move toes and wrists 3 keys forward).
+  - Render it in flipbook.
+  - download the scene following the link in the description.
+    
