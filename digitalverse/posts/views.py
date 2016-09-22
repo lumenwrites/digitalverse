@@ -147,7 +147,8 @@ class BlogView(ListView):
         qs = super(BlogView, self).get_queryset()
         qs = qs.order_by('-pub_date')
         qs = [p for p in qs if (p.published == True and
-                                p.author.username == "rayalez")]
+                                p.author.username == "rayalez" and
+                                p.dvblog == True)]
 
         return qs
     
