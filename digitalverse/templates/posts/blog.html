@@ -27,6 +27,16 @@
 <!-- Articles -->
 {% for post in posts %}
     <article>
+
+      <!-- Edit -->
+      {% if user == post.author or user.is_staff %}
+      <a class="edit-post" href="{{post.get_absolute_url}}/edit"
+	 style="margin-top: 15px;">
+	<i class="fa fa-pencil"></i>
+      </a>
+      {% endif %}
+
+      <!-- Title -->
       <a href="{{post.get_absolute_url}}">
 	<h2>{{post.title}}</h2>
       </a>

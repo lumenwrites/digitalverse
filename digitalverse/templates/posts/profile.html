@@ -13,7 +13,7 @@
 {% if post.published or user == post.author %}  
   <a href="{{post.get_absolute_url}}">  
     <article>
-      
+     
       {% thumbnail post.thumbnail "320x320" crop="center" as im %}
           <img src="{{im.url}}" />
       {% endthumbnail %}	  
