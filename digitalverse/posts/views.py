@@ -1,4 +1,5 @@
 # standard library imports
+import datetime
 import re, random
 from string import punctuation
 from math import floor # to round views
@@ -259,8 +260,10 @@ def post_edit(request, slug):
         form = PostForm(request.POST,instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            post.save(slug=post.slug)                
+            if request.POST.get('wipupdate'):
+                post.pub_date = datetime.datetime.now()
 
+            post.save(slug=post.slug)                
             # post.hubs = []
             # post.hubs.add(*form.cleaned_data['hubs'])
             return HttpResponseRedirect('/post/'+post.slug) # +'/edit'

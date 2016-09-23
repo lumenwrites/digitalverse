@@ -12,6 +12,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=256, default="")
     published = models.BooleanField(default=True, blank=True)
     pub_date = models.DateTimeField(blank=True)
+    # updated = models.DateTimeField(default=datetime.datetime.now, blank=True)    
     body = models.TextField(default="", null=True, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="posts", default="")
 
@@ -28,6 +29,7 @@ class Post(models.Model):
     def save(self, slug="", *args, **kwargs):
         if not self.id:
             self.pub_date = datetime.datetime.now()
+
 
         # Unique slug
         if self.pk is None:            
