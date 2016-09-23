@@ -329,7 +329,8 @@ class UserprofileView(FilterMixin, ListView):
 
     def get_queryset(self):
         qs = super(UserprofileView, self).get_queryset()
-        qs = qs.order_by('-pub_date')
+
+        qs.sort(key=lambda x: x.pub_date, reverse=True)
 
         # Filter by user
         userprofile = User.objects.get(username=self.kwargs['username'])        
