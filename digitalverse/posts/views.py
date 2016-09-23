@@ -149,7 +149,7 @@ class BlogView(ListView):
         qs = [p for p in qs if (p.published == True and
                                 p.author.username == "rayalez" and
                                 p.dvblog == True)]
-        qs.sort(key=lambda x: x.pub_date, reverse=True)
+        # qs.sort(key=lambda x: x.pub_date, reverse=True)
 
 
         return qs
@@ -329,6 +329,7 @@ class UserprofileView(FilterMixin, ListView):
 
     def get_queryset(self):
         qs = super(UserprofileView, self).get_queryset()
+        qs = qs.order_by('-pub_date')
 
         # Filter by user
         userprofile = User.objects.get(username=self.kwargs['username'])        
