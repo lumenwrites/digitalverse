@@ -149,6 +149,8 @@ class BlogView(ListView):
         qs = [p for p in qs if (p.published == True and
                                 p.author.username == "rayalez" and
                                 p.dvblog == True)]
+        qs.sort(key=lambda x: x.pub_date, reverse=True)
+
 
         return qs
     
