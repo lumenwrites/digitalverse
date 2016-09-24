@@ -400,7 +400,7 @@ label.css-label {
 
 /* line 1, ../sass/_header.scss */
 header .row, .subheader .row {
-  max-width: 95% !important;
+  /* max-width: 95%!important; */
 }
 
 /* line 5, ../sass/_header.scss */
@@ -674,14 +674,20 @@ header .row, .subheader .row {
   font-size: 22px;
   color: white;
 }
+@media screen and (max-width: 32em) {
+  /* line 111, ../sass/_subheader.scss */
+  #featured .card {
+    width: 100%;
+  }
+}
 
-/* line 111, ../sass/_subheader.scss */
+/* line 116, ../sass/_subheader.scss */
 #rayalez-img {
   margin-top: -40px;
 }
 
 @media screen and (orientation: portrait) {
-  /* line 115, ../sass/_subheader.scss */
+  /* line 120, ../sass/_subheader.scss */
   #rayalez-img {
     margin-top: 0;
   }
