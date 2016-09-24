@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^user/rayalez/store/$', views.item),
     
     url(r'^$', views.BrowseView.as_view(), name='video-list'),
+    url(r'^videos/$', views.BrowseView.as_view(), name='video-list'),    
     url(r'^browse/$', views.BrowseView.as_view(), name='video-list'),    
     url(r'^subscriptions/$', views.SubscriptionsView.as_view(), name='subscriptions'),    
 
