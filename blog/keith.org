@@ -1,25 +1,24 @@
 * Poses
-Poses are the key thing in animation. They tell the story.
+//slug: good poses?
 
+Poses are one of the key concepts in animation, quality of animation strongly depends on good poses. This post is a collection of the most important principles of creating strong poses.
 
-- Every image has to be an illustration.
+** Good poses
+- Tell the story.
 
-  
-# Express emotion
-- Pose reveals the character. Pose is not a symptom of a movement.  
+- Express emotion and personality.
+  Pose reveals the character. Pose is not a symptom of a movement.  
   Movement is a symptom of character's emotional state. 
   phose is primary mechanism of telling the story.
 
-Foundation of animation.
-
-# Express personality
-
-# Easy to understand
-Appeal and emotion.
-- Appeal - easy to read and understand what he's thinking and feeling.
+- Appealing and easy to understand.
+  Appeal - easy to read and understand what he's thinking and feeling.
 lear and easy to read with one glance
+Every image has to be an illustration.
 
-# //Tells a story
+
+** Sihlouette and line of action
+To achieve that there are 2 most important things to think about - sihlouette and line of action.
 
 # Sihlouette
 Cg is not 3d. it's 2d.
@@ -30,7 +29,15 @@ from 2d standpoint.
 
 - Great poses, even though they're still, have motion in them.
   
-  
+
+ Having a clear silhouette doesn't 
+mean that you have to be able to clearly see every limb on the body. If 
+that were the case, posing a character would be extremely limiting and you 
+would have arms and legs sticking out everywhere.
+
+A clear silhouette means that the action and meaning of the pose reads 
+easily.
+
 # Line of action
 drive eyes
 flow of lines.
@@ -39,24 +46,38 @@ line through character's body indicating direction and energy of the pose.
 - Reversal of line of action
 buid up and release of energy.
 
+- Straight, C, and S curves.
+  convenient to think about.
+  since we want to keep them simple..
+  
+https://support.animationmentor.com/hc/en-us/community/posts/200964893-Posing-Silhouette-and-Line-of-Action-References
 
 
-# Exaggeration!
+** Weight and body mechanics
+Strong poses look convincing and realistic, and that...
 
-# Assymetry!
 
-# Weight
-shift weight to one leg
+- Balance
+  think on center of gravity!
+  shift weight to one leg
 
-Balance - think on center of gravity!
+- Weight. 
+  think of physics. things and body parts are heavy.
 
-think of physics. things and body parts are heavy.
-
-chest tilts in the opposite direction of pelvis.
+- chest tilts in the opposite direction of pelvis.
 http://www.animatorisland.com/perfect-posing-1-listen-to-the-character-and-to-physics/
 
+# tips
+- tilt the head
+- twist the torso
+- body - 3 circles. not in one line.
 
-# Volume
+
+
+** Exaggeration Assymetry
+
+
+** Volume
 
 Mountains.
 Rhythm.
@@ -65,6 +86,18 @@ smaller, accents.
 
 choose the biggest most important pose of the scene.
 
+
+
+
+** Good composition. staging.
+
+# overlapping shapes and negative space
+http://twinsandtangents.blogspot.ru/2012/04/class-1-week-5-silhouettes.html
+
+Having a variety of empty 
+spaces between the arms and legs, as well as a nice contrast of large 
+spaces and small spaces helps to build a dynamic silhouette and keeps the 
+pose visually interesting.
 
 # Flow lines
 All parts of the character create visual flow.
@@ -75,21 +108,22 @@ drive focus.
 scene composition thing.
 direct to what's important.
 
-# curved vs straight!
-https://support.animationmentor.com/hc/en-us/community/posts/200964893-Posing-Silhouette-and-Line-of-Action-References
 
-# tips
-tilt the head
-twist the torso
-
-# Good composition. staging.
-
-# Don't force animation princples.
+//# Don't force animation princples.
 dont' do sihlouette for sihlouette sake.
 don't break flow lines or fuck up other stuff by trying to adhere to some one principle.
 keep poses clean and simple.
 
-# body - 3 circles. not in one line.
 
-# closed/open
+
+
+# resources
+https://www.amazon.com/Force-Dynamic-Life-Drawing-Animators/dp/0240808452
+http://www.proko.com/how-to-draw-gesture/
+http://floobynooby.blogspot.ru/2011/01/lines-of-action-mickeys-christmas-carol.html
+
+
+
+
+//# closed/open
 introverted/extraverted.
