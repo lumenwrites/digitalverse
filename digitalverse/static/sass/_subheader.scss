@@ -107,6 +107,11 @@
 	    color:white;
 	}
     }
+    @media screen and (max-width: 32em) {
+	.card {
+	    width: 100%;
+	}
+    }
 }
 #rayalez-img {
     margin-top:-40px;

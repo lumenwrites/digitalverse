@@ -1,17 +1,9 @@
-{% extends "base.html" %}
 {% load staticfiles %}
 {% load markdownify %}
 
 {% block content %}
 
 
-
-{% if userprofile %}
-{% include "elements/subheader.html" %}
-{% elif True %}
-{% include "elements/featured.html" %}
-
-{% else %}
 <div class="forum-header" style="margin-bottom:0;">
   <h1>Digital Verse Blog</h1>
   <!-- <p>Computer Graphics and Animation</p> -->
@@ -20,9 +12,8 @@
   <a class="small button orange" href="/post/add">New Post</a>
   {% else %}
   <br/>
-  {% endif %}
+  {% endif %}  
 </div>
-{% endif %}
 
 <div class="thread-page">
 <div class="row">

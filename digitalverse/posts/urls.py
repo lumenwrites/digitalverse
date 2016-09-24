@@ -14,6 +14,7 @@ urlpatterns = [
     # Class Based Views
     # Browse
     url(r'^forum/$', views.BrowseView.as_view()),
+    url(r'^community/$', views.BrowseView.as_view()),    
     url(r'^blog/$', views.BlogView.as_view()),            
     url(r'^profile/(?P<username>[^\.]+)$', views.UserprofileView.as_view()),
     # url(r'^forum/category/(?P<hubslug>[^\.]+)/$', views.HubView.as_view()),
