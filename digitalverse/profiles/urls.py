@@ -1,20 +1,21 @@
 from django.conf.urls import url
+from django.contrib.auth.views import logout
 
-from . import views
+from .views import login_or_signup, register, authenticate_user, preferences, update_password, about, subscribe, unsubscribe
 
 urlpatterns = [
-    url('^login/$', views.login_or_signup),
-    url(r'^logout/', 'django.contrib.auth.views.logout'), # , {'next_page':'/'}
+    url('^login/$', login_or_signup),
+    url(r'^logout/', logout), # , {'next_page':'/'}
 
-    url('^register/$', views.register),
-    url(r'^authenticate/', views.authenticate_user),
+    url('^register/$', register),
+    url(r'^authenticate/', authenticate_user),
 
-    url(r'^preferences/$', views.preferences),
+    url(r'^preferences/$', preferences),
     # url(r'^user/(?P<slug>[^\.]+)/preferences$', views.UserEdit.as_view()),    
-    url(r'^update-password/$', views.update_password),
+    url(r'^update-password/$', update_password),
 
-    url(r'^user/(?P<username>[^\.]+)/about$', views.about),        
+    url(r'^user/(?P<username>[^\.]+)/about$', about),        
 
-    url(r'^user/(?P<username>[^\.]+)/subscribe', views.subscribe),
-    url(r'^user/(?P<username>[^\.]+)/unsubscribe', views.unsubscribe),    
+    url(r'^user/(?P<username>[^\.]+)/subscribe', subscribe),
+    url(r'^user/(?P<username>[^\.]+)/unsubscribe', unsubscribe),    
 ]

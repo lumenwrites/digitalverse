@@ -12,13 +12,13 @@ from profiles import urls as profiles_urls
 from comments import urls as comments_urls
 # from forum import urls as forum_urls
 
-from . import views
+from .views import about, lumen, rigs
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^about/', views.about),
-    url(r'^lumen/', views.lumen),
-    url(r'^rigs/', views.rigs),            
+    url(r'^about/', about),
+    url(r'^lumen/', lumen),
+    url(r'^rigs/', rigs),            
 
     url(r'', include(profiles_urls)),        
     url(r'', include(posts_urls)),

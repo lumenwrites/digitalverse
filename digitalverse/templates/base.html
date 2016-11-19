@@ -98,6 +98,8 @@ padding: 10px 0;
 	<!-- <ul><a href="/"> Store </a></ul> -->
 	<!-- <ul><a href="/subscriptions/"> Forum </a></ul>       -->
 	{% if user.is_authenticated %}
+
+	<!-- 
 	  <a href="/blog/">
 	    <span>Blog</span>
 	  </a>
@@ -106,10 +108,11 @@ padding: 10px 0;
 	    <span>Rigs</span>
 	  </a>
 
+
 	  <a href="/forum/" style="margin-right:20px;">
 	    <span>Forum</span>
 	  </a>
-
+	  -->
 	  {% if user.subscribed.count > 0 %}	  
    	      <a href="/subscriptions/">
 	        <span>Subscriptions</span>
@@ -168,7 +171,7 @@ padding: 10px 0;
 	  </div>
 	      
 	  {% else %}
-
+	  <!-- 
 	  <a href="/blog/">
 	    <span>Blog</span>
 	  </a>
@@ -184,6 +187,7 @@ padding: 10px 0;
 	  <a data-open="login-popup">
 	    <span>Login</span>
 	  </a>
+	   -->
 	  <div  style="margin-right:20px;float:right;">&nbsp;</div>
 	  
 	  <a class="subscribe-header" data-open="sub-popup"

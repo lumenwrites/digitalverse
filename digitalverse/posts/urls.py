@@ -10,7 +10,8 @@ urlpatterns = [
     # User Feed
     # url(r'^user/(?P<username>[^\.]+)/feed/atom/$', feeds.UserFeed()),    
 
-    # url(r'^$', views.BlogView.as_view()),    
+    # Blog at the home page
+    url(r'^$', views.BlogView.as_view()),    
 
 
     # Class Based Views
