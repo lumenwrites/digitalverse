@@ -27,6 +27,22 @@
 	{{post.body | markdownify | safe }}
       </div>
 
+      {% if post.author.username == "rayalez" %}
+      <!-- Just blog-first footer -->
+      <div class="post-footer">
+	<div class="stats">
+	  <span style="color: #9ba09b;">
+	    Liked this post? Subscribe to the updates!
+	  </span>
+	</div>
+	<div class="buttons" >
+
+	  <a class="small button" data-open="sub-popup"
+	     style="margin-right: 10px;">Subscribe</a>
+	</div>
+	<div class="clearfix"></div>
+      </div>
+      {% else %}
       <!-- Post Footer -->
       <div class="post-footer">
 	<div class="stats">
@@ -80,6 +96,7 @@
 
 	<div class="clearfix"></div>
       </div> <!-- End post footer -->
+      {% endif %} <!-- End blog-first vs stats and upvotes footer -->
     </article>
 
     <!-- Comments -->

@@ -7,7 +7,8 @@
 <form action="/post-comment/{{post.slug}}?next={{request.path}}"
       method="post">{% csrf_token %}
   <div class="editor">
-    {{form.body}}
+    <textarea id="id_body" name="body" placeholder="Write a reply....">
+    </textarea>
   </div>
   <button class="button right" type="submit">Submit Reply</button>
   <div class="clearfix"></div>    
